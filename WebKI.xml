@@ -57,8 +57,8 @@
   <HelpKINode Title="Alloca method" Url="html/Overload_Llvm_NET_InstructionBuilder_Alloca.htm" />
   <HelpKINode Title="AllOnesValueFor method" Url="html/M_Llvm_NET_Values_Constant_AllOnesValueFor.htm" />
   <HelpKINode Title="AlwaysInline enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
-  <HelpKINode Title="and enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="And enumeration member" Url="html/T_Llvm_NET_Opcode.htm" />
+  <HelpKINode Title="and enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="And method" Url="html/M_Llvm_NET_InstructionBuilder_And.htm" />
   <HelpKINode Title="AnyReg enumeration member" Url="html/T_Llvm_NET_CallingConvention.htm" />
   <HelpKINode Title="Append enumeration member">
@@ -157,7 +157,7 @@
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_Instructions_BinaryOperator.htm" />
   </HelpKINode>
   <HelpKINode Title="BitAlignment property">
-    <HelpKINode Title="DebugMemberInfo.BitAlignment Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitAlignment.htm" />
+    <HelpKINode Title="DebugMemberLayout.BitAlignment Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitAlignment.htm" />
     <HelpKINode Title="DIType.BitAlignment Property " Url="html/P_Llvm_NET_DebugInfo_DIType_BitAlignment.htm" />
   </HelpKINode>
   <HelpKINode Title="BitCast class">
@@ -172,12 +172,12 @@
     <HelpKINode Title="InstructionBuilder.BitCast Method " Url="html/M_Llvm_NET_InstructionBuilder_BitCast.htm" />
   </HelpKINode>
   <HelpKINode Title="BitOffset property">
-    <HelpKINode Title="DebugMemberInfo.BitOffset Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitOffset.htm" />
+    <HelpKINode Title="DebugMemberLayout.BitOffset Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitOffset.htm" />
     <HelpKINode Title="DIType.BitOffset Property " Url="html/P_Llvm_NET_DebugInfo_DIType_BitOffset.htm" />
   </HelpKINode>
   <HelpKINode Title="BitOffsetOfElement method" Url="html/M_Llvm_NET_TargetData_BitOffsetOfElement.htm" />
   <HelpKINode Title="BitSize property">
-    <HelpKINode Title="DebugMemberInfo.BitSize Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitSize.htm" />
+    <HelpKINode Title="DebugMemberLayout.BitSize Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitSize.htm" />
     <HelpKINode Title="DIType.BitSize Property " Url="html/P_Llvm_NET_DebugInfo_DIType_BitSize.htm" />
   </HelpKINode>
   <HelpKINode Title="BitSizeOf method" Url="html/M_Llvm_NET_TargetData_BitSizeOf.htm" />
@@ -283,6 +283,7 @@
   <HelpKINode Title="CodeModel enumeration" Url="html/T_Llvm_NET_CodeModel.htm" />
   <HelpKINode Title="Cold enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
   <HelpKINode Title="ColdCall enumeration member" Url="html/T_Llvm_NET_CallingConvention.htm" />
+  <HelpKINode Title="Column property" Url="html/P_Llvm_NET_DebugInfo_DILocation_Column.htm" />
   <HelpKINode Title="Combine method" Url="html/Overload_Llvm_NET_ScalarEnumerable_Combine.htm" />
   <HelpKINode Title="Common enumeration member" Url="html/T_Llvm_NET_Linkage.htm" />
   <HelpKINode Title="CommonBlock enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
@@ -403,6 +404,7 @@
   <HelpKINode Title="Context class">
     <HelpKINode Title="Context Class" Url="html/T_Llvm_NET_Context.htm" />
     <HelpKINode Title="about Context class" Url="html/T_Llvm_NET_Context.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Llvm_NET_Context__ctor.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_Context.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_Context.htm" />
   </HelpKINode>
@@ -414,6 +416,7 @@
     <HelpKINode Title="Value.Context Property " Url="html/P_Llvm_NET_Values_Value_Context.htm" />
   </HelpKINode>
   <HelpKINode Title="Context.BoolType property" Url="html/P_Llvm_NET_Context_BoolType.htm" />
+  <HelpKINode Title="Context.Context constructor" Url="html/M_Llvm_NET_Context__ctor.htm" />
   <HelpKINode Title="Context.CreateConstant method" Url="html/Overload_Llvm_NET_Context_CreateConstant.htm" />
   <HelpKINode Title="Context.CreateConstantString method" Url="html/Overload_Llvm_NET_Context_CreateConstantString.htm" />
   <HelpKINode Title="Context.CreateConstantStruct method" Url="html/Overload_Llvm_NET_Context_CreateConstantStruct.htm" />
@@ -421,7 +424,9 @@
   <HelpKINode Title="Context.CreateMetadataString method" Url="html/M_Llvm_NET_Context_CreateMetadataString.htm" />
   <HelpKINode Title="Context.CreateNamedConstantStruct method" Url="html/Overload_Llvm_NET_Context_CreateNamedConstantStruct.htm" />
   <HelpKINode Title="Context.CreateStructType method" Url="html/Overload_Llvm_NET_Context_CreateStructType.htm" />
+  <HelpKINode Title="Context.Dispose method" Url="html/M_Llvm_NET_Context_Dispose.htm" />
   <HelpKINode Title="Context.DoubleType property" Url="html/P_Llvm_NET_Context_DoubleType.htm" />
+  <HelpKINode Title="Context.Finalize method" Url="html/M_Llvm_NET_Context_Finalize.htm" />
   <HelpKINode Title="Context.FloatType property" Url="html/P_Llvm_NET_Context_FloatType.htm" />
   <HelpKINode Title="Context.GetFunctionType method" Url="html/Overload_Llvm_NET_Context_GetFunctionType.htm" />
   <HelpKINode Title="Context.GetIntType method" Url="html/M_Llvm_NET_Context_GetIntType.htm" />
@@ -572,16 +577,25 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugMemberInfo.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugMemberInfo.htm" />
   </HelpKINode>
-  <HelpKINode Title="DebugMemberInfo.BitAlignment property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitAlignment.htm" />
-  <HelpKINode Title="DebugMemberInfo.BitOffset property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitOffset.htm" />
-  <HelpKINode Title="DebugMemberInfo.BitSize property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitSize.htm" />
   <HelpKINode Title="DebugMemberInfo.DebugMemberInfo constructor" Url="html/M_Llvm_NET_DebugInfo_DebugMemberInfo__ctor.htm" />
+  <HelpKINode Title="DebugMemberInfo.ExplicitLayout property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_ExplicitLayout.htm" />
   <HelpKINode Title="DebugMemberInfo.File property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_File.htm" />
   <HelpKINode Title="DebugMemberInfo.Flags property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Flags.htm" />
   <HelpKINode Title="DebugMemberInfo.Index property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Index.htm" />
   <HelpKINode Title="DebugMemberInfo.Line property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Line.htm" />
   <HelpKINode Title="DebugMemberInfo.Name property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Name.htm" />
   <HelpKINode Title="DebugMemberInfo.Type property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Type.htm" />
+  <HelpKINode Title="DebugMemberLayout structure">
+    <HelpKINode Title="DebugMemberLayout Structure" Url="html/T_Llvm_NET_DebugInfo_DebugMemberLayout.htm" />
+    <HelpKINode Title="about DebugMemberLayout structure" Url="html/T_Llvm_NET_DebugInfo_DebugMemberLayout.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Llvm_NET_DebugInfo_DebugMemberLayout__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugMemberLayout.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugMemberLayout.htm" />
+  </HelpKINode>
+  <HelpKINode Title="DebugMemberLayout.BitAlignment property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitAlignment.htm" />
+  <HelpKINode Title="DebugMemberLayout.BitOffset property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitOffset.htm" />
+  <HelpKINode Title="DebugMemberLayout.BitSize property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitSize.htm" />
+  <HelpKINode Title="DebugMemberLayout.DebugMemberLayout constructor" Url="html/M_Llvm_NET_DebugInfo_DebugMemberLayout__ctor.htm" />
   <HelpKINode Title="DebugMembers property" Url="html/P_Llvm_NET_DebugInfo_DebugStructType_DebugMembers.htm" />
   <HelpKINode Title="DebugMetadataVersion field" Url="html/F_Llvm_NET_Module_DebugMetadataVersion.htm" />
   <HelpKINode Title="DebugPointerType class">
@@ -799,7 +813,11 @@
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILocation.htm" />
   </HelpKINode>
   <HelpKINode Title="DILocation enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
+  <HelpKINode Title="DILocation.Column property" Url="html/P_Llvm_NET_DebugInfo_DILocation_Column.htm" />
   <HelpKINode Title="DILocation.DILocation constructor" Url="html/Overload_Llvm_NET_DebugInfo_DILocation__ctor.htm" />
+  <HelpKINode Title="DILocation.InlinedAt property" Url="html/P_Llvm_NET_DebugInfo_DILocation_InlinedAt.htm" />
+  <HelpKINode Title="DILocation.Line property" Url="html/P_Llvm_NET_DebugInfo_DILocation_Line.htm" />
+  <HelpKINode Title="DILocation.Scope property" Url="html/P_Llvm_NET_DebugInfo_DILocation_Scope.htm" />
   <HelpKINode Title="DIModule class">
     <HelpKINode Title="DIModule Class" Url="html/T_Llvm_NET_DebugInfo_DIModule.htm" />
     <HelpKINode Title="about DIModule class" Url="html/T_Llvm_NET_DebugInfo_DIModule.htm" />
@@ -838,6 +856,7 @@
   </HelpKINode>
   <HelpKINode Title="DIScope.File property" Url="html/P_Llvm_NET_DebugInfo_DIScope_File.htm" />
   <HelpKINode Title="Dispose method">
+    <HelpKINode Title="Context.Dispose Method " Url="html/M_Llvm_NET_Context_Dispose.htm" />
     <HelpKINode Title="DebugInfoBuilder.Dispose Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_Dispose.htm" />
     <HelpKINode Title="InstructionBuilder.Dispose Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Dispose.htm" />
     <HelpKINode Title="MemoryBuffer.Dispose Method " Url="html/M_Llvm_NET_MemoryBuffer_Dispose.htm" />
@@ -963,6 +982,7 @@
   </HelpKINode>
   <HelpKINode Title="Error enumeration member" Url="html/T_Llvm_NET_ModuleFlagBehavior.htm" />
   <HelpKINode Title="Explicit enumeration member" Url="html/T_Llvm_NET_DebugInfo_DebugInfoFlags.htm" />
+  <HelpKINode Title="ExplicitLayout property" Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_ExplicitLayout.htm" />
   <HelpKINode Title="Expression enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="ExpressionOp enumeration" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="ExtensiblePropertyDescriptor(Of T) class">
@@ -1035,6 +1055,7 @@
   </HelpKINode>
   <HelpKINode Title="FileType enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="Finalize method">
+    <HelpKINode Title="Context.Finalize Method " Url="html/M_Llvm_NET_Context_Finalize.htm" />
     <HelpKINode Title="InstructionBuilder.Finalize Method " Url="html/M_Llvm_NET_InstructionBuilder_Finalize.htm" />
     <HelpKINode Title="Module.Finalize Method " Url="html/M_Llvm_NET_Module_Finalize.htm" />
     <HelpKINode Title="TargetData.Finalize Method " Url="html/M_Llvm_NET_TargetData_Finalize.htm" />
@@ -1337,6 +1358,7 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_Values_InlineAsm.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_Values_InlineAsm.htm" />
   </HelpKINode>
+  <HelpKINode Title="InlinedAt property" Url="html/P_Llvm_NET_DebugInfo_DILocation_InlinedAt.htm" />
   <HelpKINode Title="InlinedSubroutine enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="InlineHint enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
   <HelpKINode Title="InportedUnit enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
@@ -1676,6 +1698,7 @@
   <HelpKINode Title="LexicalBlock enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="Line property">
     <HelpKINode Title="DebugMemberInfo.Line Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Line.htm" />
+    <HelpKINode Title="DILocation.Line Property " Url="html/P_Llvm_NET_DebugInfo_DILocation_Line.htm" />
     <HelpKINode Title="DIType.Line Property " Url="html/P_Llvm_NET_DebugInfo_DIType_Line.htm" />
   </HelpKINode>
   <HelpKINode Title="Link method" Url="html/M_Llvm_NET_Module_Link.htm" />
@@ -1736,6 +1759,7 @@
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugInfoBuilder class" Url="html/T_Llvm_NET_DebugInfo_DebugInfoBuilder.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugInfoFlags enumeration" Url="html/T_Llvm_NET_DebugInfo_DebugInfoFlags.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugMemberInfo class" Url="html/T_Llvm_NET_DebugInfo_DebugMemberInfo.htm" />
+  <HelpKINode Title="Llvm.NET.DebugInfo.DebugMemberLayout structure" Url="html/T_Llvm_NET_DebugInfo_DebugMemberLayout.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugPointerType class" Url="html/T_Llvm_NET_DebugInfo_DebugPointerType.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugStructType class" Url="html/T_Llvm_NET_DebugInfo_DebugStructType.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugType class" Url="html/T_Llvm_NET_DebugInfo_DebugType.htm" />
@@ -1903,7 +1927,7 @@
   <HelpKINode Title="Load enumeration member" Url="html/T_Llvm_NET_Opcode.htm" />
   <HelpKINode Title="Load method" Url="html/M_Llvm_NET_InstructionBuilder_Load.htm" />
   <HelpKINode Title="Load.IsVolatile property" Url="html/P_Llvm_NET_Instructions_Load_IsVolatile.htm" />
-  <HelpKINode Title="LoadFrom method" Url="html/M_Llvm_NET_Module_LoadFrom.htm" />
+  <HelpKINode Title="LoadFrom method" Url="html/Overload_Llvm_NET_Module_LoadFrom.htm" />
   <HelpKINode Title="LocalAsMetadata enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="LogicalShiftRight method" Url="html/M_Llvm_NET_InstructionBuilder_LogicalShiftRight.htm" />
   <HelpKINode Title="LoUser enumeration member">
@@ -2030,7 +2054,7 @@
   <HelpKINode Title="Module.IExtensiblePropertyContainer.TryGetExtendedPropertyValue explicitly implemented method" Url="html/M_Llvm_NET_Module_Llvm_NET_IExtensiblePropertyContainer_TryGetExtendedPropertyValue__1.htm" />
   <HelpKINode Title="Module.Layout property" Url="html/P_Llvm_NET_Module_Layout.htm" />
   <HelpKINode Title="Module.Link method" Url="html/M_Llvm_NET_Module_Link.htm" />
-  <HelpKINode Title="Module.LoadFrom method" Url="html/M_Llvm_NET_Module_LoadFrom.htm" />
+  <HelpKINode Title="Module.LoadFrom method" Url="html/Overload_Llvm_NET_Module_LoadFrom.htm" />
   <HelpKINode Title="Module.Module constructor" Url="html/Overload_Llvm_NET_Module__ctor.htm" />
   <HelpKINode Title="Module.Name property" Url="html/P_Llvm_NET_Module_Name.htm" />
   <HelpKINode Title="Module.TargetTriple property" Url="html/P_Llvm_NET_Module_TargetTriple.htm" />
@@ -2073,6 +2097,7 @@
   <HelpKINode Title="None enumeration member">
     <HelpKINode Title="AttributeKind Enumeration" Url="html/T_Llvm_NET_AttributeKind.htm" />
     <HelpKINode Title="CodeGenOpt Enumeration" Url="html/T_Llvm_NET_CodeGenOpt.htm" />
+    <HelpKINode Title="DebugInfoFlags Enumeration" Url="html/T_Llvm_NET_DebugInfo_DebugInfoFlags.htm" />
     <HelpKINode Title="TargetRegistration Enumeration" Url="html/T_Llvm_NET_TargetRegistration.htm" />
   </HelpKINode>
   <HelpKINode Title="NonLazyBind enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
@@ -2105,8 +2130,8 @@
   <HelpKINode Title="Operands property" Url="html/P_Llvm_NET_Values_User_Operands.htm" />
   <HelpKINode Title="OptimizeForSize enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
   <HelpKINode Title="OptimizeNone enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
-  <HelpKINode Title="Or enumeration member" Url="html/T_Llvm_NET_Opcode.htm" />
   <HelpKINode Title="or enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
+  <HelpKINode Title="Or enumeration member" Url="html/T_Llvm_NET_Opcode.htm" />
   <HelpKINode Title="Or method" Url="html/M_Llvm_NET_InstructionBuilder_Or.htm" />
   <HelpKINode Title="Ordered enumeration member">
     <HelpKINode Title="Predicate Enumeration" Url="html/T_Llvm_NET_Predicate.htm" />
@@ -2316,7 +2341,10 @@
   <HelpKINode Title="ScalarEnumerable.Combine method" Url="html/Overload_Llvm_NET_ScalarEnumerable_Combine.htm" />
   <HelpKINode Title="ScalarEnumerable.From(Of T) method" Url="html/M_Llvm_NET_ScalarEnumerable_From__1.htm" />
   <HelpKINode Title="ScalarEnumerable.From&lt;T&gt; method" Url="html/M_Llvm_NET_ScalarEnumerable_From__1.htm" />
-  <HelpKINode Title="Scope property" Url="html/P_Llvm_NET_DebugInfo_DIType_Scope.htm" />
+  <HelpKINode Title="Scope property">
+    <HelpKINode Title="DILocation.Scope Property " Url="html/P_Llvm_NET_DebugInfo_DILocation_Scope.htm" />
+    <HelpKINode Title="DIType.Scope Property " Url="html/P_Llvm_NET_DebugInfo_DIType_Scope.htm" />
+  </HelpKINode>
   <HelpKINode Title="SDiv enumeration member" Url="html/T_Llvm_NET_Opcode.htm" />
   <HelpKINode Title="SDiv method" Url="html/M_Llvm_NET_InstructionBuilder_SDiv.htm" />
   <HelpKINode Title="Section property" Url="html/P_Llvm_NET_Values_GlobalObject_Section.htm" />
@@ -2326,8 +2354,7 @@
     <HelpKINode Title="DebugStructType.SetBody Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugStructType_SetBody.htm" />
     <HelpKINode Title="IStructType.SetBody Method " Url="html/M_Llvm_NET_Types_IStructType_SetBody.htm" />
   </HelpKINode>
-  <HelpKINode Title="SetDebugLocation(Of T) method" Url="html/M_Llvm_NET_Values_ValueExtensions_SetDebugLocation__1.htm" />
-  <HelpKINode Title="SetDebugLocation&lt;T&gt; method" Url="html/M_Llvm_NET_Values_ValueExtensions_SetDebugLocation__1.htm" />
+  <HelpKINode Title="SetDebugLocation method" Url="html/Overload_Llvm_NET_Values_ValueExtensions_SetDebugLocation.htm" />
   <HelpKINode Title="SetDisableSimplifyLibCalls method" Url="html/M_Llvm_NET_PassManagerBuilder_SetDisableSimplifyLibCalls.htm" />
   <HelpKINode Title="SetDisableUnitAtATime method" Url="html/M_Llvm_NET_PassManagerBuilder_SetDisableUnitAtATime.htm" />
   <HelpKINode Title="SetDisableUnrollLoops method" Url="html/M_Llvm_NET_PassManagerBuilder_SetDisableUnrollLoops.htm" />
@@ -2338,8 +2365,8 @@
   <HelpKINode Title="SExt enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
   <HelpKINode Title="SharedType enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="ShiftLeft method" Url="html/M_Llvm_NET_InstructionBuilder_ShiftLeft.htm" />
-  <HelpKINode Title="Shl enumeration member" Url="html/T_Llvm_NET_Opcode.htm" />
   <HelpKINode Title="shl enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
+  <HelpKINode Title="Shl enumeration member" Url="html/T_Llvm_NET_Opcode.htm" />
   <HelpKINode Title="shr enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="shra enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="ShuffleVector class">
@@ -2692,8 +2719,7 @@
   </HelpKINode>
   <HelpKINode Title="ValueExtensions.RegisterName(Of T) method" Url="html/M_Llvm_NET_Values_ValueExtensions_RegisterName__1.htm" />
   <HelpKINode Title="ValueExtensions.RegisterName&lt;T&gt; method" Url="html/M_Llvm_NET_Values_ValueExtensions_RegisterName__1.htm" />
-  <HelpKINode Title="ValueExtensions.SetDebugLocation(Of T) method" Url="html/M_Llvm_NET_Values_ValueExtensions_SetDebugLocation__1.htm" />
-  <HelpKINode Title="ValueExtensions.SetDebugLocation&lt;T&gt; method" Url="html/M_Llvm_NET_Values_ValueExtensions_SetDebugLocation__1.htm" />
+  <HelpKINode Title="ValueExtensions.SetDebugLocation method" Url="html/Overload_Llvm_NET_Values_ValueExtensions_SetDebugLocation.htm" />
   <HelpKINode Title="Variable enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="Variant enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="VariantPart enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
@@ -2706,7 +2732,7 @@
     <HelpKINode Title="Module.Verify Method " Url="html/M_Llvm_NET_Module_Verify.htm" />
   </HelpKINode>
   <HelpKINode Title="version">
-    <HelpKINode Title="3.7.0-alpha0043" Url="html/bb78087b-db18-4024-9357-2694f1ff1497.htm" />
+    <HelpKINode Title="3.7.0-alpha" Url="html/bb78087b-db18-4024-9357-2694f1ff1497.htm" />
     <HelpKINode Title="history" Url="html/f28bb6c8-7b27-413a-823c-1f1dcaf578de.htm" />
   </HelpKINode>
   <HelpKINode Title="Virtual enumeration member" Url="html/T_Llvm_NET_DebugInfo_DebugInfoFlags.htm" />

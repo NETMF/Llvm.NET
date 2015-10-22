@@ -2,20 +2,33 @@
 <HelpTOC>
 
   <HelpTOCNode Title="Welcome" Url="html/47ec5af0-5c1c-443e-b2b3-158a100dc594.htm" />
-  <HelpTOCNode Id="310c07e9-6341-43e0-82a3-f5c80a275c26" Title="Version History" Url="html/f28bb6c8-7b27-413a-823c-1f1dcaf578de.htm">
-    <HelpTOCNode Title="Version 3.7.0-alpha0043" Url="html/bb78087b-db18-4024-9357-2694f1ff1497.htm" />
+  <HelpTOCNode Id="5e9c3b2a-7947-474a-b733-fb3d8126f627" Title="Version History" Url="html/f28bb6c8-7b27-413a-823c-1f1dcaf578de.htm">
+    <HelpTOCNode Title="Version 3.7.0-alpha" Url="html/bb78087b-db18-4024-9357-2694f1ff1497.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="16319002-d5f8-4c15-8283-8578ab4573d1" Title="Namespaces" Url="html/R_Project_Llvm_NET.htm">
-    <HelpTOCNode Id="82226913-216a-4933-a6f7-6f490c1243af" Title="Llvm.NET" Url="html/N_Llvm_NET.htm">
+  <HelpTOCNode Id="f343ef77-5c5b-484c-b524-8ccaf468eb15" Title="Namespaces" Url="html/R_Project_Llvm_NET.htm">
+    <HelpTOCNode Id="46ae60bf-cca0-45c7-bcf1-057c16104b3c" Title="Llvm.NET" Url="html/N_Llvm_NET.htm">
       <HelpTOCNode Title="AttributeKind Enumeration" Url="html/T_Llvm_NET_AttributeKind.htm" />
       <HelpTOCNode Title="ByteOrdering Enumeration" Url="html/T_Llvm_NET_ByteOrdering.htm" />
       <HelpTOCNode Title="CallingConvention Enumeration" Url="html/T_Llvm_NET_CallingConvention.htm" />
       <HelpTOCNode Title="CodeGenFileType Enumeration" Url="html/T_Llvm_NET_CodeGenFileType.htm" />
       <HelpTOCNode Title="CodeGenOpt Enumeration" Url="html/T_Llvm_NET_CodeGenOpt.htm" />
       <HelpTOCNode Title="CodeModel Enumeration" Url="html/T_Llvm_NET_CodeModel.htm" />
-      <HelpTOCNode Id="8ffb202e-a099-403a-b690-96f24050ef59" Title="Context Class" Url="html/T_Llvm_NET_Context.htm">
-        <HelpTOCNode Id="a02ae42d-cfbb-4924-b98a-cf4cf99c5bfd" Title="Context Methods" Url="html/Methods_T_Llvm_NET_Context.htm">
-          <HelpTOCNode Id="aaeeb748-d9b4-4b67-8e5c-05cd87728079" Title="CreateConstant Method " Url="html/Overload_Llvm_NET_Context_CreateConstant.htm">
+      <HelpTOCNode Id="1f067752-d4b2-4304-8422-4010b317bed1" Title="Context Class" Url="html/T_Llvm_NET_Context.htm">
+        <HelpTOCNode Title="Context Constructor " Url="html/M_Llvm_NET_Context__ctor.htm" />
+        <HelpTOCNode Id="ce0e512c-e05c-4407-abb9-f87d7e45909e" Title="Context Properties" Url="html/Properties_T_Llvm_NET_Context.htm">
+          <HelpTOCNode Title="BoolType Property " Url="html/P_Llvm_NET_Context_BoolType.htm" />
+          <HelpTOCNode Title="DoubleType Property " Url="html/P_Llvm_NET_Context_DoubleType.htm" />
+          <HelpTOCNode Title="FloatType Property " Url="html/P_Llvm_NET_Context_FloatType.htm" />
+          <HelpTOCNode Title="HalfFloatType Property " Url="html/P_Llvm_NET_Context_HalfFloatType.htm" />
+          <HelpTOCNode Title="Int16Type Property " Url="html/P_Llvm_NET_Context_Int16Type.htm" />
+          <HelpTOCNode Title="Int32Type Property " Url="html/P_Llvm_NET_Context_Int32Type.htm" />
+          <HelpTOCNode Title="Int64Type Property " Url="html/P_Llvm_NET_Context_Int64Type.htm" />
+          <HelpTOCNode Title="Int8Type Property " Url="html/P_Llvm_NET_Context_Int8Type.htm" />
+          <HelpTOCNode Title="IsDisposed Property " Url="html/P_Llvm_NET_Context_IsDisposed.htm" />
+          <HelpTOCNode Title="VoidType Property " Url="html/P_Llvm_NET_Context_VoidType.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="3962255b-1223-4307-93d5-6c2d404b4fcd" Title="Context Methods" Url="html/Methods_T_Llvm_NET_Context.htm">
+          <HelpTOCNode Id="d235dc0f-b0a0-4c0e-a88f-9c4cd4359760" Title="CreateConstant Method " Url="html/Overload_Llvm_NET_Context_CreateConstant.htm">
             <HelpTOCNode Title="CreateConstant Method (Boolean)" Url="html/M_Llvm_NET_Context_CreateConstant_1.htm" />
             <HelpTOCNode Title="CreateConstant Method (Byte)" Url="html/M_Llvm_NET_Context_CreateConstant_2.htm" />
             <HelpTOCNode Title="CreateConstant Method (Double)" Url="html/M_Llvm_NET_Context_CreateConstant_3.htm" />
@@ -30,31 +43,33 @@
             <HelpTOCNode Title="CreateConstant Method (UInt32, UInt64, Boolean)" Url="html/M_Llvm_NET_Context_CreateConstant_11.htm" />
             <HelpTOCNode Title="CreateConstant Method (ITypeRef, UInt64, Boolean)" Url="html/M_Llvm_NET_Context_CreateConstant.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="0b05a0e6-dd30-4151-8acb-ec5f49261e12" Title="CreateConstantString Method " Url="html/Overload_Llvm_NET_Context_CreateConstantString.htm">
+          <HelpTOCNode Id="b3daee92-b5df-4db1-93ef-5ae1f8735eab" Title="CreateConstantString Method " Url="html/Overload_Llvm_NET_Context_CreateConstantString.htm">
             <HelpTOCNode Title="CreateConstantString Method (String)" Url="html/M_Llvm_NET_Context_CreateConstantString.htm" />
             <HelpTOCNode Title="CreateConstantString Method (String, Boolean)" Url="html/M_Llvm_NET_Context_CreateConstantString_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="eed079ae-d0a7-4fe2-a920-571f80612f8a" Title="CreateConstantStruct Method " Url="html/Overload_Llvm_NET_Context_CreateConstantStruct.htm">
+          <HelpTOCNode Id="ef989930-1189-45db-a480-da3c58c61d53" Title="CreateConstantStruct Method " Url="html/Overload_Llvm_NET_Context_CreateConstantStruct.htm">
             <HelpTOCNode Title="CreateConstantStruct Method (Boolean, Constant[])" Url="html/M_Llvm_NET_Context_CreateConstantStruct.htm" />
             <HelpTOCNode Title="CreateConstantStruct Method (Boolean, IEnumerable(Constant))" Url="html/M_Llvm_NET_Context_CreateConstantStruct_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="1d77831d-1b1c-4487-81d2-3de1867a6323" Title="CreateFunctionType Method " Url="html/Overload_Llvm_NET_Context_CreateFunctionType.htm">
+          <HelpTOCNode Id="d8fb4285-0146-4d18-b5f3-82d81f297e78" Title="CreateFunctionType Method " Url="html/Overload_Llvm_NET_Context_CreateFunctionType.htm">
             <HelpTOCNode Title="CreateFunctionType Method (DebugInfoBuilder, DIFile, IDebugType(ITypeRef, DIType), IDebugType(ITypeRef, DIType)[])" Url="html/M_Llvm_NET_Context_CreateFunctionType.htm" />
             <HelpTOCNode Title="CreateFunctionType Method (DebugInfoBuilder, DIFile, IDebugType(ITypeRef, DIType), IEnumerable(IDebugType(ITypeRef, DIType)))" Url="html/M_Llvm_NET_Context_CreateFunctionType_1.htm" />
             <HelpTOCNode Title="CreateFunctionType Method (DebugInfoBuilder, DIFile, Boolean, IDebugType(ITypeRef, DIType), IDebugType(ITypeRef, DIType)[])" Url="html/M_Llvm_NET_Context_CreateFunctionType_2.htm" />
             <HelpTOCNode Title="CreateFunctionType Method (DebugInfoBuilder, DIFile, Boolean, IDebugType(ITypeRef, DIType), IEnumerable(IDebugType(ITypeRef, DIType)))" Url="html/M_Llvm_NET_Context_CreateFunctionType_3.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="CreateMetadataString Method " Url="html/M_Llvm_NET_Context_CreateMetadataString.htm" />
-          <HelpTOCNode Id="89274556-10d1-4b8f-9592-30dec82453b0" Title="CreateNamedConstantStruct Method " Url="html/Overload_Llvm_NET_Context_CreateNamedConstantStruct.htm">
+          <HelpTOCNode Id="79f68d5a-04cb-4440-8f42-fa766edd86c2" Title="CreateNamedConstantStruct Method " Url="html/Overload_Llvm_NET_Context_CreateNamedConstantStruct.htm">
             <HelpTOCNode Title="CreateNamedConstantStruct Method (IStructType, Constant[])" Url="html/M_Llvm_NET_Context_CreateNamedConstantStruct.htm" />
             <HelpTOCNode Title="CreateNamedConstantStruct Method (IStructType, IEnumerable(Constant))" Url="html/M_Llvm_NET_Context_CreateNamedConstantStruct_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="6b877ae7-72f1-4026-ade1-0a954db5770b" Title="CreateStructType Method " Url="html/Overload_Llvm_NET_Context_CreateStructType.htm">
+          <HelpTOCNode Id="026e05fb-ca3a-4722-a93a-d9f519e9f75e" Title="CreateStructType Method " Url="html/Overload_Llvm_NET_Context_CreateStructType.htm">
             <HelpTOCNode Title="CreateStructType Method (String)" Url="html/M_Llvm_NET_Context_CreateStructType_1.htm" />
             <HelpTOCNode Title="CreateStructType Method (Boolean, ITypeRef, ITypeRef[])" Url="html/M_Llvm_NET_Context_CreateStructType.htm" />
             <HelpTOCNode Title="CreateStructType Method (String, Boolean, ITypeRef[])" Url="html/M_Llvm_NET_Context_CreateStructType_2.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="09274611-8ef7-4c95-bb6d-5dc23df3e6ba" Title="GetFunctionType Method " Url="html/Overload_Llvm_NET_Context_GetFunctionType.htm">
+          <HelpTOCNode Title="Dispose Method " Url="html/M_Llvm_NET_Context_Dispose.htm" />
+          <HelpTOCNode Title="Finalize Method " Url="html/M_Llvm_NET_Context_Finalize.htm" />
+          <HelpTOCNode Id="996d35bf-3d1a-48f4-9e96-53a3b7dfd730" Title="GetFunctionType Method " Url="html/Overload_Llvm_NET_Context_GetFunctionType.htm">
             <HelpTOCNode Title="GetFunctionType Method (ITypeRef, ITypeRef[])" Url="html/M_Llvm_NET_Context_GetFunctionType.htm" />
             <HelpTOCNode Title="GetFunctionType Method (ITypeRef, IEnumerable(ITypeRef))" Url="html/M_Llvm_NET_Context_GetFunctionType_1.htm" />
             <HelpTOCNode Title="GetFunctionType Method (ITypeRef, IEnumerable(ITypeRef), Boolean)" Url="html/M_Llvm_NET_Context_GetFunctionType_2.htm" />
@@ -62,36 +77,24 @@
           <HelpTOCNode Title="GetIntType Method " Url="html/M_Llvm_NET_Context_GetIntType.htm" />
           <HelpTOCNode Title="GetPointerTypeFor Method " Url="html/M_Llvm_NET_Context_GetPointerTypeFor.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="ae859933-c112-4fbd-8a31-22baeab3e361" Title="Context Properties" Url="html/Properties_T_Llvm_NET_Context.htm">
-          <HelpTOCNode Title="BoolType Property " Url="html/P_Llvm_NET_Context_BoolType.htm" />
-          <HelpTOCNode Title="DoubleType Property " Url="html/P_Llvm_NET_Context_DoubleType.htm" />
-          <HelpTOCNode Title="FloatType Property " Url="html/P_Llvm_NET_Context_FloatType.htm" />
-          <HelpTOCNode Title="HalfFloatType Property " Url="html/P_Llvm_NET_Context_HalfFloatType.htm" />
-          <HelpTOCNode Title="Int16Type Property " Url="html/P_Llvm_NET_Context_Int16Type.htm" />
-          <HelpTOCNode Title="Int32Type Property " Url="html/P_Llvm_NET_Context_Int32Type.htm" />
-          <HelpTOCNode Title="Int64Type Property " Url="html/P_Llvm_NET_Context_Int64Type.htm" />
-          <HelpTOCNode Title="Int8Type Property " Url="html/P_Llvm_NET_Context_Int8Type.htm" />
-          <HelpTOCNode Title="IsDisposed Property " Url="html/P_Llvm_NET_Context_IsDisposed.htm" />
-          <HelpTOCNode Title="VoidType Property " Url="html/P_Llvm_NET_Context_VoidType.htm" />
-        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="a000d781-213a-4614-b4e7-509c4f940411" Title="ExtensiblePropertyDescriptor(T) Class" Url="html/T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm">
+      <HelpTOCNode Id="3d160288-27ad-4126-9e6f-6689b4367819" Title="ExtensiblePropertyDescriptor(T) Class" Url="html/T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm">
         <HelpTOCNode Title="ExtensiblePropertyDescriptor(T) Constructor " Url="html/M_Llvm_NET_ExtensiblePropertyDescriptor_1__ctor.htm" />
-        <HelpTOCNode Id="519ab0d2-5942-4716-969e-729eec7bed30" Title="ExtensiblePropertyDescriptor(T) Methods" Url="html/Methods_T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm">
-          <HelpTOCNode Id="91898d46-ba54-4916-83d9-2e026603a759" Title="GetValueFrom Method " Url="html/Overload_Llvm_NET_ExtensiblePropertyDescriptor_1_GetValueFrom.htm">
+        <HelpTOCNode Id="28939da4-e5c6-41cb-9d8b-96ace10a84c7" Title="ExtensiblePropertyDescriptor(T) Properties" Url="html/Properties_T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm">
+          <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_ExtensiblePropertyDescriptor_1_Name.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="75e02891-2acc-4967-8a20-59cb7d875880" Title="ExtensiblePropertyDescriptor(T) Methods" Url="html/Methods_T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm">
+          <HelpTOCNode Id="7fb5e45b-4287-4ab4-8bb3-5084f01ade2b" Title="GetValueFrom Method " Url="html/Overload_Llvm_NET_ExtensiblePropertyDescriptor_1_GetValueFrom.htm">
             <HelpTOCNode Title="GetValueFrom Method (IExtensiblePropertyContainer)" Url="html/M_Llvm_NET_ExtensiblePropertyDescriptor_1_GetValueFrom.htm" />
             <HelpTOCNode Title="GetValueFrom Method (IExtensiblePropertyContainer, Func(T))" Url="html/M_Llvm_NET_ExtensiblePropertyDescriptor_1_GetValueFrom_1.htm" />
             <HelpTOCNode Title="GetValueFrom Method (IExtensiblePropertyContainer, T)" Url="html/M_Llvm_NET_ExtensiblePropertyDescriptor_1_GetValueFrom_2.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="SetValueIn Method " Url="html/M_Llvm_NET_ExtensiblePropertyDescriptor_1_SetValueIn.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="14f8fdfd-ed15-4303-8cd2-8cef40a6a80e" Title="ExtensiblePropertyDescriptor(T) Properties" Url="html/Properties_T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm">
-          <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_ExtensiblePropertyDescriptor_1_Name.htm" />
-        </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="FunctionAttributeIndex Enumeration" Url="html/T_Llvm_NET_FunctionAttributeIndex.htm" />
-      <HelpTOCNode Id="b21e89d7-c988-41ca-8705-b1ad8138cfd5" Title="GlobalPassRegistry Class" Url="html/T_Llvm_NET_GlobalPassRegistry.htm">
-        <HelpTOCNode Id="23cdde4e-e06c-4a04-ac7c-82106e073f22" Title="GlobalPassRegistry Methods" Url="html/Methods_T_Llvm_NET_GlobalPassRegistry.htm">
+      <HelpTOCNode Id="05090f52-08c6-4a5d-8c50-e8de33888988" Title="GlobalPassRegistry Class" Url="html/T_Llvm_NET_GlobalPassRegistry.htm">
+        <HelpTOCNode Id="f4ba0050-e5b0-4055-a60b-62a15c1dba00" Title="GlobalPassRegistry Methods" Url="html/Methods_T_Llvm_NET_GlobalPassRegistry.htm">
           <HelpTOCNode Title="InitializeAll Method " Url="html/M_Llvm_NET_GlobalPassRegistry_InitializeAll.htm" />
           <HelpTOCNode Title="InitializeAnalysis Method " Url="html/M_Llvm_NET_GlobalPassRegistry_InitializeAnalysis.htm" />
           <HelpTOCNode Title="InitializeCodeGen Method " Url="html/M_Llvm_NET_GlobalPassRegistry_InitializeCodeGen.htm" />
@@ -107,42 +110,45 @@
           <HelpTOCNode Title="InitializeVectorization Method " Url="html/M_Llvm_NET_GlobalPassRegistry_InitializeVectorization.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="fc4e8021-74a6-480d-ad3a-58a38dd6c269" Title="IExtensiblePropertyContainer Interface" Url="html/T_Llvm_NET_IExtensiblePropertyContainer.htm">
-        <HelpTOCNode Id="54bac4f1-d597-473b-81e1-af0b1a46dacb" Title="IExtensiblePropertyContainer Methods" Url="html/Methods_T_Llvm_NET_IExtensiblePropertyContainer.htm">
+      <HelpTOCNode Id="c8de70cf-67e5-4586-b341-a9d5afcbcdf8" Title="IExtensiblePropertyContainer Interface" Url="html/T_Llvm_NET_IExtensiblePropertyContainer.htm">
+        <HelpTOCNode Id="b61a2e27-6d70-4d5e-b13e-df4b0bfa1fe5" Title="IExtensiblePropertyContainer Methods" Url="html/Methods_T_Llvm_NET_IExtensiblePropertyContainer.htm">
           <HelpTOCNode Title="AddExtendedPropertyValue Method " Url="html/M_Llvm_NET_IExtensiblePropertyContainer_AddExtendedPropertyValue.htm" />
           <HelpTOCNode Title="TryGetExtendedPropertyValue(T) Method " Url="html/M_Llvm_NET_IExtensiblePropertyContainer_TryGetExtendedPropertyValue__1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="c24041a5-9a58-444f-99a8-95600969bc15" Title="InstructionBuilder Class" Url="html/T_Llvm_NET_InstructionBuilder.htm">
-        <HelpTOCNode Id="01f8b7e9-77d0-46be-a981-6171430530a9" Title="InstructionBuilder Constructor " Url="html/Overload_Llvm_NET_InstructionBuilder__ctor.htm">
+      <HelpTOCNode Id="6cc8c097-ad0e-4561-8c76-46b048c34e55" Title="InstructionBuilder Class" Url="html/T_Llvm_NET_InstructionBuilder.htm">
+        <HelpTOCNode Id="86007eb4-5725-4ec5-b4e7-682c1c771d1f" Title="InstructionBuilder Constructor " Url="html/Overload_Llvm_NET_InstructionBuilder__ctor.htm">
           <HelpTOCNode Title="InstructionBuilder Constructor (BasicBlock)" Url="html/M_Llvm_NET_InstructionBuilder__ctor_1.htm" />
           <HelpTOCNode Title="InstructionBuilder Constructor (Context)" Url="html/M_Llvm_NET_InstructionBuilder__ctor.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="c6b9dade-a02c-478b-90e2-e86126ceb760" Title="InstructionBuilder Methods" Url="html/Methods_T_Llvm_NET_InstructionBuilder.htm">
+        <HelpTOCNode Id="3ba3d3b3-5e3d-4f4c-a2fc-3de28998223c" Title="InstructionBuilder Properties" Url="html/Properties_T_Llvm_NET_InstructionBuilder.htm">
+          <HelpTOCNode Title="Context Property " Url="html/P_Llvm_NET_InstructionBuilder_Context.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="943ea6f0-ab1b-4f7b-8ce7-cf77630eba47" Title="InstructionBuilder Methods" Url="html/Methods_T_Llvm_NET_InstructionBuilder.htm">
           <HelpTOCNode Title="Add Method " Url="html/M_Llvm_NET_InstructionBuilder_Add.htm" />
-          <HelpTOCNode Id="957e5acb-9921-4fc5-bfbd-8694f3bcd0f6" Title="Alloca Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Alloca.htm">
+          <HelpTOCNode Id="2a024efa-3384-4a52-a2a0-9773f6020bd7" Title="Alloca Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Alloca.htm">
             <HelpTOCNode Title="Alloca Method (ITypeRef)" Url="html/M_Llvm_NET_InstructionBuilder_Alloca.htm" />
             <HelpTOCNode Title="Alloca Method (ITypeRef, ConstantInt)" Url="html/M_Llvm_NET_InstructionBuilder_Alloca_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="And Method " Url="html/M_Llvm_NET_InstructionBuilder_And.htm" />
           <HelpTOCNode Title="ArithmeticShiftRight Method " Url="html/M_Llvm_NET_InstructionBuilder_ArithmeticShiftRight.htm" />
           <HelpTOCNode Title="BitCast Method " Url="html/M_Llvm_NET_InstructionBuilder_BitCast.htm" />
-          <HelpTOCNode Id="aa9d19d9-21d5-493a-aa0d-2ed23241c1c2" Title="Branch Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Branch.htm">
+          <HelpTOCNode Id="ef717162-0c49-40bf-98fa-aa4d8e26f5fb" Title="Branch Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Branch.htm">
             <HelpTOCNode Title="Branch Method (BasicBlock)" Url="html/M_Llvm_NET_InstructionBuilder_Branch.htm" />
             <HelpTOCNode Title="Branch Method (Value, BasicBlock, BasicBlock)" Url="html/M_Llvm_NET_InstructionBuilder_Branch_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="d95bc940-1803-4a45-a522-8f510c607e34" Title="Call Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Call.htm">
+          <HelpTOCNode Id="b54586d0-2b56-40b2-8550-b40260373746" Title="Call Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Call.htm">
             <HelpTOCNode Title="Call Method (Value, Value[])" Url="html/M_Llvm_NET_InstructionBuilder_Call.htm" />
             <HelpTOCNode Title="Call Method (Value, IReadOnlyList(Value))" Url="html/M_Llvm_NET_InstructionBuilder_Call_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="c12be1a0-71d1-407e-9236-60f497dc13f3" Title="Compare Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Compare.htm">
+          <HelpTOCNode Id="8cec935f-1f02-45a9-ad46-277379eaacde" Title="Compare Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Compare.htm">
             <HelpTOCNode Title="Compare Method (IntPredicate, Value, Value)" Url="html/M_Llvm_NET_InstructionBuilder_Compare.htm" />
             <HelpTOCNode Title="Compare Method (Predicate, Value, Value)" Url="html/M_Llvm_NET_InstructionBuilder_Compare_1.htm" />
             <HelpTOCNode Title="Compare Method (RealPredicate, Value, Value)" Url="html/M_Llvm_NET_InstructionBuilder_Compare_2.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="ConstGetElementPtrInBounds Method " Url="html/M_Llvm_NET_InstructionBuilder_ConstGetElementPtrInBounds.htm" />
           <HelpTOCNode Title="DebugTrap Method " Url="html/M_Llvm_NET_InstructionBuilder_DebugTrap.htm" />
-          <HelpTOCNode Id="fb0e5564-f9ef-4822-a029-8f60f0c1898d" Title="Dispose Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Dispose.htm">
+          <HelpTOCNode Id="fc21ca7d-14b1-40b3-a58d-bd69012e87c4" Title="Dispose Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Dispose.htm">
             <HelpTOCNode Title="Dispose Method " Url="html/M_Llvm_NET_InstructionBuilder_Dispose.htm" />
             <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/M_Llvm_NET_InstructionBuilder_Dispose_1.htm" />
           </HelpTOCNode>
@@ -157,7 +163,7 @@
           <HelpTOCNode Title="FPToUICast Method " Url="html/M_Llvm_NET_InstructionBuilder_FPToUICast.htm" />
           <HelpTOCNode Title="FSub Method " Url="html/M_Llvm_NET_InstructionBuilder_FSub.htm" />
           <HelpTOCNode Title="GetElementPtr Method " Url="html/M_Llvm_NET_InstructionBuilder_GetElementPtr.htm" />
-          <HelpTOCNode Id="7bc106f8-b5ef-4dda-8ddd-0cbf518c85ba" Title="GetElementPtrInBounds Method " Url="html/Overload_Llvm_NET_InstructionBuilder_GetElementPtrInBounds.htm">
+          <HelpTOCNode Id="2fe540e5-d9bb-44e7-892c-3e5c3f3af86c" Title="GetElementPtrInBounds Method " Url="html/Overload_Llvm_NET_InstructionBuilder_GetElementPtrInBounds.htm">
             <HelpTOCNode Title="GetElementPtrInBounds Method (Value, Value[])" Url="html/M_Llvm_NET_InstructionBuilder_GetElementPtrInBounds.htm" />
             <HelpTOCNode Title="GetElementPtrInBounds Method (Value, IEnumerable(Value))" Url="html/M_Llvm_NET_InstructionBuilder_GetElementPtrInBounds_1.htm" />
           </HelpTOCNode>
@@ -178,7 +184,7 @@
           <HelpTOCNode Title="PointerToInt Method " Url="html/M_Llvm_NET_InstructionBuilder_PointerToInt.htm" />
           <HelpTOCNode Title="PositionAtEnd Method " Url="html/M_Llvm_NET_InstructionBuilder_PositionAtEnd.htm" />
           <HelpTOCNode Title="PositionBefore Method " Url="html/M_Llvm_NET_InstructionBuilder_PositionBefore.htm" />
-          <HelpTOCNode Id="405f5294-0066-4599-b16d-194da39246a4" Title="Return Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Return.htm">
+          <HelpTOCNode Id="07047d9a-f7f5-422e-83e4-b822b2c17d91" Title="Return Method " Url="html/Overload_Llvm_NET_InstructionBuilder_Return.htm">
             <HelpTOCNode Title="Return Method " Url="html/M_Llvm_NET_InstructionBuilder_Return.htm" />
             <HelpTOCNode Title="Return Method (Value)" Url="html/M_Llvm_NET_InstructionBuilder_Return_1.htm" />
           </HelpTOCNode>
@@ -199,73 +205,78 @@
           <HelpTOCNode Title="ZeroExtend Method " Url="html/M_Llvm_NET_InstructionBuilder_ZeroExtend.htm" />
           <HelpTOCNode Title="ZeroExtendOrBitCast Method " Url="html/M_Llvm_NET_InstructionBuilder_ZeroExtendOrBitCast.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="cc3fb096-6c8d-49d8-9503-438f7184dfce" Title="InstructionBuilder Properties" Url="html/Properties_T_Llvm_NET_InstructionBuilder.htm">
-          <HelpTOCNode Title="Context Property " Url="html/P_Llvm_NET_InstructionBuilder_Context.htm" />
-        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="d5372b77-bf88-41d9-824e-ef5ea24401fc" Title="InternalCodeGeneratorException Class" Url="html/T_Llvm_NET_InternalCodeGeneratorException.htm">
-        <HelpTOCNode Id="a971b61e-0927-475b-bced-0835e9d8df7a" Title="InternalCodeGeneratorException Constructor " Url="html/Overload_Llvm_NET_InternalCodeGeneratorException__ctor.htm">
+      <HelpTOCNode Id="52672e8a-4f8e-4960-8865-6cd71e8f2a98" Title="InternalCodeGeneratorException Class" Url="html/T_Llvm_NET_InternalCodeGeneratorException.htm">
+        <HelpTOCNode Id="b8fc364d-cbb8-4f04-b0cf-2e3ea724c26c" Title="InternalCodeGeneratorException Constructor " Url="html/Overload_Llvm_NET_InternalCodeGeneratorException__ctor.htm">
           <HelpTOCNode Title="InternalCodeGeneratorException Constructor " Url="html/M_Llvm_NET_InternalCodeGeneratorException__ctor.htm" />
           <HelpTOCNode Title="InternalCodeGeneratorException Constructor (String)" Url="html/M_Llvm_NET_InternalCodeGeneratorException__ctor_2.htm" />
           <HelpTOCNode Title="InternalCodeGeneratorException Constructor (SerializationInfo, StreamingContext)" Url="html/M_Llvm_NET_InternalCodeGeneratorException__ctor_1.htm" />
           <HelpTOCNode Title="InternalCodeGeneratorException Constructor (String, Exception)" Url="html/M_Llvm_NET_InternalCodeGeneratorException__ctor_3.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="InternalCodeGeneratorException Methods" Url="html/Methods_T_Llvm_NET_InternalCodeGeneratorException.htm" />
         <HelpTOCNode Title="InternalCodeGeneratorException Properties" Url="html/Properties_T_Llvm_NET_InternalCodeGeneratorException.htm" />
+        <HelpTOCNode Title="InternalCodeGeneratorException Methods" Url="html/Methods_T_Llvm_NET_InternalCodeGeneratorException.htm" />
         <HelpTOCNode Title="InternalCodeGeneratorException Events" Url="html/Events_T_Llvm_NET_InternalCodeGeneratorException.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="IntPredicate Enumeration" Url="html/T_Llvm_NET_IntPredicate.htm" />
       <HelpTOCNode Title="Linkage Enumeration" Url="html/T_Llvm_NET_Linkage.htm" />
       <HelpTOCNode Title="LinkerMode Enumeration" Url="html/T_Llvm_NET_LinkerMode.htm" />
-      <HelpTOCNode Id="3affe60a-5077-418e-a9a1-a7811fa1f66f" Title="MDNode Class" Url="html/T_Llvm_NET_MDNode.htm">
-        <HelpTOCNode Id="cc65fd19-67bd-45cb-94ab-41d67fb95306" Title="MDNode Methods" Url="html/Methods_T_Llvm_NET_MDNode.htm">
-          <HelpTOCNode Title="ReplaceAllUsesWith Method " Url="html/M_Llvm_NET_MDNode_ReplaceAllUsesWith.htm" />
-          <HelpTOCNode Title="ResolveCycles Method " Url="html/M_Llvm_NET_MDNode_ResolveCycles.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="8feb1095-7b0b-4af2-9854-66c70a55ece0" Title="MDNode Properties" Url="html/Properties_T_Llvm_NET_MDNode.htm">
+      <HelpTOCNode Id="f4140e0f-9d2f-4d0b-a3ef-d8e4f7a1cd14" Title="MDNode Class" Url="html/T_Llvm_NET_MDNode.htm">
+        <HelpTOCNode Id="1d4a8e71-0cd1-45b9-b621-fbc37c4b1e80" Title="MDNode Properties" Url="html/Properties_T_Llvm_NET_MDNode.htm">
           <HelpTOCNode Title="IsResolved Property " Url="html/P_Llvm_NET_MDNode_IsResolved.htm" />
           <HelpTOCNode Title="IsTemporary Property " Url="html/P_Llvm_NET_MDNode_IsTemporary.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="3efe44d0-bcb1-4f75-8215-dacf189bea58" Title="MDNode Methods" Url="html/Methods_T_Llvm_NET_MDNode.htm">
+          <HelpTOCNode Title="ReplaceAllUsesWith Method " Url="html/M_Llvm_NET_MDNode_ReplaceAllUsesWith.htm" />
+          <HelpTOCNode Title="ResolveCycles Method " Url="html/M_Llvm_NET_MDNode_ResolveCycles.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="e474f9cc-e6da-40db-a566-8db724f1a493" Title="MDString Class" Url="html/T_Llvm_NET_MDString.htm">
-        <HelpTOCNode Id="d8608def-3335-4e4b-a151-c505d7c528b0" Title="MDString Methods" Url="html/Methods_T_Llvm_NET_MDString.htm">
+      <HelpTOCNode Id="d3fea6c8-d292-463f-8a76-b7230638d565" Title="MDString Class" Url="html/T_Llvm_NET_MDString.htm">
+        <HelpTOCNode Id="1a240a94-08e5-49ee-834c-433e8b43be1c" Title="MDString Methods" Url="html/Methods_T_Llvm_NET_MDString.htm">
           <HelpTOCNode Title="ToString Method " Url="html/M_Llvm_NET_MDString_ToString.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="cc93c2a9-0341-4e03-8987-edcc937a5abf" Title="MemoryBuffer Class" Url="html/T_Llvm_NET_MemoryBuffer.htm">
+      <HelpTOCNode Id="4c8b7b82-1a84-4306-9b23-3c7f02c36de5" Title="MemoryBuffer Class" Url="html/T_Llvm_NET_MemoryBuffer.htm">
         <HelpTOCNode Title="MemoryBuffer Constructor " Url="html/M_Llvm_NET_MemoryBuffer__ctor.htm" />
-        <HelpTOCNode Id="10106612-31fe-4647-ab4d-e95c8a7e6e79" Title="MemoryBuffer Methods" Url="html/Methods_T_Llvm_NET_MemoryBuffer.htm">
+        <HelpTOCNode Id="0996ef86-f681-4014-b506-22089b71c870" Title="MemoryBuffer Methods" Url="html/Methods_T_Llvm_NET_MemoryBuffer.htm">
           <HelpTOCNode Title="Dispose Method " Url="html/M_Llvm_NET_MemoryBuffer_Dispose.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="2e00cddc-d6f1-4c3d-b82d-cb6a484aecd2" Title="Metadata Class" Url="html/T_Llvm_NET_Metadata.htm">
-        <HelpTOCNode Id="2f2d4710-ef89-472a-be1b-e68871e07cd2" Title="Metadata Methods" Url="html/Methods_T_Llvm_NET_Metadata.htm">
+      <HelpTOCNode Id="c85f80e7-7d86-4619-b121-04ea3e40d5c6" Title="Metadata Class" Url="html/T_Llvm_NET_Metadata.htm">
+        <HelpTOCNode Id="bcac2bd4-8cfa-436b-9f04-47b846653ed5" Title="Metadata Methods" Url="html/Methods_T_Llvm_NET_Metadata.htm">
           <HelpTOCNode Title="ReplaceAllUsesWith Method " Url="html/M_Llvm_NET_Metadata_ReplaceAllUsesWith.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="a2fb3a1a-b8e9-4f44-a7a6-0de4e7f9ec6b" Title="MetadataAsValue Class" Url="html/T_Llvm_NET_MetadataAsValue.htm">
+      <HelpTOCNode Id="623dd458-6b76-4009-a51d-6d997d556839" Title="MetadataAsValue Class" Url="html/T_Llvm_NET_MetadataAsValue.htm">
+        <HelpTOCNode Title="MetadataAsValue Properties" Url="html/Properties_T_Llvm_NET_MetadataAsValue.htm" />
         <HelpTOCNode Title="MetadataAsValue Methods" Url="html/Methods_T_Llvm_NET_MetadataAsValue.htm" />
-        <HelpTOCNode Id="eec97d21-0794-4ebf-8a22-3befaff0d756" Title="MetadataAsValue Type Conversions" Url="html/Operators_T_Llvm_NET_MetadataAsValue.htm">
+        <HelpTOCNode Id="53713297-4f5e-4ec2-a7fc-d33384b900f6" Title="MetadataAsValue Type Conversions" Url="html/Operators_T_Llvm_NET_MetadataAsValue.htm">
           <HelpTOCNode Title="Implicit Conversion (MetadataAsValue to Metadata)" Url="html/M_Llvm_NET_MetadataAsValue_op_Implicit.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="MetadataAsValue Properties" Url="html/Properties_T_Llvm_NET_MetadataAsValue.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="MetadataKind Enumeration" Url="html/T_Llvm_NET_MetadataKind.htm" />
-      <HelpTOCNode Id="b1b70215-e680-4eba-91db-8f0f931a8073" Title="Module Class" Url="html/T_Llvm_NET_Module.htm">
-        <HelpTOCNode Id="d7584b4c-f75e-4b09-a164-3f97a460b82d" Title="Module Constructor " Url="html/Overload_Llvm_NET_Module__ctor.htm">
+      <HelpTOCNode Id="93edbd64-259c-455a-b6e4-981781d0033e" Title="Module Class" Url="html/T_Llvm_NET_Module.htm">
+        <HelpTOCNode Id="f1df6d6c-9a17-479b-abae-d762e15c834c" Title="Module Constructor " Url="html/Overload_Llvm_NET_Module__ctor.htm">
           <HelpTOCNode Title="Module Constructor " Url="html/M_Llvm_NET_Module__ctor.htm" />
           <HelpTOCNode Title="Module Constructor (String)" Url="html/M_Llvm_NET_Module__ctor_1.htm" />
-          <HelpTOCNode Title="Module Constructor (String, SourceLanguage, String, String, Boolean, String, UInt32)" Url="html/M_Llvm_NET_Module__ctor_2.htm" />
+          <HelpTOCNode Title="Module Constructor (String, Context)" Url="html/M_Llvm_NET_Module__ctor_2.htm" />
+          <HelpTOCNode Title="Module Constructor (String, SourceLanguage, String, String, Boolean, String, UInt32)" Url="html/M_Llvm_NET_Module__ctor_4.htm" />
+          <HelpTOCNode Title="Module Constructor (String, Context, SourceLanguage, String, String, Boolean, String, UInt32)" Url="html/M_Llvm_NET_Module__ctor_3.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="0ca146b4-07d5-43a9-a897-fa619539c1d9" Title="Module Fields" Url="html/Fields_T_Llvm_NET_Module.htm">
-          <HelpTOCNode Title="DebugMetadataVersion Field" Url="html/F_Llvm_NET_Module_DebugMetadataVersion.htm" />
-          <HelpTOCNode Title="DebugVersionValue Field" Url="html/F_Llvm_NET_Module_DebugVersionValue.htm" />
-          <HelpTOCNode Title="DwarfVersionValue Field" Url="html/F_Llvm_NET_Module_DwarfVersionValue.htm" />
+        <HelpTOCNode Id="5fc5f563-d327-4508-8b5a-133ff8f35588" Title="Module Properties" Url="html/Properties_T_Llvm_NET_Module.htm">
+          <HelpTOCNode Title="Context Property " Url="html/P_Llvm_NET_Module_Context.htm" />
+          <HelpTOCNode Title="DataLayoutString Property " Url="html/P_Llvm_NET_Module_DataLayoutString.htm" />
+          <HelpTOCNode Title="DIBuilder Property " Url="html/P_Llvm_NET_Module_DIBuilder.htm" />
+          <HelpTOCNode Title="DICompileUnit Property " Url="html/P_Llvm_NET_Module_DICompileUnit.htm" />
+          <HelpTOCNode Title="Functions Property " Url="html/P_Llvm_NET_Module_Functions.htm" />
+          <HelpTOCNode Title="Globals Property " Url="html/P_Llvm_NET_Module_Globals.htm" />
+          <HelpTOCNode Title="Layout Property " Url="html/P_Llvm_NET_Module_Layout.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_Module_Name.htm" />
+          <HelpTOCNode Title="TargetTriple Property " Url="html/P_Llvm_NET_Module_TargetTriple.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="74799737-a920-47b2-861f-e2730bd56308" Title="Module Methods" Url="html/Methods_T_Llvm_NET_Module.htm">
+        <HelpTOCNode Id="09856589-bad9-4890-8d55-7746955ad39a" Title="Module Methods" Url="html/Methods_T_Llvm_NET_Module.htm">
           <HelpTOCNode Title="AddAlias Method " Url="html/M_Llvm_NET_Module_AddAlias.htm" />
           <HelpTOCNode Title="AddFunction Method " Url="html/M_Llvm_NET_Module_AddFunction.htm" />
-          <HelpTOCNode Id="77457b75-ecb0-464f-bb5d-34775621fe90" Title="AddGlobal Method " Url="html/Overload_Llvm_NET_Module_AddGlobal.htm">
+          <HelpTOCNode Id="f4e826f1-2eaa-40fc-8c77-7cb3cf4f812a" Title="AddGlobal Method " Url="html/Overload_Llvm_NET_Module_AddGlobal.htm">
             <HelpTOCNode Title="AddGlobal Method (ITypeRef, String)" Url="html/M_Llvm_NET_Module_AddGlobal_2.htm" />
             <HelpTOCNode Title="AddGlobal Method (ITypeRef, Boolean, Linkage, Constant)" Url="html/M_Llvm_NET_Module_AddGlobal.htm" />
             <HelpTOCNode Title="AddGlobal Method (ITypeRef, Boolean, Linkage, Constant, String)" Url="html/M_Llvm_NET_Module_AddGlobal_1.htm" />
@@ -284,28 +295,25 @@
           <HelpTOCNode Title="IExtensiblePropertyContainer.AddExtendedPropertyValue Method " Url="html/M_Llvm_NET_Module_Llvm_NET_IExtensiblePropertyContainer_AddExtendedPropertyValue.htm" />
           <HelpTOCNode Title="IExtensiblePropertyContainer.TryGetExtendedPropertyValue Method " Url="html/M_Llvm_NET_Module_Llvm_NET_IExtensiblePropertyContainer_TryGetExtendedPropertyValue__1.htm" />
           <HelpTOCNode Title="Link Method " Url="html/M_Llvm_NET_Module_Link.htm" />
-          <HelpTOCNode Title="LoadFrom Method " Url="html/M_Llvm_NET_Module_LoadFrom.htm" />
+          <HelpTOCNode Id="5df03f92-4b05-46e0-9e55-ab1ffdd68e54" Title="LoadFrom Method " Url="html/Overload_Llvm_NET_Module_LoadFrom.htm">
+            <HelpTOCNode Title="LoadFrom Method (String)" Url="html/M_Llvm_NET_Module_LoadFrom.htm" />
+            <HelpTOCNode Title="LoadFrom Method (String, Context)" Url="html/M_Llvm_NET_Module_LoadFrom_1.htm" />
+          </HelpTOCNode>
           <HelpTOCNode Title="Verify Method " Url="html/M_Llvm_NET_Module_Verify.htm" />
           <HelpTOCNode Title="WriteToFile Method " Url="html/M_Llvm_NET_Module_WriteToFile.htm" />
           <HelpTOCNode Title="WriteToTextFile Method " Url="html/M_Llvm_NET_Module_WriteToTextFile.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="30f443f1-4a27-4e62-a587-54ecd4bb9859" Title="Module Properties" Url="html/Properties_T_Llvm_NET_Module.htm">
-          <HelpTOCNode Title="Context Property " Url="html/P_Llvm_NET_Module_Context.htm" />
-          <HelpTOCNode Title="DataLayoutString Property " Url="html/P_Llvm_NET_Module_DataLayoutString.htm" />
-          <HelpTOCNode Title="DIBuilder Property " Url="html/P_Llvm_NET_Module_DIBuilder.htm" />
-          <HelpTOCNode Title="DICompileUnit Property " Url="html/P_Llvm_NET_Module_DICompileUnit.htm" />
-          <HelpTOCNode Title="Functions Property " Url="html/P_Llvm_NET_Module_Functions.htm" />
-          <HelpTOCNode Title="Globals Property " Url="html/P_Llvm_NET_Module_Globals.htm" />
-          <HelpTOCNode Title="Layout Property " Url="html/P_Llvm_NET_Module_Layout.htm" />
-          <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_Module_Name.htm" />
-          <HelpTOCNode Title="TargetTriple Property " Url="html/P_Llvm_NET_Module_TargetTriple.htm" />
+        <HelpTOCNode Id="fb44e818-12c8-43db-884b-6aed6926201f" Title="Module Fields" Url="html/Fields_T_Llvm_NET_Module.htm">
+          <HelpTOCNode Title="DebugMetadataVersion Field" Url="html/F_Llvm_NET_Module_DebugMetadataVersion.htm" />
+          <HelpTOCNode Title="DebugVersionValue Field" Url="html/F_Llvm_NET_Module_DebugVersionValue.htm" />
+          <HelpTOCNode Title="DwarfVersionValue Field" Url="html/F_Llvm_NET_Module_DwarfVersionValue.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="ModuleFlagBehavior Enumeration" Url="html/T_Llvm_NET_ModuleFlagBehavior.htm" />
       <HelpTOCNode Title="Opcode Enumeration" Url="html/T_Llvm_NET_Opcode.htm" />
-      <HelpTOCNode Id="6d43f77f-8446-465c-8fc6-ece7a3c45e80" Title="PassManagerBuilder Class" Url="html/T_Llvm_NET_PassManagerBuilder.htm">
+      <HelpTOCNode Id="ac25b43a-4402-431f-8a6d-c66c52645c33" Title="PassManagerBuilder Class" Url="html/T_Llvm_NET_PassManagerBuilder.htm">
         <HelpTOCNode Title="PassManagerBuilder Constructor " Url="html/M_Llvm_NET_PassManagerBuilder__ctor.htm" />
-        <HelpTOCNode Id="5cb4c10f-c933-46f4-849b-088d0cc83f64" Title="PassManagerBuilder Methods" Url="html/Methods_T_Llvm_NET_PassManagerBuilder.htm">
+        <HelpTOCNode Id="64a54203-05ab-4380-8f66-dbbeefe0864d" Title="PassManagerBuilder Methods" Url="html/Methods_T_Llvm_NET_PassManagerBuilder.htm">
           <HelpTOCNode Title="Dispose Method " Url="html/M_Llvm_NET_PassManagerBuilder_Dispose.htm" />
           <HelpTOCNode Title="SetDisableSimplifyLibCalls Method " Url="html/M_Llvm_NET_PassManagerBuilder_SetDisableSimplifyLibCalls.htm" />
           <HelpTOCNode Title="SetDisableUnitAtATime Method " Url="html/M_Llvm_NET_PassManagerBuilder_SetDisableUnitAtATime.htm" />
@@ -317,17 +325,17 @@
       <HelpTOCNode Title="Predicate Enumeration" Url="html/T_Llvm_NET_Predicate.htm" />
       <HelpTOCNode Title="RealPredicate Enumeration" Url="html/T_Llvm_NET_RealPredicate.htm" />
       <HelpTOCNode Title="Reloc Enumeration" Url="html/T_Llvm_NET_Reloc.htm" />
-      <HelpTOCNode Id="14db899f-0518-47f3-b13b-77f7bfe71f7c" Title="ScalarEnumerable Class" Url="html/T_Llvm_NET_ScalarEnumerable.htm">
-        <HelpTOCNode Id="8ca42834-b617-46fd-a305-69c76473d791" Title="ScalarEnumerable Methods" Url="html/Methods_T_Llvm_NET_ScalarEnumerable.htm">
-          <HelpTOCNode Id="ddf10582-323a-419a-9931-1276a31f3d82" Title="Combine Method " Url="html/Overload_Llvm_NET_ScalarEnumerable_Combine.htm">
+      <HelpTOCNode Id="ede8be30-bcee-421b-b43f-baac0c871636" Title="ScalarEnumerable Class" Url="html/T_Llvm_NET_ScalarEnumerable.htm">
+        <HelpTOCNode Id="6e04c78b-a4d4-4dd1-adca-531da5716006" Title="ScalarEnumerable Methods" Url="html/Methods_T_Llvm_NET_ScalarEnumerable.htm">
+          <HelpTOCNode Id="c302e08d-0cbe-4ea7-8a77-584baedddc08" Title="Combine Method " Url="html/Overload_Llvm_NET_ScalarEnumerable_Combine.htm">
             <HelpTOCNode Title="Combine(T) Method (IEnumerable(T), T)" Url="html/M_Llvm_NET_ScalarEnumerable_Combine__1.htm" />
             <HelpTOCNode Title="Combine(T) Method (T, IEnumerable(T))" Url="html/M_Llvm_NET_ScalarEnumerable_Combine__1_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="From(T) Method " Url="html/M_Llvm_NET_ScalarEnumerable_From__1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="f7988375-ba4a-4f72-b6e6-93cf86c79673" Title="StaticState Class" Url="html/T_Llvm_NET_StaticState.htm">
-        <HelpTOCNode Id="269ecde9-3266-4ef6-8a7e-7a877c3c3a5b" Title="StaticState Methods" Url="html/Methods_T_Llvm_NET_StaticState.htm">
+      <HelpTOCNode Id="93775ff1-f86a-43fd-8f76-3e94ccc0f6ff" Title="StaticState Class" Url="html/T_Llvm_NET_StaticState.htm">
+        <HelpTOCNode Id="22f6aba0-d4cf-47b8-92da-422a1e308a22" Title="StaticState Methods" Url="html/Methods_T_Llvm_NET_StaticState.htm">
           <HelpTOCNode Title="ParseCommandLineOptions Method " Url="html/M_Llvm_NET_StaticState_ParseCommandLineOptions.htm" />
           <HelpTOCNode Title="RegisterAArch64 Method " Url="html/M_Llvm_NET_StaticState_RegisterAArch64.htm" />
           <HelpTOCNode Title="RegisterAll Method " Url="html/M_Llvm_NET_StaticState_RegisterAll.htm" />
@@ -345,12 +353,8 @@
           <HelpTOCNode Title="RegisterXCore Method " Url="html/M_Llvm_NET_StaticState_RegisterXCore.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="ad9f5628-d7b8-42bb-b4e1-9fafa59f04fa" Title="Target Class" Url="html/T_Llvm_NET_Target.htm">
-        <HelpTOCNode Id="88adb399-6de1-49b2-9fcd-4b32d81f8e55" Title="Target Methods" Url="html/Methods_T_Llvm_NET_Target.htm">
-          <HelpTOCNode Title="CreateTargetMachine Method " Url="html/M_Llvm_NET_Target_CreateTargetMachine.htm" />
-          <HelpTOCNode Title="FromTriple Method " Url="html/M_Llvm_NET_Target_FromTriple.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="84b43df6-582f-4606-9665-a628d1b27f90" Title="Target Properties" Url="html/Properties_T_Llvm_NET_Target.htm">
+      <HelpTOCNode Id="ef5d5fba-3d28-4c86-9fef-d6d9d8fd8a5a" Title="Target Class" Url="html/T_Llvm_NET_Target.htm">
+        <HelpTOCNode Id="2539167d-eef0-4ad4-be70-c0fc6bf73e78" Title="Target Properties" Url="html/Properties_T_Llvm_NET_Target.htm">
           <HelpTOCNode Title="AvailableTargets Property " Url="html/P_Llvm_NET_Target_AvailableTargets.htm" />
           <HelpTOCNode Title="Description Property " Url="html/P_Llvm_NET_Target_Description.htm" />
           <HelpTOCNode Title="HasAsmBackEnd Property " Url="html/P_Llvm_NET_Target_HasAsmBackEnd.htm" />
@@ -358,9 +362,16 @@
           <HelpTOCNode Title="HasTargetMachine Property " Url="html/P_Llvm_NET_Target_HasTargetMachine.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_Target_Name.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="f3138ea8-42c7-4fc8-aea4-c5dffd566407" Title="Target Methods" Url="html/Methods_T_Llvm_NET_Target.htm">
+          <HelpTOCNode Title="CreateTargetMachine Method " Url="html/M_Llvm_NET_Target_CreateTargetMachine.htm" />
+          <HelpTOCNode Title="FromTriple Method " Url="html/M_Llvm_NET_Target_FromTriple.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="25ac975c-c963-4952-bf24-f9196d32e1bc" Title="TargetData Class" Url="html/T_Llvm_NET_TargetData.htm">
-        <HelpTOCNode Id="9e8f2d65-38fc-45b2-8fec-2ed090ab6f3e" Title="TargetData Methods" Url="html/Methods_T_Llvm_NET_TargetData.htm">
+      <HelpTOCNode Id="87722ee8-5733-4b2e-b1a7-d24abd07679f" Title="TargetData Class" Url="html/T_Llvm_NET_TargetData.htm">
+        <HelpTOCNode Id="25e1213c-a768-4eca-b6d3-eb4d0937bc08" Title="TargetData Properties" Url="html/Properties_T_Llvm_NET_TargetData.htm">
+          <HelpTOCNode Title="Endianess Property " Url="html/P_Llvm_NET_TargetData_Endianess.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="97460857-607c-4540-94fe-1bd9929f2fe4" Title="TargetData Methods" Url="html/Methods_T_Llvm_NET_TargetData.htm">
           <HelpTOCNode Title="AbiAlignmentOf Method " Url="html/M_Llvm_NET_TargetData_AbiAlignmentOf.htm" />
           <HelpTOCNode Title="AbiBitAlignmentOf Method " Url="html/M_Llvm_NET_TargetData_AbiBitAlignmentOf.htm" />
           <HelpTOCNode Title="AbiSizeOf Method " Url="html/M_Llvm_NET_TargetData_AbiSizeOf.htm" />
@@ -368,25 +379,23 @@
           <HelpTOCNode Title="BitSizeOf Method " Url="html/M_Llvm_NET_TargetData_BitSizeOf.htm" />
           <HelpTOCNode Title="ByteSizeOf Method " Url="html/M_Llvm_NET_TargetData_ByteSizeOf.htm" />
           <HelpTOCNode Title="CallFrameAlignmentOf Method " Url="html/M_Llvm_NET_TargetData_CallFrameAlignmentOf.htm" />
-          <HelpTOCNode Id="ad2dd55a-beb2-4726-97d2-4825b7198482" Title="Dispose Method " Url="html/Overload_Llvm_NET_TargetData_Dispose.htm">
+          <HelpTOCNode Id="287aeb5d-ce89-4a56-b172-82d78f92972c" Title="Dispose Method " Url="html/Overload_Llvm_NET_TargetData_Dispose.htm">
             <HelpTOCNode Title="Dispose Method " Url="html/M_Llvm_NET_TargetData_Dispose.htm" />
             <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/M_Llvm_NET_TargetData_Dispose_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="ElementAtOffset Method " Url="html/M_Llvm_NET_TargetData_ElementAtOffset.htm" />
           <HelpTOCNode Title="Finalize Method " Url="html/M_Llvm_NET_TargetData_Finalize.htm" />
-          <HelpTOCNode Id="89bf4e1e-080d-4566-a30b-5d3386e37d84" Title="IntPtrType Method " Url="html/Overload_Llvm_NET_TargetData_IntPtrType.htm">
+          <HelpTOCNode Id="9518383d-723c-4c0b-9463-f78f91f28e84" Title="IntPtrType Method " Url="html/Overload_Llvm_NET_TargetData_IntPtrType.htm">
             <HelpTOCNode Title="IntPtrType Method " Url="html/M_Llvm_NET_TargetData_IntPtrType.htm" />
-            <HelpTOCNode Title="IntPtrType Method (UInt32)" Url="html/M_Llvm_NET_TargetData_IntPtrType_3.htm" />
-            <HelpTOCNode Title="IntPtrType Method (Context)" Url="html/M_Llvm_NET_TargetData_IntPtrType_1.htm" />
-            <HelpTOCNode Title="IntPtrType Method (Context, UInt32)" Url="html/M_Llvm_NET_TargetData_IntPtrType_2.htm" />
+            <HelpTOCNode Title="IntPtrType Method (UInt32)" Url="html/M_Llvm_NET_TargetData_IntPtrType_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="OffsetOfElement Method " Url="html/M_Llvm_NET_TargetData_OffsetOfElement.htm" />
           <HelpTOCNode Title="Parse Method " Url="html/M_Llvm_NET_TargetData_Parse.htm" />
-          <HelpTOCNode Id="16b3b06d-5566-4cf5-8c81-a1925cef1afb" Title="PointerSize Method " Url="html/Overload_Llvm_NET_TargetData_PointerSize.htm">
+          <HelpTOCNode Id="cfc53ad8-1f44-4e83-9fd1-35ab14d3cee8" Title="PointerSize Method " Url="html/Overload_Llvm_NET_TargetData_PointerSize.htm">
             <HelpTOCNode Title="PointerSize Method " Url="html/M_Llvm_NET_TargetData_PointerSize.htm" />
             <HelpTOCNode Title="PointerSize Method (UInt32)" Url="html/M_Llvm_NET_TargetData_PointerSize_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="bdf64a06-0b7c-4ba9-ba99-b8636dba6b13" Title="PreferredAlignmentOf Method " Url="html/Overload_Llvm_NET_TargetData_PreferredAlignmentOf.htm">
+          <HelpTOCNode Id="3807fddb-7500-4ad6-a9c8-aa34547d56c1" Title="PreferredAlignmentOf Method " Url="html/Overload_Llvm_NET_TargetData_PreferredAlignmentOf.htm">
             <HelpTOCNode Title="PreferredAlignmentOf Method (ITypeRef)" Url="html/M_Llvm_NET_TargetData_PreferredAlignmentOf.htm" />
             <HelpTOCNode Title="PreferredAlignmentOf Method (Value)" Url="html/M_Llvm_NET_TargetData_PreferredAlignmentOf_1.htm" />
           </HelpTOCNode>
@@ -394,77 +403,75 @@
           <HelpTOCNode Title="StoreSizeOf Method " Url="html/M_Llvm_NET_TargetData_StoreSizeOf.htm" />
           <HelpTOCNode Title="ToString Method " Url="html/M_Llvm_NET_TargetData_ToString.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="69d9c8d0-e9d2-48dd-89c2-e9556e7db95b" Title="TargetData Properties" Url="html/Properties_T_Llvm_NET_TargetData.htm">
-          <HelpTOCNode Title="Endianess Property " Url="html/P_Llvm_NET_TargetData_Endianess.htm" />
-        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="f24eb455-8570-4886-a6db-bc9b4ce5adb3" Title="TargetMachine Class" Url="html/T_Llvm_NET_TargetMachine.htm">
-        <HelpTOCNode Id="4926e383-8ac9-4232-8b79-a6940adf8cb5" Title="TargetMachine Methods" Url="html/Methods_T_Llvm_NET_TargetMachine.htm">
-          <HelpTOCNode Id="02c18cc6-d010-4dfd-a57f-630f2d356c77" Title="Dispose Method " Url="html/Overload_Llvm_NET_TargetMachine_Dispose.htm">
-            <HelpTOCNode Title="Dispose Method " Url="html/M_Llvm_NET_TargetMachine_Dispose.htm" />
-            <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/M_Llvm_NET_TargetMachine_Dispose_1.htm" />
-          </HelpTOCNode>
-          <HelpTOCNode Title="EmitToFile Method " Url="html/M_Llvm_NET_TargetMachine_EmitToFile.htm" />
-          <HelpTOCNode Title="Finalize Method " Url="html/M_Llvm_NET_TargetMachine_Finalize.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="96eff8b0-896c-4919-bf27-9dbd79f493fe" Title="TargetMachine Properties" Url="html/Properties_T_Llvm_NET_TargetMachine.htm">
+      <HelpTOCNode Id="612db903-2ed4-4cc2-9c7e-26e692666a00" Title="TargetMachine Class" Url="html/T_Llvm_NET_TargetMachine.htm">
+        <HelpTOCNode Id="81f821df-3b37-4306-9646-e129bc393cdd" Title="TargetMachine Properties" Url="html/Properties_T_Llvm_NET_TargetMachine.htm">
           <HelpTOCNode Title="Cpu Property " Url="html/P_Llvm_NET_TargetMachine_Cpu.htm" />
           <HelpTOCNode Title="Features Property " Url="html/P_Llvm_NET_TargetMachine_Features.htm" />
           <HelpTOCNode Title="Target Property " Url="html/P_Llvm_NET_TargetMachine_Target.htm" />
           <HelpTOCNode Title="TargetData Property " Url="html/P_Llvm_NET_TargetMachine_TargetData.htm" />
           <HelpTOCNode Title="Triple Property " Url="html/P_Llvm_NET_TargetMachine_Triple.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="0d9b859a-3639-4862-bf6d-798cc8b3b260" Title="TargetMachine Methods" Url="html/Methods_T_Llvm_NET_TargetMachine.htm">
+          <HelpTOCNode Id="dbd3c405-78fc-4453-a08e-a49df8661ea2" Title="Dispose Method " Url="html/Overload_Llvm_NET_TargetMachine_Dispose.htm">
+            <HelpTOCNode Title="Dispose Method " Url="html/M_Llvm_NET_TargetMachine_Dispose.htm" />
+            <HelpTOCNode Title="Dispose Method (Boolean)" Url="html/M_Llvm_NET_TargetMachine_Dispose_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="EmitToFile Method " Url="html/M_Llvm_NET_TargetMachine_EmitToFile.htm" />
+          <HelpTOCNode Title="Finalize Method " Url="html/M_Llvm_NET_TargetMachine_Finalize.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="TargetRegistration Enumeration" Url="html/T_Llvm_NET_TargetRegistration.htm" />
       <HelpTOCNode Title="TypeKind Enumeration" Url="html/T_Llvm_NET_TypeKind.htm" />
       <HelpTOCNode Title="Visibility Enumeration" Url="html/T_Llvm_NET_Visibility.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="7f084427-d5c7-4c8f-afc6-a56f97e0612a" Title="Llvm.NET.DebugInfo" Url="html/N_Llvm_NET_DebugInfo.htm">
-      <HelpTOCNode Id="68508207-8e7a-4246-b112-32812fd11cf6" Title="DebugArrayType Class" Url="html/T_Llvm_NET_DebugInfo_DebugArrayType.htm">
-        <HelpTOCNode Id="763938af-2f1c-4295-814a-14824bb1bb30" Title="DebugArrayType Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DebugArrayType__ctor.htm">
+    <HelpTOCNode Id="9225418c-1632-4dde-87c1-13f0fdddbdf1" Title="Llvm.NET.DebugInfo" Url="html/N_Llvm_NET_DebugInfo.htm">
+      <HelpTOCNode Id="25867ba7-27fe-4fef-9f6a-634068c765fb" Title="DebugArrayType Class" Url="html/T_Llvm_NET_DebugInfo_DebugArrayType.htm">
+        <HelpTOCNode Id="a262e925-42a1-426f-ba66-9900bdf27375" Title="DebugArrayType Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DebugArrayType__ctor.htm">
           <HelpTOCNode Title="DebugArrayType Constructor (IDebugType(ITypeRef, DIType), Module, UInt32, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugArrayType__ctor.htm" />
-          <HelpTOCNode Title="DebugArrayType Constructor (IArrayType, Module, DIType, UInt32, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugArrayType__ctor_1.htm" />
+          <HelpTOCNode Title="DebugArrayType Constructor (IArrayType, IDebugType(ITypeRef, DIType), Module, UInt32, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugArrayType__ctor_1.htm" />
+          <HelpTOCNode Title="DebugArrayType Constructor (IArrayType, Module, DIType, UInt32, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugArrayType__ctor_2.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="DebugArrayType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugArrayType.htm" />
-        <HelpTOCNode Id="730c9db5-5be4-4229-a0a8-14fb418624cf" Title="DebugArrayType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugArrayType.htm">
+        <HelpTOCNode Id="72523653-876c-47fe-ac26-834768ddcbd5" Title="DebugArrayType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugArrayType.htm">
           <HelpTOCNode Title="DebugElementType Property " Url="html/P_Llvm_NET_DebugInfo_DebugArrayType_DebugElementType.htm" />
           <HelpTOCNode Title="ElementType Property " Url="html/P_Llvm_NET_DebugInfo_DebugArrayType_ElementType.htm" />
           <HelpTOCNode Title="Length Property " Url="html/P_Llvm_NET_DebugInfo_DebugArrayType_Length.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="DebugArrayType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugArrayType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="90a3fa07-f793-4d96-bdf7-83aa0fb90403" Title="DebugBasicType Class" Url="html/T_Llvm_NET_DebugInfo_DebugBasicType.htm">
+      <HelpTOCNode Id="f1ea1dbe-acd1-428d-bd12-cdebb7a583b2" Title="DebugBasicType Class" Url="html/T_Llvm_NET_DebugInfo_DebugBasicType.htm">
         <HelpTOCNode Title="DebugBasicType Constructor " Url="html/M_Llvm_NET_DebugInfo_DebugBasicType__ctor.htm" />
-        <HelpTOCNode Title="DebugBasicType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugBasicType.htm" />
         <HelpTOCNode Title="DebugBasicType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugBasicType.htm" />
+        <HelpTOCNode Title="DebugBasicType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugBasicType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="fae78cf8-c65e-4c12-908d-a5a61fc3a389" Title="DebugFunctionType Class" Url="html/T_Llvm_NET_DebugInfo_DebugFunctionType.htm">
+      <HelpTOCNode Id="8b7505e7-9344-4396-a06c-f7d82616f78f" Title="DebugFunctionType Class" Url="html/T_Llvm_NET_DebugInfo_DebugFunctionType.htm">
         <HelpTOCNode Title="DebugFunctionType Constructor " Url="html/M_Llvm_NET_DebugInfo_DebugFunctionType__ctor.htm" />
-        <HelpTOCNode Title="DebugFunctionType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugFunctionType.htm" />
-        <HelpTOCNode Id="a3356ec4-0ac8-4a5e-8e4d-bfef091f1dba" Title="DebugFunctionType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugFunctionType.htm">
+        <HelpTOCNode Id="afa2dc77-5d0e-4bd4-9dbc-5cedc00f24d0" Title="DebugFunctionType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugFunctionType.htm">
           <HelpTOCNode Title="IsVarArg Property " Url="html/P_Llvm_NET_DebugInfo_DebugFunctionType_IsVarArg.htm" />
           <HelpTOCNode Title="ParameterTypes Property " Url="html/P_Llvm_NET_DebugInfo_DebugFunctionType_ParameterTypes.htm" />
           <HelpTOCNode Title="ReturnType Property " Url="html/P_Llvm_NET_DebugInfo_DebugFunctionType_ReturnType.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="DebugFunctionType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugFunctionType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c92481e3-a466-48dd-8a0a-69f24288f523" Title="DebugInfoBuilder Class" Url="html/T_Llvm_NET_DebugInfo_DebugInfoBuilder.htm">
-        <HelpTOCNode Id="f90c9520-f658-4d79-95a6-b54a7c06b894" Title="DebugInfoBuilder Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugInfoBuilder.htm">
+      <HelpTOCNode Id="786273e7-d462-49bd-8cf1-c79c57469de0" Title="DebugInfoBuilder Class" Url="html/T_Llvm_NET_DebugInfo_DebugInfoBuilder.htm">
+        <HelpTOCNode Id="087dbd8b-f00b-4c5c-8ee2-9f1c182b0d60" Title="DebugInfoBuilder Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugInfoBuilder.htm">
           <HelpTOCNode Title="CreateArgument Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateArgument.htm" />
-          <HelpTOCNode Id="de075f0e-965f-448c-9004-518ad5061d93" Title="CreateArrayType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateArrayType.htm">
+          <HelpTOCNode Id="feaa558b-d811-4f56-bece-1eef26338f06" Title="CreateArrayType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateArrayType.htm">
             <HelpTOCNode Title="CreateArrayType Method (UInt64, UInt64, DIType, DIArray)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateArrayType.htm" />
             <HelpTOCNode Title="CreateArrayType Method (UInt64, UInt64, DIType, DINode[])" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateArrayType_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="CreateBasicType Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateBasicType.htm" />
-          <HelpTOCNode Id="82439b71-16b6-4dd4-a195-c6728d4b5cee" Title="CreateCompileUnit Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateCompileUnit.htm">
+          <HelpTOCNode Id="d30eea27-d101-4fcb-9a85-4797a2464599" Title="CreateCompileUnit Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateCompileUnit.htm">
             <HelpTOCNode Title="CreateCompileUnit Method (SourceLanguage, String, String, Boolean, String, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateCompileUnit.htm" />
             <HelpTOCNode Title="CreateCompileUnit Method (SourceLanguage, String, String, String, Boolean, String, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateCompileUnit_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="CreateEnumerationType Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateEnumerationType.htm" />
           <HelpTOCNode Title="CreateEnumeratorValue Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateEnumeratorValue.htm" />
-          <HelpTOCNode Id="82d6f72a-c0e5-4a0d-b08d-d7ca1849a435" Title="CreateExpression Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateExpression.htm">
+          <HelpTOCNode Id="f9de455c-63f3-4f9f-a3da-4fd801ae8d22" Title="CreateExpression Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateExpression.htm">
             <HelpTOCNode Title="CreateExpression Method (ExpressionOp[])" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateExpression.htm" />
             <HelpTOCNode Title="CreateExpression Method (IEnumerable(ExpressionOp))" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateExpression_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="c1f1e5dd-9ac7-4ab6-a059-ee0718ecce40" Title="CreateFile Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateFile.htm">
+          <HelpTOCNode Id="66bae015-c1b8-4929-a481-49ab637b0f07" Title="CreateFile Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateFile.htm">
             <HelpTOCNode Title="CreateFile Method (String)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateFile.htm" />
             <HelpTOCNode Title="CreateFile Method (String, String)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateFile_1.htm" />
           </HelpTOCNode>
@@ -478,18 +485,18 @@
           <HelpTOCNode Title="CreatePointerType Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreatePointerType.htm" />
           <HelpTOCNode Title="CreateQualifiedType Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateQualifiedType.htm" />
           <HelpTOCNode Title="CreateReplaceableCompositeType Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateReplaceableCompositeType.htm" />
-          <HelpTOCNode Id="39d8aebb-81c5-4391-97bd-2fd3dee7d831" Title="CreateStructType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateStructType.htm">
+          <HelpTOCNode Id="35441415-ff89-40d0-8731-9f38798f4b82" Title="CreateStructType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateStructType.htm">
             <HelpTOCNode Title="CreateStructType Method (DIScope, String, DIFile, UInt32, UInt64, UInt64, UInt32, DIType, DIArray)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateStructType.htm" />
             <HelpTOCNode Title="CreateStructType Method (DIScope, String, DIFile, UInt32, UInt64, UInt64, UInt32, DIType, DINode[])" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateStructType_1.htm" />
             <HelpTOCNode Title="CreateStructType Method (DIScope, String, DIFile, UInt32, UInt64, UInt64, UInt32, DIType, IEnumerable(DINode))" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateStructType_2.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="CreateSubrange Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateSubrange.htm" />
-          <HelpTOCNode Id="b2374ad1-3ed3-4cff-a3f3-07c7ae7fdc09" Title="CreateSubroutineType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateSubroutineType.htm">
+          <HelpTOCNode Id="40f4b0c9-4a41-437b-b8bc-29b54fc45527" Title="CreateSubroutineType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateSubroutineType.htm">
             <HelpTOCNode Title="CreateSubroutineType Method (DIFile, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateSubroutineType.htm" />
             <HelpTOCNode Title="CreateSubroutineType Method (DIFile, UInt32, DITypeArray)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateSubroutineType_2.htm" />
             <HelpTOCNode Title="CreateSubroutineType Method (DIFile, UInt32, DIType, IEnumerable(DIType))" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateSubroutineType_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="46621369-0c84-4626-9374-0de9f9285a77" Title="CreateTypeArray Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateTypeArray.htm">
+          <HelpTOCNode Id="779628e6-c246-44f8-9308-41977f14c012" Title="CreateTypeArray Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateTypeArray.htm">
             <HelpTOCNode Title="CreateTypeArray Method (DIType[])" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateTypeArray.htm" />
             <HelpTOCNode Title="CreateTypeArray Method (IEnumerable(DIType))" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_CreateTypeArray_1.htm" />
           </HelpTOCNode>
@@ -498,11 +505,11 @@
           <HelpTOCNode Title="Finish Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_Finish.htm" />
           <HelpTOCNode Title="ForwardDeclareFunction Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_ForwardDeclareFunction.htm" />
           <HelpTOCNode Title="GetOrCreateArray Method " Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_GetOrCreateArray.htm" />
-          <HelpTOCNode Id="0f315c6c-87b8-4889-9e20-1c2f5944a422" Title="GetOrCreateTypeArray Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_GetOrCreateTypeArray.htm">
+          <HelpTOCNode Id="1a9fe3f5-73c7-49bb-ace6-1d8ee4f1a124" Title="GetOrCreateTypeArray Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_GetOrCreateTypeArray.htm">
             <HelpTOCNode Title="GetOrCreateTypeArray Method (DIType[])" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_GetOrCreateTypeArray.htm" />
             <HelpTOCNode Title="GetOrCreateTypeArray Method (IEnumerable(DIType))" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_GetOrCreateTypeArray_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="c87c05be-9a8d-4e56-ac68-40b8f03f0b15" Title="InsertDeclare Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_InsertDeclare.htm">
+          <HelpTOCNode Id="32b61b25-e719-4219-b27d-d1478503e9bf" Title="InsertDeclare Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugInfoBuilder_InsertDeclare.htm">
             <HelpTOCNode Title="InsertDeclare Method (Value, DILocalVariable, DILocation, Instruction)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_InsertDeclare_2.htm" />
             <HelpTOCNode Title="InsertDeclare Method (Value, DILocalVariable, DILocation, BasicBlock)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_InsertDeclare_3.htm" />
             <HelpTOCNode Title="InsertDeclare Method (Value, DILocalVariable, DIExpression, DILocation, Instruction)" Url="html/M_Llvm_NET_DebugInfo_DebugInfoBuilder_InsertDeclare.htm" />
@@ -511,13 +518,10 @@
         </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="DebugInfoFlags Enumeration" Url="html/T_Llvm_NET_DebugInfo_DebugInfoFlags.htm" />
-      <HelpTOCNode Id="0dde2a23-47e7-4d9d-90d7-dcc2b3a9f1cb" Title="DebugMemberInfo Class" Url="html/T_Llvm_NET_DebugInfo_DebugMemberInfo.htm">
+      <HelpTOCNode Id="10e4159b-27fb-4eb2-8394-e20810dfa426" Title="DebugMemberInfo Class" Url="html/T_Llvm_NET_DebugInfo_DebugMemberInfo.htm">
         <HelpTOCNode Title="DebugMemberInfo Constructor " Url="html/M_Llvm_NET_DebugInfo_DebugMemberInfo__ctor.htm" />
-        <HelpTOCNode Title="DebugMemberInfo Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugMemberInfo.htm" />
-        <HelpTOCNode Id="8ba642b2-8eb4-4ce0-8ac2-6a418ed7ef07" Title="DebugMemberInfo Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugMemberInfo.htm">
-          <HelpTOCNode Title="BitAlignment Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitAlignment.htm" />
-          <HelpTOCNode Title="BitOffset Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitOffset.htm" />
-          <HelpTOCNode Title="BitSize Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_BitSize.htm" />
+        <HelpTOCNode Id="d468f590-1c77-4916-93b7-2695fdc961ab" Title="DebugMemberInfo Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugMemberInfo.htm">
+          <HelpTOCNode Title="ExplicitLayout Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_ExplicitLayout.htm" />
           <HelpTOCNode Title="File Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_File.htm" />
           <HelpTOCNode Title="Flags Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Flags.htm" />
           <HelpTOCNode Title="Index Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Index.htm" />
@@ -525,64 +529,57 @@
           <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Name.htm" />
           <HelpTOCNode Title="Type Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberInfo_Type.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="DebugMemberInfo Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugMemberInfo.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bb2f2208-6c76-468c-919c-d74eb18342b8" Title="DebugPointerType Class" Url="html/T_Llvm_NET_DebugInfo_DebugPointerType.htm">
-        <HelpTOCNode Id="910cb8ff-a525-4499-b9d7-ad1b95b17c60" Title="DebugPointerType Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DebugPointerType__ctor.htm">
+      <HelpTOCNode Id="1815484f-bc6f-49af-86cc-af555029ac4d" Title="DebugMemberLayout Structure" Url="html/T_Llvm_NET_DebugInfo_DebugMemberLayout.htm">
+        <HelpTOCNode Title="DebugMemberLayout Constructor " Url="html/M_Llvm_NET_DebugInfo_DebugMemberLayout__ctor.htm" />
+        <HelpTOCNode Id="07481240-6f8e-47ce-bd3f-f1c2c768ee37" Title="DebugMemberLayout Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugMemberLayout.htm">
+          <HelpTOCNode Title="BitAlignment Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitAlignment.htm" />
+          <HelpTOCNode Title="BitOffset Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitOffset.htm" />
+          <HelpTOCNode Title="BitSize Property " Url="html/P_Llvm_NET_DebugInfo_DebugMemberLayout_BitSize.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="DebugMemberLayout Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugMemberLayout.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="c82a75e5-b8af-42cc-a8ea-85360702a841" Title="DebugPointerType Class" Url="html/T_Llvm_NET_DebugInfo_DebugPointerType.htm">
+        <HelpTOCNode Id="5078b79e-ecaf-4abc-8c17-f38e22705b0b" Title="DebugPointerType Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DebugPointerType__ctor.htm">
           <HelpTOCNode Title="DebugPointerType Constructor (IDebugType(ITypeRef, DIType), Module, UInt32, String)" Url="html/M_Llvm_NET_DebugInfo_DebugPointerType__ctor.htm" />
           <HelpTOCNode Title="DebugPointerType Constructor (IPointerType, Module, DIType, String)" Url="html/M_Llvm_NET_DebugInfo_DebugPointerType__ctor_1.htm" />
           <HelpTOCNode Title="DebugPointerType Constructor (ITypeRef, Module, DIType, UInt32, String)" Url="html/M_Llvm_NET_DebugInfo_DebugPointerType__ctor_2.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="DebugPointerType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugPointerType.htm" />
-        <HelpTOCNode Id="6309c136-57e9-49e8-84e7-68f5459619be" Title="DebugPointerType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugPointerType.htm">
+        <HelpTOCNode Id="ee907ddc-4a1d-498a-be58-77bf8f651b23" Title="DebugPointerType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugPointerType.htm">
           <HelpTOCNode Title="AddressSpace Property " Url="html/P_Llvm_NET_DebugInfo_DebugPointerType_AddressSpace.htm" />
           <HelpTOCNode Title="ElementType Property " Url="html/P_Llvm_NET_DebugInfo_DebugPointerType_ElementType.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="DebugPointerType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugPointerType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="588c7651-6b70-478b-92cb-215a7c840798" Title="DebugStructType Class" Url="html/T_Llvm_NET_DebugInfo_DebugStructType.htm">
-        <HelpTOCNode Id="ff2cca2c-24a0-49a7-a592-adbfef809f36" Title="DebugStructType Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DebugStructType__ctor.htm">
+      <HelpTOCNode Id="582ec6ec-f930-411a-98e5-96297dbac35a" Title="DebugStructType Class" Url="html/T_Llvm_NET_DebugInfo_DebugStructType.htm">
+        <HelpTOCNode Id="2aca3fb1-63f6-4c92-8118-13954eccbdc3" Title="DebugStructType Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DebugStructType__ctor.htm">
           <HelpTOCNode Title="DebugStructType Constructor (IStructType, Module, DIScope, String, DIFile, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugStructType__ctor_1.htm" />
           <HelpTOCNode Title="DebugStructType Constructor (Module, String, DIScope, String, DIFile, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugStructType__ctor.htm" />
           <HelpTOCNode Title="DebugStructType Constructor (IStructType, Module, DIScope, String, DIFile, UInt32, DebugInfoFlags, DIType, IEnumerable(DIType))" Url="html/M_Llvm_NET_DebugInfo_DebugStructType__ctor_2.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="343c9643-794f-45cc-931d-e68d735a1393" Title="DebugStructType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugStructType.htm">
-          <HelpTOCNode Id="27a9650f-0dc5-41e8-ab89-a105366977e0" Title="SetBody Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugStructType_SetBody.htm">
-            <HelpTOCNode Title="SetBody Method (Boolean, ITypeRef[])" Url="html/M_Llvm_NET_DebugInfo_DebugStructType_SetBody_2.htm" />
-            <HelpTOCNode Title="SetBody Method (Boolean, Module, DIScope, DIFile, UInt32, DebugInfoFlags, IEnumerable(DebugMemberInfo))" Url="html/M_Llvm_NET_DebugInfo_DebugStructType_SetBody.htm" />
-            <HelpTOCNode Title="SetBody Method (Boolean, Module, DIScope, DIFile, UInt32, DebugInfoFlags, IEnumerable(ITypeRef), IEnumerable(DebugMemberInfo), Nullable(UInt32), Nullable(UInt32))" Url="html/M_Llvm_NET_DebugInfo_DebugStructType_SetBody_1.htm" />
-          </HelpTOCNode>
-        </HelpTOCNode>
-        <HelpTOCNode Id="be4eed24-b1dd-4f51-9dd6-ec4a7a638f1b" Title="DebugStructType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugStructType.htm">
+        <HelpTOCNode Id="97786c9f-8d1f-493c-bb60-c01366ca64b7" Title="DebugStructType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugStructType.htm">
           <HelpTOCNode Title="DebugMembers Property " Url="html/P_Llvm_NET_DebugInfo_DebugStructType_DebugMembers.htm" />
           <HelpTOCNode Title="IsOpaque Property " Url="html/P_Llvm_NET_DebugInfo_DebugStructType_IsOpaque.htm" />
           <HelpTOCNode Title="IsPacked Property " Url="html/P_Llvm_NET_DebugInfo_DebugStructType_IsPacked.htm" />
           <HelpTOCNode Title="Members Property " Url="html/P_Llvm_NET_DebugInfo_DebugStructType_Members.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_DebugInfo_DebugStructType_Name.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="f9774aa6-2fb4-4327-b78c-dbd9edb8e9a1" Title="DebugStructType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugStructType.htm">
+          <HelpTOCNode Id="0f428428-41d1-43f9-8cad-bfff16699f5d" Title="SetBody Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugStructType_SetBody.htm">
+            <HelpTOCNode Title="SetBody Method (Boolean, ITypeRef[])" Url="html/M_Llvm_NET_DebugInfo_DebugStructType_SetBody_2.htm" />
+            <HelpTOCNode Title="SetBody Method (Boolean, Module, DIScope, DIFile, UInt32, DebugInfoFlags, IEnumerable(DebugMemberInfo))" Url="html/M_Llvm_NET_DebugInfo_DebugStructType_SetBody.htm" />
+            <HelpTOCNode Title="SetBody Method (Boolean, Module, DIScope, DIFile, UInt32, DebugInfoFlags, IEnumerable(ITypeRef), IEnumerable(DebugMemberInfo), Nullable(UInt32), Nullable(UInt32))" Url="html/M_Llvm_NET_DebugInfo_DebugStructType_SetBody_1.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="bd6f22e2-079f-45ed-a189-a06a66452541" Title="DebugType Class" Url="html/T_Llvm_NET_DebugInfo_DebugType.htm">
-        <HelpTOCNode Id="a0a96d27-1b3a-4ca3-b998-40737e0705bc" Title="DebugType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugType.htm">
+      <HelpTOCNode Id="ecc34003-b11b-4eb6-8336-77d0d4508f38" Title="DebugType Class" Url="html/T_Llvm_NET_DebugInfo_DebugType.htm">
+        <HelpTOCNode Id="8cd6fa5b-cdfc-4eb5-a373-86f68382ba8e" Title="DebugType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugType.htm">
           <HelpTOCNode Title="Create(NativeT, DebugT) Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_Create__2.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="74e4ec34-4777-4544-a83d-48b0f134c3e7" Title="DebugType(NativeT, DebugT) Class" Url="html/T_Llvm_NET_DebugInfo_DebugType_2.htm">
-        <HelpTOCNode Id="9f9ba3ec-2c08-4c89-bd4c-89a701b10201" Title="DebugType(NativeT, DebugT) Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugType_2.htm">
-          <HelpTOCNode Title="AddExtendedPropertyValue Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_AddExtendedPropertyValue.htm" />
-          <HelpTOCNode Id="b1b35305-273b-4765-9aa5-486763e5b854" Title="CreateArrayType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugType_2_CreateArrayType.htm">
-            <HelpTOCNode Title="CreateArrayType Method (UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreateArrayType_1.htm" />
-            <HelpTOCNode Title="CreateArrayType Method (Module, UInt32, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreateArrayType.htm" />
-          </HelpTOCNode>
-          <HelpTOCNode Id="f1630164-ca6c-41de-b062-b57cf1f09aae" Title="CreatePointerType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType.htm">
-            <HelpTOCNode Title="CreatePointerType Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType.htm" />
-            <HelpTOCNode Title="CreatePointerType Method (UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType_2.htm" />
-            <HelpTOCNode Title="CreatePointerType Method (Module, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType_1.htm" />
-          </HelpTOCNode>
-          <HelpTOCNode Title="GetNullValue Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_GetNullValue.htm" />
-          <HelpTOCNode Title="TryGetExtendedPropertyValue(PropT) Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_TryGetExtendedPropertyValue__1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="2272dccf-f919-43a1-bf79-851d0edde617" Title="DebugType(NativeT, DebugT) Type Conversions" Url="html/Operators_T_Llvm_NET_DebugInfo_DebugType_2.htm">
-          <HelpTOCNode Title="Implicit Conversion (DebugType(NativeT, DebugT) to DebugT)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_op_Implicit.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="1f97db18-b2c4-4d65-87fc-0492419c1691" Title="DebugType(NativeT, DebugT) Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugType_2.htm">
+      <HelpTOCNode Id="7dbc9eb8-7315-40dd-b88d-6cf2e6aa7667" Title="DebugType(NativeT, DebugT) Class" Url="html/T_Llvm_NET_DebugInfo_DebugType_2.htm">
+        <HelpTOCNode Id="8c2003ce-d214-4241-be60-6fa0329fa765" Title="DebugType(NativeT, DebugT) Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DebugType_2.htm">
           <HelpTOCNode Title="Context Property " Url="html/P_Llvm_NET_DebugInfo_DebugType_2_Context.htm" />
           <HelpTOCNode Title="DIType Property " Url="html/P_Llvm_NET_DebugInfo_DebugType_2_DIType.htm" />
           <HelpTOCNode Title="HasDebugInfo Property " Url="html/P_Llvm_NET_DebugInfo_DebugType_2_HasDebugInfo.htm" />
@@ -601,125 +598,146 @@
           <HelpTOCNode Title="NativeType Property " Url="html/P_Llvm_NET_DebugInfo_DebugType_2_NativeType.htm" />
           <HelpTOCNode Title="TypeHandle Property " Url="html/P_Llvm_NET_DebugInfo_DebugType_2_TypeHandle.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="652dbbd8-20b4-4b21-810b-42a6c50e2c17" Title="DebugType(NativeT, DebugT) Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DebugType_2.htm">
+          <HelpTOCNode Title="AddExtendedPropertyValue Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_AddExtendedPropertyValue.htm" />
+          <HelpTOCNode Id="616c19dc-993d-4164-814c-10ceb2511acf" Title="CreateArrayType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugType_2_CreateArrayType.htm">
+            <HelpTOCNode Title="CreateArrayType Method (UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreateArrayType_1.htm" />
+            <HelpTOCNode Title="CreateArrayType Method (Module, UInt32, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreateArrayType.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="44a43d20-89ef-4b04-a0cb-bbc32ed9d7d9" Title="CreatePointerType Method " Url="html/Overload_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType.htm">
+            <HelpTOCNode Title="CreatePointerType Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType.htm" />
+            <HelpTOCNode Title="CreatePointerType Method (UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType_2.htm" />
+            <HelpTOCNode Title="CreatePointerType Method (Module, UInt32)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_CreatePointerType_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="GetNullValue Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_GetNullValue.htm" />
+          <HelpTOCNode Title="TryGetExtendedPropertyValue(PropT) Method " Url="html/M_Llvm_NET_DebugInfo_DebugType_2_TryGetExtendedPropertyValue__1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="fedcbdfb-7250-4697-bf91-d3ce343b51ee" Title="DebugType(NativeT, DebugT) Type Conversions" Url="html/Operators_T_Llvm_NET_DebugInfo_DebugType_2.htm">
+          <HelpTOCNode Title="Implicit Conversion (DebugType(NativeT, DebugT) to DebugT)" Url="html/M_Llvm_NET_DebugInfo_DebugType_2_op_Implicit.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="102712ce-6542-4f3a-8255-57c114c79597" Title="DIArray Class" Url="html/T_Llvm_NET_DebugInfo_DIArray.htm">
+      <HelpTOCNode Id="1e85be9b-f95d-4c6d-bd77-9d478a4bf7c7" Title="DIArray Class" Url="html/T_Llvm_NET_DebugInfo_DIArray.htm">
         <HelpTOCNode Title="DIArray Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIArray.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="63e1c5f8-8291-4a47-847a-18c8a5a81960" Title="DIBasicType Class" Url="html/T_Llvm_NET_DebugInfo_DIBasicType.htm">
-        <HelpTOCNode Title="DIBasicType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIBasicType.htm" />
+      <HelpTOCNode Id="483e8b05-4465-424d-b7e1-61882811d0a7" Title="DIBasicType Class" Url="html/T_Llvm_NET_DebugInfo_DIBasicType.htm">
         <HelpTOCNode Title="DIBasicType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIBasicType.htm" />
+        <HelpTOCNode Title="DIBasicType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIBasicType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8b6f32dc-5656-414e-b8d1-3f213e5517e9" Title="DICompileUnit Class" Url="html/T_Llvm_NET_DebugInfo_DICompileUnit.htm">
-        <HelpTOCNode Title="DICompileUnit Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DICompileUnit.htm" />
+      <HelpTOCNode Id="02592f98-f9b8-4f11-b7ee-d8f1b0f0d84f" Title="DICompileUnit Class" Url="html/T_Llvm_NET_DebugInfo_DICompileUnit.htm">
         <HelpTOCNode Title="DICompileUnit Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DICompileUnit.htm" />
+        <HelpTOCNode Title="DICompileUnit Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DICompileUnit.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="95e730b4-ee1e-4f7a-b0b7-1a4996b75d3c" Title="DICompositeType Class" Url="html/T_Llvm_NET_DebugInfo_DICompositeType.htm">
-        <HelpTOCNode Title="DICompositeType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DICompositeType.htm" />
+      <HelpTOCNode Id="41f87470-9557-483c-a80f-1e9fcbfddc1c" Title="DICompositeType Class" Url="html/T_Llvm_NET_DebugInfo_DICompositeType.htm">
         <HelpTOCNode Title="DICompositeType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DICompositeType.htm" />
+        <HelpTOCNode Title="DICompositeType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DICompositeType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d7078b26-defd-4225-88e7-82af03b74f22" Title="DIDerivedType Class" Url="html/T_Llvm_NET_DebugInfo_DIDerivedType.htm">
-        <HelpTOCNode Title="DIDerivedType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIDerivedType.htm" />
+      <HelpTOCNode Id="01b01c73-0ef6-4c79-a5d2-321d96513f17" Title="DIDerivedType Class" Url="html/T_Llvm_NET_DebugInfo_DIDerivedType.htm">
         <HelpTOCNode Title="DIDerivedType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIDerivedType.htm" />
+        <HelpTOCNode Title="DIDerivedType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIDerivedType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2516b0be-f7c4-4790-a0cc-0e6c11d671fc" Title="DIEnumerator Class" Url="html/T_Llvm_NET_DebugInfo_DIEnumerator.htm">
-        <HelpTOCNode Title="DIEnumerator Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIEnumerator.htm" />
+      <HelpTOCNode Id="67091385-1f67-40fc-8cd2-14dde6dd75cb" Title="DIEnumerator Class" Url="html/T_Llvm_NET_DebugInfo_DIEnumerator.htm">
         <HelpTOCNode Title="DIEnumerator Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIEnumerator.htm" />
+        <HelpTOCNode Title="DIEnumerator Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIEnumerator.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e48485b7-3da3-4578-a172-7c24c8d1281f" Title="DIExpression Class" Url="html/T_Llvm_NET_DebugInfo_DIExpression.htm">
-        <HelpTOCNode Title="DIExpression Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIExpression.htm" />
+      <HelpTOCNode Id="4cfd93ff-18d0-4b6a-9164-d173d3efd76b" Title="DIExpression Class" Url="html/T_Llvm_NET_DebugInfo_DIExpression.htm">
         <HelpTOCNode Title="DIExpression Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIExpression.htm" />
+        <HelpTOCNode Title="DIExpression Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIExpression.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="eb08d878-1dd2-46ca-b08b-59f19d4b61e0" Title="DIFile Class" Url="html/T_Llvm_NET_DebugInfo_DIFile.htm">
-        <HelpTOCNode Title="DIFile Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIFile.htm" />
+      <HelpTOCNode Id="48205684-68a7-48aa-991d-f141d085ac6b" Title="DIFile Class" Url="html/T_Llvm_NET_DebugInfo_DIFile.htm">
         <HelpTOCNode Title="DIFile Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIFile.htm" />
+        <HelpTOCNode Title="DIFile Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIFile.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="7739d380-9043-41a4-98b9-81f8ed59c41a" Title="DIGlobalVariable Class" Url="html/T_Llvm_NET_DebugInfo_DIGlobalVariable.htm">
-        <HelpTOCNode Title="DIGlobalVariable Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIGlobalVariable.htm" />
+      <HelpTOCNode Id="5b58c173-29d1-4223-a8f2-88c0cf003e96" Title="DIGlobalVariable Class" Url="html/T_Llvm_NET_DebugInfo_DIGlobalVariable.htm">
         <HelpTOCNode Title="DIGlobalVariable Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIGlobalVariable.htm" />
+        <HelpTOCNode Title="DIGlobalVariable Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIGlobalVariable.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4ea650e8-d14e-44db-8c24-aaae7f15a2e2" Title="DILexicalBlock Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlock.htm">
-        <HelpTOCNode Title="DILexicalBlock Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlock.htm" />
+      <HelpTOCNode Id="6e32929b-c22b-4259-80b4-7ada6ce5a80e" Title="DILexicalBlock Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlock.htm">
         <HelpTOCNode Title="DILexicalBlock Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILexicalBlock.htm" />
+        <HelpTOCNode Title="DILexicalBlock Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlock.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="143b7e8a-35f1-4518-94f2-5e2c69a0baf5" Title="DILexicalBlockBase Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlockBase.htm">
-        <HelpTOCNode Title="DILexicalBlockBase Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlockBase.htm" />
+      <HelpTOCNode Id="c516eda4-9246-4aad-982c-28a4ada94148" Title="DILexicalBlockBase Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlockBase.htm">
         <HelpTOCNode Title="DILexicalBlockBase Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILexicalBlockBase.htm" />
+        <HelpTOCNode Title="DILexicalBlockBase Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlockBase.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1e573a65-7559-4374-86eb-ba9338b9d98f" Title="DILexicalBlockFile Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlockFile.htm">
-        <HelpTOCNode Title="DILexicalBlockFile Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlockFile.htm" />
+      <HelpTOCNode Id="d3225c57-84f9-4179-b40b-05920b721f9e" Title="DILexicalBlockFile Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlockFile.htm">
         <HelpTOCNode Title="DILexicalBlockFile Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILexicalBlockFile.htm" />
+        <HelpTOCNode Title="DILexicalBlockFile Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlockFile.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="0aba070a-d54f-433c-b2b6-00fbfb853846" Title="DILocalScope Class" Url="html/T_Llvm_NET_DebugInfo_DILocalScope.htm">
-        <HelpTOCNode Title="DILocalScope Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocalScope.htm" />
+      <HelpTOCNode Id="9b9596c4-9373-492a-b882-43df1166fdab" Title="DILocalScope Class" Url="html/T_Llvm_NET_DebugInfo_DILocalScope.htm">
         <HelpTOCNode Title="DILocalScope Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILocalScope.htm" />
+        <HelpTOCNode Title="DILocalScope Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocalScope.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="093dbaa3-d5ee-41eb-9084-cf45cd174037" Title="DILocalVariable Class" Url="html/T_Llvm_NET_DebugInfo_DILocalVariable.htm">
-        <HelpTOCNode Title="DILocalVariable Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocalVariable.htm" />
+      <HelpTOCNode Id="45a79d0d-bc02-434e-b935-121f1d7b059f" Title="DILocalVariable Class" Url="html/T_Llvm_NET_DebugInfo_DILocalVariable.htm">
         <HelpTOCNode Title="DILocalVariable Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILocalVariable.htm" />
+        <HelpTOCNode Title="DILocalVariable Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocalVariable.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bc3940cd-f498-4a9a-a617-9bcbf85f9b4a" Title="DILocation Class" Url="html/T_Llvm_NET_DebugInfo_DILocation.htm">
-        <HelpTOCNode Id="513b857d-7723-415c-a03c-76fd8ac74151" Title="DILocation Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DILocation__ctor.htm">
+      <HelpTOCNode Id="91e7110f-fb94-4dae-b5a4-9ccc9c16228a" Title="DILocation Class" Url="html/T_Llvm_NET_DebugInfo_DILocation.htm">
+        <HelpTOCNode Id="88e9bb85-7143-4f94-a40a-e875ba2659b6" Title="DILocation Constructor " Url="html/Overload_Llvm_NET_DebugInfo_DILocation__ctor.htm">
           <HelpTOCNode Title="DILocation Constructor (Context, UInt32, UInt32, DILocalScope)" Url="html/M_Llvm_NET_DebugInfo_DILocation__ctor.htm" />
           <HelpTOCNode Title="DILocation Constructor (Context, UInt32, UInt32, DILocalScope, DILocation)" Url="html/M_Llvm_NET_DebugInfo_DILocation__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="DILocation Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocation.htm" />
-        <HelpTOCNode Title="DILocation Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILocation.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="8be9245b-2bf0-4613-915b-038c074494f3" Title="DIModule Class" Url="html/T_Llvm_NET_DebugInfo_DIModule.htm">
-        <HelpTOCNode Title="DIModule Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIModule.htm" />
-        <HelpTOCNode Title="DIModule Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIModule.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="cb724c16-2fef-439d-a501-5984a5d4dffd" Title="DINamespace Class" Url="html/T_Llvm_NET_DebugInfo_DINamespace.htm">
-        <HelpTOCNode Title="DINamespace Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DINamespace.htm" />
-        <HelpTOCNode Title="DINamespace Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DINamespace.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="9496254f-fdf6-4681-8627-878ec17a863b" Title="DINode Class" Url="html/T_Llvm_NET_DebugInfo_DINode.htm">
-        <HelpTOCNode Id="1ebaf744-8c85-4c2f-84e5-08ed6e4b992b" Title="DINode Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DINode.htm">
-          <HelpTOCNode Title="ToString Method " Url="html/M_Llvm_NET_DebugInfo_DINode_ToString.htm" />
+        <HelpTOCNode Id="c8cf815c-f771-4cfc-9e4a-5f5bae320718" Title="DILocation Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILocation.htm">
+          <HelpTOCNode Title="Column Property " Url="html/P_Llvm_NET_DebugInfo_DILocation_Column.htm" />
+          <HelpTOCNode Title="InlinedAt Property " Url="html/P_Llvm_NET_DebugInfo_DILocation_InlinedAt.htm" />
+          <HelpTOCNode Title="Line Property " Url="html/P_Llvm_NET_DebugInfo_DILocation_Line.htm" />
+          <HelpTOCNode Title="Scope Property " Url="html/P_Llvm_NET_DebugInfo_DILocation_Scope.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="77c9bb4b-56dd-4429-b3e0-83c45f54e76f" Title="DINode Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DINode.htm">
+        <HelpTOCNode Title="DILocation Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocation.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f5b9883c-61e3-42ac-9e2c-a8fc7b3fa8e4" Title="DIModule Class" Url="html/T_Llvm_NET_DebugInfo_DIModule.htm">
+        <HelpTOCNode Title="DIModule Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIModule.htm" />
+        <HelpTOCNode Title="DIModule Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIModule.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5e5fe699-1d73-4a5a-913a-4f82d07b3e35" Title="DINamespace Class" Url="html/T_Llvm_NET_DebugInfo_DINamespace.htm">
+        <HelpTOCNode Title="DINamespace Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DINamespace.htm" />
+        <HelpTOCNode Title="DINamespace Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DINamespace.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="795dff94-346d-4951-b595-6fd4a652c6a1" Title="DINode Class" Url="html/T_Llvm_NET_DebugInfo_DINode.htm">
+        <HelpTOCNode Id="2c7c352c-62c0-4522-b2b2-5ee3aa0b3848" Title="DINode Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DINode.htm">
           <HelpTOCNode Title="Tag Property " Url="html/P_Llvm_NET_DebugInfo_DINode_Tag.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="ae7d1649-6bbc-406d-b850-f78f1364abc5" Title="DINode Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DINode.htm">
+          <HelpTOCNode Title="ToString Method " Url="html/M_Llvm_NET_DebugInfo_DINode_ToString.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="db64460e-e2b5-4e40-8b9b-182b37b407f5" Title="DIObjCProperty Class" Url="html/T_Llvm_NET_DebugInfo_DIObjCProperty.htm">
-        <HelpTOCNode Title="DIObjCProperty Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
+      <HelpTOCNode Id="db4c3972-bed4-48bd-96fd-a63d5185202e" Title="DIObjCProperty Class" Url="html/T_Llvm_NET_DebugInfo_DIObjCProperty.htm">
         <HelpTOCNode Title="DIObjCProperty Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
+        <HelpTOCNode Title="DIObjCProperty Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c70da9e4-ed1a-42a1-861b-22e3af8f7351" Title="DIScope Class" Url="html/T_Llvm_NET_DebugInfo_DIScope.htm">
-        <HelpTOCNode Title="DIScope Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIScope.htm" />
-        <HelpTOCNode Id="cde21039-0171-4d6e-bef4-3632bc93a331" Title="DIScope Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIScope.htm">
+      <HelpTOCNode Id="631fe348-637d-4215-b8e8-af5214689f2c" Title="DIScope Class" Url="html/T_Llvm_NET_DebugInfo_DIScope.htm">
+        <HelpTOCNode Id="e56d2c1a-b132-409e-9506-064d3b64d036" Title="DIScope Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIScope.htm">
           <HelpTOCNode Title="File Property " Url="html/P_Llvm_NET_DebugInfo_DIScope_File.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="DIScope Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIScope.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8ebdc84e-60e0-4448-bd26-602672994d21" Title="DISubProgram Class" Url="html/T_Llvm_NET_DebugInfo_DISubProgram.htm">
-        <HelpTOCNode Id="7a79a4f6-88b0-46ea-b4a9-9f3b2597bfdc" Title="DISubProgram Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubProgram.htm">
+      <HelpTOCNode Id="e5831158-ee4f-444e-81f6-099a21db72bf" Title="DISubProgram Class" Url="html/T_Llvm_NET_DebugInfo_DISubProgram.htm">
+        <HelpTOCNode Title="DISubProgram Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DISubProgram.htm" />
+        <HelpTOCNode Id="286abc45-7854-41fb-a7e6-28b3720ff7ee" Title="DISubProgram Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubProgram.htm">
           <HelpTOCNode Title="Describes Method " Url="html/M_Llvm_NET_DebugInfo_DISubProgram_Describes.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="DISubProgram Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DISubProgram.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8669fd96-79f2-44d2-a971-9841e67d6be7" Title="DISubrange Class" Url="html/T_Llvm_NET_DebugInfo_DISubrange.htm">
-        <HelpTOCNode Title="DISubrange Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubrange.htm" />
+      <HelpTOCNode Id="a1743de8-6bde-4ae9-8f8f-d9272a0f8967" Title="DISubrange Class" Url="html/T_Llvm_NET_DebugInfo_DISubrange.htm">
         <HelpTOCNode Title="DISubrange Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DISubrange.htm" />
+        <HelpTOCNode Title="DISubrange Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubrange.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6e3a5944-d193-4085-a406-b40082607781" Title="DISubroutineType Class" Url="html/T_Llvm_NET_DebugInfo_DISubroutineType.htm">
-        <HelpTOCNode Title="DISubroutineType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubroutineType.htm" />
+      <HelpTOCNode Id="6835f13f-2090-4893-abce-ec9629fa9261" Title="DISubroutineType Class" Url="html/T_Llvm_NET_DebugInfo_DISubroutineType.htm">
         <HelpTOCNode Title="DISubroutineType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DISubroutineType.htm" />
+        <HelpTOCNode Title="DISubroutineType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubroutineType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="8c08ec97-2b53-4fb7-9e88-4a5f1b1fb79e" Title="DITemplateParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateParameter.htm">
-        <HelpTOCNode Title="DITemplateParameter Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateParameter.htm" />
+      <HelpTOCNode Id="b0570ba2-fcfb-41a9-b87c-58554567411a" Title="DITemplateParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateParameter.htm">
         <HelpTOCNode Title="DITemplateParameter Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DITemplateParameter.htm" />
+        <HelpTOCNode Title="DITemplateParameter Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateParameter.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="fb1f0a13-86f7-4063-a1a1-b6e1a827df69" Title="DITemplateTypeParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateTypeParameter.htm">
-        <HelpTOCNode Title="DITemplateTypeParameter Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateTypeParameter.htm" />
+      <HelpTOCNode Id="f36edb62-4d04-4f8c-8254-aff7b112187d" Title="DITemplateTypeParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateTypeParameter.htm">
         <HelpTOCNode Title="DITemplateTypeParameter Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DITemplateTypeParameter.htm" />
+        <HelpTOCNode Title="DITemplateTypeParameter Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateTypeParameter.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a0d7f72f-b316-417e-84ff-807e9bf64628" Title="DITemplateValueParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm">
-        <HelpTOCNode Title="DITemplateValueParameter Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm" />
+      <HelpTOCNode Id="c8b2714a-c988-4eea-a82b-6c783478d5c1" Title="DITemplateValueParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm">
         <HelpTOCNode Title="DITemplateValueParameter Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm" />
+        <HelpTOCNode Title="DITemplateValueParameter Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a5b2028c-ce4f-4ea0-b87f-9df1823127e4" Title="DIType Class" Url="html/T_Llvm_NET_DebugInfo_DIType.htm">
-        <HelpTOCNode Title="DIType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIType.htm" />
-        <HelpTOCNode Id="8d42d724-0edb-4d8a-8902-019deb65b9cc" Title="DIType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIType.htm">
+      <HelpTOCNode Id="1f0659f4-e81d-498b-85f9-361e083de4fa" Title="DIType Class" Url="html/T_Llvm_NET_DebugInfo_DIType.htm">
+        <HelpTOCNode Id="f9849429-2483-45e5-88b2-ca58d017ea08" Title="DIType Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIType.htm">
           <HelpTOCNode Title="BitAlignment Property " Url="html/P_Llvm_NET_DebugInfo_DIType_BitAlignment.htm" />
           <HelpTOCNode Title="BitOffset Property " Url="html/P_Llvm_NET_DebugInfo_DIType_BitOffset.htm" />
           <HelpTOCNode Title="BitSize Property " Url="html/P_Llvm_NET_DebugInfo_DIType_BitSize.htm" />
@@ -742,280 +760,273 @@
           <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_DebugInfo_DIType_Name.htm" />
           <HelpTOCNode Title="Scope Property " Url="html/P_Llvm_NET_DebugInfo_DIType_Scope.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="DIType Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="47dc1752-8907-402a-a80b-43924bd37c84" Title="DITypeArray Class" Url="html/T_Llvm_NET_DebugInfo_DITypeArray.htm">
+      <HelpTOCNode Id="6fb18342-a68c-49bb-bc19-73e1a6e5bf3c" Title="DITypeArray Class" Url="html/T_Llvm_NET_DebugInfo_DITypeArray.htm">
         <HelpTOCNode Title="DITypeArray Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITypeArray.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="DiTypeKind Enumeration" Url="html/T_Llvm_NET_DebugInfo_DiTypeKind.htm" />
-      <HelpTOCNode Id="a0c3bf48-66e3-4388-87dd-89e6c1060dae" Title="DIVariable Class" Url="html/T_Llvm_NET_DebugInfo_DIVariable.htm">
-        <HelpTOCNode Title="DIVariable Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIVariable.htm" />
+      <HelpTOCNode Id="9c79b8e1-2f1d-4d16-b3a9-6f1b7eebf520" Title="DIVariable Class" Url="html/T_Llvm_NET_DebugInfo_DIVariable.htm">
         <HelpTOCNode Title="DIVariable Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIVariable.htm" />
+        <HelpTOCNode Title="DIVariable Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIVariable.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="ExpressionOp Enumeration" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
-      <HelpTOCNode Id="cef91a2f-23a4-4f65-a97a-c8e180c9c769" Title="GenericDINode Class" Url="html/T_Llvm_NET_DebugInfo_GenericDINode.htm">
-        <HelpTOCNode Title="GenericDINode Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_GenericDINode.htm" />
+      <HelpTOCNode Id="80c5684b-28c0-440f-9e9c-df275a0cbc15" Title="GenericDINode Class" Url="html/T_Llvm_NET_DebugInfo_GenericDINode.htm">
         <HelpTOCNode Title="GenericDINode Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_GenericDINode.htm" />
+        <HelpTOCNode Title="GenericDINode Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_GenericDINode.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="36061ab2-6384-4d06-8221-db348e3fb06f" Title="IDebugType(NativeT, DebugT) Interface" Url="html/T_Llvm_NET_DebugInfo_IDebugType_2.htm">
-        <HelpTOCNode Title="IDebugType(NativeT, DebugT) Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_IDebugType_2.htm" />
-        <HelpTOCNode Id="30962693-ddf8-40df-a7b8-10163febfd76" Title="IDebugType(NativeT, DebugT) Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_IDebugType_2.htm">
+      <HelpTOCNode Id="a5c66727-bf65-48af-8242-79970e17b85f" Title="IDebugType(NativeT, DebugT) Interface" Url="html/T_Llvm_NET_DebugInfo_IDebugType_2.htm">
+        <HelpTOCNode Id="69842fdd-7a3b-481c-9c7b-4a926e937f72" Title="IDebugType(NativeT, DebugT) Properties" Url="html/Properties_T_Llvm_NET_DebugInfo_IDebugType_2.htm">
           <HelpTOCNode Title="DIType Property " Url="html/P_Llvm_NET_DebugInfo_IDebugType_2_DIType.htm" />
           <HelpTOCNode Title="HasDebugInfo Property " Url="html/P_Llvm_NET_DebugInfo_IDebugType_2_HasDebugInfo.htm" />
           <HelpTOCNode Title="NativeType Property " Url="html/P_Llvm_NET_DebugInfo_IDebugType_2_NativeType.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="IDebugType(NativeT, DebugT) Methods" Url="html/Methods_T_Llvm_NET_DebugInfo_IDebugType_2.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="QualifiedTypeTag Enumeration" Url="html/T_Llvm_NET_DebugInfo_QualifiedTypeTag.htm" />
       <HelpTOCNode Title="SourceLanguage Enumeration" Url="html/T_Llvm_NET_DebugInfo_SourceLanguage.htm" />
       <HelpTOCNode Title="Tag Enumeration" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="f934497c-1df6-49ea-8bdd-f193d9d62ce7" Title="Llvm.NET.Instructions" Url="html/N_Llvm_NET_Instructions.htm">
-      <HelpTOCNode Id="f0d9eea6-adf1-42ec-83a3-d38496ade6e1" Title="Alloca Class" Url="html/T_Llvm_NET_Instructions_Alloca.htm">
-        <HelpTOCNode Title="Alloca Methods" Url="html/Methods_T_Llvm_NET_Instructions_Alloca.htm" />
+    <HelpTOCNode Id="92528313-8de0-4451-b100-f8b97841b017" Title="Llvm.NET.Instructions" Url="html/N_Llvm_NET_Instructions.htm">
+      <HelpTOCNode Id="e74387cb-e414-4ec6-b24d-30abe3569688" Title="Alloca Class" Url="html/T_Llvm_NET_Instructions_Alloca.htm">
         <HelpTOCNode Title="Alloca Properties" Url="html/Properties_T_Llvm_NET_Instructions_Alloca.htm" />
+        <HelpTOCNode Title="Alloca Methods" Url="html/Methods_T_Llvm_NET_Instructions_Alloca.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="79af4c52-274d-4197-b925-424e9b73958d" Title="AtomicCmpXchg Class" Url="html/T_Llvm_NET_Instructions_AtomicCmpXchg.htm">
-        <HelpTOCNode Title="AtomicCmpXchg Methods" Url="html/Methods_T_Llvm_NET_Instructions_AtomicCmpXchg.htm" />
+      <HelpTOCNode Id="f686f855-130f-4666-b69a-0fb67debb5da" Title="AtomicCmpXchg Class" Url="html/T_Llvm_NET_Instructions_AtomicCmpXchg.htm">
         <HelpTOCNode Title="AtomicCmpXchg Properties" Url="html/Properties_T_Llvm_NET_Instructions_AtomicCmpXchg.htm" />
+        <HelpTOCNode Title="AtomicCmpXchg Methods" Url="html/Methods_T_Llvm_NET_Instructions_AtomicCmpXchg.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f2097df0-bc13-4eaa-90cc-a1a793ca0f9b" Title="AtomicRMW Class" Url="html/T_Llvm_NET_Instructions_AtomicRMW.htm">
-        <HelpTOCNode Title="AtomicRMW Methods" Url="html/Methods_T_Llvm_NET_Instructions_AtomicRMW.htm" />
+      <HelpTOCNode Id="f08fd026-aaaf-4cee-928a-4a4a084b1659" Title="AtomicRMW Class" Url="html/T_Llvm_NET_Instructions_AtomicRMW.htm">
         <HelpTOCNode Title="AtomicRMW Properties" Url="html/Properties_T_Llvm_NET_Instructions_AtomicRMW.htm" />
+        <HelpTOCNode Title="AtomicRMW Methods" Url="html/Methods_T_Llvm_NET_Instructions_AtomicRMW.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2218c22d-cf53-4c30-8864-47f370241860" Title="BinaryOperator Class" Url="html/T_Llvm_NET_Instructions_BinaryOperator.htm">
-        <HelpTOCNode Title="BinaryOperator Methods" Url="html/Methods_T_Llvm_NET_Instructions_BinaryOperator.htm" />
+      <HelpTOCNode Id="757653a0-b686-4826-bae9-4c768d7bf974" Title="BinaryOperator Class" Url="html/T_Llvm_NET_Instructions_BinaryOperator.htm">
         <HelpTOCNode Title="BinaryOperator Properties" Url="html/Properties_T_Llvm_NET_Instructions_BinaryOperator.htm" />
+        <HelpTOCNode Title="BinaryOperator Methods" Url="html/Methods_T_Llvm_NET_Instructions_BinaryOperator.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e3d81ccc-4fac-40bf-967e-d4bc82e68edf" Title="BitCast Class" Url="html/T_Llvm_NET_Instructions_BitCast.htm">
-        <HelpTOCNode Title="BitCast Methods" Url="html/Methods_T_Llvm_NET_Instructions_BitCast.htm" />
+      <HelpTOCNode Id="31d4d106-21eb-4449-a98a-f525711ec92e" Title="BitCast Class" Url="html/T_Llvm_NET_Instructions_BitCast.htm">
         <HelpTOCNode Title="BitCast Properties" Url="html/Properties_T_Llvm_NET_Instructions_BitCast.htm" />
+        <HelpTOCNode Title="BitCast Methods" Url="html/Methods_T_Llvm_NET_Instructions_BitCast.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="974275e7-6472-430c-8709-f895e1cf5021" Title="Branch Class" Url="html/T_Llvm_NET_Instructions_Branch.htm">
-        <HelpTOCNode Title="Branch Methods" Url="html/Methods_T_Llvm_NET_Instructions_Branch.htm" />
+      <HelpTOCNode Id="ce8971a2-af1e-43a2-89f8-269e6c4078c7" Title="Branch Class" Url="html/T_Llvm_NET_Instructions_Branch.htm">
         <HelpTOCNode Title="Branch Properties" Url="html/Properties_T_Llvm_NET_Instructions_Branch.htm" />
+        <HelpTOCNode Title="Branch Methods" Url="html/Methods_T_Llvm_NET_Instructions_Branch.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e3572b4e-fc1c-461f-b976-f77f4641ff2f" Title="Call Class" Url="html/T_Llvm_NET_Instructions_Call.htm">
-        <HelpTOCNode Title="Call Methods" Url="html/Methods_T_Llvm_NET_Instructions_Call.htm" />
+      <HelpTOCNode Id="5bcc6bb2-f027-43c8-81dd-3484c64fd302" Title="Call Class" Url="html/T_Llvm_NET_Instructions_Call.htm">
         <HelpTOCNode Title="Call Properties" Url="html/Properties_T_Llvm_NET_Instructions_Call.htm" />
+        <HelpTOCNode Title="Call Methods" Url="html/Methods_T_Llvm_NET_Instructions_Call.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="060de167-f2aa-45cb-81b1-cf23b24b7fea" Title="Cast Class" Url="html/T_Llvm_NET_Instructions_Cast.htm">
-        <HelpTOCNode Title="Cast Methods" Url="html/Methods_T_Llvm_NET_Instructions_Cast.htm" />
+      <HelpTOCNode Id="c9fe5903-46b1-4b2d-ba72-5283428ab26e" Title="Cast Class" Url="html/T_Llvm_NET_Instructions_Cast.htm">
         <HelpTOCNode Title="Cast Properties" Url="html/Properties_T_Llvm_NET_Instructions_Cast.htm" />
+        <HelpTOCNode Title="Cast Methods" Url="html/Methods_T_Llvm_NET_Instructions_Cast.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b2bb7af1-dad4-4e2d-b4ee-fb66663b7f79" Title="Cmp Class" Url="html/T_Llvm_NET_Instructions_Cmp.htm">
-        <HelpTOCNode Title="Cmp Methods" Url="html/Methods_T_Llvm_NET_Instructions_Cmp.htm" />
-        <HelpTOCNode Id="a8b404dd-43a4-478f-a996-46e25498f395" Title="Cmp Properties" Url="html/Properties_T_Llvm_NET_Instructions_Cmp.htm">
+      <HelpTOCNode Id="a7e0e09a-c5c7-48ae-bacb-28ebafc75bb0" Title="Cmp Class" Url="html/T_Llvm_NET_Instructions_Cmp.htm">
+        <HelpTOCNode Id="99701d77-5316-4ac8-b14f-14311394ca50" Title="Cmp Properties" Url="html/Properties_T_Llvm_NET_Instructions_Cmp.htm">
           <HelpTOCNode Title="Predicate Property " Url="html/P_Llvm_NET_Instructions_Cmp_Predicate.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="Cmp Methods" Url="html/Methods_T_Llvm_NET_Instructions_Cmp.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2c444d2f-b87a-4d08-98a8-40b37a0bc16e" Title="DebugDeclare Class" Url="html/T_Llvm_NET_Instructions_DebugDeclare.htm">
-        <HelpTOCNode Title="DebugDeclare Methods" Url="html/Methods_T_Llvm_NET_Instructions_DebugDeclare.htm" />
+      <HelpTOCNode Id="0325b92e-9df2-4f38-8cf7-885d0cb532fd" Title="DebugDeclare Class" Url="html/T_Llvm_NET_Instructions_DebugDeclare.htm">
         <HelpTOCNode Title="DebugDeclare Properties" Url="html/Properties_T_Llvm_NET_Instructions_DebugDeclare.htm" />
+        <HelpTOCNode Title="DebugDeclare Methods" Url="html/Methods_T_Llvm_NET_Instructions_DebugDeclare.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4b6232f1-cd28-45a7-a0e2-9e1a1bdaa30c" Title="DebugInfoIntrinsic Class" Url="html/T_Llvm_NET_Instructions_DebugInfoIntrinsic.htm">
-        <HelpTOCNode Title="DebugInfoIntrinsic Methods" Url="html/Methods_T_Llvm_NET_Instructions_DebugInfoIntrinsic.htm" />
+      <HelpTOCNode Id="8b5427b4-6a86-4c17-a401-94bb3236a7de" Title="DebugInfoIntrinsic Class" Url="html/T_Llvm_NET_Instructions_DebugInfoIntrinsic.htm">
         <HelpTOCNode Title="DebugInfoIntrinsic Properties" Url="html/Properties_T_Llvm_NET_Instructions_DebugInfoIntrinsic.htm" />
+        <HelpTOCNode Title="DebugInfoIntrinsic Methods" Url="html/Methods_T_Llvm_NET_Instructions_DebugInfoIntrinsic.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b7ca59fa-dd1e-49b0-a6d7-ad9cc433572b" Title="ExtractElement Class" Url="html/T_Llvm_NET_Instructions_ExtractElement.htm">
-        <HelpTOCNode Title="ExtractElement Methods" Url="html/Methods_T_Llvm_NET_Instructions_ExtractElement.htm" />
+      <HelpTOCNode Id="97f8ca8a-a012-4e19-ac89-0a70bf7c37d4" Title="ExtractElement Class" Url="html/T_Llvm_NET_Instructions_ExtractElement.htm">
         <HelpTOCNode Title="ExtractElement Properties" Url="html/Properties_T_Llvm_NET_Instructions_ExtractElement.htm" />
+        <HelpTOCNode Title="ExtractElement Methods" Url="html/Methods_T_Llvm_NET_Instructions_ExtractElement.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e39ed68e-8bc5-4ad5-b495-7103c54930d3" Title="ExtractValue Class" Url="html/T_Llvm_NET_Instructions_ExtractValue.htm">
-        <HelpTOCNode Title="ExtractValue Methods" Url="html/Methods_T_Llvm_NET_Instructions_ExtractValue.htm" />
+      <HelpTOCNode Id="639a236f-b203-4063-9a80-ecb9f2596ac2" Title="ExtractValue Class" Url="html/T_Llvm_NET_Instructions_ExtractValue.htm">
         <HelpTOCNode Title="ExtractValue Properties" Url="html/Properties_T_Llvm_NET_Instructions_ExtractValue.htm" />
+        <HelpTOCNode Title="ExtractValue Methods" Url="html/Methods_T_Llvm_NET_Instructions_ExtractValue.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="71a331c4-0ce4-43a9-826c-bd21fb21829c" Title="FCmp Class" Url="html/T_Llvm_NET_Instructions_FCmp.htm">
-        <HelpTOCNode Title="FCmp Methods" Url="html/Methods_T_Llvm_NET_Instructions_FCmp.htm" />
+      <HelpTOCNode Id="e8d97b55-3bd9-436d-86ca-b5d082f906a3" Title="FCmp Class" Url="html/T_Llvm_NET_Instructions_FCmp.htm">
         <HelpTOCNode Title="FCmp Properties" Url="html/Properties_T_Llvm_NET_Instructions_FCmp.htm" />
+        <HelpTOCNode Title="FCmp Methods" Url="html/Methods_T_Llvm_NET_Instructions_FCmp.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a53fc9af-825e-4b09-bb3a-8aacc8032697" Title="Fence Class" Url="html/T_Llvm_NET_Instructions_Fence.htm">
-        <HelpTOCNode Title="Fence Methods" Url="html/Methods_T_Llvm_NET_Instructions_Fence.htm" />
+      <HelpTOCNode Id="dd8fca72-0993-48f8-a32d-6b199561f7eb" Title="Fence Class" Url="html/T_Llvm_NET_Instructions_Fence.htm">
         <HelpTOCNode Title="Fence Properties" Url="html/Properties_T_Llvm_NET_Instructions_Fence.htm" />
+        <HelpTOCNode Title="Fence Methods" Url="html/Methods_T_Llvm_NET_Instructions_Fence.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d05a7721-f95b-4451-9f85-77c77ecb96a0" Title="GetElementPtr Class" Url="html/T_Llvm_NET_Instructions_GetElementPtr.htm">
-        <HelpTOCNode Title="GetElementPtr Methods" Url="html/Methods_T_Llvm_NET_Instructions_GetElementPtr.htm" />
+      <HelpTOCNode Id="be265101-7920-418d-841a-58c661cac768" Title="GetElementPtr Class" Url="html/T_Llvm_NET_Instructions_GetElementPtr.htm">
         <HelpTOCNode Title="GetElementPtr Properties" Url="html/Properties_T_Llvm_NET_Instructions_GetElementPtr.htm" />
+        <HelpTOCNode Title="GetElementPtr Methods" Url="html/Methods_T_Llvm_NET_Instructions_GetElementPtr.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e57543da-cd06-4a8e-ad3c-21e8fb0c1792" Title="IndirectBranch Class" Url="html/T_Llvm_NET_Instructions_IndirectBranch.htm">
-        <HelpTOCNode Title="IndirectBranch Methods" Url="html/Methods_T_Llvm_NET_Instructions_IndirectBranch.htm" />
+      <HelpTOCNode Id="57c82976-baa5-443d-b294-7f938bdd98e6" Title="IndirectBranch Class" Url="html/T_Llvm_NET_Instructions_IndirectBranch.htm">
         <HelpTOCNode Title="IndirectBranch Properties" Url="html/Properties_T_Llvm_NET_Instructions_IndirectBranch.htm" />
+        <HelpTOCNode Title="IndirectBranch Methods" Url="html/Methods_T_Llvm_NET_Instructions_IndirectBranch.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f725e219-5e29-497b-8294-85150e404088" Title="InsertElement Class" Url="html/T_Llvm_NET_Instructions_InsertElement.htm">
-        <HelpTOCNode Title="InsertElement Methods" Url="html/Methods_T_Llvm_NET_Instructions_InsertElement.htm" />
+      <HelpTOCNode Id="e4c8af7d-5c37-45e0-b354-284b15d34f98" Title="InsertElement Class" Url="html/T_Llvm_NET_Instructions_InsertElement.htm">
         <HelpTOCNode Title="InsertElement Properties" Url="html/Properties_T_Llvm_NET_Instructions_InsertElement.htm" />
+        <HelpTOCNode Title="InsertElement Methods" Url="html/Methods_T_Llvm_NET_Instructions_InsertElement.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f75a61f3-328f-49f1-a85c-40df40d07323" Title="InsertValue Class" Url="html/T_Llvm_NET_Instructions_InsertValue.htm">
-        <HelpTOCNode Title="InsertValue Methods" Url="html/Methods_T_Llvm_NET_Instructions_InsertValue.htm" />
+      <HelpTOCNode Id="90b6f59a-a991-423d-a84a-0bd2be01e375" Title="InsertValue Class" Url="html/T_Llvm_NET_Instructions_InsertValue.htm">
         <HelpTOCNode Title="InsertValue Properties" Url="html/Properties_T_Llvm_NET_Instructions_InsertValue.htm" />
+        <HelpTOCNode Title="InsertValue Methods" Url="html/Methods_T_Llvm_NET_Instructions_InsertValue.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="abb59217-7f40-4d66-8fb7-dd07c604b355" Title="Instruction Class" Url="html/T_Llvm_NET_Instructions_Instruction.htm">
-        <HelpTOCNode Title="Instruction Methods" Url="html/Methods_T_Llvm_NET_Instructions_Instruction.htm" />
-        <HelpTOCNode Id="019531c4-2985-4523-851f-3c64e4bc554c" Title="Instruction Properties" Url="html/Properties_T_Llvm_NET_Instructions_Instruction.htm">
+      <HelpTOCNode Id="e5beb6f4-6fdc-48a6-8681-8aa817e6937f" Title="Instruction Class" Url="html/T_Llvm_NET_Instructions_Instruction.htm">
+        <HelpTOCNode Id="7603911e-ebbf-444b-a8b9-0e9df91cd4db" Title="Instruction Properties" Url="html/Properties_T_Llvm_NET_Instructions_Instruction.htm">
           <HelpTOCNode Title="Alignment Property " Url="html/P_Llvm_NET_Instructions_Instruction_Alignment.htm" />
           <HelpTOCNode Title="ContainingBlock Property " Url="html/P_Llvm_NET_Instructions_Instruction_ContainingBlock.htm" />
           <HelpTOCNode Title="IsMemoryAccess Property " Url="html/P_Llvm_NET_Instructions_Instruction_IsMemoryAccess.htm" />
           <HelpTOCNode Title="Opcode Property " Url="html/P_Llvm_NET_Instructions_Instruction_Opcode.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="Instruction Methods" Url="html/Methods_T_Llvm_NET_Instructions_Instruction.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="08df4360-2e80-45cc-bee3-ce72017cde7a" Title="InstructionExtensions Class" Url="html/T_Llvm_NET_Instructions_InstructionExtensions.htm">
-        <HelpTOCNode Id="cdb8568f-6c9e-492c-8144-a5f0a9b2b525" Title="InstructionExtensions Methods" Url="html/Methods_T_Llvm_NET_Instructions_InstructionExtensions.htm">
+      <HelpTOCNode Id="a0eb2ad6-28dd-46b7-a51f-08a3b70546bb" Title="InstructionExtensions Class" Url="html/T_Llvm_NET_Instructions_InstructionExtensions.htm">
+        <HelpTOCNode Id="6b3235bb-13bd-41ef-bf4f-7cde65a9ec19" Title="InstructionExtensions Methods" Url="html/Methods_T_Llvm_NET_Instructions_InstructionExtensions.htm">
           <HelpTOCNode Title="Alignment(T) Method " Url="html/M_Llvm_NET_Instructions_InstructionExtensions_Alignment__1.htm" />
           <HelpTOCNode Title="IsVolatile(T) Method " Url="html/M_Llvm_NET_Instructions_InstructionExtensions_IsVolatile__1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="b88fdaab-5f4c-4d8f-b511-5a80b259be7e" Title="IntCmp Class" Url="html/T_Llvm_NET_Instructions_IntCmp.htm">
-        <HelpTOCNode Title="IntCmp Methods" Url="html/Methods_T_Llvm_NET_Instructions_IntCmp.htm" />
+      <HelpTOCNode Id="e4f556ec-bc1b-489a-8274-861b828aeb91" Title="IntCmp Class" Url="html/T_Llvm_NET_Instructions_IntCmp.htm">
         <HelpTOCNode Title="IntCmp Properties" Url="html/Properties_T_Llvm_NET_Instructions_IntCmp.htm" />
+        <HelpTOCNode Title="IntCmp Methods" Url="html/Methods_T_Llvm_NET_Instructions_IntCmp.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="f9fbb58e-5b4c-414d-a002-e09a5dca7d86" Title="Intrinsic Class" Url="html/T_Llvm_NET_Instructions_Intrinsic.htm">
-        <HelpTOCNode Title="Intrinsic Methods" Url="html/Methods_T_Llvm_NET_Instructions_Intrinsic.htm" />
+      <HelpTOCNode Id="649dffb3-0d7a-463f-af4c-9039f93142fa" Title="Intrinsic Class" Url="html/T_Llvm_NET_Instructions_Intrinsic.htm">
         <HelpTOCNode Title="Intrinsic Properties" Url="html/Properties_T_Llvm_NET_Instructions_Intrinsic.htm" />
+        <HelpTOCNode Title="Intrinsic Methods" Url="html/Methods_T_Llvm_NET_Instructions_Intrinsic.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5f05560e-5f04-4f82-b35d-509fc733e17e" Title="IntToPointer Class" Url="html/T_Llvm_NET_Instructions_IntToPointer.htm">
-        <HelpTOCNode Title="IntToPointer Methods" Url="html/Methods_T_Llvm_NET_Instructions_IntToPointer.htm" />
+      <HelpTOCNode Id="ca9bf36a-5b0b-4b61-ab68-2fb41e5b1d04" Title="IntToPointer Class" Url="html/T_Llvm_NET_Instructions_IntToPointer.htm">
         <HelpTOCNode Title="IntToPointer Properties" Url="html/Properties_T_Llvm_NET_Instructions_IntToPointer.htm" />
+        <HelpTOCNode Title="IntToPointer Methods" Url="html/Methods_T_Llvm_NET_Instructions_IntToPointer.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="529ba2bd-e8f1-44d0-8152-276132683b04" Title="Invoke Class" Url="html/T_Llvm_NET_Instructions_Invoke.htm">
-        <HelpTOCNode Title="Invoke Methods" Url="html/Methods_T_Llvm_NET_Instructions_Invoke.htm" />
+      <HelpTOCNode Id="9b2e6b07-f59b-4444-a5b4-3b5340d42eb7" Title="Invoke Class" Url="html/T_Llvm_NET_Instructions_Invoke.htm">
         <HelpTOCNode Title="Invoke Properties" Url="html/Properties_T_Llvm_NET_Instructions_Invoke.htm" />
+        <HelpTOCNode Title="Invoke Methods" Url="html/Methods_T_Llvm_NET_Instructions_Invoke.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b471a49b-2408-4870-9518-53c7a4c8b2d1" Title="LandingPad Class" Url="html/T_Llvm_NET_Instructions_LandingPad.htm">
-        <HelpTOCNode Title="LandingPad Methods" Url="html/Methods_T_Llvm_NET_Instructions_LandingPad.htm" />
+      <HelpTOCNode Id="0937ebcc-3989-43cd-8739-0e2c33e01bb1" Title="LandingPad Class" Url="html/T_Llvm_NET_Instructions_LandingPad.htm">
         <HelpTOCNode Title="LandingPad Properties" Url="html/Properties_T_Llvm_NET_Instructions_LandingPad.htm" />
+        <HelpTOCNode Title="LandingPad Methods" Url="html/Methods_T_Llvm_NET_Instructions_LandingPad.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e624cd87-687d-4f82-a6da-e9515def345c" Title="Load Class" Url="html/T_Llvm_NET_Instructions_Load.htm">
-        <HelpTOCNode Title="Load Methods" Url="html/Methods_T_Llvm_NET_Instructions_Load.htm" />
-        <HelpTOCNode Id="141fa96f-efb2-45d9-8e1b-32be765bf571" Title="Load Properties" Url="html/Properties_T_Llvm_NET_Instructions_Load.htm">
+      <HelpTOCNode Id="129d9971-04e4-41b0-a409-73c4c91b363f" Title="Load Class" Url="html/T_Llvm_NET_Instructions_Load.htm">
+        <HelpTOCNode Id="db6ad102-5508-4d19-b79e-37905bfac491" Title="Load Properties" Url="html/Properties_T_Llvm_NET_Instructions_Load.htm">
           <HelpTOCNode Title="IsVolatile Property " Url="html/P_Llvm_NET_Instructions_Load_IsVolatile.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="Load Methods" Url="html/Methods_T_Llvm_NET_Instructions_Load.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ce10d52c-1e7d-4f6e-938e-d187e54fae1f" Title="MemCpy Class" Url="html/T_Llvm_NET_Instructions_MemCpy.htm">
-        <HelpTOCNode Title="MemCpy Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemCpy.htm" />
+      <HelpTOCNode Id="3097e1cc-0099-4cf2-961e-34a8b44c268f" Title="MemCpy Class" Url="html/T_Llvm_NET_Instructions_MemCpy.htm">
         <HelpTOCNode Title="MemCpy Properties" Url="html/Properties_T_Llvm_NET_Instructions_MemCpy.htm" />
+        <HelpTOCNode Title="MemCpy Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemCpy.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="b9b4cbaa-501f-413b-a0ce-e266d88dd4a5" Title="MemIntrinsic Class" Url="html/T_Llvm_NET_Instructions_MemIntrinsic.htm">
-        <HelpTOCNode Title="MemIntrinsic Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemIntrinsic.htm" />
+      <HelpTOCNode Id="37583710-d0ab-4a11-8148-aaa2d590956f" Title="MemIntrinsic Class" Url="html/T_Llvm_NET_Instructions_MemIntrinsic.htm">
         <HelpTOCNode Title="MemIntrinsic Properties" Url="html/Properties_T_Llvm_NET_Instructions_MemIntrinsic.htm" />
+        <HelpTOCNode Title="MemIntrinsic Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemIntrinsic.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="a29ffe06-4b7b-4ffe-9fbc-805673000930" Title="MemMove Class" Url="html/T_Llvm_NET_Instructions_MemMove.htm">
-        <HelpTOCNode Title="MemMove Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemMove.htm" />
+      <HelpTOCNode Id="0f4d735a-71bb-448f-b3b4-436de9fffb7e" Title="MemMove Class" Url="html/T_Llvm_NET_Instructions_MemMove.htm">
         <HelpTOCNode Title="MemMove Properties" Url="html/Properties_T_Llvm_NET_Instructions_MemMove.htm" />
+        <HelpTOCNode Title="MemMove Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemMove.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="36a8fb5e-7d96-4d0f-8287-d3fbdbf98a2b" Title="MemSet Class" Url="html/T_Llvm_NET_Instructions_MemSet.htm">
-        <HelpTOCNode Title="MemSet Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemSet.htm" />
+      <HelpTOCNode Id="7cfec6a9-f1bd-4a8c-b986-01135b6b6df9" Title="MemSet Class" Url="html/T_Llvm_NET_Instructions_MemSet.htm">
         <HelpTOCNode Title="MemSet Properties" Url="html/Properties_T_Llvm_NET_Instructions_MemSet.htm" />
+        <HelpTOCNode Title="MemSet Methods" Url="html/Methods_T_Llvm_NET_Instructions_MemSet.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="429df772-7c67-4985-b810-b95aaa18e668" Title="PhiNode Class" Url="html/T_Llvm_NET_Instructions_PhiNode.htm">
-        <HelpTOCNode Id="fce868a8-35f9-4bfd-9b83-5df6ccec10ac" Title="PhiNode Methods" Url="html/Methods_T_Llvm_NET_Instructions_PhiNode.htm">
-          <HelpTOCNode Id="4762b25f-88a5-411f-8326-4ca1e2b96523" Title="AddIncoming Method " Url="html/Overload_Llvm_NET_Instructions_PhiNode_AddIncoming.htm">
+      <HelpTOCNode Id="5d578a25-18ac-47f6-b83d-1280a82988e9" Title="PhiNode Class" Url="html/T_Llvm_NET_Instructions_PhiNode.htm">
+        <HelpTOCNode Title="PhiNode Properties" Url="html/Properties_T_Llvm_NET_Instructions_PhiNode.htm" />
+        <HelpTOCNode Id="a8a024e3-1aa6-4b94-a7bf-87671ac5e72a" Title="PhiNode Methods" Url="html/Methods_T_Llvm_NET_Instructions_PhiNode.htm">
+          <HelpTOCNode Id="4e00c548-cacd-4ee4-aea3-d71a562b0e84" Title="AddIncoming Method " Url="html/Overload_Llvm_NET_Instructions_PhiNode_AddIncoming.htm">
             <HelpTOCNode Title="AddIncoming Method (Value, BasicBlock)" Url="html/M_Llvm_NET_Instructions_PhiNode_AddIncoming.htm" />
             <HelpTOCNode Title="AddIncoming Method (Tuple(Value, BasicBlock), Tuple(Value, BasicBlock)[])" Url="html/M_Llvm_NET_Instructions_PhiNode_AddIncoming_1.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Title="PhiNode Properties" Url="html/Properties_T_Llvm_NET_Instructions_PhiNode.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e5ea59f0-0504-4cb0-957f-626a674082ef" Title="PointerToInt Class" Url="html/T_Llvm_NET_Instructions_PointerToInt.htm">
-        <HelpTOCNode Title="PointerToInt Methods" Url="html/Methods_T_Llvm_NET_Instructions_PointerToInt.htm" />
+      <HelpTOCNode Id="ad40e7d7-a158-4bbf-861c-6b340f6607ef" Title="PointerToInt Class" Url="html/T_Llvm_NET_Instructions_PointerToInt.htm">
         <HelpTOCNode Title="PointerToInt Properties" Url="html/Properties_T_Llvm_NET_Instructions_PointerToInt.htm" />
+        <HelpTOCNode Title="PointerToInt Methods" Url="html/Methods_T_Llvm_NET_Instructions_PointerToInt.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="fcbb0235-8853-4657-a8b9-362b2a200146" Title="Resume Class" Url="html/T_Llvm_NET_Instructions_Resume.htm">
-        <HelpTOCNode Title="Resume Methods" Url="html/Methods_T_Llvm_NET_Instructions_Resume.htm" />
+      <HelpTOCNode Id="6dd55d15-7aae-4de5-8750-048b31816f0f" Title="Resume Class" Url="html/T_Llvm_NET_Instructions_Resume.htm">
         <HelpTOCNode Title="Resume Properties" Url="html/Properties_T_Llvm_NET_Instructions_Resume.htm" />
+        <HelpTOCNode Title="Resume Methods" Url="html/Methods_T_Llvm_NET_Instructions_Resume.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bf5a38f4-3947-434a-bc13-3989b417b000" Title="Return Class" Url="html/T_Llvm_NET_Instructions_Return.htm">
-        <HelpTOCNode Title="Return Methods" Url="html/Methods_T_Llvm_NET_Instructions_Return.htm" />
+      <HelpTOCNode Id="0cc55910-b6e5-445c-a233-a2e6e8a35d17" Title="Return Class" Url="html/T_Llvm_NET_Instructions_Return.htm">
         <HelpTOCNode Title="Return Properties" Url="html/Properties_T_Llvm_NET_Instructions_Return.htm" />
+        <HelpTOCNode Title="Return Methods" Url="html/Methods_T_Llvm_NET_Instructions_Return.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="96895d07-1dc3-4fa5-b3b3-c98887b2c748" Title="ShuffleVector Class" Url="html/T_Llvm_NET_Instructions_ShuffleVector.htm">
-        <HelpTOCNode Title="ShuffleVector Methods" Url="html/Methods_T_Llvm_NET_Instructions_ShuffleVector.htm" />
+      <HelpTOCNode Id="80541eba-32bb-48c5-bc8f-a067abede0f5" Title="ShuffleVector Class" Url="html/T_Llvm_NET_Instructions_ShuffleVector.htm">
         <HelpTOCNode Title="ShuffleVector Properties" Url="html/Properties_T_Llvm_NET_Instructions_ShuffleVector.htm" />
+        <HelpTOCNode Title="ShuffleVector Methods" Url="html/Methods_T_Llvm_NET_Instructions_ShuffleVector.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="44acbb08-6351-4e09-a2a0-c9160e8f64e9" Title="SignExtend Class" Url="html/T_Llvm_NET_Instructions_SignExtend.htm">
-        <HelpTOCNode Title="SignExtend Methods" Url="html/Methods_T_Llvm_NET_Instructions_SignExtend.htm" />
+      <HelpTOCNode Id="5ab5483b-2efc-4dbf-ac10-471d5f2b6cf2" Title="SignExtend Class" Url="html/T_Llvm_NET_Instructions_SignExtend.htm">
         <HelpTOCNode Title="SignExtend Properties" Url="html/Properties_T_Llvm_NET_Instructions_SignExtend.htm" />
+        <HelpTOCNode Title="SignExtend Methods" Url="html/Methods_T_Llvm_NET_Instructions_SignExtend.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6d663851-e3b4-4088-8291-27a1ae590eca" Title="Store Class" Url="html/T_Llvm_NET_Instructions_Store.htm">
-        <HelpTOCNode Title="Store Methods" Url="html/Methods_T_Llvm_NET_Instructions_Store.htm" />
-        <HelpTOCNode Id="7acf47c4-66c4-4d25-8bde-733543dda23d" Title="Store Properties" Url="html/Properties_T_Llvm_NET_Instructions_Store.htm">
+      <HelpTOCNode Id="2e549d7e-d07b-4e43-a346-bbfc1373c8b1" Title="Store Class" Url="html/T_Llvm_NET_Instructions_Store.htm">
+        <HelpTOCNode Id="d9c6c554-f94b-4aff-bc50-4e3c765fd46a" Title="Store Properties" Url="html/Properties_T_Llvm_NET_Instructions_Store.htm">
           <HelpTOCNode Title="IsVolatile Property " Url="html/P_Llvm_NET_Instructions_Store_IsVolatile.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="Store Methods" Url="html/Methods_T_Llvm_NET_Instructions_Store.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="900add0d-49d3-4ae5-bea1-1d82d4350ea4" Title="Switch Class" Url="html/T_Llvm_NET_Instructions_Switch.htm">
-        <HelpTOCNode Id="ef0e580f-a5fe-48ca-af42-4612f6378658" Title="Switch Methods" Url="html/Methods_T_Llvm_NET_Instructions_Switch.htm">
-          <HelpTOCNode Title="AddCase Method " Url="html/M_Llvm_NET_Instructions_Switch_AddCase.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="b3c93cc2-a2e8-4ba3-b5f0-7d8b93909e0f" Title="Switch Properties" Url="html/Properties_T_Llvm_NET_Instructions_Switch.htm">
+      <HelpTOCNode Id="3e72d0bf-f9b8-49ce-8eaf-17647caacdfd" Title="Switch Class" Url="html/T_Llvm_NET_Instructions_Switch.htm">
+        <HelpTOCNode Id="8eaaac0c-85a1-4a98-9665-6d22843d2192" Title="Switch Properties" Url="html/Properties_T_Llvm_NET_Instructions_Switch.htm">
           <HelpTOCNode Title="Default Property " Url="html/P_Llvm_NET_Instructions_Switch_Default.htm" />
         </HelpTOCNode>
-      </HelpTOCNode>
-      <HelpTOCNode Id="5ad9307b-004b-475c-a941-aeffc11e5354" Title="Terminator Class" Url="html/T_Llvm_NET_Instructions_Terminator.htm">
-        <HelpTOCNode Title="Terminator Methods" Url="html/Methods_T_Llvm_NET_Instructions_Terminator.htm" />
-        <HelpTOCNode Title="Terminator Properties" Url="html/Properties_T_Llvm_NET_Instructions_Terminator.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="b73bdc18-6468-4f9d-8bba-d0c1fe6a1225" Title="Trunc Class" Url="html/T_Llvm_NET_Instructions_Trunc.htm">
-        <HelpTOCNode Title="Trunc Methods" Url="html/Methods_T_Llvm_NET_Instructions_Trunc.htm" />
-        <HelpTOCNode Title="Trunc Properties" Url="html/Properties_T_Llvm_NET_Instructions_Trunc.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="1dc000bb-ad18-42a2-a6ea-29fcef4209c8" Title="UnaryInstruction Class" Url="html/T_Llvm_NET_Instructions_UnaryInstruction.htm">
-        <HelpTOCNode Title="UnaryInstruction Methods" Url="html/Methods_T_Llvm_NET_Instructions_UnaryInstruction.htm" />
-        <HelpTOCNode Title="UnaryInstruction Properties" Url="html/Properties_T_Llvm_NET_Instructions_UnaryInstruction.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="a27f3485-88ba-403f-943b-d5a53e378186" Title="Unreachable Class" Url="html/T_Llvm_NET_Instructions_Unreachable.htm">
-        <HelpTOCNode Title="Unreachable Methods" Url="html/Methods_T_Llvm_NET_Instructions_Unreachable.htm" />
-        <HelpTOCNode Title="Unreachable Properties" Url="html/Properties_T_Llvm_NET_Instructions_Unreachable.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="ccbc680c-7be2-4f18-a7e1-79bc6a50d867" Title="ZeroExtend Class" Url="html/T_Llvm_NET_Instructions_ZeroExtend.htm">
-        <HelpTOCNode Title="ZeroExtend Methods" Url="html/Methods_T_Llvm_NET_Instructions_ZeroExtend.htm" />
-        <HelpTOCNode Title="ZeroExtend Properties" Url="html/Properties_T_Llvm_NET_Instructions_ZeroExtend.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="fd0494aa-398e-46c8-b1d5-919b855fd80a" Title="Llvm.NET.Types" Url="html/N_Llvm_NET_Types.htm">
-      <HelpTOCNode Id="985b68e3-966e-4691-9a04-f1fbf835bbba" Title="IArrayType Interface" Url="html/T_Llvm_NET_Types_IArrayType.htm">
-        <HelpTOCNode Title="IArrayType Methods" Url="html/Methods_T_Llvm_NET_Types_IArrayType.htm" />
-        <HelpTOCNode Id="2905a9c0-9d4c-4948-840e-81cdf1b7e3e7" Title="IArrayType Properties" Url="html/Properties_T_Llvm_NET_Types_IArrayType.htm">
-          <HelpTOCNode Title="Length Property " Url="html/P_Llvm_NET_Types_IArrayType_Length.htm" />
+        <HelpTOCNode Id="b8a97fb9-7dc6-4bf8-9ca3-c95d20cf7d6c" Title="Switch Methods" Url="html/Methods_T_Llvm_NET_Instructions_Switch.htm">
+          <HelpTOCNode Title="AddCase Method " Url="html/M_Llvm_NET_Instructions_Switch_AddCase.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="9612bea6-b277-48e1-8e7a-6cf8da828620" Title="IFunctionType Interface" Url="html/T_Llvm_NET_Types_IFunctionType.htm">
-        <HelpTOCNode Title="IFunctionType Methods" Url="html/Methods_T_Llvm_NET_Types_IFunctionType.htm" />
-        <HelpTOCNode Id="ad326cab-648c-4f96-aa1c-353edf6f70d0" Title="IFunctionType Properties" Url="html/Properties_T_Llvm_NET_Types_IFunctionType.htm">
+      <HelpTOCNode Id="341ee0bc-8f53-4ce1-ada3-4262364f963f" Title="Terminator Class" Url="html/T_Llvm_NET_Instructions_Terminator.htm">
+        <HelpTOCNode Title="Terminator Properties" Url="html/Properties_T_Llvm_NET_Instructions_Terminator.htm" />
+        <HelpTOCNode Title="Terminator Methods" Url="html/Methods_T_Llvm_NET_Instructions_Terminator.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="cb88ae81-5a11-45c6-a3dc-b419f8439293" Title="Trunc Class" Url="html/T_Llvm_NET_Instructions_Trunc.htm">
+        <HelpTOCNode Title="Trunc Properties" Url="html/Properties_T_Llvm_NET_Instructions_Trunc.htm" />
+        <HelpTOCNode Title="Trunc Methods" Url="html/Methods_T_Llvm_NET_Instructions_Trunc.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="71cb5fff-c50a-4927-870c-c931d73c9355" Title="UnaryInstruction Class" Url="html/T_Llvm_NET_Instructions_UnaryInstruction.htm">
+        <HelpTOCNode Title="UnaryInstruction Properties" Url="html/Properties_T_Llvm_NET_Instructions_UnaryInstruction.htm" />
+        <HelpTOCNode Title="UnaryInstruction Methods" Url="html/Methods_T_Llvm_NET_Instructions_UnaryInstruction.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6e29c619-1be1-4f0d-9ae9-69d89173df9a" Title="Unreachable Class" Url="html/T_Llvm_NET_Instructions_Unreachable.htm">
+        <HelpTOCNode Title="Unreachable Properties" Url="html/Properties_T_Llvm_NET_Instructions_Unreachable.htm" />
+        <HelpTOCNode Title="Unreachable Methods" Url="html/Methods_T_Llvm_NET_Instructions_Unreachable.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="8134a113-9221-46ef-bf71-f689bf4a387c" Title="ZeroExtend Class" Url="html/T_Llvm_NET_Instructions_ZeroExtend.htm">
+        <HelpTOCNode Title="ZeroExtend Properties" Url="html/Properties_T_Llvm_NET_Instructions_ZeroExtend.htm" />
+        <HelpTOCNode Title="ZeroExtend Methods" Url="html/Methods_T_Llvm_NET_Instructions_ZeroExtend.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c29dbf62-e8e2-4b37-bb73-7ced912eadff" Title="Llvm.NET.Types" Url="html/N_Llvm_NET_Types.htm">
+      <HelpTOCNode Id="c7ae7a2f-e8de-4e07-9cf2-3b9e94395ef4" Title="IArrayType Interface" Url="html/T_Llvm_NET_Types_IArrayType.htm">
+        <HelpTOCNode Id="5cd06835-5987-41bd-a5af-e4be95d4e476" Title="IArrayType Properties" Url="html/Properties_T_Llvm_NET_Types_IArrayType.htm">
+          <HelpTOCNode Title="Length Property " Url="html/P_Llvm_NET_Types_IArrayType_Length.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IArrayType Methods" Url="html/Methods_T_Llvm_NET_Types_IArrayType.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6814b55f-e9c2-402d-b1dc-74143d010c4f" Title="IFunctionType Interface" Url="html/T_Llvm_NET_Types_IFunctionType.htm">
+        <HelpTOCNode Id="af566a9b-6a5b-46ff-b077-c5f8f91464b3" Title="IFunctionType Properties" Url="html/Properties_T_Llvm_NET_Types_IFunctionType.htm">
           <HelpTOCNode Title="IsVarArg Property " Url="html/P_Llvm_NET_Types_IFunctionType_IsVarArg.htm" />
           <HelpTOCNode Title="ParameterTypes Property " Url="html/P_Llvm_NET_Types_IFunctionType_ParameterTypes.htm" />
           <HelpTOCNode Title="ReturnType Property " Url="html/P_Llvm_NET_Types_IFunctionType_ReturnType.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="IFunctionType Methods" Url="html/Methods_T_Llvm_NET_Types_IFunctionType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bfe289f2-890e-4238-8c94-d0999d8db855" Title="IPointerType Interface" Url="html/T_Llvm_NET_Types_IPointerType.htm">
-        <HelpTOCNode Title="IPointerType Methods" Url="html/Methods_T_Llvm_NET_Types_IPointerType.htm" />
-        <HelpTOCNode Id="f9a759b9-2d17-4eea-95be-653dc268572b" Title="IPointerType Properties" Url="html/Properties_T_Llvm_NET_Types_IPointerType.htm">
+      <HelpTOCNode Id="8f364f9b-3c63-4c0f-a5b3-225f5c9aed5c" Title="IPointerType Interface" Url="html/T_Llvm_NET_Types_IPointerType.htm">
+        <HelpTOCNode Id="481b108e-ad10-414d-93ca-f836014a4fc7" Title="IPointerType Properties" Url="html/Properties_T_Llvm_NET_Types_IPointerType.htm">
           <HelpTOCNode Title="AddressSpace Property " Url="html/P_Llvm_NET_Types_IPointerType_AddressSpace.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="IPointerType Methods" Url="html/Methods_T_Llvm_NET_Types_IPointerType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="1407a972-b8f3-43ff-8ce1-d37d02dd70c8" Title="ISequenceType Interface" Url="html/T_Llvm_NET_Types_ISequenceType.htm">
-        <HelpTOCNode Title="ISequenceType Methods" Url="html/Methods_T_Llvm_NET_Types_ISequenceType.htm" />
-        <HelpTOCNode Id="ab4ad630-f033-466f-af3d-b4c8c714110b" Title="ISequenceType Properties" Url="html/Properties_T_Llvm_NET_Types_ISequenceType.htm">
+      <HelpTOCNode Id="36bc98c3-54cf-4e85-8c4b-1bfa765dbbc6" Title="ISequenceType Interface" Url="html/T_Llvm_NET_Types_ISequenceType.htm">
+        <HelpTOCNode Id="189474ac-ad26-4be9-982a-e02971ecda8a" Title="ISequenceType Properties" Url="html/Properties_T_Llvm_NET_Types_ISequenceType.htm">
           <HelpTOCNode Title="ElementType Property " Url="html/P_Llvm_NET_Types_ISequenceType_ElementType.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="ISequenceType Methods" Url="html/Methods_T_Llvm_NET_Types_ISequenceType.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="daf4da3e-9b59-401e-a514-76452a1a86df" Title="IStructType Interface" Url="html/T_Llvm_NET_Types_IStructType.htm">
-        <HelpTOCNode Id="05fe0223-a8b1-4508-8084-ca8ac6989da6" Title="IStructType Methods" Url="html/Methods_T_Llvm_NET_Types_IStructType.htm">
-          <HelpTOCNode Title="SetBody Method " Url="html/M_Llvm_NET_Types_IStructType_SetBody.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="8c9142a1-57b4-4ec6-bd0b-bd409ea738e9" Title="IStructType Properties" Url="html/Properties_T_Llvm_NET_Types_IStructType.htm">
+      <HelpTOCNode Id="487f0bed-b079-46f7-8415-15d0ba32af0a" Title="IStructType Interface" Url="html/T_Llvm_NET_Types_IStructType.htm">
+        <HelpTOCNode Id="f695f090-a077-4b18-973e-13c0e432fa21" Title="IStructType Properties" Url="html/Properties_T_Llvm_NET_Types_IStructType.htm">
           <HelpTOCNode Title="IsOpaque Property " Url="html/P_Llvm_NET_Types_IStructType_IsOpaque.htm" />
           <HelpTOCNode Title="IsPacked Property " Url="html/P_Llvm_NET_Types_IStructType_IsPacked.htm" />
           <HelpTOCNode Title="Members Property " Url="html/P_Llvm_NET_Types_IStructType_Members.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_Types_IStructType_Name.htm" />
         </HelpTOCNode>
-      </HelpTOCNode>
-      <HelpTOCNode Id="0b26ffc4-492c-4b39-9aee-168e660b0b2e" Title="ITypeRef Interface" Url="html/T_Llvm_NET_Types_ITypeRef.htm">
-        <HelpTOCNode Id="56a40fad-a801-4b23-9254-6634583ec251" Title="ITypeRef Methods" Url="html/Methods_T_Llvm_NET_Types_ITypeRef.htm">
-          <HelpTOCNode Title="CreateArrayType Method " Url="html/M_Llvm_NET_Types_ITypeRef_CreateArrayType.htm" />
-          <HelpTOCNode Id="7326ae8f-19fa-4ef6-b680-86e6eb4dfd0f" Title="CreatePointerType Method " Url="html/Overload_Llvm_NET_Types_ITypeRef_CreatePointerType.htm">
-            <HelpTOCNode Title="CreatePointerType Method " Url="html/M_Llvm_NET_Types_ITypeRef_CreatePointerType.htm" />
-            <HelpTOCNode Title="CreatePointerType Method (UInt32)" Url="html/M_Llvm_NET_Types_ITypeRef_CreatePointerType_1.htm" />
-          </HelpTOCNode>
-          <HelpTOCNode Title="GetNullValue Method " Url="html/M_Llvm_NET_Types_ITypeRef_GetNullValue.htm" />
+        <HelpTOCNode Id="9add7148-c693-422f-986d-75e4ad42ead7" Title="IStructType Methods" Url="html/Methods_T_Llvm_NET_Types_IStructType.htm">
+          <HelpTOCNode Title="SetBody Method " Url="html/M_Llvm_NET_Types_IStructType_SetBody.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="43910cd8-f666-4e80-aece-760f624c58f8" Title="ITypeRef Properties" Url="html/Properties_T_Llvm_NET_Types_ITypeRef.htm">
+      </HelpTOCNode>
+      <HelpTOCNode Id="2695420b-f261-4498-bcba-a070ad0dc9d6" Title="ITypeRef Interface" Url="html/T_Llvm_NET_Types_ITypeRef.htm">
+        <HelpTOCNode Id="434475c0-c63b-4b71-9877-e405debad3d6" Title="ITypeRef Properties" Url="html/Properties_T_Llvm_NET_Types_ITypeRef.htm">
           <HelpTOCNode Title="Context Property " Url="html/P_Llvm_NET_Types_ITypeRef_Context.htm" />
           <HelpTOCNode Title="IntegerBitWidth Property " Url="html/P_Llvm_NET_Types_ITypeRef_IntegerBitWidth.htm" />
           <HelpTOCNode Title="IsDouble Property " Url="html/P_Llvm_NET_Types_ITypeRef_IsDouble.htm" />
@@ -1031,45 +1042,46 @@
           <HelpTOCNode Title="Kind Property " Url="html/P_Llvm_NET_Types_ITypeRef_Kind.htm" />
           <HelpTOCNode Title="TypeHandle Property " Url="html/P_Llvm_NET_Types_ITypeRef_TypeHandle.htm" />
         </HelpTOCNode>
-      </HelpTOCNode>
-      <HelpTOCNode Id="18210358-fd0c-4933-ac66-84a076dc56b3" Title="IVectorType Interface" Url="html/T_Llvm_NET_Types_IVectorType.htm">
-        <HelpTOCNode Title="IVectorType Methods" Url="html/Methods_T_Llvm_NET_Types_IVectorType.htm" />
-        <HelpTOCNode Id="5d0df2f0-5d4e-4ad4-b3ab-80a87256a653" Title="IVectorType Properties" Url="html/Properties_T_Llvm_NET_Types_IVectorType.htm">
-          <HelpTOCNode Title="Size Property " Url="html/P_Llvm_NET_Types_IVectorType_Size.htm" />
+        <HelpTOCNode Id="c612e988-aa33-4275-ab9f-619094e052dc" Title="ITypeRef Methods" Url="html/Methods_T_Llvm_NET_Types_ITypeRef.htm">
+          <HelpTOCNode Title="CreateArrayType Method " Url="html/M_Llvm_NET_Types_ITypeRef_CreateArrayType.htm" />
+          <HelpTOCNode Id="10c17ed2-eae2-41cd-8af3-b2c05ca98669" Title="CreatePointerType Method " Url="html/Overload_Llvm_NET_Types_ITypeRef_CreatePointerType.htm">
+            <HelpTOCNode Title="CreatePointerType Method " Url="html/M_Llvm_NET_Types_ITypeRef_CreatePointerType.htm" />
+            <HelpTOCNode Title="CreatePointerType Method (UInt32)" Url="html/M_Llvm_NET_Types_ITypeRef_CreatePointerType_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="GetNullValue Method " Url="html/M_Llvm_NET_Types_ITypeRef_GetNullValue.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
+      <HelpTOCNode Id="b68a1f31-cc8a-45f6-9811-e3ca094c9d21" Title="IVectorType Interface" Url="html/T_Llvm_NET_Types_IVectorType.htm">
+        <HelpTOCNode Id="7f58de9d-3d10-45d0-9ac2-8c500e454025" Title="IVectorType Properties" Url="html/Properties_T_Llvm_NET_Types_IVectorType.htm">
+          <HelpTOCNode Title="Size Property " Url="html/P_Llvm_NET_Types_IVectorType_Size.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IVectorType Methods" Url="html/Methods_T_Llvm_NET_Types_IVectorType.htm" />
+      </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="db0eb98b-fdbb-48ab-8bd5-a7ee31f3e488" Title="Llvm.NET.Values" Url="html/N_Llvm_NET_Values.htm">
-      <HelpTOCNode Id="2c204df5-1464-4165-8c86-a1045ce491b7" Title="Argument Class" Url="html/T_Llvm_NET_Values_Argument.htm">
-        <HelpTOCNode Id="2cc211ce-531a-45e7-be85-d503e4f8c59d" Title="Argument Methods" Url="html/Methods_T_Llvm_NET_Values_Argument.htm">
-          <HelpTOCNode Id="e1fa8cee-8f70-44f4-b3d0-35398e7eee76" Title="AddAttributes Method " Url="html/Overload_Llvm_NET_Values_Argument_AddAttributes.htm">
+    <HelpTOCNode Id="fcc3a91a-c9b2-467d-aad1-a6839612f2b9" Title="Llvm.NET.Values" Url="html/N_Llvm_NET_Values.htm">
+      <HelpTOCNode Id="b664a62c-817b-4b07-bb66-fa7698a97c07" Title="Argument Class" Url="html/T_Llvm_NET_Values_Argument.htm">
+        <HelpTOCNode Id="ea86716f-cf39-4e93-a827-f628cbe6893c" Title="Argument Properties" Url="html/Properties_T_Llvm_NET_Values_Argument.htm">
+          <HelpTOCNode Title="Attributes Property " Url="html/P_Llvm_NET_Values_Argument_Attributes.htm" />
+          <HelpTOCNode Title="ContainingFunction Property " Url="html/P_Llvm_NET_Values_Argument_ContainingFunction.htm" />
+          <HelpTOCNode Title="Index Property " Url="html/P_Llvm_NET_Values_Argument_Index.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="36bbb9f8-4b05-47f6-81fe-856a7f0869f9" Title="Argument Methods" Url="html/Methods_T_Llvm_NET_Values_Argument.htm">
+          <HelpTOCNode Id="193fc15b-db0e-41b1-b33d-03a71968f276" Title="AddAttributes Method " Url="html/Overload_Llvm_NET_Values_Argument_AddAttributes.htm">
             <HelpTOCNode Title="AddAttributes Method (AttributeValue[])" Url="html/M_Llvm_NET_Values_Argument_AddAttributes.htm" />
             <HelpTOCNode Title="AddAttributes Method (IEnumerable(AttributeValue))" Url="html/M_Llvm_NET_Values_Argument_AddAttributes_1.htm" />
           </HelpTOCNode>
           <HelpTOCNode Title="SetAlignment Method " Url="html/M_Llvm_NET_Values_Argument_SetAlignment.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="490b7c36-7d6c-412d-a96d-0096ff5e57d1" Title="Argument Properties" Url="html/Properties_T_Llvm_NET_Values_Argument.htm">
-          <HelpTOCNode Title="Attributes Property " Url="html/P_Llvm_NET_Values_Argument_Attributes.htm" />
-          <HelpTOCNode Title="ContainingFunction Property " Url="html/P_Llvm_NET_Values_Argument_ContainingFunction.htm" />
-          <HelpTOCNode Title="Index Property " Url="html/P_Llvm_NET_Values_Argument_Index.htm" />
-        </HelpTOCNode>
       </HelpTOCNode>
       <HelpTOCNode Title="AsmDialect Enumeration" Url="html/T_Llvm_NET_Values_AsmDialect.htm" />
-      <HelpTOCNode Id="594e2072-325a-4654-8445-805e9781bd04" Title="AttributeValue Structure" Url="html/T_Llvm_NET_Values_AttributeValue.htm">
-        <HelpTOCNode Id="89016b7f-ea22-4ad2-be06-978be361a375" Title="AttributeValue Constructor " Url="html/Overload_Llvm_NET_Values_AttributeValue__ctor.htm">
+      <HelpTOCNode Id="7a036fe7-0f17-4dc5-a13f-562c04215e9b" Title="AttributeValue Structure" Url="html/T_Llvm_NET_Values_AttributeValue.htm">
+        <HelpTOCNode Id="aa1f3ecb-73e9-4d27-8451-a1008d59fd1a" Title="AttributeValue Constructor " Url="html/Overload_Llvm_NET_Values_AttributeValue__ctor.htm">
           <HelpTOCNode Title="AttributeValue Constructor (String)" Url="html/M_Llvm_NET_Values_AttributeValue__ctor_2.htm" />
           <HelpTOCNode Title="AttributeValue Constructor (AttributeKind)" Url="html/M_Llvm_NET_Values_AttributeValue__ctor.htm" />
           <HelpTOCNode Title="AttributeValue Constructor (String, String)" Url="html/M_Llvm_NET_Values_AttributeValue__ctor_3.htm" />
           <HelpTOCNode Title="AttributeValue Constructor (AttributeKind, UInt64)" Url="html/M_Llvm_NET_Values_AttributeValue__ctor_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="AttributeValue Methods" Url="html/Methods_T_Llvm_NET_Values_AttributeValue.htm" />
-        <HelpTOCNode Id="bfc47d47-d471-41d5-8240-62ac9866f51a" Title="AttributeValue Type Conversions" Url="html/Operators_T_Llvm_NET_Values_AttributeValue.htm">
-          <HelpTOCNode Id="9bcfef80-f7cb-4c80-be78-eeda9103c2e8" Title="Implicit Conversion Operators" Url="html/Overload_Llvm_NET_Values_AttributeValue_op_Implicit.htm">
-            <HelpTOCNode Title="Implicit Conversion (String to AttributeValue)" Url="html/M_Llvm_NET_Values_AttributeValue_op_Implicit_1.htm" />
-            <HelpTOCNode Title="Implicit Conversion (AttributeKind to AttributeValue)" Url="html/M_Llvm_NET_Values_AttributeValue_op_Implicit.htm" />
-          </HelpTOCNode>
-        </HelpTOCNode>
-        <HelpTOCNode Id="e7f8c695-eaef-43c1-baad-281f606eef56" Title="AttributeValue Properties" Url="html/Properties_T_Llvm_NET_Values_AttributeValue.htm">
+        <HelpTOCNode Id="9e287b50-8468-459d-830a-d4a0a991a9fb" Title="AttributeValue Properties" Url="html/Properties_T_Llvm_NET_Values_AttributeValue.htm">
           <HelpTOCNode Title="IntegerValue Property " Url="html/P_Llvm_NET_Values_AttributeValue_IntegerValue.htm" />
           <HelpTOCNode Title="IsEnum Property " Url="html/P_Llvm_NET_Values_AttributeValue_IsEnum.htm" />
           <HelpTOCNode Title="IsInt Property " Url="html/P_Llvm_NET_Values_AttributeValue_IsInt.htm" />
@@ -1078,114 +1090,110 @@
           <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_Values_AttributeValue_Name.htm" />
           <HelpTOCNode Title="StringValue Property " Url="html/P_Llvm_NET_Values_AttributeValue_StringValue.htm" />
         </HelpTOCNode>
-      </HelpTOCNode>
-      <HelpTOCNode Id="233cc1b7-d84a-47be-b3a8-385e57d3e06b" Title="BasicBlock Class" Url="html/T_Llvm_NET_Values_BasicBlock.htm">
-        <HelpTOCNode Id="d9562e27-6d38-444b-856f-06c2fee156f0" Title="BasicBlock Methods" Url="html/Methods_T_Llvm_NET_Values_BasicBlock.htm">
-          <HelpTOCNode Title="GetNextInstruction Method " Url="html/M_Llvm_NET_Values_BasicBlock_GetNextInstruction.htm" />
+        <HelpTOCNode Title="AttributeValue Methods" Url="html/Methods_T_Llvm_NET_Values_AttributeValue.htm" />
+        <HelpTOCNode Id="c17726bb-a2e1-46c7-b728-dee24c3a7955" Title="AttributeValue Type Conversions" Url="html/Operators_T_Llvm_NET_Values_AttributeValue.htm">
+          <HelpTOCNode Id="11bd861f-576f-4b2c-941a-5a3304b45c42" Title="Implicit Conversion Operators" Url="html/Overload_Llvm_NET_Values_AttributeValue_op_Implicit.htm">
+            <HelpTOCNode Title="Implicit Conversion (String to AttributeValue)" Url="html/M_Llvm_NET_Values_AttributeValue_op_Implicit_1.htm" />
+            <HelpTOCNode Title="Implicit Conversion (AttributeKind to AttributeValue)" Url="html/M_Llvm_NET_Values_AttributeValue_op_Implicit.htm" />
+          </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="c583b360-a396-4a42-b61a-1277dac62539" Title="BasicBlock Properties" Url="html/Properties_T_Llvm_NET_Values_BasicBlock.htm">
+      </HelpTOCNode>
+      <HelpTOCNode Id="b352f77c-2845-4579-a378-593d671dc7d5" Title="BasicBlock Class" Url="html/T_Llvm_NET_Values_BasicBlock.htm">
+        <HelpTOCNode Id="2c1d11df-5c08-48a7-b8a6-e59af6bb2a58" Title="BasicBlock Properties" Url="html/Properties_T_Llvm_NET_Values_BasicBlock.htm">
           <HelpTOCNode Title="ContainingFunction Property " Url="html/P_Llvm_NET_Values_BasicBlock_ContainingFunction.htm" />
           <HelpTOCNode Title="FirstInstruction Property " Url="html/P_Llvm_NET_Values_BasicBlock_FirstInstruction.htm" />
           <HelpTOCNode Title="Instructions Property " Url="html/P_Llvm_NET_Values_BasicBlock_Instructions.htm" />
           <HelpTOCNode Title="LastInstruction Property " Url="html/P_Llvm_NET_Values_BasicBlock_LastInstruction.htm" />
           <HelpTOCNode Title="Terminator Property " Url="html/P_Llvm_NET_Values_BasicBlock_Terminator.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="e3f82fd6-134c-4f43-8f64-94dbcf63547d" Title="BasicBlock Methods" Url="html/Methods_T_Llvm_NET_Values_BasicBlock.htm">
+          <HelpTOCNode Title="GetNextInstruction Method " Url="html/M_Llvm_NET_Values_BasicBlock_GetNextInstruction.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="b6aefe9f-aa2c-4b7a-9325-3a40729d31aa" Title="BlockAddress Class" Url="html/T_Llvm_NET_Values_BlockAddress.htm">
-        <HelpTOCNode Title="BlockAddress Methods" Url="html/Methods_T_Llvm_NET_Values_BlockAddress.htm" />
+      <HelpTOCNode Id="d6b3d4e2-dc26-4937-8236-e6d3c4c0cda8" Title="BlockAddress Class" Url="html/T_Llvm_NET_Values_BlockAddress.htm">
         <HelpTOCNode Title="BlockAddress Properties" Url="html/Properties_T_Llvm_NET_Values_BlockAddress.htm" />
+        <HelpTOCNode Title="BlockAddress Methods" Url="html/Methods_T_Llvm_NET_Values_BlockAddress.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="5080a401-a66c-43dd-b900-20942f544675" Title="Constant Class" Url="html/T_Llvm_NET_Values_Constant.htm">
-        <HelpTOCNode Id="3fad63c3-5576-420c-89e6-aa9c40a19b12" Title="Constant Methods" Url="html/Methods_T_Llvm_NET_Values_Constant.htm">
+      <HelpTOCNode Id="eee15719-9ba4-4bfa-8392-9f312ef9934c" Title="Constant Class" Url="html/T_Llvm_NET_Values_Constant.htm">
+        <HelpTOCNode Id="e4c79a92-5821-413a-94e9-7ff29f16c70d" Title="Constant Properties" Url="html/Properties_T_Llvm_NET_Values_Constant.htm">
+          <HelpTOCNode Title="IsZeroValue Property " Url="html/P_Llvm_NET_Values_Constant_IsZeroValue.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="8146258e-c8c3-4c41-9245-b915e1b94e58" Title="Constant Methods" Url="html/Methods_T_Llvm_NET_Values_Constant.htm">
           <HelpTOCNode Title="AllOnesValueFor Method " Url="html/M_Llvm_NET_Values_Constant_AllOnesValueFor.htm" />
           <HelpTOCNode Title="ConstPointerToNullFor Method " Url="html/M_Llvm_NET_Values_Constant_ConstPointerToNullFor.htm" />
           <HelpTOCNode Title="NullValueFor Method " Url="html/M_Llvm_NET_Values_Constant_NullValueFor.htm" />
           <HelpTOCNode Title="UndefinedValueFor Method " Url="html/M_Llvm_NET_Values_Constant_UndefinedValueFor.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="5816d819-745d-4a08-8a49-b708a8fe851d" Title="Constant Properties" Url="html/Properties_T_Llvm_NET_Values_Constant.htm">
-          <HelpTOCNode Title="IsZeroValue Property " Url="html/P_Llvm_NET_Values_Constant_IsZeroValue.htm" />
-        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="4e127ee2-8ba2-4cd6-88c6-db448ec5f3a1" Title="ConstantAggregateZero Class" Url="html/T_Llvm_NET_Values_ConstantAggregateZero.htm">
-        <HelpTOCNode Title="ConstantAggregateZero Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantAggregateZero.htm" />
+      <HelpTOCNode Id="0277c990-d102-4110-b81b-ad009e541320" Title="ConstantAggregateZero Class" Url="html/T_Llvm_NET_Values_ConstantAggregateZero.htm">
         <HelpTOCNode Title="ConstantAggregateZero Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantAggregateZero.htm" />
+        <HelpTOCNode Title="ConstantAggregateZero Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantAggregateZero.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="bb5d90f6-dee2-42a7-87c1-0da95fb94e18" Title="ConstantArray Class" Url="html/T_Llvm_NET_Values_ConstantArray.htm">
-        <HelpTOCNode Id="6c711db5-2899-405b-853e-a8011f51a28c" Title="ConstantArray Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantArray.htm">
-          <HelpTOCNode Id="259f5f1d-cf8d-4cdc-86d7-4e7a1539e5ed" Title="From Method " Url="html/Overload_Llvm_NET_Values_ConstantArray_From.htm">
+      <HelpTOCNode Id="024ab4cf-9ea1-444b-8f93-0c289947bec7" Title="ConstantArray Class" Url="html/T_Llvm_NET_Values_ConstantArray.htm">
+        <HelpTOCNode Title="ConstantArray Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantArray.htm" />
+        <HelpTOCNode Id="d81d782d-bbc6-49a6-955c-5a566271ee20" Title="ConstantArray Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantArray.htm">
+          <HelpTOCNode Id="2f6f6c99-ac5a-45bf-bf31-635507eb2d75" Title="From Method " Url="html/Overload_Llvm_NET_Values_ConstantArray_From.htm">
             <HelpTOCNode Title="From Method (ITypeRef, Constant[])" Url="html/M_Llvm_NET_Values_ConstantArray_From.htm" />
             <HelpTOCNode Title="From Method (ITypeRef, IEnumerable(Constant))" Url="html/M_Llvm_NET_Values_ConstantArray_From_1.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Title="ConstantArray Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantArray.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ad3557e6-ae8e-44c9-af31-5bc51fa1e9c9" Title="ConstantDataArray Class" Url="html/T_Llvm_NET_Values_ConstantDataArray.htm">
-        <HelpTOCNode Title="ConstantDataArray Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantDataArray.htm" />
+      <HelpTOCNode Id="8561c986-87bb-46d8-94fc-19e73b61a6ab" Title="ConstantDataArray Class" Url="html/T_Llvm_NET_Values_ConstantDataArray.htm">
         <HelpTOCNode Title="ConstantDataArray Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantDataArray.htm" />
+        <HelpTOCNode Title="ConstantDataArray Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantDataArray.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6b0fabff-2b8d-4b2e-82a4-6ae8f43b4d79" Title="ConstantDataSequential Class" Url="html/T_Llvm_NET_Values_ConstantDataSequential.htm">
-        <HelpTOCNode Id="1f45deab-99ec-42d7-b4c1-209460237556" Title="ConstantDataSequential Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantDataSequential.htm">
-          <HelpTOCNode Title="GetAsString Method " Url="html/M_Llvm_NET_Values_ConstantDataSequential_GetAsString.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="387a29bc-857d-4be3-9357-8ff902f811a6" Title="ConstantDataSequential Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantDataSequential.htm">
+      <HelpTOCNode Id="7081228b-4778-4eb8-b78f-d4d33fd37400" Title="ConstantDataSequential Class" Url="html/T_Llvm_NET_Values_ConstantDataSequential.htm">
+        <HelpTOCNode Id="fcc237f1-d112-4b14-a9fc-7039d4ad4831" Title="ConstantDataSequential Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantDataSequential.htm">
           <HelpTOCNode Title="IsString Property " Url="html/P_Llvm_NET_Values_ConstantDataSequential_IsString.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="57606b5e-be34-4860-9c70-e307de3becc1" Title="ConstantDataSequential Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantDataSequential.htm">
+          <HelpTOCNode Title="GetAsString Method " Url="html/M_Llvm_NET_Values_ConstantDataSequential_GetAsString.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="c8d861c7-6194-43f9-b52a-09cf3ae56807" Title="ConstantDataVector Class" Url="html/T_Llvm_NET_Values_ConstantDataVector.htm">
-        <HelpTOCNode Title="ConstantDataVector Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantDataVector.htm" />
+      <HelpTOCNode Id="eb1ec03a-f5c0-4c62-9e06-94a8f79ffc3c" Title="ConstantDataVector Class" Url="html/T_Llvm_NET_Values_ConstantDataVector.htm">
         <HelpTOCNode Title="ConstantDataVector Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantDataVector.htm" />
+        <HelpTOCNode Title="ConstantDataVector Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantDataVector.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="34d13913-cc3b-4161-ab22-6aaef4e72b00" Title="ConstantExpression Class" Url="html/T_Llvm_NET_Values_ConstantExpression.htm">
-        <HelpTOCNode Id="bde0748a-df1c-4af2-8ebc-97caeec9b3e1" Title="ConstantExpression Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantExpression.htm">
+      <HelpTOCNode Id="a8a6f6d6-b142-43a8-b575-f4eeab524d9d" Title="ConstantExpression Class" Url="html/T_Llvm_NET_Values_ConstantExpression.htm">
+        <HelpTOCNode Id="6f743b06-f0c9-4a78-829a-18db4d83e64b" Title="ConstantExpression Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantExpression.htm">
+          <HelpTOCNode Title="Opcode Property " Url="html/P_Llvm_NET_Values_ConstantExpression_Opcode.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="ca446e3f-52b9-431b-a93c-0c4058f7e492" Title="ConstantExpression Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantExpression.htm">
           <HelpTOCNode Title="BitCast Method " Url="html/M_Llvm_NET_Values_ConstantExpression_BitCast.htm" />
           <HelpTOCNode Title="IntToPtrExpression Method " Url="html/M_Llvm_NET_Values_ConstantExpression_IntToPtrExpression.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="e2bf4749-2814-40e4-ad4b-ee71b06297bc" Title="ConstantExpression Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantExpression.htm">
-          <HelpTOCNode Title="Opcode Property " Url="html/P_Llvm_NET_Values_ConstantExpression_Opcode.htm" />
-        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="6fe81a1e-b934-4353-bfa6-0a0afef07dec" Title="ConstantFP Class" Url="html/T_Llvm_NET_Values_ConstantFP.htm">
-        <HelpTOCNode Id="7ee28136-90bb-4863-bbfd-91b208a374fe" Title="ConstantFP Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantFP.htm">
-          <HelpTOCNode Title="GetValue Method " Url="html/M_Llvm_NET_Values_ConstantFP_GetValue.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="61f537bf-ef1a-43ba-80a6-c0785b7c406f" Title="ConstantFP Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantFP.htm">
+      <HelpTOCNode Id="845ea237-ac08-4c5f-bcd3-e4bc07cfe222" Title="ConstantFP Class" Url="html/T_Llvm_NET_Values_ConstantFP.htm">
+        <HelpTOCNode Id="6f6681d3-1704-44cc-b8cb-e4bdecf048c7" Title="ConstantFP Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantFP.htm">
           <HelpTOCNode Title="Value Property " Url="html/P_Llvm_NET_Values_ConstantFP_Value.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="8dd1e54f-ffff-457f-87fa-12e60eb6d51c" Title="ConstantFP Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantFP.htm">
+          <HelpTOCNode Title="GetValue Method " Url="html/M_Llvm_NET_Values_ConstantFP_GetValue.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="e9787a44-4836-4813-87fa-3e242059c2c8" Title="ConstantInt Class" Url="html/T_Llvm_NET_Values_ConstantInt.htm">
-        <HelpTOCNode Title="ConstantInt Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantInt.htm" />
-        <HelpTOCNode Id="aad626b6-3527-4360-8a11-db9fc835f105" Title="ConstantInt Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantInt.htm">
+      <HelpTOCNode Id="9b3dab4f-e827-480d-b4fc-2ec6aade8519" Title="ConstantInt Class" Url="html/T_Llvm_NET_Values_ConstantInt.htm">
+        <HelpTOCNode Id="dacf27be-c98c-4464-baa9-4da85d3c9b29" Title="ConstantInt Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantInt.htm">
           <HelpTOCNode Title="SignExtendedValue Property " Url="html/P_Llvm_NET_Values_ConstantInt_SignExtendedValue.htm" />
           <HelpTOCNode Title="ZeroExtendedValue Property " Url="html/P_Llvm_NET_Values_ConstantInt_ZeroExtendedValue.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="ConstantInt Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantInt.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="c813dcdb-7bc4-4ada-9c16-6333c37297a1" Title="ConstantPointerNull Class" Url="html/T_Llvm_NET_Values_ConstantPointerNull.htm">
-        <HelpTOCNode Id="8917bb34-cc6f-4258-90ea-5cbeac1653a2" Title="ConstantPointerNull Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantPointerNull.htm">
+      <HelpTOCNode Id="9e39f02e-a668-4cbb-aca7-202b946299c1" Title="ConstantPointerNull Class" Url="html/T_Llvm_NET_Values_ConstantPointerNull.htm">
+        <HelpTOCNode Title="ConstantPointerNull Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantPointerNull.htm" />
+        <HelpTOCNode Id="adc9135b-230c-4972-9bbe-0dbc5429a9b7" Title="ConstantPointerNull Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantPointerNull.htm">
           <HelpTOCNode Title="From Method " Url="html/M_Llvm_NET_Values_ConstantPointerNull_From.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="ConstantPointerNull Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantPointerNull.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="22cb0d94-8714-40c1-835e-783fa2db2d3f" Title="ConstantStruct Class" Url="html/T_Llvm_NET_Values_ConstantStruct.htm">
-        <HelpTOCNode Title="ConstantStruct Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantStruct.htm" />
+      <HelpTOCNode Id="c73f192c-5d8f-48de-b202-a7c3a04059b5" Title="ConstantStruct Class" Url="html/T_Llvm_NET_Values_ConstantStruct.htm">
         <HelpTOCNode Title="ConstantStruct Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantStruct.htm" />
+        <HelpTOCNode Title="ConstantStruct Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantStruct.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="4d1a117d-8e37-4cf7-a0f7-b077d2faa8f4" Title="ConstantVector Class" Url="html/T_Llvm_NET_Values_ConstantVector.htm">
-        <HelpTOCNode Title="ConstantVector Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantVector.htm" />
+      <HelpTOCNode Id="2ac97860-f338-4074-bae6-bddb1af940ce" Title="ConstantVector Class" Url="html/T_Llvm_NET_Values_ConstantVector.htm">
         <HelpTOCNode Title="ConstantVector Properties" Url="html/Properties_T_Llvm_NET_Values_ConstantVector.htm" />
+        <HelpTOCNode Title="ConstantVector Methods" Url="html/Methods_T_Llvm_NET_Values_ConstantVector.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="ca73b4c7-6c89-415e-b07a-acdedd866537" Title="Function Class" Url="html/T_Llvm_NET_Values_Function.htm">
-        <HelpTOCNode Id="a02bcb0b-0794-4abd-b0e1-35d7e1f099b8" Title="Function Methods" Url="html/Methods_T_Llvm_NET_Values_Function.htm">
-          <HelpTOCNode Id="35d46de3-9ba0-494b-8ec4-635cc90e563b" Title="AddAttributes Method " Url="html/Overload_Llvm_NET_Values_Function_AddAttributes.htm">
-            <HelpTOCNode Title="AddAttributes Method (AttributeValue[])" Url="html/M_Llvm_NET_Values_Function_AddAttributes.htm" />
-            <HelpTOCNode Title="AddAttributes Method (IEnumerable(AttributeValue))" Url="html/M_Llvm_NET_Values_Function_AddAttributes_1.htm" />
-          </HelpTOCNode>
-          <HelpTOCNode Title="AppendBasicBlock Method " Url="html/M_Llvm_NET_Values_Function_AppendBasicBlock.htm" />
-          <HelpTOCNode Title="AttributeHasValue Method " Url="html/M_Llvm_NET_Values_Function_AttributeHasValue.htm" />
-          <HelpTOCNode Title="FindOrCreateNamedBlock Method " Url="html/M_Llvm_NET_Values_Function_FindOrCreateNamedBlock.htm" />
-          <HelpTOCNode Title="PrependBasicBlock Method " Url="html/M_Llvm_NET_Values_Function_PrependBasicBlock.htm" />
-          <HelpTOCNode Title="Verify Method " Url="html/M_Llvm_NET_Values_Function_Verify.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="b55228dd-2582-4497-a8bc-95cfd26c4253" Title="Function Properties" Url="html/Properties_T_Llvm_NET_Values_Function.htm">
+      <HelpTOCNode Id="ab02f364-1cf0-4225-91bf-be630a4ebe8b" Title="Function Class" Url="html/T_Llvm_NET_Values_Function.htm">
+        <HelpTOCNode Id="43b82a36-60d6-474c-8f66-0c76ee0e61f2" Title="Function Properties" Url="html/Properties_T_Llvm_NET_Values_Function.htm">
           <HelpTOCNode Title="Attributes Property " Url="html/P_Llvm_NET_Values_Function_Attributes.htm" />
           <HelpTOCNode Title="BasicBlocks Property " Url="html/P_Llvm_NET_Values_Function_BasicBlocks.htm" />
           <HelpTOCNode Title="CallingConvention Property " Url="html/P_Llvm_NET_Values_Function_CallingConvention.htm" />
@@ -1199,111 +1207,125 @@
           <HelpTOCNode Title="ReturnType Property " Url="html/P_Llvm_NET_Values_Function_ReturnType.htm" />
           <HelpTOCNode Title="Signature Property " Url="html/P_Llvm_NET_Values_Function_Signature.htm" />
         </HelpTOCNode>
-      </HelpTOCNode>
-      <HelpTOCNode Id="ed759260-cd12-496e-a470-c0588586ef8c" Title="GlobalAlias Class" Url="html/T_Llvm_NET_Values_GlobalAlias.htm">
-        <HelpTOCNode Title="GlobalAlias Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalAlias.htm" />
-        <HelpTOCNode Id="2525b94e-e266-49aa-9337-e4ab2fdfebbf" Title="GlobalAlias Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalAlias.htm">
-          <HelpTOCNode Title="Aliasee Property " Url="html/P_Llvm_NET_Values_GlobalAlias_Aliasee.htm" />
+        <HelpTOCNode Id="c212d108-aada-43bd-b179-43aa2938c2e2" Title="Function Methods" Url="html/Methods_T_Llvm_NET_Values_Function.htm">
+          <HelpTOCNode Id="14ec24df-9c5a-4e88-ab30-502d73127b98" Title="AddAttributes Method " Url="html/Overload_Llvm_NET_Values_Function_AddAttributes.htm">
+            <HelpTOCNode Title="AddAttributes Method (AttributeValue[])" Url="html/M_Llvm_NET_Values_Function_AddAttributes.htm" />
+            <HelpTOCNode Title="AddAttributes Method (IEnumerable(AttributeValue))" Url="html/M_Llvm_NET_Values_Function_AddAttributes_1.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="AppendBasicBlock Method " Url="html/M_Llvm_NET_Values_Function_AppendBasicBlock.htm" />
+          <HelpTOCNode Title="AttributeHasValue Method " Url="html/M_Llvm_NET_Values_Function_AttributeHasValue.htm" />
+          <HelpTOCNode Title="FindOrCreateNamedBlock Method " Url="html/M_Llvm_NET_Values_Function_FindOrCreateNamedBlock.htm" />
+          <HelpTOCNode Title="PrependBasicBlock Method " Url="html/M_Llvm_NET_Values_Function_PrependBasicBlock.htm" />
+          <HelpTOCNode Title="Verify Method " Url="html/M_Llvm_NET_Values_Function_Verify.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="c2fe396b-5ae6-4fd1-8bda-eb8b87de5b77" Title="GlobalObject Class" Url="html/T_Llvm_NET_Values_GlobalObject.htm">
-        <HelpTOCNode Title="GlobalObject Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalObject.htm" />
-        <HelpTOCNode Id="3848c366-fae2-43f4-a2c5-69097b80b6c7" Title="GlobalObject Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalObject.htm">
+      <HelpTOCNode Id="bd7b12a4-38d4-40e7-a730-415f842476ca" Title="GlobalAlias Class" Url="html/T_Llvm_NET_Values_GlobalAlias.htm">
+        <HelpTOCNode Id="7db4b39f-c460-4efc-8701-392a65791454" Title="GlobalAlias Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalAlias.htm">
+          <HelpTOCNode Title="Aliasee Property " Url="html/P_Llvm_NET_Values_GlobalAlias_Aliasee.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="GlobalAlias Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalAlias.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0256f198-6baa-4286-8bba-d210f6e3e740" Title="GlobalObject Class" Url="html/T_Llvm_NET_Values_GlobalObject.htm">
+        <HelpTOCNode Id="5276094f-47cc-4c15-834a-cfe0b133be7b" Title="GlobalObject Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalObject.htm">
           <HelpTOCNode Title="Alignment Property " Url="html/P_Llvm_NET_Values_GlobalObject_Alignment.htm" />
           <HelpTOCNode Title="Section Property " Url="html/P_Llvm_NET_Values_GlobalObject_Section.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="GlobalObject Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalObject.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="e9d924c3-fd83-4e81-9aef-30b0b784a30f" Title="GlobalValue Class" Url="html/T_Llvm_NET_Values_GlobalValue.htm">
-        <HelpTOCNode Title="GlobalValue Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalValue.htm" />
-        <HelpTOCNode Id="bb2b477c-278b-451d-9c5c-4f83b6f6b94c" Title="GlobalValue Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalValue.htm">
+      <HelpTOCNode Id="43df64bb-015f-4e36-a37d-bcfc2af268b7" Title="GlobalValue Class" Url="html/T_Llvm_NET_Values_GlobalValue.htm">
+        <HelpTOCNode Id="7bf0cf06-075f-4685-9e79-dffabdbcd858" Title="GlobalValue Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalValue.htm">
           <HelpTOCNode Title="IsDeclaration Property " Url="html/P_Llvm_NET_Values_GlobalValue_IsDeclaration.htm" />
           <HelpTOCNode Title="Linkage Property " Url="html/P_Llvm_NET_Values_GlobalValue_Linkage.htm" />
           <HelpTOCNode Title="ParentModule Property " Url="html/P_Llvm_NET_Values_GlobalValue_ParentModule.htm" />
           <HelpTOCNode Title="UnnamedAddress Property " Url="html/P_Llvm_NET_Values_GlobalValue_UnnamedAddress.htm" />
           <HelpTOCNode Title="Visibility Property " Url="html/P_Llvm_NET_Values_GlobalValue_Visibility.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="GlobalValue Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalValue.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="68d0db6f-4a7a-4cf9-ad1d-01b08560c63d" Title="GlobalValueExtensions Class" Url="html/T_Llvm_NET_Values_GlobalValueExtensions.htm">
-        <HelpTOCNode Id="2424a6d5-d306-4566-9c44-6630915bb35f" Title="GlobalValueExtensions Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalValueExtensions.htm">
+      <HelpTOCNode Id="ee5c0d03-0040-4a4b-b514-2db8d4b041c0" Title="GlobalValueExtensions Class" Url="html/T_Llvm_NET_Values_GlobalValueExtensions.htm">
+        <HelpTOCNode Id="82c728c8-00bc-4aed-8d47-71e2fbfb32fd" Title="GlobalValueExtensions Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalValueExtensions.htm">
           <HelpTOCNode Title="Linkage(T) Method " Url="html/M_Llvm_NET_Values_GlobalValueExtensions_Linkage__1.htm" />
           <HelpTOCNode Title="Visibility(T) Method " Url="html/M_Llvm_NET_Values_GlobalValueExtensions_Visibility__1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="535337cb-0582-4e14-bf67-bc1e66d1df45" Title="GlobalVariable Class" Url="html/T_Llvm_NET_Values_GlobalVariable.htm">
-        <HelpTOCNode Id="584436a4-877c-4313-af6c-d557445f64df" Title="GlobalVariable Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalVariable.htm">
-          <HelpTOCNode Title="RemoveFromParent Method " Url="html/M_Llvm_NET_Values_GlobalVariable_RemoveFromParent.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="00efd0c5-9f0c-4b5e-9451-4af7f47f7019" Title="GlobalVariable Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalVariable.htm">
+      <HelpTOCNode Id="f512826a-f47d-4018-ad34-1db8e6c3fe2f" Title="GlobalVariable Class" Url="html/T_Llvm_NET_Values_GlobalVariable.htm">
+        <HelpTOCNode Id="f3bf6ee4-290f-4d02-b0af-da89fe013290" Title="GlobalVariable Properties" Url="html/Properties_T_Llvm_NET_Values_GlobalVariable.htm">
           <HelpTOCNode Title="Initializer Property " Url="html/P_Llvm_NET_Values_GlobalVariable_Initializer.htm" />
           <HelpTOCNode Title="IsConstant Property " Url="html/P_Llvm_NET_Values_GlobalVariable_IsConstant.htm" />
           <HelpTOCNode Title="IsExternallyInitialized Property " Url="html/P_Llvm_NET_Values_GlobalVariable_IsExternallyInitialized.htm" />
           <HelpTOCNode Title="IsThreadLocal Property " Url="html/P_Llvm_NET_Values_GlobalVariable_IsThreadLocal.htm" />
         </HelpTOCNode>
-      </HelpTOCNode>
-      <HelpTOCNode Id="d61e5be7-14ca-44b0-8edb-99683e120882" Title="IAttributeSet Interface" Url="html/T_Llvm_NET_Values_IAttributeSet.htm">
-        <HelpTOCNode Id="5b182209-3d11-48fc-9749-cf27e49a00ea" Title="IAttributeSet Methods" Url="html/Methods_T_Llvm_NET_Values_IAttributeSet.htm">
-          <HelpTOCNode Id="bd2c389d-754b-4c49-ad39-4ee3eb23dbb4" Title="Add Method " Url="html/Overload_Llvm_NET_Values_IAttributeSet_Add.htm">
-            <HelpTOCNode Title="Add Method (AttributeValue)" Url="html/M_Llvm_NET_Values_IAttributeSet_Add.htm" />
-            <HelpTOCNode Title="Add Method (AttributeValue[])" Url="html/M_Llvm_NET_Values_IAttributeSet_Add_1.htm" />
-            <HelpTOCNode Title="Add Method (IEnumerable(AttributeValue))" Url="html/M_Llvm_NET_Values_IAttributeSet_Add_2.htm" />
-          </HelpTOCNode>
-          <HelpTOCNode Id="f7a6a729-e926-4ea2-b342-3dee20132e49" Title="Has Method " Url="html/Overload_Llvm_NET_Values_IAttributeSet_Has.htm">
-            <HelpTOCNode Title="Has Method (String)" Url="html/M_Llvm_NET_Values_IAttributeSet_Has_1.htm" />
-            <HelpTOCNode Title="Has Method (AttributeKind)" Url="html/M_Llvm_NET_Values_IAttributeSet_Has.htm" />
-          </HelpTOCNode>
-          <HelpTOCNode Id="2d8f488f-32b4-49e3-b1f1-7550890e9903" Title="Remove Method " Url="html/Overload_Llvm_NET_Values_IAttributeSet_Remove.htm">
-            <HelpTOCNode Title="Remove Method (String)" Url="html/M_Llvm_NET_Values_IAttributeSet_Remove_1.htm" />
-            <HelpTOCNode Title="Remove Method (AttributeKind)" Url="html/M_Llvm_NET_Values_IAttributeSet_Remove.htm" />
-          </HelpTOCNode>
+        <HelpTOCNode Id="71d3d8c4-9bb6-44c4-b5a4-d7f207c385b3" Title="GlobalVariable Methods" Url="html/Methods_T_Llvm_NET_Values_GlobalVariable.htm">
+          <HelpTOCNode Title="RemoveFromParent Method " Url="html/M_Llvm_NET_Values_GlobalVariable_RemoveFromParent.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="7414c7f6-f7ed-46af-a362-3f74a83651c5" Title="IAttributeSet Properties" Url="html/Properties_T_Llvm_NET_Values_IAttributeSet.htm">
+      </HelpTOCNode>
+      <HelpTOCNode Id="b8cebd10-b1e4-43e2-b257-0548ab9a7230" Title="IAttributeSet Interface" Url="html/T_Llvm_NET_Values_IAttributeSet.htm">
+        <HelpTOCNode Id="6fc1231a-5ab5-4a38-aab9-9047384a9d9c" Title="IAttributeSet Properties" Url="html/Properties_T_Llvm_NET_Values_IAttributeSet.htm">
           <HelpTOCNode Title="DereferenceableBytes Property " Url="html/P_Llvm_NET_Values_IAttributeSet_DereferenceableBytes.htm" />
           <HelpTOCNode Title="DereferenceableOrNullBytes Property " Url="html/P_Llvm_NET_Values_IAttributeSet_DereferenceableOrNullBytes.htm" />
           <HelpTOCNode Title="ParamAlignment Property " Url="html/P_Llvm_NET_Values_IAttributeSet_ParamAlignment.htm" />
           <HelpTOCNode Title="StackAlignment Property " Url="html/P_Llvm_NET_Values_IAttributeSet_StackAlignment.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="56079d10-63e8-4503-91e9-119ce1a0abdc" Title="IAttributeSet Methods" Url="html/Methods_T_Llvm_NET_Values_IAttributeSet.htm">
+          <HelpTOCNode Id="1afc31fe-6f81-4588-9a12-17de7a1f65c6" Title="Add Method " Url="html/Overload_Llvm_NET_Values_IAttributeSet_Add.htm">
+            <HelpTOCNode Title="Add Method (AttributeValue)" Url="html/M_Llvm_NET_Values_IAttributeSet_Add.htm" />
+            <HelpTOCNode Title="Add Method (AttributeValue[])" Url="html/M_Llvm_NET_Values_IAttributeSet_Add_1.htm" />
+            <HelpTOCNode Title="Add Method (IEnumerable(AttributeValue))" Url="html/M_Llvm_NET_Values_IAttributeSet_Add_2.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="a621f829-2092-486a-8d73-d15667547131" Title="Has Method " Url="html/Overload_Llvm_NET_Values_IAttributeSet_Has.htm">
+            <HelpTOCNode Title="Has Method (String)" Url="html/M_Llvm_NET_Values_IAttributeSet_Has_1.htm" />
+            <HelpTOCNode Title="Has Method (AttributeKind)" Url="html/M_Llvm_NET_Values_IAttributeSet_Has.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Id="e7b74980-05db-4b43-a88f-bd8314ebadb0" Title="Remove Method " Url="html/Overload_Llvm_NET_Values_IAttributeSet_Remove.htm">
+            <HelpTOCNode Title="Remove Method (String)" Url="html/M_Llvm_NET_Values_IAttributeSet_Remove_1.htm" />
+            <HelpTOCNode Title="Remove Method (AttributeKind)" Url="html/M_Llvm_NET_Values_IAttributeSet_Remove.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="aa4ee0ec-90c0-4b09-958f-b3715754ba73" Title="InlineAsm Class" Url="html/T_Llvm_NET_Values_InlineAsm.htm">
-        <HelpTOCNode Title="InlineAsm Methods" Url="html/Methods_T_Llvm_NET_Values_InlineAsm.htm" />
+      <HelpTOCNode Id="3785e9a3-0046-42e3-8740-6f0335d6697e" Title="InlineAsm Class" Url="html/T_Llvm_NET_Values_InlineAsm.htm">
         <HelpTOCNode Title="InlineAsm Properties" Url="html/Properties_T_Llvm_NET_Values_InlineAsm.htm" />
+        <HelpTOCNode Title="InlineAsm Methods" Url="html/Methods_T_Llvm_NET_Values_InlineAsm.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="53fcec92-a477-41ec-8b06-32b83ff14cf9" Title="UndefValue Class" Url="html/T_Llvm_NET_Values_UndefValue.htm">
-        <HelpTOCNode Title="UndefValue Methods" Url="html/Methods_T_Llvm_NET_Values_UndefValue.htm" />
+      <HelpTOCNode Id="50ee8b1a-ae55-4701-83d8-a3db8cd27392" Title="UndefValue Class" Url="html/T_Llvm_NET_Values_UndefValue.htm">
         <HelpTOCNode Title="UndefValue Properties" Url="html/Properties_T_Llvm_NET_Values_UndefValue.htm" />
+        <HelpTOCNode Title="UndefValue Methods" Url="html/Methods_T_Llvm_NET_Values_UndefValue.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="18a2adf5-e6c4-4b00-abf0-436508c19f2c" Title="Use Class" Url="html/T_Llvm_NET_Values_Use.htm">
-        <HelpTOCNode Title="Use Methods" Url="html/Methods_T_Llvm_NET_Values_Use.htm" />
-        <HelpTOCNode Id="a0dcff50-6cce-486c-9320-059028b25290" Title="Use Properties" Url="html/Properties_T_Llvm_NET_Values_Use.htm">
+      <HelpTOCNode Id="dfd66e94-0572-46ef-bd91-9f667f47cdec" Title="Use Class" Url="html/T_Llvm_NET_Values_Use.htm">
+        <HelpTOCNode Id="d228bcde-da8e-4710-84f5-5473138158d3" Title="Use Properties" Url="html/Properties_T_Llvm_NET_Values_Use.htm">
           <HelpTOCNode Title="User Property " Url="html/P_Llvm_NET_Values_Use_User.htm" />
           <HelpTOCNode Title="Value Property " Url="html/P_Llvm_NET_Values_Use_Value.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="Use Methods" Url="html/Methods_T_Llvm_NET_Values_Use.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="2d95ba27-024b-4843-8fec-99b72bbe7c4a" Title="User Class" Url="html/T_Llvm_NET_Values_User.htm">
-        <HelpTOCNode Title="User Methods" Url="html/Methods_T_Llvm_NET_Values_User.htm" />
-        <HelpTOCNode Id="098b848d-11cb-41d4-a2c6-63bc7f557917" Title="User Properties" Url="html/Properties_T_Llvm_NET_Values_User.htm">
+      <HelpTOCNode Id="adbb3308-57b4-43b3-b2d9-6f77b2206340" Title="User Class" Url="html/T_Llvm_NET_Values_User.htm">
+        <HelpTOCNode Id="3106a855-f419-4d85-b5ae-e3b1dcf32238" Title="User Properties" Url="html/Properties_T_Llvm_NET_Values_User.htm">
           <HelpTOCNode Title="Operands Property " Url="html/P_Llvm_NET_Values_User_Operands.htm" />
           <HelpTOCNode Title="Uses Property " Url="html/P_Llvm_NET_Values_User_Uses.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Title="User Methods" Url="html/Methods_T_Llvm_NET_Values_User.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="338c56fb-90b5-4c75-b4c4-3e789401f2bb" Title="Value Class" Url="html/T_Llvm_NET_Values_Value.htm">
-        <HelpTOCNode Id="b58a4984-0719-4f35-9a5b-b6d60f909ae3" Title="Value Methods" Url="html/Methods_T_Llvm_NET_Values_Value.htm">
-          <HelpTOCNode Title="AddExtendedPropertyValue Method " Url="html/M_Llvm_NET_Values_Value_AddExtendedPropertyValue.htm" />
-          <HelpTOCNode Title="ReplaceAllUsesWith Method " Url="html/M_Llvm_NET_Values_Value_ReplaceAllUsesWith.htm" />
-          <HelpTOCNode Title="ToString Method " Url="html/M_Llvm_NET_Values_Value_ToString.htm" />
-          <HelpTOCNode Title="TryGetExtendedPropertyValue(T) Method " Url="html/M_Llvm_NET_Values_Value_TryGetExtendedPropertyValue__1.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Id="15a27879-b0d5-4fa3-ba05-2d0f6c091281" Title="Value Properties" Url="html/Properties_T_Llvm_NET_Values_Value.htm">
+      <HelpTOCNode Id="1010351d-aa5c-402c-878d-15de85635299" Title="Value Class" Url="html/T_Llvm_NET_Values_Value.htm">
+        <HelpTOCNode Id="e99b583c-1ef5-4311-a88e-7c8fb3231582" Title="Value Properties" Url="html/Properties_T_Llvm_NET_Values_Value.htm">
           <HelpTOCNode Title="Context Property " Url="html/P_Llvm_NET_Values_Value_Context.htm" />
           <HelpTOCNode Title="IsNull Property " Url="html/P_Llvm_NET_Values_Value_IsNull.htm" />
           <HelpTOCNode Title="IsUndefined Property " Url="html/P_Llvm_NET_Values_Value_IsUndefined.htm" />
           <HelpTOCNode Title="Name Property " Url="html/P_Llvm_NET_Values_Value_Name.htm" />
           <HelpTOCNode Title="Type Property " Url="html/P_Llvm_NET_Values_Value_Type.htm" />
         </HelpTOCNode>
+        <HelpTOCNode Id="3393a84f-8035-416f-9c26-1c57465b78a3" Title="Value Methods" Url="html/Methods_T_Llvm_NET_Values_Value.htm">
+          <HelpTOCNode Title="AddExtendedPropertyValue Method " Url="html/M_Llvm_NET_Values_Value_AddExtendedPropertyValue.htm" />
+          <HelpTOCNode Title="ReplaceAllUsesWith Method " Url="html/M_Llvm_NET_Values_Value_ReplaceAllUsesWith.htm" />
+          <HelpTOCNode Title="ToString Method " Url="html/M_Llvm_NET_Values_Value_ToString.htm" />
+          <HelpTOCNode Title="TryGetExtendedPropertyValue(T) Method " Url="html/M_Llvm_NET_Values_Value_TryGetExtendedPropertyValue__1.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="abbb0d6d-a44e-4455-855a-bba78b6a5691" Title="ValueExtensions Class" Url="html/T_Llvm_NET_Values_ValueExtensions.htm">
-        <HelpTOCNode Id="8c73be22-30ba-4c40-beb4-7e794767c7f1" Title="ValueExtensions Methods" Url="html/Methods_T_Llvm_NET_Values_ValueExtensions.htm">
+      <HelpTOCNode Id="4147c51f-62ff-4c5f-97a9-b3d7df160a02" Title="ValueExtensions Class" Url="html/T_Llvm_NET_Values_ValueExtensions.htm">
+        <HelpTOCNode Id="e25e1f3b-2fc2-4d75-a662-51ac23bd4a06" Title="ValueExtensions Methods" Url="html/Methods_T_Llvm_NET_Values_ValueExtensions.htm">
           <HelpTOCNode Title="RegisterName(T) Method " Url="html/M_Llvm_NET_Values_ValueExtensions_RegisterName__1.htm" />
-          <HelpTOCNode Title="SetDebugLocation(T) Method " Url="html/M_Llvm_NET_Values_ValueExtensions_SetDebugLocation__1.htm" />
+          <HelpTOCNode Id="c1f77703-b3d3-446b-b9d5-5cd7748d7968" Title="SetDebugLocation Method " Url="html/Overload_Llvm_NET_Values_ValueExtensions_SetDebugLocation.htm">
+            <HelpTOCNode Title="SetDebugLocation(T) Method (T, DILocation)" Url="html/M_Llvm_NET_Values_ValueExtensions_SetDebugLocation__1.htm" />
+            <HelpTOCNode Title="SetDebugLocation(T) Method (T, UInt32, UInt32, DIScope)" Url="html/M_Llvm_NET_Values_ValueExtensions_SetDebugLocation__1_1.htm" />
+          </HelpTOCNode>
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
