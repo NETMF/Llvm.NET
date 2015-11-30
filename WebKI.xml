@@ -88,7 +88,6 @@
   <HelpKINode Title="AsmDialect enumeration" Url="html/T_Llvm_NET_Values_AsmDialect.htm" />
   <HelpKINode Title="AsmParser enumeration member" Url="html/T_Llvm_NET_TargetRegistrations.htm" />
   <HelpKINode Title="AsmPrinter enumeration member" Url="html/T_Llvm_NET_TargetRegistrations.htm" />
-  <HelpKINode Title="AsOperand enumeration member" Url="html/T_Llvm_NET_MetadataFormat.htm" />
   <HelpKINode Title="AssemblySource enumeration member" Url="html/T_Llvm_NET_CodeGenFileType.htm" />
   <HelpKINode Title="AsString method">
     <HelpKINode Title="AttributeSet.AsString Method " Url="html/M_Llvm_NET_Values_AttributeSet_AsString.htm" />
@@ -181,6 +180,7 @@
   <HelpKINode Title="BadFcmpPredicate enumeration member" Url="html/T_Llvm_NET_Predicate.htm" />
   <HelpKINode Title="BadIcmpPredicate enumeration member" Url="html/T_Llvm_NET_Predicate.htm" />
   <HelpKINode Title="BaseType enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
+  <HelpKINode Title="BaseType property" Url="html/P_Llvm_NET_DebugInfo_DICompositeType_BaseType.htm" />
   <HelpKINode Title="BasicBlock class">
     <HelpKINode Title="BasicBlock Class" Url="html/T_Llvm_NET_Values_BasicBlock.htm" />
     <HelpKINode Title="about BasicBlock class" Url="html/T_Llvm_NET_Values_BasicBlock.htm" />
@@ -378,7 +378,6 @@
     <HelpKINode Title="about ConstantAsMetadata class" Url="html/T_Llvm_NET_ConstantAsMetadata.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_ConstantAsMetadata.htm" />
   </HelpKINode>
-  <HelpKINode Title="ConstantAsMetadata enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="ConstantDataArray class">
     <HelpKINode Title="ConstantDataArray Class" Url="html/T_Llvm_NET_Values_ConstantDataArray.htm" />
     <HelpKINode Title="about ConstantDataArray class" Url="html/T_Llvm_NET_Values_ConstantDataArray.htm" />
@@ -495,6 +494,7 @@
   <HelpKINode Title="Context.Metadata property" Url="html/P_Llvm_NET_Context_Metadata.htm" />
   <HelpKINode Title="Context.VoidType property" Url="html/P_Llvm_NET_Context_VoidType.htm" />
   <HelpKINode Title="Convergent enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
+  <HelpKINode Title="Count property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Count.htm" />
   <HelpKINode Title="CPlusPlus enumeration member" Url="html/T_Llvm_NET_DebugInfo_SourceLanguage.htm" />
   <HelpKINode Title="CPlusPlus03 enumeration member" Url="html/T_Llvm_NET_DebugInfo_SourceLanguage.htm" />
   <HelpKINode Title="CPlusPlus11 enumeration member" Url="html/T_Llvm_NET_DebugInfo_SourceLanguage.htm" />
@@ -758,7 +758,6 @@
   <HelpKINode Title="Default enumeration member">
     <HelpKINode Title="CodeGenOpt Enumeration" Url="html/T_Llvm_NET_CodeGenOpt.htm" />
     <HelpKINode Title="CodeModel Enumeration" Url="html/T_Llvm_NET_CodeModel.htm" />
-    <HelpKINode Title="MetadataFormat Enumeration" Url="html/T_Llvm_NET_MetadataFormat.htm" />
     <HelpKINode Title="Reloc Enumeration" Url="html/T_Llvm_NET_Reloc.htm" />
     <HelpKINode Title="Visibility Enumeration" Url="html/T_Llvm_NET_Visibility.htm" />
   </HelpKINode>
@@ -770,18 +769,12 @@
   <HelpKINode Title="Describes method" Url="html/M_Llvm_NET_DebugInfo_DISubProgram_Describes.htm" />
   <HelpKINode Title="Description property" Url="html/P_Llvm_NET_Target_Description.htm" />
   <HelpKINode Title="DestroySource enumeration member" Url="html/T_Llvm_NET_LinkerMode.htm" />
-  <HelpKINode Title="DIArray class">
-    <HelpKINode Title="DIArray Class" Url="html/T_Llvm_NET_DebugInfo_DIArray.htm" />
-    <HelpKINode Title="about DIArray class" Url="html/T_Llvm_NET_DebugInfo_DIArray.htm" />
-    <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIArray.htm" />
-  </HelpKINode>
   <HelpKINode Title="DIBasicType class">
     <HelpKINode Title="DIBasicType Class" Url="html/T_Llvm_NET_DebugInfo_DIBasicType.htm" />
     <HelpKINode Title="about DIBasicType class" Url="html/T_Llvm_NET_DebugInfo_DIBasicType.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIBasicType.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIBasicType.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIBasicType enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DIBuilder property" Url="html/P_Llvm_NET_NativeModule_DIBuilder.htm" />
   <HelpKINode Title="DICompileUnit class">
     <HelpKINode Title="DICompileUnit Class" Url="html/T_Llvm_NET_DebugInfo_DICompileUnit.htm" />
@@ -789,7 +782,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DICompileUnit.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DICompileUnit.htm" />
   </HelpKINode>
-  <HelpKINode Title="DICompileUnit enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DICompileUnit property" Url="html/P_Llvm_NET_NativeModule_DICompileUnit.htm" />
   <HelpKINode Title="DICompositeType class">
     <HelpKINode Title="DICompositeType Class" Url="html/T_Llvm_NET_DebugInfo_DICompositeType.htm" />
@@ -797,35 +789,32 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DICompositeType.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DICompositeType.htm" />
   </HelpKINode>
-  <HelpKINode Title="DICompositeType enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
+  <HelpKINode Title="DICompositeType.BaseType property" Url="html/P_Llvm_NET_DebugInfo_DICompositeType_BaseType.htm" />
+  <HelpKINode Title="DICompositeType.Elements property" Url="html/P_Llvm_NET_DebugInfo_DICompositeType_Elements.htm" />
   <HelpKINode Title="DIDerivedType class">
     <HelpKINode Title="DIDerivedType Class" Url="html/T_Llvm_NET_DebugInfo_DIDerivedType.htm" />
     <HelpKINode Title="about DIDerivedType class" Url="html/T_Llvm_NET_DebugInfo_DIDerivedType.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIDerivedType.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIDerivedType.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIDerivedType enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DIEnumerator class">
     <HelpKINode Title="DIEnumerator Class" Url="html/T_Llvm_NET_DebugInfo_DIEnumerator.htm" />
     <HelpKINode Title="about DIEnumerator class" Url="html/T_Llvm_NET_DebugInfo_DIEnumerator.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIEnumerator.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIEnumerator.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIEnumerator enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DIExpression class">
     <HelpKINode Title="DIExpression Class" Url="html/T_Llvm_NET_DebugInfo_DIExpression.htm" />
     <HelpKINode Title="about DIExpression class" Url="html/T_Llvm_NET_DebugInfo_DIExpression.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIExpression.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIExpression.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIExpression enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DIFile class">
     <HelpKINode Title="DIFile Class" Url="html/T_Llvm_NET_DebugInfo_DIFile.htm" />
     <HelpKINode Title="about DIFile class" Url="html/T_Llvm_NET_DebugInfo_DIFile.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIFile.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIFile.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIFile enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DIFile.Directory property" Url="html/P_Llvm_NET_DebugInfo_DIFile_Directory.htm" />
   <HelpKINode Title="DIFile.FileName property" Url="html/P_Llvm_NET_DebugInfo_DIFile_FileName.htm" />
   <HelpKINode Title="DIFile.Path property" Url="html/P_Llvm_NET_DebugInfo_DIFile_Path.htm" />
@@ -835,21 +824,18 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIGlobalVariable.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIGlobalVariable.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIGlobalVariable enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DIImportedEntity class">
     <HelpKINode Title="DIImportedEntity Class" Url="html/T_Llvm_NET_DebugInfo_DIImportedEntity.htm" />
     <HelpKINode Title="about DIImportedEntity class" Url="html/T_Llvm_NET_DebugInfo_DIImportedEntity.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIImportedEntity.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIImportedEntity.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIImportedEntity enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DILexicalBlock class">
     <HelpKINode Title="DILexicalBlock Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlock.htm" />
     <HelpKINode Title="about DILexicalBlock class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlock.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlock.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILexicalBlock.htm" />
   </HelpKINode>
-  <HelpKINode Title="DILexicalBlock enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DILexicalBlockBase class">
     <HelpKINode Title="DILexicalBlockBase Class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlockBase.htm" />
     <HelpKINode Title="about DILexicalBlockBase class" Url="html/T_Llvm_NET_DebugInfo_DILexicalBlockBase.htm" />
@@ -862,7 +848,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILexicalBlockFile.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILexicalBlockFile.htm" />
   </HelpKINode>
-  <HelpKINode Title="DILexicalBlockFile enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DILocalScope class">
     <HelpKINode Title="DILocalScope Class" Url="html/T_Llvm_NET_DebugInfo_DILocalScope.htm" />
     <HelpKINode Title="about DILocalScope class" Url="html/T_Llvm_NET_DebugInfo_DILocalScope.htm" />
@@ -875,7 +860,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocalVariable.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILocalVariable.htm" />
   </HelpKINode>
-  <HelpKINode Title="DILocalVariable enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DILocation class">
     <HelpKINode Title="DILocation Class" Url="html/T_Llvm_NET_DebugInfo_DILocation.htm" />
     <HelpKINode Title="about DILocation class" Url="html/T_Llvm_NET_DebugInfo_DILocation.htm" />
@@ -883,7 +867,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DILocation.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DILocation.htm" />
   </HelpKINode>
-  <HelpKINode Title="DILocation enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DILocation.Column property" Url="html/P_Llvm_NET_DebugInfo_DILocation_Column.htm" />
   <HelpKINode Title="DILocation.DILocation constructor" Url="html/Overload_Llvm_NET_DebugInfo_DILocation__ctor.htm" />
   <HelpKINode Title="DILocation.InlinedAt property" Url="html/P_Llvm_NET_DebugInfo_DILocation_InlinedAt.htm" />
@@ -896,14 +879,12 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIModule.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIModule.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIModule enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DINamespace class">
     <HelpKINode Title="DINamespace Class" Url="html/T_Llvm_NET_DebugInfo_DINamespace.htm" />
     <HelpKINode Title="about DINamespace class" Url="html/T_Llvm_NET_DebugInfo_DINamespace.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DINamespace.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DINamespace.htm" />
   </HelpKINode>
-  <HelpKINode Title="DINamespace enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DINode class">
     <HelpKINode Title="DINode Class" Url="html/T_Llvm_NET_DebugInfo_DINode.htm" />
     <HelpKINode Title="about DINode class" Url="html/T_Llvm_NET_DebugInfo_DINode.htm" />
@@ -911,13 +892,18 @@
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DINode.htm" />
   </HelpKINode>
   <HelpKINode Title="DINode.Tag property" Url="html/P_Llvm_NET_DebugInfo_DINode_Tag.htm" />
+  <HelpKINode Title="DINodeArray class">
+    <HelpKINode Title="DINodeArray Class" Url="html/T_Llvm_NET_DebugInfo_DINodeArray.htm" />
+    <HelpKINode Title="about DINodeArray class" Url="html/T_Llvm_NET_DebugInfo_DINodeArray.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DINodeArray.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DINodeArray.htm" />
+  </HelpKINode>
   <HelpKINode Title="DIObjCProperty class">
     <HelpKINode Title="DIObjCProperty Class" Url="html/T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
     <HelpKINode Title="about DIObjCProperty class" Url="html/T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
   </HelpKINode>
-  <HelpKINode Title="DIObjCProperty enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="Directory property" Url="html/P_Llvm_NET_DebugInfo_DIFile_Directory.htm" />
   <HelpKINode Title="Disassembler enumeration member" Url="html/T_Llvm_NET_TargetRegistrations.htm" />
   <HelpKINode Title="DIScope class">
@@ -943,7 +929,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubProgram.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DISubProgram.htm" />
   </HelpKINode>
-  <HelpKINode Title="DISubprogram enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DISubProgram property" Url="html/P_Llvm_NET_Values_Function_DISubProgram.htm" />
   <HelpKINode Title="DISubProgram.Describes method" Url="html/M_Llvm_NET_DebugInfo_DISubProgram_Describes.htm" />
   <HelpKINode Title="DISubrange class">
@@ -952,14 +937,12 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubrange.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DISubrange.htm" />
   </HelpKINode>
-  <HelpKINode Title="DISubrange enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DISubroutineType class">
     <HelpKINode Title="DISubroutineType Class" Url="html/T_Llvm_NET_DebugInfo_DISubroutineType.htm" />
     <HelpKINode Title="about DISubroutineType class" Url="html/T_Llvm_NET_DebugInfo_DISubroutineType.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DISubroutineType.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DISubroutineType.htm" />
   </HelpKINode>
-  <HelpKINode Title="DISubroutineType enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DITemplateParameter class">
     <HelpKINode Title="DITemplateParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateParameter.htm" />
     <HelpKINode Title="about DITemplateParameter class" Url="html/T_Llvm_NET_DebugInfo_DITemplateParameter.htm" />
@@ -972,14 +955,12 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateTypeParameter.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DITemplateTypeParameter.htm" />
   </HelpKINode>
-  <HelpKINode Title="DITemplateTypeParameter enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DITemplateValueParameter class">
     <HelpKINode Title="DITemplateValueParameter Class" Url="html/T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm" />
     <HelpKINode Title="about DITemplateValueParameter class" Url="html/T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_DITemplateValueParameter.htm" />
   </HelpKINode>
-  <HelpKINode Title="DITemplateValueParameter enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="DIType class">
     <HelpKINode Title="DIType Class" Url="html/T_Llvm_NET_DebugInfo_DIType.htm" />
     <HelpKINode Title="about DIType class" Url="html/T_Llvm_NET_DebugInfo_DIType.htm" />
@@ -1036,6 +1017,7 @@
   <HelpKINode Title="DynamicType enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="Edited enumeration member" Url="html/T_Llvm_NET_DebugInfo_DiTypeKind.htm" />
   <HelpKINode Title="ElementAtOffset method" Url="html/M_Llvm_NET_TargetData_ElementAtOffset.htm" />
+  <HelpKINode Title="Elements property" Url="html/P_Llvm_NET_DebugInfo_DICompositeType_Elements.htm" />
   <HelpKINode Title="ElementType property">
     <HelpKINode Title="DebugArrayType.ElementType Property " Url="html/P_Llvm_NET_DebugInfo_DebugArrayType_ElementType.htm" />
     <HelpKINode Title="DebugPointerType.ElementType Property " Url="html/P_Llvm_NET_DebugInfo_DebugPointerType_ElementType.htm" />
@@ -1215,7 +1197,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_GenericDINode.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_GenericDINode.htm" />
   </HelpKINode>
-  <HelpKINode Title="GenericDINode enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="GenericSubrange enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="GetAlias method" Url="html/M_Llvm_NET_NativeModule_GetAlias.htm" />
   <HelpKINode Title="GetAttributeValue method" Url="html/M_Llvm_NET_Values_AttributeSet_GetAttributeValue.htm" />
@@ -1228,6 +1209,7 @@
   <HelpKINode Title="GetElementPtr enumeration member" Url="html/T_Llvm_NET_OpCode.htm" />
   <HelpKINode Title="GetElementPtr method" Url="html/M_Llvm_NET_InstructionBuilder_GetElementPtr.htm" />
   <HelpKINode Title="GetElementPtrInBounds method" Url="html/Overload_Llvm_NET_InstructionBuilder_GetElementPtrInBounds.htm" />
+  <HelpKINode Title="GetEnumerator method" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_GetEnumerator.htm" />
   <HelpKINode Title="GetFunction method" Url="html/M_Llvm_NET_NativeModule_GetFunction.htm" />
   <HelpKINode Title="GetFunctionType method" Url="html/Overload_Llvm_NET_Context_GetFunctionType.htm" />
   <HelpKINode Title="GetIntType method" Url="html/M_Llvm_NET_Context_GetIntType.htm" />
@@ -1360,6 +1342,7 @@
   </HelpKINode>
   <HelpKINode Title="IDebugType&lt;NativeT, DebugT&gt;.DIType property" Url="html/P_Llvm_NET_DebugInfo_IDebugType_2_DIType.htm" />
   <HelpKINode Title="IDebugType&lt;NativeT, DebugT&gt;.NativeType property" Url="html/P_Llvm_NET_DebugInfo_IDebugType_2_NativeType.htm" />
+  <HelpKINode Title="IEnumerable.GetEnumerator explicitly implemented method" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_System_Collections_IEnumerable_GetEnumerator.htm" />
   <HelpKINode Title="IExtensiblePropertyContainer interface">
     <HelpKINode Title="IExtensiblePropertyContainer Interface" Url="html/T_Llvm_NET_IExtensiblePropertyContainer.htm" />
     <HelpKINode Title="about IExtensiblePropertyContainer interface" Url="html/T_Llvm_NET_IExtensiblePropertyContainer.htm" />
@@ -1726,7 +1709,10 @@
   <HelpKINode Title="IsVolatile(Of T) method" Url="html/M_Llvm_NET_Instructions_InstructionExtensions_IsVolatile__1.htm" />
   <HelpKINode Title="IsVolatile&lt;T&gt; method" Url="html/M_Llvm_NET_Instructions_InstructionExtensions_IsVolatile__1.htm" />
   <HelpKINode Title="IsZeroValue property" Url="html/P_Llvm_NET_Values_Constant_IsZeroValue.htm" />
-  <HelpKINode Title="Item property" Url="html/P_Llvm_NET_Values_AttributeSet_Item.htm" />
+  <HelpKINode Title="Item property">
+    <HelpKINode Title="AttributeSet.Item Property " Url="html/P_Llvm_NET_Values_AttributeSet_Item.htm" />
+    <HelpKINode Title="TupleTypedArrayWrapper(T).Item Property " Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Item.htm" />
+  </HelpKINode>
   <HelpKINode Title="ITypeRef interface">
     <HelpKINode Title="ITypeRef Interface" Url="html/T_Llvm_NET_Types_ITypeRef.htm" />
     <HelpKINode Title="about ITypeRef interface" Url="html/T_Llvm_NET_Types_ITypeRef.htm" />
@@ -1859,7 +1845,6 @@
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugType class" Url="html/T_Llvm_NET_DebugInfo_DebugType.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugType(Of NativeT, DebugT) class" Url="html/T_Llvm_NET_DebugInfo_DebugType_2.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DebugType&lt;NativeT, DebugT&gt; class" Url="html/T_Llvm_NET_DebugInfo_DebugType_2.htm" />
-  <HelpKINode Title="Llvm.NET.DebugInfo.DIArray class" Url="html/T_Llvm_NET_DebugInfo_DIArray.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DIBasicType class" Url="html/T_Llvm_NET_DebugInfo_DIBasicType.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DICompileUnit class" Url="html/T_Llvm_NET_DebugInfo_DICompileUnit.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DICompositeType class" Url="html/T_Llvm_NET_DebugInfo_DICompositeType.htm" />
@@ -1878,6 +1863,7 @@
   <HelpKINode Title="Llvm.NET.DebugInfo.DIModule class" Url="html/T_Llvm_NET_DebugInfo_DIModule.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DINamespace class" Url="html/T_Llvm_NET_DebugInfo_DINamespace.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DINode class" Url="html/T_Llvm_NET_DebugInfo_DINode.htm" />
+  <HelpKINode Title="Llvm.NET.DebugInfo.DINodeArray class" Url="html/T_Llvm_NET_DebugInfo_DINodeArray.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DIObjCProperty class" Url="html/T_Llvm_NET_DebugInfo_DIObjCProperty.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DIScope class" Url="html/T_Llvm_NET_DebugInfo_DIScope.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.DISubProgram class" Url="html/T_Llvm_NET_DebugInfo_DISubProgram.htm" />
@@ -1897,6 +1883,8 @@
   <HelpKINode Title="Llvm.NET.DebugInfo.QualifiedTypeTag enumeration" Url="html/T_Llvm_NET_DebugInfo_QualifiedTypeTag.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.SourceLanguage enumeration" Url="html/T_Llvm_NET_DebugInfo_SourceLanguage.htm" />
   <HelpKINode Title="Llvm.NET.DebugInfo.Tag enumeration" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
+  <HelpKINode Title="Llvm.NET.DebugInfo.TupleTypedArrayWrapper(Of T) class" Url="html/T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+  <HelpKINode Title="Llvm.NET.DebugInfo.TupleTypedArrayWrapper&lt;T&gt; class" Url="html/T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
   <HelpKINode Title="Llvm.NET.ExtensiblePropertyDescriptor(Of T) class" Url="html/T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm" />
   <HelpKINode Title="Llvm.NET.ExtensiblePropertyDescriptor&lt;T&gt; class" Url="html/T_Llvm_NET_ExtensiblePropertyDescriptor_1.htm" />
   <HelpKINode Title="Llvm.NET.FunctionAttributeIndex enumeration" Url="html/T_Llvm_NET_FunctionAttributeIndex.htm" />
@@ -1960,8 +1948,6 @@
   <HelpKINode Title="Llvm.NET.MDTuple class" Url="html/T_Llvm_NET_MDTuple.htm" />
   <HelpKINode Title="Llvm.NET.MemoryBuffer class" Url="html/T_Llvm_NET_MemoryBuffer.htm" />
   <HelpKINode Title="Llvm.NET.MetadataAsValue class" Url="html/T_Llvm_NET_MetadataAsValue.htm" />
-  <HelpKINode Title="Llvm.NET.MetadataFormat enumeration" Url="html/T_Llvm_NET_MetadataFormat.htm" />
-  <HelpKINode Title="Llvm.NET.MetadataKind enumeration" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="Llvm.NET.ModuleFlagBehavior enumeration" Url="html/T_Llvm_NET_ModuleFlagBehavior.htm" />
   <HelpKINode Title="Llvm.NET.NativeModule class" Url="html/T_Llvm_NET_NativeModule.htm" />
   <HelpKINode Title="Llvm.NET.OpCode enumeration" Url="html/T_Llvm_NET_OpCode.htm" />
@@ -2042,7 +2028,6 @@
     <HelpKINode Title="about LocalAsMetadata class" Url="html/T_Llvm_NET_LocalAsMetadata.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_LocalAsMetadata.htm" />
   </HelpKINode>
-  <HelpKINode Title="LocalAsMetadata enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="LogicalShiftRight method" Url="html/M_Llvm_NET_InstructionBuilder_LogicalShiftRight.htm" />
   <HelpKINode Title="LoUser enumeration member">
     <HelpKINode Title="DiTypeKind Enumeration" Url="html/T_Llvm_NET_DebugInfo_DiTypeKind.htm" />
@@ -2080,7 +2065,6 @@
     <HelpKINode Title="about MDString class" Url="html/T_Llvm_NET_MDString.htm" />
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_MDString.htm" />
   </HelpKINode>
-  <HelpKINode Title="MDString enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="MDString.ToString method" Url="html/M_Llvm_NET_MDString_ToString.htm" />
   <HelpKINode Title="MDTuple class">
     <HelpKINode Title="MDTuple Class" Url="html/T_Llvm_NET_MDTuple.htm" />
@@ -2088,7 +2072,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_MDTuple.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_MDTuple.htm" />
   </HelpKINode>
-  <HelpKINode Title="MDTuple enumeration member" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="Medium enumeration member" Url="html/T_Llvm_NET_CodeModel.htm" />
   <HelpKINode Title="Member enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="Members property">
@@ -2141,8 +2124,6 @@
     <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_MetadataAsValue.htm" />
     <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_MetadataAsValue.htm" />
   </HelpKINode>
-  <HelpKINode Title="MetadataFormat enumeration" Url="html/T_Llvm_NET_MetadataFormat.htm" />
-  <HelpKINode Title="MetadataKind enumeration" Url="html/T_Llvm_NET_MetadataKind.htm" />
   <HelpKINode Title="MinSize enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
   <HelpKINode Title="minus enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="MipsLoop enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
@@ -2266,8 +2247,8 @@
   </HelpKINode>
   <HelpKINode Title="OptimizeForSize enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
   <HelpKINode Title="OptimizeNone enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
-  <HelpKINode Title="or enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="Or enumeration member" Url="html/T_Llvm_NET_OpCode.htm" />
+  <HelpKINode Title="or enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="Or method" Url="html/M_Llvm_NET_InstructionBuilder_Or.htm" />
   <HelpKINode Title="Ordered enumeration member">
     <HelpKINode Title="Predicate Enumeration" Url="html/T_Llvm_NET_Predicate.htm" />
@@ -2505,8 +2486,8 @@
   <HelpKINode Title="SExt enumeration member" Url="html/T_Llvm_NET_AttributeKind.htm" />
   <HelpKINode Title="SharedType enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="ShiftLeft method" Url="html/M_Llvm_NET_InstructionBuilder_ShiftLeft.htm" />
-  <HelpKINode Title="shl enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="Shl enumeration member" Url="html/T_Llvm_NET_OpCode.htm" />
+  <HelpKINode Title="shl enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="shr enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="shra enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="ShuffleVector class">
@@ -2726,6 +2707,33 @@
     <HelpKINode Title="IExtensiblePropertyContainer.TryGetExtendedPropertyValue(T) Method " Url="html/M_Llvm_NET_IExtensiblePropertyContainer_TryGetExtendedPropertyValue__1.htm" />
     <HelpKINode Title="Value.TryGetExtendedPropertyValue(T) Method " Url="html/M_Llvm_NET_Values_Value_TryGetExtendedPropertyValue__1.htm" />
   </HelpKINode>
+  <HelpKINode Title="Tuple property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Tuple.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper(Of T) class">
+    <HelpKINode Title="TupleTypedArrayWrapper(T) Class" Url="html/T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+    <HelpKINode Title="about TupleTypedArrayWrapper(Of T) class" Url="html/T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TupleTypedArrayWrapper(Of T).Count property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Count.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper(Of T).GetEnumerator method" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_GetEnumerator.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper(Of T).IEnumerable.GetEnumerator explicitly implemented method" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_System_Collections_IEnumerable_GetEnumerator.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper(Of T).Item property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Item.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper(Of T).Tuple property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Tuple.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper(Of T).TupleTypedArrayWrapper constructor" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1__ctor.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper&lt;T&gt; class">
+    <HelpKINode Title="TupleTypedArrayWrapper(T) Class" Url="html/T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+    <HelpKINode Title="about TupleTypedArrayWrapper&lt;T&gt; class" Url="html/T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="TupleTypedArrayWrapper&lt;T&gt;.Count property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Count.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper&lt;T&gt;.GetEnumerator method" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_GetEnumerator.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper&lt;T&gt;.IEnumerable.GetEnumerator explicitly implemented method" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_System_Collections_IEnumerable_GetEnumerator.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper&lt;T&gt;.Item property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Item.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper&lt;T&gt;.Tuple property" Url="html/P_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1_Tuple.htm" />
+  <HelpKINode Title="TupleTypedArrayWrapper&lt;T&gt;.TupleTypedArrayWrapper constructor" Url="html/M_Llvm_NET_DebugInfo_TupleTypedArrayWrapper_1__ctor.htm" />
   <HelpKINode Title="TypeDef enumeration member" Url="html/T_Llvm_NET_DebugInfo_Tag.htm" />
   <HelpKINode Title="TypeHandle property">
     <HelpKINode Title="DebugType(NativeT, DebugT).TypeHandle Property " Url="html/P_Llvm_NET_DebugInfo_DebugType_2_TypeHandle.htm" />
@@ -2909,8 +2917,8 @@
   <HelpKINode Title="x86StdCall enumeration member" Url="html/T_Llvm_NET_CallingConvention.htm" />
   <HelpKINode Title="xderef enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="xderef_size enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
-  <HelpKINode Title="xor enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="Xor enumeration member" Url="html/T_Llvm_NET_OpCode.htm" />
+  <HelpKINode Title="xor enumeration member" Url="html/T_Llvm_NET_DebugInfo_ExpressionOp.htm" />
   <HelpKINode Title="Xor method" Url="html/M_Llvm_NET_InstructionBuilder_Xor.htm" />
   <HelpKINode Title="ZeroExtend class">
     <HelpKINode Title="ZeroExtend Class" Url="html/T_Llvm_NET_Instructions_ZeroExtend.htm" />
