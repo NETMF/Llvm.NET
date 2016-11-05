@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Llvm.NET.Native;
 
 namespace Llvm.NET
@@ -51,6 +53,41 @@ namespace Llvm.NET
             {
                 var errTxt = NativeMethods.MarshalMsg( errMsg );
                 throw new InternalCodeGeneratorException( errTxt );
+            }
+        }
+
+        /// <summary>Generate code for the target machine from a module</summary>
+        /// <param name="module"><see cref="NativeModule"/> to generate the code from</param>
+        /// <param name="fileType">Type of file to emit</param>
+        /// <returns>The emitted result in form of a <see cref="byte"/> array</returns>
+        public byte[] EmitToBuffer( NativeModule module, CodeGenFileType fileType )
+        {
+            if( module == null )
+                throw new ArgumentNullException( nameof( module ) );
+
+            IntPtr errMsg;
+            LLVMMemoryBufferRef bufferRef;
+            if( 0 != NativeMethods.TargetMachineEmitToMemoryBuffer( TargetMachineHandle, module.ModuleHandle, (LLVMCodeGenFileType)fileType, out errMsg, out bufferRef ).Value )
+            {
+                var errTxt = NativeMethods.MarshalMsg( errMsg );
+                throw new InternalCodeGeneratorException( errTxt );
+            }
+
+            Debug.Assert( bufferRef.Pointer != IntPtr.Zero, "Invalid buffer result" );
+
+            try
+            {
+                var bufferStart = NativeMethods.GetBufferStart( bufferRef );
+                var bufferSize = NativeMethods.GetBufferSize( bufferRef );
+
+                var result = new byte[ bufferSize ];
+                Marshal.Copy( bufferStart, result, 0, bufferSize );
+
+                return result;
+            }
+            finally
+            {
+                NativeMethods.DisposeMemoryBuffer( bufferRef );
             }
         }
 
