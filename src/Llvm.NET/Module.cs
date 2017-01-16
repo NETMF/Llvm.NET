@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using Llvm.NET.DebugInfo;
 using Llvm.NET.Native;
 using Llvm.NET.Types;
@@ -398,6 +399,30 @@ namespace Llvm.NET
 
             errMsg = NativeMethods.MarshalMsg( msg );
             return false;
+        }
+
+        /// <summary>Write this module as LLVM IR bitcode to a memory buffer</summary>
+        /// <returns>The resulting IR bitcode as byte array</returns>
+        public byte[] WriteToBuffer( )
+        {
+            var bufferRef = NativeMethods.WriteBitcodeToMemoryBuffer( ModuleHandle );
+            if( bufferRef.Pointer == IntPtr.Zero )
+                throw new IOException( "Could not write to buffer" );
+
+            try
+            {
+                var bufferStart = NativeMethods.GetBufferStart( bufferRef );
+                var bufferSize = NativeMethods.GetBufferSize( bufferRef );
+
+                var result = new byte[ bufferSize ];
+                Marshal.Copy( bufferStart, result, 0, bufferSize );
+
+                return result;
+            }
+            finally
+            {
+                NativeMethods.DisposeMemoryBuffer( bufferRef );
+            }
         }
 
         /// <summary>Creates a string representation of the module</summary>
