@@ -153,8 +153,7 @@ namespace Llvm.NET.Tests
                 GC.Collect( GC.MaxGeneration, GCCollectionMode.Forced, true );
                 mergedMod.Link( clone1 );
                 GC.Collect( GC.MaxGeneration, GCCollectionMode.Forced, true );
-                string errMsg;
-                Assert.IsTrue( mergedMod.Verify( out errMsg), errMsg );
+                Assert.IsTrue( mergedMod.Verify( out string errMsg ), errMsg );
                 Assert.AreEqual( 1, mergedMod.Functions.Count( ) );
                 mergedMod.Link( clone2 );
                 GC.Collect( GC.MaxGeneration, GCCollectionMode.Forced, true );
@@ -171,10 +170,9 @@ namespace Llvm.NET.Tests
                 Function testFunc = CreateSimpleVoidNopTestFunction( module, "foo" );
                 // verify basics
                 Assert.IsNotNull( testFunc );
-                string msg;
-                var isValid = module.Verify( out msg );
+                var isValid = module.Verify( out string msg );
                 Assert.IsTrue( isValid );
-                Assert.IsNull( msg );
+                Assert.AreEqual( string.Empty, msg );
             }
         }
 

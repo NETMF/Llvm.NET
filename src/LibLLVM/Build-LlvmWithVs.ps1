@@ -14,6 +14,10 @@
 .PARAMETER Register
     Add Registry entries for the location of binaries built and the LLVM header files so that projects using the libraries generated can locate them
 
+.PARAMETER LlvmVersion
+    Specifies the LLVM Version, which is used in registering the location of the lib and headers in the registry. The default value is the currently
+    supported version of LLVM. However, when working to support a new release of LLVM it is useful to force a different version number.
+
 .PARAMETER LlvmRoot
     This specifies the root of the LLVM source tree to build. The default value is the folder containing this script, but if the script is not placed
     into the LLVM source tree the path must be specified.
@@ -44,6 +48,10 @@ param( [Parameter(Mandatory)]
        $CreateSettingsJson,
 
        [ValidateNotNullOrEmpty()]
+       [string]
+       $LlvmVersion="3.9.0",
+
+       [ValidateNotNullOrEmpty()]
        [string]$LlvmRoot=$PSScriptRoot,
 
        [ValidateNotNullOrEmpty()]
@@ -56,7 +64,7 @@ function Get-CmakeInfo([int]$minMajor, [int]$minMinor, [int]$minPatch)
     $cmakePath = where.exe cmake.exe 2>&1 | %{$_.ToString}
     if( $LASTEXITCODE -ne 0 )
     {
-        throw "CMAKE.EXE not found - Version {1}.{2}.{3} or later is required and should be in the search path" -f($minMajor,$minMinor,$minPatch)
+        throw "CMAKE.EXE not found - Version {0}.{1}.{2} or later is required and should be in the search path" -f($minMajor,$minMinor,$minPatch)
     }
 
     $cmakeInfo = cmake -E capabilities | ConvertFrom-Json
@@ -85,14 +93,18 @@ function Generate-CMake( $config, [string]$llvmroot )
     }
 
     $cmakeArgs.Add( $llvmRoot ) | Out-Null
-    
+    if( $env:PROCESSOR_ARCHITECTURE -ieq "AMD64" )
+    {
+        $cmakeArgs.Add( "-Thost=x64" ) | Out-Null
+    }
+
     pushd $config.buildRoot
     $timer = [System.Diagnostics.Stopwatch]::StartNew()
     try
-    { 
+    {
         Write-Verbose "cmake $cmakeArgs"
         & cmake $cmakeArgs | %{Write-Progress -Activity $activity -PercentComplete (-1) -SecondsRemaining (-1) -Status ([string]$_) }
-        
+
         if($LASTEXITCODE -ne 0 )
         {
             throw ("Cmake generation exited with non-zero exit code: {0}" -f($LASTEXITCODE))
@@ -128,29 +140,37 @@ function Build-Cmake($config)
     }
 }
 
+function IsAdmin
+{
+    [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
+}
+
+
 function Register-Llvm( [string]$llvmVersion, [string] $llvmRoot, [string] $buildRoot )
 {
     $regPath = "Software\LLVM\$llvmVersion"
+
     if( !( Test-Path HKCU:$regPath ) )
     {
-        New-Item HKCU:$regPath | Out-Null
+        Write-Host "Creating registry key HKCU\$regPath"
+        New-Item -Force HKCU:$regPath | Out-Null
     }
 
     New-ItemProperty -Path HKCU:$regPath -Name "SrcRoot" -Value $llvmRoot -Force | Out-Null
     New-ItemProperty -Path HKCU:$regPath -Name "BuildRoot" -Value $buildRoot -Force | Out-Null
-    
-    try
+
+    if(IsAdmin)
     {
         if( !( Test-Path HKLM:$regPath ) )
         {
-            New-Item HKLM:$regPath | Out-Null
+            New-Item -Force HKLM:$regPath | Out-Null
         }
         New-ItemProperty -Path HKLM:$regPath -Name "SrcRoot" -Value $llvmRoot -Force -ErrorAction Stop | Out-Null
         New-ItemProperty -Path HKLM:$regPath -Name "BuildRoot" -Value $buildRoot -Force -ErrorAction Stop | Out-Null
     }
-    catch [System.Security.SecurityException]
+    else
     {
-        Write-Warning "Registration of LLVM in System wide registry not set due to access permissions. To register the LLVM source root for the system, run this script with the -Register switch elevated with admin priviliges."
+        Write-Warning "Per machine Registration of LLVM in System wide registry not set due to access permissions. To register the LLVM source root for the system, run this script with the -Register switch elevated with admin priviliges."
     }
 }
 
@@ -168,21 +188,22 @@ function New-CmakeConfig([string]$platform, [string]$config, [string]$BaseGenera
 
     # build a config object suitable for conversion to JSON for VS CMakeSettings.json
     # This is used in the project generation and build as well, since it contains all
-    # the information needed for each of those cases. 
-    [PSCustomObject]@{ 
+    # the information needed for each of those cases.
+    [PSCustomObject]@{
         name = "$platform-$config"
         generator = $generator
         configurationType = $config
-        buildRoot = (Join-Path $baseBuild "$platform-$config") 
-        cmakeCommandArgs = ""
+        buildRoot = (Join-Path $baseBuild "$platform-$config")
+        cmakeCommandArgs = @("","-Thost=x64")[$env:PROCESSOR_ARCHITECTURE -ieq "AMD64"]
         buildCommandArgs = "-m -v:minimal"
-        variables = @(                                                 
+        variables = @(
             @{name = "LLVM_ENABLE_RTTI";          value = "ON" },
             @{name = "LLVM_BUILD_TOOLS";          value = "OFF"},
             @{name = "LLVM_BUILD_TESTS";          value = "OFF"},
             @{name = "LLVM_BUILD_EXAMPLES";       value = "OFF"},
             @{name = "LLVM_BUILD_DOCS";           value = "OFF"},
             @{name = "LLVM_BUILD_RUNTIME";        value = "OFF"},
+            @{name = "LLVM_TARGETS_TO_BUILD";     value = "all"},
             @{name = "CMAKE_INSTALL_PREFIX";      value = "Install"},
             @{name = "CMAKE_CONFIGURATION_TYPES"; value = "$config"}
         )
@@ -200,33 +221,11 @@ function Normalize-Path([string]$path )
     return [System.IO.Path]::GetFullPath($path)
 }
 
-function Get-LlvmVersion( [string] $cmakeListPath )
-{
-    $props = @{}
-    $matches = Select-String -Path $cmakeListPath -Pattern "set\(LLVM_VERSION_(MAJOR|MINOR|PATCH) ([0-9])+\)" | %{$_.Matches}
-    foreach( $match in $matches )
-    {  
-        $props = $props + @{$match.Groups[1].Value = [Convert]::ToInt32($match.Groups[2].Value)}
-    }
-    $versionObj = [PsCustomObject]($props)
-    "{0}.{1}.{2}" -f($versionObj.MAJOR,$versionObj.Minor,$versionObj.Patch)
-}
-
 #--- Main Script Body
 
 # Force absolute paths for input params dealing in paths
 $Script:LlvmRoot = Normalize-Path $Script:LlvmRoot
 $Script:BuildOutputPath = Normalize-Path $Script:BuildOutputPath
-
-# Verify Cmake version info
-$CmakeInfo = Get-CmakeInfo 3 7 1
-
-Write-Information "LLVM Source Root: $Script:LlvmRoot"
-$cmakeListPath = Join-Path $Script:LlvmRoot CMakeLists.txt
-if( !( Test-Path -PathType Leaf $cmakeListPath ) )
-{
-    throw "'$cmakeListPath' is missing, the current directory does not appear to be a valid source directory"
-}
 
 # Construct array of configurations to deal with
 $configurations = ( (New-CmakeConfig x86 "Release" $BaseVsGenerator $Script:BuildOutputPath),
@@ -235,9 +234,19 @@ $configurations = ( (New-CmakeConfig x86 "Release" $BaseVsGenerator $Script:Buil
                     (New-CmakeConfig x64 "Debug" $BaseVsGenerator $Script:BuildOutputPath)
                   )
 
+Write-Information "LLVM Source Root: $Script:LlvmRoot"
+$cmakeListPath = Join-Path $Script:LlvmRoot CMakeLists.txt
+if( !( Test-Path -PathType Leaf $cmakeListPath ) )
+{
+    throw "'$cmakeListPath' is missing, the current directory does not appear to be a valid source directory"
+}
+
+# Verify Cmake version info
+$CmakeInfo = Get-CmakeInfo 3 7 1
+$timer = [System.Diagnostics.Stopwatch]::StartNew()
+
 if( $Generate )
 {
-    $timer = [System.Diagnostics.Stopwatch]::StartNew()
     try
     {
         foreach( $config in $configurations )
@@ -247,14 +256,13 @@ if( $Generate )
     }
     finally
     {
-        $timer.Stop()
         Write-Information ("Total Generation Time: {0}" -f($timer.Elapsed.ToString()))
     }
 }
 
 if( $Build )
 {
-    $timer = [System.Diagnostics.Stopwatch]::StartNew()
+    $buildTimer = [System.Diagnostics.Stopwatch]::StartNew()
     try
     {
         foreach( $config in $configurations )
@@ -264,18 +272,20 @@ if( $Build )
     }
     finally
     {
-        $timer.Stop()
-        Write-Information ("Total Build Time: {0}" -f($timer.Elapsed.ToString()))
+        $buildTimer.Stop()
+        Write-Information ("Total Build Time: {0}" -f($buildTimer.Elapsed.ToString()))
     }
 }
 
 if( $Register )
 {
-    $llvmVersion = Get-LlvmVersion $Script:cmakeListPath
-    Register-Llvm $llvmVersion $Script:LlvmRoot $Script:BuildOutputPath
+    Register-Llvm $Script:LlvmVersion $Script:LlvmRoot $Script:BuildOutputPath
 }
 
 if( $CreateSettingsJson )
 {
-    New-CmakeSettings $configurations | Out-File (join-path $Script:LlvmRoot CMakeSettings.json) 
+    New-CmakeSettings $configurations | Out-File (join-path $Script:LlvmRoot CMakeSettings.json)
 }
+
+$timer.Stop()
+Write-Information ("Total Time: {0}" -f($timer.Elapsed.ToString()))

@@ -5,6 +5,7 @@ using Llvm.NET.Types;
 using Llvm.NET.Values;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace TestDebugInfo
 {
@@ -13,7 +14,7 @@ namespace TestDebugInfo
     {
         static ITargetDependentDetails TargetDetails;
 
-        static AttributeSet TargetDependentAttributes { get; set; }
+        static IEnumerable<AttributeValue> TargetDependentAttributes { get; set; }
 
         // obviously this is not clang but using an identical name helps in diff with actual clang output
         const string VersionIdentString = "clang version 3.8.0 (branches/release_38)";
@@ -26,7 +27,7 @@ namespace TestDebugInfo
         static void Main( string[ ] args )
         {
             TargetDetails = new CortexM3Details();
-            var srcPath = args[ 0 ];
+            string srcPath = args[ 0 ];
             if( !File.Exists( srcPath ) )
             {
                 Console.Error.WriteLine( "Src file not found: '{0}'", srcPath );
@@ -34,7 +35,7 @@ namespace TestDebugInfo
             }
             srcPath = Path.GetFullPath( srcPath );
 
-            var moduleName = $"test_{TargetDetails.ShortName}.bc";
+            string moduleName = $"test_{TargetDetails.ShortName}.bc";
 
             StaticState.RegisterAll( );
             var target = Target.FromTriple( TargetDetails.Triple );
@@ -88,11 +89,13 @@ namespace TestDebugInfo
 
                 var bar = module.AddGlobal( fooType, false, 0, barValue, "bar" );
                 bar.Alignment = targetData.AbiAlignmentOf( fooType );
-                module.DIBuilder.CreateGlobalVariable( cu, "bar", string.Empty, diFile, 8, fooType.DIType, false, bar );
+                // TODO: Figure out support for new GlobalVariableExpression, which internally creates a DIGlobalVariable
+                //module.DIBuilder.CreateGlobalVariable( cu, "bar", string.Empty, diFile, 8, fooType.DIType, false, bar );
 
                 var baz = module.AddGlobal( fooType, false, Linkage.Common, Constant.NullValueFor( fooType ), "baz" );
                 baz.Alignment = targetData.AbiAlignmentOf( fooType );
-                module.DIBuilder.CreateGlobalVariable( cu, "baz", string.Empty, diFile, 9, fooType.DIType, false, baz );
+                // TODO: Figure out support for new GlobalVariableExpression, which internally creates a DIGlobalVariable
+                //module.DIBuilder.CreateGlobalVariable( cu, "baz", string.Empty, diFile, 9, fooType.DIType, false, baz );
 
                 // add module flags and compiler identifiers...
                 // this can technically occur at any point, though placing it here makes
@@ -120,8 +123,7 @@ namespace TestDebugInfo
                 module.DIBuilder.Finish( );
 
                 // verify the module is still good and print any errors found
-                string msg;
-                if( !module.Verify( out msg ) )
+                if( !module.Verify( out string msg ) )
                 {
                     Console.Error.WriteLine( "ERROR: {0}", msg );
                 }
@@ -159,7 +161,7 @@ namespace TestDebugInfo
                                                   , scopeLine: 24
                                                   , debugFlags: DebugInfoFlags.None
                                                   , isOptimized: false
-                                                  ).AddAttributes( AttributeKind.NoUnwind )
+                                                  ).AddAttributes( FunctionAttributeIndex.Function, AttributeKind.NoUnwind )
                                                    .AddAttributes( FunctionAttributeIndex.Function, TargetDependentAttributes );
             return doCopyFunc;
         }
@@ -171,7 +173,7 @@ namespace TestDebugInfo
                                                , DebugPointerType fooPtr
                                                )
         {
-            // Since the first parameter is passed by value 
+            // Since the first parameter is passed by value
             // using the pointer + alloca + memcopy pattern, the actual
             // source, and therefore debug, signature is NOT a pointer.
             // However, that usage would create a signature with two
@@ -197,7 +199,7 @@ namespace TestDebugInfo
                                                 , debugFlags: DebugInfoFlags.Prototyped
                                                 , isOptimized: false
                                                 ).Linkage( Linkage.Internal ) // static function
-                                                 .AddAttributes( AttributeKind.NoUnwind, AttributeKind.InlineHint )
+                                                 .AddAttributes( FunctionAttributeIndex.Function, AttributeKind.NoUnwind, AttributeKind.InlineHint )
                                                  .AddAttributes( FunctionAttributeIndex.Function, TargetDependentAttributes );
 
             TargetDetails.AddABIAttributesForByValueStructure( copyFunc, 0 );
@@ -237,7 +239,7 @@ namespace TestDebugInfo
             var paramSrc = diBuilder.CreateArgument( copyFunc.DISubProgram, "src", diFile, 11, constFooType, false, 0, 1 );
             var paramDst = diBuilder.CreateArgument( copyFunc.DISubProgram, "pDst", diFile, 12, fooPtr.DIType, false, 0, 2 );
 
-            var ptrAlign = layout.CallFrameAlignmentOf( fooPtr );
+            uint ptrAlign = layout.CallFrameAlignmentOf( fooPtr );
 
             // create Locals
             // NOTE: There's no debug location attached to these instructions.
@@ -246,7 +248,7 @@ namespace TestDebugInfo
                                      .RegisterName( "pDst.addr" )
                                      .Alignment( ptrAlign );
 
-            var param0ByVal = copyFunc.Attributes.Has( FunctionAttributeIndex.Parameter0, AttributeKind.ByVal );
+            bool param0ByVal = copyFunc.Attributes[ FunctionAttributeIndex.Parameter0 ].Contains( AttributeKind.ByVal );
             if( param0ByVal )
             {
                 diBuilder.InsertDeclare( copyFunc.Parameters[ 0 ]
@@ -283,7 +285,7 @@ namespace TestDebugInfo
             var srcPtr = instBuilder.BitCast( copyFunc.Parameters[ 0 ], module.Context.Int8Type.CreatePointerType( ) )
                                     .SetDebugLocation( 15, 13, copyFunc.DISubProgram );
 
-            var pointerSize = layout.IntPtrType( ).IntegerBitWidth;
+            uint pointerSize = layout.IntPtrType( ).IntegerBitWidth;
             instBuilder.MemCpy( module
                               , dstPtr
                               , srcPtr
@@ -313,7 +315,7 @@ namespace TestDebugInfo
             // create instruction builder to build the body
             var instBuilder = new InstructionBuilder( blk );
 
-            var param0ByVal = copyFunc.Attributes.Has( FunctionAttributeIndex.Parameter0, AttributeKind.ByVal );
+            bool param0ByVal = copyFunc.Attributes[ FunctionAttributeIndex.Parameter0 ].Contains( AttributeKind.ByVal );
             if( !param0ByVal )
             {
                 // create a temp local copy of the global structure
@@ -342,7 +344,7 @@ namespace TestDebugInfo
             {
                 instBuilder.Call( copyFunc, bar, baz )
                            .SetDebugLocation( 25, 5, doCopyFunc.DISubProgram )
-                           .AddAttributes( FunctionAttributeIndex.Parameter0, copyFunc.Attributes.ParameterAttributes( 0 ) );
+                           .AddAttributes( FunctionAttributeIndex.Parameter0, copyFunc.Parameters[0].Attributes );
             }
             instBuilder.Return( )
                        .SetDebugLocation( 26, 1, doCopyFunc.DISubProgram );

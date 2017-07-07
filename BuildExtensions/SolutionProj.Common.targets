@@ -8,9 +8,9 @@
     definitions, etc...) to do most of the work of a build the solution proj does the bulk of a
     build so that it is more easily re-hosted, and more importantly reproduced on a developer's
     machine for testing.
-    
+
     All targets with a name beginning with '_' are internal targets subject to change over time.
-    slnproj files should not reference or depend on them in anyway. 
+    slnproj files should not reference or depend on them in anyway.
     -->
     <Import Project="EnlistmentBuildVersion.targets"/>
 
@@ -44,11 +44,11 @@
             <Output PropertyName="BuildSuffix" TaskParameter="BuildSuffix"/>
         </ParseBuildVersion>
     </Target>
-    
+
     <!-- This task, rather its dependencies, ensure that FullBuildNumber is set as well as
          ensuring that BuildMajor, BuildMinor, BuildNumber, BuildRevision, and, optionally,
-         BuildSuffix are set. 
-         This task itself does nothing more than print the result to the log(s), the 
+         BuildSuffix are set.
+         This task itself does nothing more than print the result to the log(s), the
          EnsureBuildNumbersDependsOn is set from the Choose element above based on whether
          FullBuildNumber is already set or not.
     -->
@@ -62,7 +62,7 @@
             <Output ItemName="_MultiConfigBuildProjects" TaskParameter="Result"/>
         </CreateMultiConfigProjectList>
     </Target>
-    
+
     <!-- Builds all of the various configuration options for the BuildProject items -->
     <Target Name="BuildContentBinaries"
             DependsOnTargets="EnsureBuildNumbers;_CreateMultiConfigProjectList"
@@ -99,7 +99,7 @@
         <!-- generate Sha256 hash so that builds can at least be verified -->
         <GenerateSha256File Files="$(BaseSignedOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\%(ReleaseProjects.TargetOutput)"/>
     </Target>
-    
+
     <!--
     Creates core output folders that tasks require. Not all folders are explicitly created here
     as most of the tasks can create the folder if they don't exist. Some, like the nuget tasks,
@@ -123,7 +123,7 @@
         <Delete Files="@(_FilesToClean)" />
         <RemoveDir Directories="$(BaseBuildOutputPath)" />
     </Target>
-    
+
     <!-- Download the nuget.exe if it isn't found-->
     <Target Name="_DownloadNugetExe" >
         <DownloadFile Condition="!EXISTS('$(NugetExePath)')"
@@ -141,10 +141,10 @@
 
     <!-- Restores nuget packages for projects listed in the NugetRestorePackage item list -->
     <Target Name="NugetRestore" DependsOnTargets="_DownloadNugetExe" >
-        <Exec Condition="EXISTS('%(NugetRestorePackage.FullPath)')" 
+        <Exec Condition="EXISTS('%(NugetRestorePackage.FullPath)')"
               Command='"$(NugetExePath)" restore %(NugetRestorePackage.FullPath) -NonInteractive -PackagesDirectory %(NugetRestorePackage.PackagesDirectory) -SolutionDirectory %(NugetRestorePackage.SolutionDirectory) -MSBuildVersion %(NugetRestorePackage.MSBuildVersion)' />
     </Target>
-    
+
     <!--
     For now this just generates a SHA256 hash for NUGET packages,
     once real signing is available this will handle signing any

@@ -7,22 +7,22 @@ Call :GenerateCode x86_64-pc-windows-msvc18.0.0 test.c test_x86
 Call :GenerateCode thumbv7m-none-eabi test.c test_M3
 
 @REM -- Generate bitcode for x86 from test2.cpp
-Call :GenerateCode x86_64-pc-windows-msvc18.0.0 test2.cpp test2_x86 
+Call :GenerateCode x86_64-pc-windows-msvc18.0.0 test2.cpp test2_x86
 
 @REM -- Generate bitcode for Cortex-M3 from test2.cpp
 Call :GenerateCode thumbv7m-none-eabi test2.cpp test2_M3
 
 @REM -- Generate bitcode for Cortex-M3 from TestInline.cpp
-Call :GenerateCode thumbv7m-none-eabi TestInline.cpp TestInline_M3 
+Call :GenerateCode thumbv7m-none-eabi TestInline.cpp TestInline_M3
 
 @REM -- Generate bitcode for Cortex-M3 from TestEx.cpp
-Call :GenerateCode thumbv7m-none-eabi TestEx.cpp TestEx_M3 
+Call :GenerateCode thumbv7m-none-eabi TestEx.cpp TestEx_M3
 
 goto :EOF
 
-@REM - %1 = Triple (i.e. x86_64-pc-windows-msvc18.0.0,thumbv7m-none-eabi) 
+@REM - %1 = Triple (i.e. x86_64-pc-windows-msvc18.0.0,thumbv7m-none-eabi)
 @REM - %2 = Source File (C/C++)
-@REM - %3 = Output files base name 
+@REM - %3 = Output files base name
 :GenerateCode
 @echo Compiling '%2' for %1
 clang -c -g -emit-llvm --target=%1 %2

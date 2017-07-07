@@ -16,7 +16,7 @@ namespace Llvm.NET
         {
         }
 
-        public InternalCodeGeneratorException( string message, Exception inner ) 
+        public InternalCodeGeneratorException( string message, Exception inner )
             : base( message, inner )
         {
         }

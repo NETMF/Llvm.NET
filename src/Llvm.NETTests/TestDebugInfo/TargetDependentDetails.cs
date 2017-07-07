@@ -1,4 +1,5 @@
-﻿using Llvm.NET;
+﻿using System.Collections.Generic;
+using Llvm.NET;
 using Llvm.NET.Values;
 
 namespace TestDebugInfo
@@ -9,7 +10,7 @@ namespace TestDebugInfo
         string Triple { get; }
         string Cpu { get; }
         string Features { get; }
-        AttributeSet BuildTargetDependentFunctionAttributes( Context ctx );
+        IEnumerable<AttributeValue> BuildTargetDependentFunctionAttributes( Context ctx );
         void AddABIAttributesForByValueStructure( Function function, int paramIndex );
         void AddModuleFlags( NativeModule module );
     }

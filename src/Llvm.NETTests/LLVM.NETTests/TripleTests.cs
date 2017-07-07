@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Llvm.NET.Tests
 {
@@ -13,7 +11,7 @@ namespace Llvm.NET.Tests
         {
             // nonsensical, but syntactically valid triple
             var triple = new Triple( "thumbv7m-pc-cuda-eabicoff" );
-            Assert.AreEqual( TripleArchType.thumb, triple.ArchitectureType );
+            Assert.AreEqual( TripleArchType.Thumb, triple.ArchitectureType );
             Assert.AreEqual( TripleSubArchType.ARMSubArch_v7m, triple.SubArchitecture );
             Assert.AreEqual( TripleVendorType.PC, triple.VendorType );
             Assert.AreEqual( TripleOSType.CUDA, triple.OSType );
@@ -27,7 +25,7 @@ namespace Llvm.NET.Tests
             // constructor should parse and normalize the triple
             // so that ToString() retrieves the normalized form
             var triple = new Triple( "thumbv7m-none-eabi" );
-            var str = triple.ToString( );
+            string str = triple.ToString( );
             Assert.AreEqual( "thumbv7m-none--eabi", str );
         }
 
@@ -46,55 +44,54 @@ namespace Llvm.NET.Tests
         [TestMethod]
         public void GetArchTypeNameTest( )
         {
-            Dictionary<TripleArchType, string> values
-                = new Dictionary<TripleArchType, string>
+            var values = new Dictionary<TripleArchType, string>
                 {
                   { TripleArchType.UnknownArch,    "unknown"},
-                  { TripleArchType.aarch64,        "aarch64"},
-                  { TripleArchType.aarch64_be,     "aarch64_be"},
-                  { TripleArchType.arm,            "arm"},
-                  { TripleArchType.armeb,          "armeb"},
-                  { TripleArchType.avr,            "avr"},
-                  { TripleArchType.bpfel,          "bpfel"},
-                  { TripleArchType.bpfeb,          "bpfeb"},
-                  { TripleArchType.hexagon,        "hexagon"},
-                  { TripleArchType.mips,           "mips"},
-                  { TripleArchType.mipsel,         "mipsel"},
-                  { TripleArchType.mips64,         "mips64"},
-                  { TripleArchType.mips64el,       "mips64el"},
-                  { TripleArchType.msp430,         "msp430"},
-                  { TripleArchType.ppc64,          "powerpc64"},
-                  { TripleArchType.ppc64le,        "powerpc64le"},
-                  { TripleArchType.ppc,            "powerpc"},
-                  { TripleArchType.r600,           "r600"},
-                  { TripleArchType.amdgcn,         "amdgcn"},
-                  { TripleArchType.sparc,          "sparc"},
-                  { TripleArchType.sparcv9,        "sparcv9"},
-                  { TripleArchType.sparcel,        "sparcel"},
-                  { TripleArchType.systemz,        "s390x"},
-                  { TripleArchType.tce,            "tce"},
-                  { TripleArchType.thumb,          "thumb"},
-                  { TripleArchType.thumbeb,        "thumbeb"},
-                  { TripleArchType.x86,            "i386"},
-                  { TripleArchType.x86_64,         "x86_64"},
-                  { TripleArchType.xcore,          "xcore"},
-                  { TripleArchType.nvptx,          "nvptx"},
-                  { TripleArchType.nvptx64,        "nvptx64"},
-                  { TripleArchType.le32,           "le32"},
-                  { TripleArchType.le64,           "le64"},
-                  { TripleArchType.amdil,          "amdil"},
-                  { TripleArchType.amdil64,        "amdil64"},
-                  { TripleArchType.hsail,          "hsail"},
-                  { TripleArchType.hsail64,        "hsail64"},
-                  { TripleArchType.spir,           "spir"},
-                  { TripleArchType.spir64,         "spir64"},
-                  { TripleArchType.kalimba,        "kalimba"},
-                  { TripleArchType.lanai,          "lanai"},
-                  { TripleArchType.shave,          "shave"},
-                  { TripleArchType.wasm32,         "wasm32"},
-                  { TripleArchType.wasm64,         "wasm64"},
-                  { TripleArchType.renderscript32, "renderscript32"},
-                  { TripleArchType.renderscript64, "renderscript64"},
+                  { TripleArchType.Aarch64,        "aarch64"},
+                  { TripleArchType.Aarch64_be,     "aarch64_be"},
+                  { TripleArchType.Arm,            "arm"},
+                  { TripleArchType.Armeb,          "armeb"},
+                  { TripleArchType.Avr,            "avr"},
+                  { TripleArchType.BPFel,          "bpfel"},
+                  { TripleArchType.BPFeb,          "bpfeb"},
+                  { TripleArchType.Hexagon,        "hexagon"},
+                  { TripleArchType.MIPS,           "mips"},
+                  { TripleArchType.MIPSel,         "mipsel"},
+                  { TripleArchType.MIPS64,         "mips64"},
+                  { TripleArchType.MIPS64el,       "mips64el"},
+                  { TripleArchType.MSP430,         "msp430"},
+                  { TripleArchType.PPC64,          "powerpc64"},
+                  { TripleArchType.PPC64le,        "powerpc64le"},
+                  { TripleArchType.PPC,            "powerpc"},
+                  { TripleArchType.R600,           "r600"},
+                  { TripleArchType.AMDGCN,         "amdgcn"},
+                  { TripleArchType.Sparc,          "sparc"},
+                  { TripleArchType.Sparcv9,        "sparcv9"},
+                  { TripleArchType.Sparcel,        "sparcel"},
+                  { TripleArchType.SystemZ,        "s390x"},
+                  { TripleArchType.TCE,            "tce"},
+                  { TripleArchType.Thumb,          "thumb"},
+                  { TripleArchType.Thumbeb,        "thumbeb"},
+                  { TripleArchType.X86,            "i386"},
+                  { TripleArchType.X86_64,         "x86_64"},
+                  { TripleArchType.Xcore,          "xcore"},
+                  { TripleArchType.Nvptx,          "nvptx"},
+                  { TripleArchType.Nvptx64,        "nvptx64"},
+                  { TripleArchType.Le32,           "le32"},
+                  { TripleArchType.Le64,           "le64"},
+                  { TripleArchType.Amdil,          "amdil"},
+                  { TripleArchType.Amdil64,        "amdil64"},
+                  { TripleArchType.Hsail,          "hsail"},
+                  { TripleArchType.Hsail64,        "hsail64"},
+                  { TripleArchType.Spir,           "spir"},
+                  { TripleArchType.Spir64,         "spir64"},
+                  { TripleArchType.Kalimba,        "kalimba"},
+                  { TripleArchType.Lanai,          "lanai"},
+                  { TripleArchType.Shave,          "shave"},
+                  { TripleArchType.Wasm32,         "wasm32"},
+                  { TripleArchType.Wasm64,         "wasm64"},
+                  { TripleArchType.Renderscript32, "renderscript32"},
+                  { TripleArchType.Renderscript64, "renderscript64"},
             };
 
             foreach( var kvp in values )
@@ -113,6 +110,7 @@ namespace Llvm.NET.Tests
                     { TripleSubArchType.ARMSubArch_v8_2a,        "v8.2a" },
                     { TripleSubArchType.ARMSubArch_v8_1a,        "v8.1a" },
                     { TripleSubArchType.ARMSubArch_v8,           "v8" },
+                    { TripleSubArchType.ARMSubArch_v8r,          "v8r" },
                     { TripleSubArchType.ARMSubArch_v8m_baseline, "v8m.base" },
                     { TripleSubArchType.ARMSubArch_v8m_mainline, "v8m.main" },
                     { TripleSubArchType.ARMSubArch_v7,           "v7" },

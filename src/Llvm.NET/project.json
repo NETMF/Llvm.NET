@@ -1,9 +1,12 @@
 ﻿{
   "dependencies": {
-    "PdbGit": "3.0.38"
+    "Microsoft.AnalyzerPowerPack": "1.1.0",
+    "PdbGit": "3.0.41",
+    "RefactoringEssentials": "5.2.0",
+    "StyleCop.Analyzers": "1.0.2"
   },
   "frameworks": {
-    "net462": {}
+    "net470": {}
   },
   "runtimes": {
     "win": {}

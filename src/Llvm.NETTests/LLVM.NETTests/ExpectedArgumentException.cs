@@ -18,7 +18,7 @@ namespace Llvm.NETTests
             ExpectedName = expectedName;
             WrongExceptionMessage = DefautWrongExceptionMessage;
         }
-        
+
         public string WrongExceptionMessage { get; set; }
         public string ExpectedExceptionMessage { get; set; }
 

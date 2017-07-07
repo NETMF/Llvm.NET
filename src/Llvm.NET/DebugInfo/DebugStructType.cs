@@ -1,7 +1,8 @@
-﻿using Llvm.NET.Types;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Llvm.NET.Types;
 
 namespace Llvm.NET.DebugInfo
 {
@@ -130,9 +131,9 @@ namespace Llvm.NET.DebugInfo
 
         private DIDerivedType CreateMemberType( NativeModule module, DebugMemberInfo memberInfo )
         {
-            ulong bitSize;
-            ulong bitAlign;
-            ulong bitOffset;
+            UInt64 bitSize;
+            UInt32 bitAlign;
+            UInt64 bitOffset;
 
             // if explicit layout info provided, use it;
             // otherwise use module.Layout as the default

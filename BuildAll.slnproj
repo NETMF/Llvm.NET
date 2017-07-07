@@ -3,7 +3,7 @@
     <!-- Solution Project for building the Llvm.NET source tree. -->
     <Import Project="BuildEnv.props"/>
     <Import Project="BuildExtensions\SolutionProj.common.props"/>
-    
+
     <ItemGroup>
         <!-- Projects needing nuget restore -->
         <!--
@@ -11,7 +11,7 @@
         ...
         -->
     </ItemGroup>
-    
+
     <ItemGroup>
         <!-- LibLLVM -->
         <BuildProject Include="src\LibLLVM\LibLLVM.vcxproj">

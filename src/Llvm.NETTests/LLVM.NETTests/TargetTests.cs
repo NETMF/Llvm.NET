@@ -1,6 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Llvm.NET.Tests
@@ -36,6 +34,8 @@ namespace Llvm.NET.Tests
             new TargetInfo( "sparcel", "Sparc LE", true, true, true ),
             new TargetInfo( "sparcv9", "Sparc V9", true, true, true ),
             new TargetInfo( "sparc", "Sparc", true, true, true ),
+            new TargetInfo( "riscv64", "64-bit RISC-V", true, false, true ),
+            new TargetInfo( "riscv32", "32-bit RISC-V", true, false, true ),
             new TargetInfo( "ppc64le", "PowerPC 64 LE", true, true, true ),
             new TargetInfo( "ppc64", "PowerPC 64", true, true, true ),
             new TargetInfo( "ppc32", "PowerPC 32", true, true, true ),
@@ -46,8 +46,8 @@ namespace Llvm.NET.Tests
             new TargetInfo( "mips64", "Mips64 [experimental]", true, true, true ),
             new TargetInfo( "mipsel", "Mipsel", true, true, true ),
             new TargetInfo( "mips", "Mips", true, true, true ),
+            new TargetInfo( "lanai", "Lanai", true, false, true ),
             new TargetInfo( "hexagon", "Hexagon", true, false, true ),
-            //new TargetInfo( "cpp", "C++ backend", false, false, true ),
             new TargetInfo( "bpfeb", "BPF (big endian)", true, true, true ),
             new TargetInfo( "bpfel", "BPF (little endian)", true, true, true ),
             new TargetInfo( "bpf", "BPF (host endian)", true, true, true ),
@@ -136,20 +136,20 @@ namespace Llvm.NET.Tests
         internal const string DefaultTargetCpu = "cortex-m3";
         internal const string DefaultTargetFeatures = "";
 
-        //internal string GenerateExpectedTargets()
+        //internal string GenerateExpectedTargets( )
         //{
-        //    var bldr = new StringBuilder( "public static TargetInfo[ ] ExpectedTargets = {" );
+        //    var bldr = new System.Text.StringBuilder( "public static TargetInfoCollection ExpectedTargets = new TargetInfoCollection {" );
         //    bldr.AppendLine( );
-        //    var targets = Target.AvailableTargets.ToList( );
+        //    var targets = System.Linq.Enumerable.ToList( Target.AvailableTargets );
         //    for( int i = 0; i < targets.Count; ++i )
         //    {
         //        var target = targets[ i ];
         //        bldr.AppendFormat( "    new TargetInfo( \"{0}\", \"{1}\", {2}, {3}, {4} )"
         //                         , target.Name
         //                         , target.Description
-        //                         , target.HasAsmBackEnd.ToString().ToLowerInvariant()
-        //                         , target.HasJIT.ToString().ToLowerInvariant()
-        //                         , target.HasTargetMachine.ToString().ToLowerInvariant()
+        //                         , target.HasAsmBackEnd.ToString( ).ToLowerInvariant( )
+        //                         , target.HasJIT.ToString( ).ToLowerInvariant( )
+        //                         , target.HasTargetMachine.ToString( ).ToLowerInvariant( )
         //                         );
         //        var lastEntry = i == targets.Count - 1;
         //        bldr.AppendLine( lastEntry ? string.Empty : "," );
