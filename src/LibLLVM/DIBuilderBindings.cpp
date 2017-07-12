@@ -623,7 +623,7 @@ extern "C"
                                                                , LineNo
                                                                , unwrap<DIType>( Ty )
                                                                , isLocalToUnit
-                                                               , unwrap<DIExpression>( expression )
+                                                               , expression ? unwrap<DIExpression>( expression ) : nullptr
                                                                , Decl ? unwrap<MDNode>( Decl ) : nullptr
                                                                , AlignInBits
                                                                );

@@ -5,57 +5,6 @@ using Llvm.NET.Native;
 
 namespace Llvm.NET.Values
 {
-    /*internal class GveDebugInfoCollection
-    //    : ICollection<DIGlobalVariableExpression>
-    //{
-    //    internal GveDebugInfoCollection(GlobalVariable var)
-    //    {
-    //        ContainingGlobal = var;
-    //    }
-
-    //    public int Count => throw new NotImplementedException( );
-
-    //    public bool IsReadOnly => false;
-
-    //    public void Add( DIGlobalVariableExpression item )
-    //        => NativeMethods.GlobalVariableAddDebugExpression( item?.MetadataHandle ?? throw new ArgumentNullException(nameof(item)) );
-
-    //    public void Clear( )
-    //    {
-    //        throw new NotImplementedException( );
-    //    }
-
-    //    public bool Contains( DIGlobalVariableExpression item )
-    //    {
-    //        throw new NotImplementedException( );
-    //    }
-
-    //    public void CopyTo( DIGlobalVariableExpression[ ] array, int arrayIndex )
-    //    {
-    //        throw new NotImplementedException( );
-    //    }
-
-    //    public IEnumerator<DIGlobalVariableExpression> GetEnumerator( )
-    //    {
-    //        throw new NotImplementedException( );
-    //    }
-
-    //    public bool Remove( DIGlobalVariableExpression item )
-    //    {
-    //        throw new NotImplementedException( );
-    //    }
-
-    //    IEnumerator IEnumerable.GetEnumerator( )
-    //    {
-    //        throw new NotImplementedException( );
-    //    }
-
-    //    // temp suppress warning until this is completed
-    //    [SuppressMessage( "Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields", Justification = "Temporary state" )]
-    //    private GlobalVariable ContainingGlobal;
-    //}
-    */
-
     /// <summary>An LLVM Global Variable</summary>
     public class GlobalVariable
         : GlobalObject
@@ -98,9 +47,11 @@ namespace Llvm.NET.Values
             set => NativeMethods.SetInitializer( ValueHandle, value?.ValueHandle ?? new LLVMValueRef( IntPtr.Zero ) );
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "Temp until details of globalvariable support finished" )]
-        public ICollection<DIGlobalVariableExpression> DebugInfo => null; // => DebugInfoCollection;
-        // GveDebugInfoCollection DebugInfoCollection;
+        public void AddDebugInfo(DIGlobalVariableExpression expression)
+        {
+            NativeMethods.GlobalVariableAddDebugExpression( ValueHandle, expression.MetadataHandle );
+        }
+
 
         /// <summary>Removes the value from its parent module, but does not delete it</summary>
         public void RemoveFromParent() => NativeMethods.RemoveGlobalFromParent( ValueHandle );
@@ -108,7 +59,6 @@ namespace Llvm.NET.Values
         internal GlobalVariable( LLVMValueRef valueRef )
             : base( valueRef )
         {
-            // DebugInfoCollection = new GveDebugInfoCollection( this );
         }
     }
 }

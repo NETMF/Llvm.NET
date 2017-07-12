@@ -419,7 +419,7 @@ namespace Llvm.NET.DebugInfo
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop call" )]
-        public DIDerivedType CreatePointerType( DIType pointeeType, string name, UInt64 bitSize, UInt32 bitAlign )
+        public DIDerivedType CreatePointerType( DIType pointeeType, string name, UInt64 bitSize, UInt32 bitAlign = 0 )
         {
             var handle = NativeMethods.DIBuilderCreatePointerType( BuilderHandle
                                                                  , pointeeType?.MetadataHandle ?? LLVMMetadataRef.Zero // null == void
@@ -753,32 +753,6 @@ namespace Llvm.NET.DebugInfo
             return MDNode.FromHandle<DICompositeType>( handle );
         }
 
-        /*public DIGlobalVariable CreateGlobalVariable( DINode scope
-        //                                            , string name
-        //                                            , string linkageName
-        //                                            , DIFile file
-        //                                            , uint lineNo
-        //                                            , DIType type
-        //                                            , bool isLocalToUnit
-        //                                            , GlobalVariable value
-        //                                            , DINode declaration = null
-        //                                            )
-        //{
-        //    var gve = CreateGlobalVariableExpression( scope
-        //                                            , name
-        //                                            , linkageName
-        //                                            , file
-        //                                            , lineNo
-        //                                            , type
-        //                                            , true
-        //                                            , CreateExpression( ExpressionOp.addr )
-        //                                            );
-        //    DIGlobalVariable retVal =  gve.Variable;
-        //    value.DebugInfo.Add( gve );
-        //    return retVal;
-        //}
-        */
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop call" )]
         public DIGlobalVariableExpression CreateGlobalVariableExpression( DINode scope
                                                                         , string name
@@ -802,11 +776,6 @@ namespace Llvm.NET.DebugInfo
                 throw new ArgumentNullException( nameof( type ) );
             }
 
-            if( value == null )
-            {
-                throw new ArgumentNullException( nameof( value ) );
-            }
-
             var handle = NativeMethods.DIBuilderCreateGlobalVariableExpression( BuilderHandle
                                                                               , scope.MetadataHandle
                                                                               , name
@@ -815,7 +784,7 @@ namespace Llvm.NET.DebugInfo
                                                                               , lineNo
                                                                               , type.MetadataHandle
                                                                               , isLocalToUnit
-                                                                              , value.MetadataHandle
+                                                                              , value?.MetadataHandle ?? LLVMMetadataRef.Zero
                                                                               , declaration?.MetadataHandle ?? LLVMMetadataRef.Zero
                                                                               , bitAlign
                                                                               );

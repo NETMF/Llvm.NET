@@ -33,7 +33,7 @@ namespace Llvm.NET.DebugInfo
         TDebug DIType { get; }
     }
 
-    [SuppressMessage( "StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single class", Justification = "Generic type and static extension methods form a common type interface" )]
+    [SuppressMessage( "StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single class", Justification = "Interface, Generic type and static extension methods form a common type interface" )]
     public class DebugType<TNative, TDebug>
         : IDebugType<TNative, TDebug>
         , ITypeRef
@@ -49,6 +49,7 @@ namespace Llvm.NET.DebugInfo
             NativeType = llvmType ?? throw new ArgumentNullException( nameof( llvmType ) );
         }
 
+        // Re-assignment will perform RAUW on the current value
         [SuppressMessage( "Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "DIType", Justification = "It is spelled correctly 8^)" )]
         public TDebug DIType
         {

@@ -5,8 +5,7 @@ namespace Llvm.NET.DebugInfo
 #pragma warning disable RECS0013 // Nullable Type can be simplified (It's a full ref in a comment - DUH!)
     /// <summary>Describes a member/field of a type for creating debug information</summary>
     /// <remarks>
-    /// <para>This class is used with <see cref="DebugStructType.SetBody(bool, NativeModule, DIScope, DIFile, uint, DebugInfoFlags, System.Collections.Generic.IEnumerable{DebugMemberInfo})"/>
-    /// to provide debug information for a type.</para>
+    /// <para>This class is used with <see cref="DebugStructType"/> to provide debug information for a type.</para>
     /// <para>In order to support explicit layout structures the members relating to layout are all <see cref="System.Nullable{T}"/>.
     /// When they are null then modules <see cref="NativeModule.Layout"/> target specific layout information is used to determine
     /// layout details. Setting the layout members of this class to non-null will override that behavior to define explicit

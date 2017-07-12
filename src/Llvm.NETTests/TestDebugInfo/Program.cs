@@ -17,7 +17,7 @@ namespace TestDebugInfo
         static IEnumerable<AttributeValue> TargetDependentAttributes { get; set; }
 
         // obviously this is not clang but using an identical name helps in diff with actual clang output
-        const string VersionIdentString = "clang version 3.8.0 (branches/release_38)";
+        const string VersionIdentString = "clang version 4.0.1 (tags/RELEASE_401/final)";
 
         /// <summary>Creates a test LLVM module with debug information</summary>
         /// <param name="args">ignored</param>
@@ -66,18 +66,13 @@ namespace TestDebugInfo
                 var voidType = DebugType.Create( module.Context.VoidType, ( DIType )null );
                 var i32Array_0_32 = i32.CreateArrayType( module, 0, 32 );
 
-                // create the LLVM structure type and body
-                // The full body is used with targetMachine.TargetData to determine size, alignment and element offsets
-                // in a target independent manner.
-                var fooType = new DebugStructType( module, "struct.foo", cu, "foo" );
-
-                // Create concrete debug type with full debug information
+                // create the LLVM structure type and body with full debug information
                 var fooBody = new[ ]
                     { new DebugMemberInfo { File = diFile, Line = 3, Name = "a", DebugType = i32, Index = 0 }
                     , new DebugMemberInfo { File = diFile, Line = 4, Name = "b", DebugType = f32, Index = 1 }
                     , new DebugMemberInfo { File = diFile, Line = 5, Name = "c", DebugType = i32Array_0_32, Index = 2 }
                     };
-                fooType.SetBody( false, module, cu, diFile, 1, 0, fooBody );
+                var fooType = new DebugStructType( module, "struct.foo", cu, "foo", diFile, 1, DebugInfoFlags.None, fooBody );
 
                 // add global variables and constants
                 var constArray = ConstantArray.From( i32, 32, module.Context.CreateConstant( 3 ), module.Context.CreateConstant( 4 ) );
@@ -89,17 +84,15 @@ namespace TestDebugInfo
 
                 var bar = module.AddGlobal( fooType, false, 0, barValue, "bar" );
                 bar.Alignment = targetData.AbiAlignmentOf( fooType );
-                // TODO: Figure out support for new GlobalVariableExpression, which internally creates a DIGlobalVariable
-                //module.DIBuilder.CreateGlobalVariable( cu, "bar", string.Empty, diFile, 8, fooType.DIType, false, bar );
+                bar.AddDebugInfo( module.DIBuilder.CreateGlobalVariableExpression( cu, "bar", string.Empty, diFile, 8, fooType.DIType, false, null ) );
 
                 var baz = module.AddGlobal( fooType, false, Linkage.Common, Constant.NullValueFor( fooType ), "baz" );
                 baz.Alignment = targetData.AbiAlignmentOf( fooType );
-                // TODO: Figure out support for new GlobalVariableExpression, which internally creates a DIGlobalVariable
-                //module.DIBuilder.CreateGlobalVariable( cu, "baz", string.Empty, diFile, 9, fooType.DIType, false, baz );
+                baz.AddDebugInfo( module.DIBuilder.CreateGlobalVariableExpression( cu, "baz", string.Empty, diFile, 9, fooType.DIType, false, null ) );
 
                 // add module flags and compiler identifiers...
                 // this can technically occur at any point, though placing it here makes
-                // comparing against clang generated files possible
+                // comparing against clang generated files easier
                 AddModuleFlags( module );
 
                 // create types for function args
@@ -129,8 +122,9 @@ namespace TestDebugInfo
                 }
                 else
                 {
-                    //test optimization works,but don't save it as that makes it harder to do a diff with official clang builds
-                    {// force a GC to verify callback delegate for diagnostics is still valid
+                    //test optimization works, but don't save it as that makes it harder to do a diff with official clang builds
+                    {// force a GC to verify callback delegate for diagnostics is still valid, this is for test only and wouldn't
+                     // normally be done in production code.
                         GC.Collect( GC.MaxGeneration );
                         StaticState.ParseCommandLineOptions( new string[ ] { "TestDebugInfo.exe", "-O3" }, "Test Application" );
                         var modForOpt = module.Clone( );
@@ -161,7 +155,7 @@ namespace TestDebugInfo
                                                   , scopeLine: 24
                                                   , debugFlags: DebugInfoFlags.None
                                                   , isOptimized: false
-                                                  ).AddAttributes( FunctionAttributeIndex.Function, AttributeKind.NoUnwind )
+                                                  ).AddAttributes( FunctionAttributeIndex.Function, AttributeKind.NoInline,  AttributeKind.NoUnwind )
                                                    .AddAttributes( FunctionAttributeIndex.Function, TargetDependentAttributes );
             return doCopyFunc;
         }
@@ -199,7 +193,7 @@ namespace TestDebugInfo
                                                 , debugFlags: DebugInfoFlags.Prototyped
                                                 , isOptimized: false
                                                 ).Linkage( Linkage.Internal ) // static function
-                                                 .AddAttributes( FunctionAttributeIndex.Function, AttributeKind.NoUnwind, AttributeKind.InlineHint )
+                                                 .AddAttributes( FunctionAttributeIndex.Function, AttributeKind.NoUnwind, AttributeKind.NoInline )
                                                  .AddAttributes( FunctionAttributeIndex.Function, TargetDependentAttributes );
 
             TargetDetails.AddABIAttributesForByValueStructure( copyFunc, 0 );

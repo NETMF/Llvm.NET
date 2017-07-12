@@ -828,6 +828,6 @@ namespace Llvm.NET.Native
         internal static extern LLVMMetadataRef DIGlobalVarExpGetVariable( LLVMMetadataRef metadataHandle );
 
         [DllImport( libraryPath, EntryPoint = "LLVMGlobalVariableAddDebugExpression", CallingConvention = CallingConvention.Cdecl )]
-        internal static extern void GlobalVariableAddDebugExpression( LLVMMetadataRef metadataHandle );
+        internal static extern void GlobalVariableAddDebugExpression( LLVMValueRef variable, LLVMMetadataRef metadataHandle );
     }
 }

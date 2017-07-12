@@ -151,7 +151,7 @@ namespace Llvm.NET.DebugInfo
                                                                       , file: memberInfo.File
                                                                       , line: memberInfo.Line
                                                                       , bitSize: ( memberInfo.ExplicitLayout?.BitSize ?? module.Layout?.BitSizeOf( memberInfo.DebugType ) ).Value
-                                                                      , bitAlign: ( memberInfo.ExplicitLayout?.BitAlignment ?? module.Layout?.AbiBitAlignmentOf( memberInfo.DebugType ) ).Value
+                                                                      , bitAlign: memberInfo.ExplicitLayout?.BitAlignment ?? 0
                                                                       , bitOffset: 0
                                                                       , debugFlags: memberInfo.DebugInfoFlags
                                                                       , type: memberInfo.DebugType.DIType

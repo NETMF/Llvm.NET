@@ -47,12 +47,16 @@ namespace TestDebugInfo
         public IEnumerable<AttributeValue> BuildTargetDependentFunctionAttributes( Context ctx )
             => new AttributeValue[]
             {
+                ctx.CreateAttribute( "correctly-rounded-divide-sqrt-fp-math", "false" ),
                 ctx.CreateAttribute( "disable-tail-calls", "false" ),
                 ctx.CreateAttribute( "less-precise-fpmad", "false" ),
                 ctx.CreateAttribute( "no-frame-pointer-elim", "true" ),
-                ctx.CreateAttribute( "no-frame-pointer-elim-non-leaf", string.Empty ),
+                ctx.CreateAttribute( "no-frame-pointer-elim-non-leaf" ),
                 ctx.CreateAttribute( "no-infs-fp-math", "false" ),
+                ctx.CreateAttribute( "no-jump-tables", "false" ),
                 ctx.CreateAttribute( "no-nans-fp-math", "false" ),
+                ctx.CreateAttribute( "no-signed-zeros-fp-math", "false" ),
+                ctx.CreateAttribute( "no-trapping-math", "false" ),
                 ctx.CreateAttribute( "stack-protector-buffer-size", "8" ),
                 ctx.CreateAttribute( "target-cpu", Cpu ),
                 ctx.CreateAttribute( "target-features", Features ),

@@ -10,6 +10,49 @@ namespace Llvm.NET.DebugInfo
         : DebugType<IStructType, DICompositeType>
         , IStructType
     {
+        public DebugStructType( NativeModule module
+                              , string nativeName
+                              , DIScope scope
+                              , string name
+                              , DIFile diFile
+                              , uint line
+                              , DebugInfoFlags debugFlags
+                              , IEnumerable<DebugMemberInfo> debugElements
+                              , DIType derivedFrom = null
+                              , bool packed = false
+                              , uint? bitSize = null
+                              , uint bitAlignment = 0
+                              )
+        {
+            module.VerifyArgNotNull( nameof( module ) );
+            DebugMembers = new ReadOnlyCollection<DebugMemberInfo>( debugElements as IList<DebugMemberInfo> ?? debugElements.ToList( ) );
+
+            NativeType = module.Context.CreateStructType( nativeName, packed, debugElements.Select( e => e.DebugType ).ToArray( ) );
+            DIType =  module.DIBuilder.CreateReplaceableCompositeType( Tag.StructureType
+                                                                     , name
+                                                                     , scope
+                                                                     , diFile
+                                                                     , line
+                                                                     );
+
+            var memberTypes = from memberInfo in DebugMembers
+                              select CreateMemberType( module, memberInfo );
+
+            var concreteType = module.DIBuilder.CreateStructType( scope: scope
+                                                                , name: name
+                                                                , file: diFile
+                                                                , line: line
+                                                                , bitSize: bitSize ?? module.Layout.BitSizeOf( NativeType )
+                                                                , bitAlign: bitAlignment
+                                                                , debugFlags: debugFlags
+                                                                , derivedFrom: derivedFrom
+                                                                , elements: memberTypes
+                                                                );
+
+            // assignment performs RAUW
+            DIType = concreteType;
+        }
+
         public DebugStructType( IStructType llvmType
                               , NativeModule module
                               , DIScope scope
@@ -19,17 +62,18 @@ namespace Llvm.NET.DebugInfo
                               , DebugInfoFlags debugFlags
                               , DIType derivedFrom
                               , IEnumerable<DIType> elements
+                              , uint alignment = 0
                               )
             : base( llvmType )
         {
-            DIType = module.VerifyArgNotNull( nameof( module ) )
-                           .DIBuilder
+            module.VerifyArgNotNull( nameof( module ) );
+            DIType = module.DIBuilder
                            .CreateStructType( scope
                                             , name
                                             , file
                                             , line
-                                            , module.VerifyArgNotNull( nameof( module ) ).Layout.BitSizeOf( llvmType )
-                                            , module.VerifyArgNotNull( nameof( module ) ).Layout.AbiBitAlignmentOf( llvmType )
+                                            , module.Layout.BitSizeOf( llvmType )
+                                            , alignment
                                             , debugFlags
                                             , derivedFrom
                                             , elements
@@ -107,8 +151,9 @@ namespace Llvm.NET.DebugInfo
                            , DebugInfoFlags debugFlags
                            , IEnumerable<ITypeRef> nativeElements
                            , IEnumerable<DebugMemberInfo> debugElements
+                           , DIType derivedFrom = null
                            , uint? bitSize = null
-                           , uint? bitAlignment = null
+                           , uint bitAlignment = 0
                            )
         {
             DebugMembers = new ReadOnlyCollection<DebugMemberInfo>( debugElements as IList<DebugMemberInfo> ?? debugElements.ToList( ) );
@@ -121,9 +166,9 @@ namespace Llvm.NET.DebugInfo
                                                                 , file: diFile
                                                                 , line: line
                                                                 , bitSize: bitSize ?? module.Layout.BitSizeOf( NativeType )
-                                                                , bitAlign: bitAlignment ?? module.Layout.AbiBitAlignmentOf( NativeType )
+                                                                , bitAlign: bitAlignment
                                                                 , debugFlags: debugFlags
-                                                                , derivedFrom: null
+                                                                , derivedFrom: derivedFrom
                                                                 , elements: memberTypes
                                                                 );
             DIType = concreteType;
@@ -146,7 +191,7 @@ namespace Llvm.NET.DebugInfo
             else
             {
                 bitSize = module.Layout.BitSizeOf( memberInfo.DebugType.NativeType );
-                bitAlign = module.Layout.AbiBitAlignmentOf( memberInfo.DebugType.NativeType );
+                bitAlign = 0;
                 bitOffset = module.Layout.BitOffsetOfElement( NativeType, memberInfo.Index );
             }
 
