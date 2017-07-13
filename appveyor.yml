@@ -8,7 +8,7 @@ branches:
 image: Visual Studio 2017
 configuration:
 - Debug
-- Rekease
+- Release
 platform:
 - x86
 - x64
@@ -18,4 +18,6 @@ environment:
 nuget:
   disable_publish_on_pr: true
 build:
+  project: buildall.slnproj
+  parallel: true
   verbosity: minimal
