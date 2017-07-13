@@ -17,7 +17,6 @@ init:
 - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 environment:
   LLVM_SRCROOT_DIR: C:\Libraries\llvm-4.0.0
-  APPVEYOR_RDP_PASSWORD: 74.205.54.20:34314
 nuget:
   disable_publish_on_pr: true
 build:
