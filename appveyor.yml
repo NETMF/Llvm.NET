@@ -15,6 +15,7 @@ platform:
 clone_depth: 1
 environment:
   LLVM_SRCROOT_DIR: C:\Libraries\llvm-4.0.0
+  LLVM_BUILD_DIR: C:\Libraries\llvm-4.0.0
 nuget:
   disable_publish_on_pr: true
 build:
