@@ -47,6 +47,7 @@ namespace Llvm.NET.Values
             set => NativeMethods.SetInitializer( ValueHandle, value?.ValueHandle ?? new LLVMValueRef( IntPtr.Zero ) );
         }
 
+        [SuppressMessage( "Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "0", Justification = "VerifyArgNotNull" )]
         [SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop" )]
         public void AddDebugInfo(DIGlobalVariableExpression expression)
         {

@@ -1,4 +1,5 @@
-﻿using Llvm.NET.Types;
+﻿using System.Diagnostics.CodeAnalysis;
+using Llvm.NET.Types;
 
 namespace Llvm.NET.DebugInfo
 {
@@ -44,6 +45,8 @@ namespace Llvm.NET.DebugInfo
         /// <param name="module"><see cref="NativeModule"/> used for creating the pointer type and debug information</param>
         /// <param name="elementType">Debug type of the pointee</param>
         /// <param name="name">Name of the type [Default: null]</param>
+        /// <param name="alignment">Alignment for pointer type</param>
+        [SuppressMessage( "Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "1", Justification = "VerifyArgNotNull" )]
         public DebugPointerType( IPointerType llvmPtrType, NativeModule module, DIType elementType, string name = null, uint alignment = 0 )
             : base( llvmPtrType )
         {

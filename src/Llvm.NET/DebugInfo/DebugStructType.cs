@@ -53,6 +53,7 @@ namespace Llvm.NET.DebugInfo
             DIType = concreteType;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Design", "CA1062:Validate arguments of public methods", MessageId = "1", Justification = "VerifyArgNotNull" )]
         public DebugStructType( IStructType llvmType
                               , NativeModule module
                               , DIScope scope
