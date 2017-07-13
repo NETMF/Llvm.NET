@@ -91,6 +91,7 @@
       </ResourceCompile>
   </ItemDefinitionGroup>
   <Target Name="VerfyLlvmApplicationProps">
+    <Exec Command="dir $(LLVM_SRCROOT_DIR)" />
     <Error Condition="!EXISTS($(LLVM_SRCROOT_DIR))" Text="LLVM Source root not found ($(LLVM_SRCROOT_DIR))" />
     <Error Condition="!EXISTS($(LLVM_BUILD_DIR))" Text="LLVM Build root not found ($(LLVM_BUILD_DIR))" />
     <Error Condition="!EXISTS($(LLVM_INCLUDE))" Text="LLVM Include directory not found ($(LLVM_INCLUDE))" />

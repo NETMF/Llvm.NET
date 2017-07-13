@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Llvm.NET.DebugInfo;
 using Llvm.NET.Native;
 
@@ -47,11 +47,13 @@ namespace Llvm.NET.Values
             set => NativeMethods.SetInitializer( ValueHandle, value?.ValueHandle ?? new LLVMValueRef( IntPtr.Zero ) );
         }
 
+        [SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop" )]
         public void AddDebugInfo(DIGlobalVariableExpression expression)
         {
+            expression.VerifyArgNotNull( nameof( expression ) );
+
             NativeMethods.GlobalVariableAddDebugExpression( ValueHandle, expression.MetadataHandle );
         }
-
 
         /// <summary>Removes the value from its parent module, but does not delete it</summary>
         public void RemoveFromParent() => NativeMethods.RemoveGlobalFromParent( ValueHandle );
