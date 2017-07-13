@@ -13,16 +13,14 @@ platform:
 - x86
 - x64
 clone_depth: 1
+init:
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 environment:
   LLVM_SRCROOT_DIR: C:\Libraries\llvm-4.0.0
-  LLVM_BUILD_DIR: C:\Libraries\llvm-4.0.0
+  APPVEYOR_RDP_PASSWORD: kmg365!12345
 nuget:
   disable_publish_on_pr: true
 build:
   project: buildall.slnproj
   parallel: true
   verbosity: minimal
-init:
- - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
- on_finish:
- - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
