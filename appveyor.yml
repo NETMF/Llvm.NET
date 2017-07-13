@@ -13,10 +13,10 @@ platform:
 - x86
 clone_depth: 1
 environment:
-  LLVM_SRCROOT_DIR: C:\Libraries\llvm-4.0.0
-  LLVM_CONFIG_DIR: C:\Libraries\llvm-4.0.0
-  LLVM_BIN: C:\Libraries\llvm-4.0.0\bin
-  LLVM_LIB_DIR: C:\Libraries\llvm-4.0.0\lib
+  LLVM_SRCROOT_DIR: C:\Libraries\llvm-4.0.0\
+  LLVM_CONFIG_DIR: C:\Libraries\llvm-4.0.0\
+  LLVM_BIN: C:\Libraries\llvm-4.0.0\bin\
+  LLVM_LIB_DIR: C:\Libraries\llvm-4.0.0\lib\
 nuget:
   disable_publish_on_pr: true
 build:
