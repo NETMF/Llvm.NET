@@ -25,6 +25,7 @@
         }
 
 #pragma warning disable IDE0019 // Use Pattern matching - doesn't work for generics (Expected in C#7.X)
+
         /// <summary>Fluent style extension method to set the Volatile property of a <see cref="Load"/> or <see cref="Store"/> instruction</summary>
         /// <typeparam name="T">Type of the instruction (usually implicitly inferred from usage)</typeparam>
         /// <param name="self">Instruction to set the Volatile property for</param>

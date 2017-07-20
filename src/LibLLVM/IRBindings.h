@@ -14,10 +14,10 @@
 #ifndef LLVM_BINDINGS_LLVM_IRBINDINGS_H
 #define LLVM_BINDINGS_LLVM_IRBINDINGS_H
 
-#include "llvm-c/Core.h"
+#include <llvm-c/Core.h>
 #ifdef __cplusplus
-#include "llvm/IR/Metadata.h"
-#include "llvm/Support/CBindingWrapping.h"
+#include <llvm/IR/Metadata.h>
+#include <llvm/Support/CBindingWrapping.h>
 #endif
 
 #include <stdint.h>

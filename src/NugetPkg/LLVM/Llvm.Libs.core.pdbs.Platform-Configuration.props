@@ -1,0 +1,27 @@
+﻿<Project>
+    <PropertyGroup>
+        <!--
+        Classic VS installations don't have an "x86" platform - the official name of the platform is Win32,
+        However, the default VS 2017 CMake support uses x86 as a platform name. So this adapts and adjusts
+        to allow for compatibility across VS tool versions.
+         -->
+        <LLVM_PLATFORM>$(Platform)</LLVM_PLATFORM>
+        <LLVM_PLATFORM Condition="'$(LLVM_PLATFORM)'=='Win32'">x86</LLVM_PLATFORM>
+        <LLVM_PLATFORM_CONFIG>$(LLVM_PLATFORM)-$(Configuration)</LLVM_PLATFORM_CONFIG>
+    </PropertyGroup>
+    <Choose>
+        <When Condition="'Llvm.Libs.pdbs.$(LLVM_PLATFORM_CONFIG).symbols'=='$(MSBuildThisFileName)'">
+            <PropertyGroup>
+                <LlvmCoreSymbolsPkgRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)..\..'))</LlvmCoreSymbolsPkgRoot>
+            </PropertyGroup>
+            <PropertyGroup Label="UserMacros">
+                <LLVM_CORE_SYMBOLS_DIR>$(LlvmCoreSymbolsPkgRoot)lib\native\lib\</LLVM_CORE_SYMBOLS_DIR>
+            </PropertyGroup>
+        </When>
+    </Choose>
+    <ItemDefinitionGroup Condition="'Llvm.Libs.pdbs.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
+        <Link>
+            <AdditionalLibraryDirectories>$(LLVM_CORE_SYMBOLS_DIR);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+        </Link>
+    </ItemDefinitionGroup>
+</Project>

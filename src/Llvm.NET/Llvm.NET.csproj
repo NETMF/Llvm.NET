@@ -1,70 +1,60 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEnv.props))\BuildEnv.props" Condition=" '$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEnv.props))' != '' " />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0162C8CE-6641-4922-8664-F8A44356FBF7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Llvm.NET</RootNamespace>
-    <AssemblyName>Llvm.NET</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>$(OutputPath)\Llvm.NET.XML</DocumentationFile>
-    <NoWarn>1591</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>Llvm.NET.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>$(OutputPath)\Llvm.NET.XML</DocumentationFile>
-    <Optimize>true</Optimize>
-    <NoWarn>1591</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>Llvm.NET.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
-    <DebugSymbols>true</DebugSymbols>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>$(OutputPath)\Llvm.NET.XML</DocumentationFile>
-    <NoWarn>1591</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>Llvm.NET.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>$(OutputPath)\Llvm.NET.XML</DocumentationFile>
-    <Optimize>true</Optimize>
-    <NoWarn>1591</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>Llvm.NET.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
+    <PropertyGroup>
+        <!--
+        This project is intended to be netstandard 2.0 compatible and is validated
+        against the latest pre-release SDKs and VS 15.3 Preview 4. However, netstandard2.0
+        does not actually work in VS 15.2 Release. So it is disabled for now
+        -->
+        <TargetFrameworks>net47</TargetFrameworks>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+        <Description>.NET bindings for LLVM-C API libraries in LibLLVM dll</Description>
+        <Company>Microsoft .NET Foundation</Company>
+        <Copyright>Copyright © 2015-2017</Copyright>
+        <Product>Llvm.NET</Product>
+        <CodeAnalysisRuleSet>Llvm.NET.ruleset</CodeAnalysisRuleSet>
+        <RuntimeIdentifiers>win10-x64;win10-x86</RuntimeIdentifiers>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|x86'">
+      <WarningsAsErrors />
+      <NoWarn />
+      <PlatformTarget>x86</PlatformTarget>
+      <DebugType>full</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|x64'">
+      <WarningsAsErrors />
+      <NoWarn />
+      <PlatformTarget>x86</PlatformTarget>
+      <DebugType>full</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|x86'">
+      <DebugType>full</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
+      <DebugType>full</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
+      <DebugType>full</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|x64'">
+      <DebugType>full</DebugType>
+      <DebugSymbols>True</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+    <!--
+      When using EnableDefaultCompileItems=false this is needed to prevent the IDE from
+      showing all files via the default "none glob". See: https://github.com/dotnet/sdk/issues/1157
+      Why anyone would want a project system that pulled in all files implicitly instead
+      of an explicit model is beyond me.
+     -->
+        <None Remove="**" />
+    </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgValidationExtensions.cs" />
     <Compile Include="Comdat.cs" />
@@ -265,6 +255,20 @@
     <Compile Include="Values\ValueExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Llvm.NET.ruleset" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
+      <Link>CustomDictionary.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+      <PackageReference Include="Microsoft.AnalyzerPowerPack" Version="1.1.0" />
+      <PackageReference Include="PdbGit" Version="3.0.41" />
+      <PackageReference Include="RefactoringEssentials" Version="5.2.0" />
+      <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\LibLLVM\LibLLVM.vcxproj">
       <Project>{6c77a7de-d464-430f-96a9-a64768763b5f}</Project>
       <Name>LibLLVM</Name>
@@ -272,26 +276,4 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Llvm.NET.ruleset" />
-    <None Include="project.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
-      <Link>CustomDictionary.xml</Link>
-    </CodeAnalysisDictionary>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionBuildExtensionsDir)EnlistmentBuildVersion.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

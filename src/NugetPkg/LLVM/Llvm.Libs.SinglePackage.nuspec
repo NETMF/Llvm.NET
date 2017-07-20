@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata minClientVersion="2.8">
+        <id>Llvm.Libs</id>
+        <version>$version$</version>
+        <authors>smaillet</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Pre-built LLVM libraries and headers for LLVM $version$</description>
+        <developmentDependency>true</developmentDependency>
+        <projectUrl>http://www.llvm.org</projectUrl>
+        <licenseUrl>http://releases.llvm.org/$version$/LICENSE.TXT</licenseUrl>
+        <tags>LLVM,compiler,native</tags>
+    </metadata>
+    <files>
+        <file src="Llvm.Libs.SinglePackage.props" target="build\native\Llvm.Libs.props" />
+        <file src="$llvmsrcroot$\include\**" target="lib\native\include" />
+
+        <file src="$llvmbuildroot$\x86-Debug\Debug\lib\*" target="lib\native\x86-Debug\lib" exclude="**\*.pdb;**\LTO*.*;**\gtest*.*"/>
+        <file src="$llvmbuildroot$\x86-Debug\include\**\*.h"   target="lib\native\x86-Debug\include" />
+        <file src="$llvmbuildroot$\x86-Debug\include\**\*.gen" target="lib\native\x86-Debug\include" />
+        <file src="$llvmbuildroot$\x86-Debug\include\**\*.def" target="lib\native\x86-Debug\include" />
+
+        <file src="$llvmbuildroot$\x86-Release\Release\lib\*" target="lib\native\x86-Release\lib" exclude="**\*.pdb;**\LTO*.*;**\gtest*.*"/>
+        <file src="$llvmbuildroot$\x86-Release\include\**\*.h"   target="lib\native\x86-Release\include" />
+        <file src="$llvmbuildroot$\x86-Release\include\**\*.gen" target="lib\native\x86-Release\include" />
+        <file src="$llvmbuildroot$\x86-Release\include\**\*.def" target="lib\native\x86-Release\include" />
+
+        <file src="$llvmbuildroot$\x64-Debug\Debug\lib\*" target="lib\native\x64-Debug\lib" exclude="**\*.pdb;**\LTO*.*;**\gtest*.*"/>
+        <file src="$llvmbuildroot$\x64-Debug\include\**\*.h"   target="lib\native\x64-Debug\include" />
+        <file src="$llvmbuildroot$\x64-Debug\include\**\*.gen" target="lib\native\x64-Debug\include" />
+        <file src="$llvmbuildroot$\x64-Debug\include\**\*.def" target="lib\native\x64-Debug\include" />
+
+        <file src="$llvmbuildroot$\x64-Release\Release\lib\*" target="lib\native\x64-Release\lib" exclude="**\*.pdb;**\LTO*.*;**\gtest*.*"/>
+        <file src="$llvmbuildroot$\x64-Release\include\**\*.h"   target="lib\native\x64-Release\include" />
+        <file src="$llvmbuildroot$\x64-Release\include\**\*.gen" target="lib\native\x64-Release\include" />
+        <file src="$llvmbuildroot$\x64-Release\include\**\*.def" target="lib\native\x64-Release\include" />
+
+    </files>
+</package>

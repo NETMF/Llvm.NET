@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="2.8">
+    <id>Llvm.Libs.targets.$platform$-$configuration$</id>
+    <version>$version$</version>
+    <authors>smaillet</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Target specific Libraries for LLVM $version$ ($platform$-$configuration$)</description>
+    <summary>Do not add this package directly, use the Llvm.Libs metapackage instead</summary>
+    <developmentDependency>true</developmentDependency>
+    <projectUrl>http://www.llvm.org</projectUrl>
+    <licenseUrl>http://releases.llvm.org/$version$/LICENSE.TXT</licenseUrl>
+    <tags>LLVM,compiler,native</tags>
+  </metadata>
+  <files>
+    <file src="Llvm.Libs.targets.Platform-Configuration.props" target="build\native\Llvm.Libs.targets.$platform$-$configuration$.props" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64AsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64AsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64AsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64AsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64CodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64CodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Desc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Desc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Disassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Disassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Info.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Info.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Utils.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAArch64Utils.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUUtils.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAMDGPUUtils.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMARMInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBPFInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMHexagonInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiInstPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLanaiInstPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMipsInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430AsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430AsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430CodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430CodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430Desc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430Desc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430Info.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMSP430Info.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMNVPTXInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPowerPCInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMRISCVCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMRISCVCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMRISCVDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMRISCVDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMRISCVInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMRISCVInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSparcInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZAsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZAsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSystemZInfo.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86AsmParser.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86AsmParser.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86AsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86AsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86CodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86CodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Desc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Desc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Disassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Disassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Info.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Info.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Utils.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMX86Utils.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreAsmPrinter.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreAsmPrinter.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreCodeGen.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreCodeGen.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreDesc.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreDesc.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreDisassembler.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreDisassembler.pdb" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreInfo.lib" target="lib\native\lib" />
+    <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXCoreInfo.pdb" target="lib\native\lib" />
+  </files>
+</package>

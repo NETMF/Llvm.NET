@@ -1,7 +1,7 @@
-#include <llvm-c\Core.h>
-#include <llvm\ADT\Triple.h>
-#include <llvm\Support\CBindingWrapping.h>
-#include "llvm/Support/TargetParser.h"
+#include <llvm-c/Core.h>
+#include <llvm/ADT/Triple.h>
+#include <llvm/Support/CBindingWrapping.h>
+#include <llvm/Support/TargetParser.h>
 
 #include "TripleBindings.h"
 

@@ -14,8 +14,8 @@
 #ifndef LLVM_BINDINGS_LLVM_ATTRIBUTEBINDINGS_H
 #define LLVM_BINDINGS_LLVM_ATTRIBUTEBINDINGS_H
 
-#include "llvm-c/Core.h"
-#include "llvm-c/Types.h"
+#include <llvm-c/Core.h>
+#include <llvm-c/Types.h>
 
 #include <stdint.h>
 

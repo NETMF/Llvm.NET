@@ -170,7 +170,7 @@ namespace Llvm.NET.Tests
                 Function testFunc = CreateSimpleVoidNopTestFunction( module, "foo" );
                 // verify basics
                 Assert.IsNotNull( testFunc );
-                var isValid = module.Verify( out string msg );
+                bool isValid = module.Verify( out string msg );
                 Assert.IsTrue( isValid );
                 Assert.AreEqual( string.Empty, msg );
             }
@@ -184,8 +184,7 @@ namespace Llvm.NET.Tests
                 Function testFunc = CreateInvalidFunction( module, "badfunc" );
                 // verify basics
                 Assert.IsNotNull( testFunc );
-                string msg;
-                var isValid = module.Verify( out msg );
+                bool isValid = module.Verify( out string msg );
                 Assert.IsFalse( isValid );
                 Assert.IsNotNull( msg );
                 // while verifying the contents of the message might be a normal test
@@ -215,7 +214,7 @@ namespace Llvm.NET.Tests
         [DeploymentItem( "TestModuleAsString.ll" )]
         public void WriteToFileTest( )
         {
-            var path = Path.GetTempFileName( );
+            string path = Path.GetTempFileName( );
             try
             {
                 using( var module = new NativeModule( TestModuleName ) )
@@ -230,7 +229,7 @@ namespace Llvm.NET.Tests
                     Function testFunc = module2.GetFunction( "foo" );
                     // verify basics
                     Assert.IsNotNull( testFunc );
-                    var txt = module2.WriteToString( );
+                    string txt = module2.WriteToString( );
                     Assert.IsFalse( string.IsNullOrWhiteSpace( txt ) );
                     //var expectedText = File.ReadAllText( "TestModuleAsString.ll" );
                     //Assert.AreEqual( expectedText, txt );
@@ -251,9 +250,9 @@ namespace Llvm.NET.Tests
                 Function testFunc = CreateSimpleVoidNopTestFunction( module, "foo" );
                 // verify basics
                 Assert.IsNotNull( testFunc );
-                var txt = module.WriteToString( );
+                string txt = module.WriteToString( );
                 Assert.IsFalse( string.IsNullOrWhiteSpace( txt ) );
-                var expectedText = File.ReadAllText( "TestModuleAsString.ll" );
+                string expectedText = File.ReadAllText( "TestModuleAsString.ll" );
                 Assert.AreEqual( expectedText, txt );
             }
         }

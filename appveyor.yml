@@ -3,20 +3,17 @@ pull_requests:
   do_not_increment_build_number: true
 branches:
   only:
-  - dev
   - LLVM_4_0_1
+skip_commits:
+  files:
+    - appveyor.yml
 image: Visual Studio 2017
 configuration:
-- Debug
-- Release
+  - Debug
+  - Release
 platform:
-- x86
-clone_depth: 1
-environment:
-  LLVM_SRCROOT_DIR: C:\Libraries\llvm-4.0.0\
-  LLVM_CONFIG_DIR: C:\Libraries\llvm-4.0.0\
-  LLVM_BIN: C:\Libraries\llvm-4.0.0\bin\
-  LLVM_LIB_DIR: C:\Libraries\llvm-4.0.0\lib\
+  - x86
+  - x64
 nuget:
   disable_publish_on_pr: true
 build:

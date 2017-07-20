@@ -18,8 +18,8 @@
     <None Include="EXPORTS.DEF">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="packages.config" />
     <None Include="LlvmApplication.props" />
-    <None Include="Build-LlvmWithVs.ps1" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InlinedExports.cpp">

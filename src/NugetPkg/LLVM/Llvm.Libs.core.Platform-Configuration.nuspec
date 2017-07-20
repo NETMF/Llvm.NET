@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata minClientVersion="2.8">
+        <id>Llvm.Libs.core.$platform$-$configuration$</id>
+        <version>$version$</version>
+        <authors>smaillet</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Libraries and configuration headers for LLVM $version$ ($platform$-$configuration$)</description>
+        <summary>Do not add this package directly, use Llvm.Libs instead</summary>
+        <developmentDependency>true</developmentDependency>
+        <projectUrl>http://www.llvm.org</projectUrl>
+        <licenseUrl>http://releases.llvm.org/$version$/LICENSE.TXT</licenseUrl>
+        <tags>LLVM,compiler,native</tags>
+    </metadata>
+    <files>
+        <file src="Llvm.Libs.core.Platform-Configuration.props" target="build\native\Llvm.Libs.core.$platform$-$configuration$.props" />
+        <file src="$llvmbuildroot$\$platform$-$configuration$\include\**\*.h"   target="lib\native\include" />
+        <file src="$llvmbuildroot$\$platform$-$configuration$\include\**\*.gen" target="lib\native\include" />
+        <file src="$llvmbuildroot$\$platform$-$configuration$\include\**\*.def" target="lib\native\include" />
+
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAnalysis.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAsmParser.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMAsmPrinter.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBitReader.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMBitWriter.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMCodeGen.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMCore.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMCoroutines.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMCoverage.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMDebugInfoCodeView.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMDebugInfoDWARF.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMDebugInfoMSF.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMDebugInfoPDB.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMDemangle.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMExecutionEngine.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMGlobalISel.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMInstCombine.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMInstrumentation.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMInterpreter.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMipo.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMIRReader.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLibDriver.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLineEditor.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLinker.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMLTO.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMC.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMCDisassembler.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMCJIT.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMCParser.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMMIRParser.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMObjCARCOpts.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMObject.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMObjectYAML.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMOption.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMOrcJIT.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMPasses.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMProfileData.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMRuntimeDyld.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMScalarOpts.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSelectionDAG.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSupport.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMSymbolize.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMTableGen.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMTarget.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMTransformUtils.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMVectorize.lib" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$\$platform$-$configuration$\$configuration$\lib\LLVMXRay.lib" target="lib\native\lib"/>
+    </files>
+</package>

@@ -1,4 +1,4 @@
-#include "llvm-c/Target.h"
+#include <llvm-c/Target.h>
 
 extern "C"
 {

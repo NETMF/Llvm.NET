@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibLLVM", "LibLLVM\LibLLVM.vcxproj", "{6C77A7DE-D464-430F-96A9-A64768763B5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Llvm.NET", "Llvm.NET\Llvm.NET.csproj", "{0162C8CE-6641-4922-8664-F8A44356FBF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Llvm.NET", "Llvm.NET\Llvm.NET.csproj", "{0162C8CE-6641-4922-8664-F8A44356FBF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Llvm.NETTests", "Llvm.NETTests\LLVM.NETTests\Llvm.NETTests.csproj", "{826ADB1C-4BDC-4A89-836B-87088E511D6A}"
 EndProject
@@ -20,11 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CustomDictionary.xml = CustomDictionary.xml
 		Design.md = Design.md
 		..\LICENSE = ..\LICENSE
-		NugetPkg\Llvm.NET.nuspec = NugetPkg\Llvm.NET.nuspec
 		..\README.md = ..\README.md
 		..\VsoUpdateVersion.ps1 = ..\VsoUpdateVersion.ps1
-		win32.runsettings = win32.runsettings
-		x64.runsettings = x64.runsettings
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildExtensions", "BuildExtensions", "{7B7EC2B9-EA80-4F8D-9654-E63C91158B28}"
@@ -35,61 +32,76 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildExtensions", "BuildExt
 		..\BuildExtensions\SolutionProj.Common.targets = ..\BuildExtensions\SolutionProj.Common.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPkg", "NugetPkg", "{0972DD07-7608-4FC8-BB14-1F8D4B950BD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LLVM", "LLVM", "{60E65808-BF17-4AC0-BD03-A54792170BD0}"
+	ProjectSection(SolutionItems) = preProject
+		NugetPkg\LLVM\Build-Llvm.md = NugetPkg\LLVM\Build-Llvm.md
+		NugetPkg\LLVM\Build-Llvm.ps1 = NugetPkg\LLVM\Build-Llvm.ps1
+		NugetPkg\LLVM\Get-HelpAsMarkdown.ps1 = NugetPkg\LLVM\Get-HelpAsMarkdown.ps1
+		NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.nuspec = NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.nuspec
+		NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.props = NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.props
+		NugetPkg\LLVM\Llvm.Libs.core.Platform-Configuration.nuspec = NugetPkg\LLVM\Llvm.Libs.core.Platform-Configuration.nuspec
+		NugetPkg\LLVM\Llvm.Libs.core.Platform-Configuration.props = NugetPkg\LLVM\Llvm.Libs.core.Platform-Configuration.props
+		NugetPkg\LLVM\Llvm.Libs.MetaPackage.nuspec = NugetPkg\LLVM\Llvm.Libs.MetaPackage.nuspec
+		NugetPkg\LLVM\Llvm.Libs.MetaPackage.props = NugetPkg\LLVM\Llvm.Libs.MetaPackage.props
+		NugetPkg\LLVM\Llvm.Libs.SinglePackage.nuspec = NugetPkg\LLVM\Llvm.Libs.SinglePackage.nuspec
+		NugetPkg\LLVM\Llvm.Libs.SinglePackage.props = NugetPkg\LLVM\Llvm.Libs.SinglePackage.props
+		NugetPkg\LLVM\Llvm.Libs.targets.nuspec.template = NugetPkg\LLVM\Llvm.Libs.targets.nuspec.template
+		NugetPkg\LLVM\Llvm.Libs.targets.Platform-Configuration.props = NugetPkg\LLVM\Llvm.Libs.targets.Platform-Configuration.props
+		NugetPkg\LLVM\ReadMe.md = NugetPkg\LLVM\ReadMe.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
-		Release|Any CPU = Release|Any CPU
-		Release|Win32 = Release|Win32
+		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|Win32.ActiveCfg = Debug|Win32
-		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|Win32.Build.0 = Debug|Win32
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x64.ActiveCfg = Debug|x64
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x64.Build.0 = Debug|x64
-		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|Any CPU.ActiveCfg = Release|Win32
-		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|Win32.ActiveCfg = Release|Win32
-		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|Win32.Build.0 = Release|Win32
+		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x86.ActiveCfg = Debug|Win32
+		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x86.Build.0 = Debug|Win32
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x64.ActiveCfg = Release|x64
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x64.Build.0 = Release|x64
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|Win32.Build.0 = Debug|Win32
+		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x86.ActiveCfg = Release|Win32
+		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x86.Build.0 = Release|Win32
 		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x64.ActiveCfg = Debug|x64
 		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x64.Build.0 = Debug|x64
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|Any CPU.ActiveCfg = Release|Win32
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|Win32.ActiveCfg = Release|Win32
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|Win32.Build.0 = Release|Win32
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x86.ActiveCfg = Debug|x86
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x86.Build.0 = Debug|x86
 		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x64.ActiveCfg = Release|x64
 		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x64.Build.0 = Release|x64
-		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|Win32.ActiveCfg = Debug|Win32
-		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|Win32.Build.0 = Debug|Win32
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x86.ActiveCfg = Release|x86
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x86.Build.0 = Release|x86
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x64.ActiveCfg = Debug|x64
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x64.Build.0 = Debug|x64
-		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|Any CPU.ActiveCfg = Release|Win32
-		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|Win32.ActiveCfg = Release|Win32
-		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|Win32.Build.0 = Release|Win32
+		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x86.ActiveCfg = Debug|x86
+		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x86.Build.0 = Debug|x86
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x64.ActiveCfg = Release|x64
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x64.Build.0 = Release|x64
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|Win32.ActiveCfg = Debug|Win32
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|Win32.Build.0 = Debug|Win32
+		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x86.ActiveCfg = Release|x86
+		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x86.Build.0 = Release|x86
 		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.ActiveCfg = Debug|x64
 		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.Build.0 = Debug|x64
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|Any CPU.ActiveCfg = Release|Win32
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|Win32.ActiveCfg = Release|Win32
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|Win32.Build.0 = Release|Win32
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.ActiveCfg = Debug|x86
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.Build.0 = Debug|x86
 		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.ActiveCfg = Release|x64
 		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.Build.0 = Release|x64
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.ActiveCfg = Release|x86
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7B7EC2B9-EA80-4F8D-9654-E63C91158B28} = {07FDA2D2-771E-44F4-8862-2E6FCB0E722E}
+		{0972DD07-7608-4FC8-BB14-1F8D4B950BD7} = {07FDA2D2-771E-44F4-8862-2E6FCB0E722E}
+		{60E65808-BF17-4AC0-BD03-A54792170BD0} = {0972DD07-7608-4FC8-BB14-1F8D4B950BD7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF28D186-279B-4E91-9BE8-644B6E018432}
 	EndGlobalSection
 EndGlobal

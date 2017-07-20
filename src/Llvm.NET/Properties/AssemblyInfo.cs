@@ -1,18 +1,5 @@
 ﻿using System;
-using System.Reflection;
 using System.Runtime.InteropServices;
-
-// General Information about an assembly is controlled through the following
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle( "Llvm.NET" )]
-[assembly: AssemblyDescription( ".NET bindings for LLVM-C API libraries in LibLLVM dll" )]
-[assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "Microsoft .NET Foundation" )]
-[assembly: AssemblyProduct( "Llvm.NET" )]
-[assembly: AssemblyCopyright( "Copyright ©  2015" )]
-[assembly: AssemblyTrademark( "" )]
-[assembly: AssemblyCulture( "" )]
 
 [assembly: CLSCompliant( false )]
 
