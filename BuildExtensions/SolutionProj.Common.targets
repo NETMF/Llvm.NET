@@ -12,68 +12,62 @@
     All targets with a name beginning with '_' are internal targets subject to change over time.
     slnproj files should not reference or depend on them in anyway.
     -->
-    <Import Project="EnlistmentBuildVersion.targets"/>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.targets)))" />
 
-    <!--
-    Use Choose to set the dependencies of the EnsureBuildNumbers target to the correct dependency.
-    The EnsureBuildNumbers target does nothing and instead the work is done in one of the two
-    targets selected here. The actual target used depends on whether FullBuildNumber is already set
-    or not. In an automated build the build server will set the FullBuildNumber (Usually as a global
-    property to the msbuild command line that started this project)
-    -->
-    <Choose>
-        <When Condition="'$(FullBuildNumber)'==''">
-            <PropertyGroup>
-                <EnsureBuildNumbersDependsOn>CreateBuildNumbers</EnsureBuildNumbersDependsOn>
-            </PropertyGroup>
-        </When>
-        <Otherwise>
-            <PropertyGroup>
-                <EnsureBuildNumbersDependsOn>_ParseFullBuildNumber</EnsureBuildNumbersDependsOn>
-            </PropertyGroup>
-        </Otherwise>
-    </Choose>
-
-    <!-- This target parses the FullBuidNumber property to extract the component elements-->
-    <Target Name="_ParseFullBuildNumber">
-        <ParseBuildVersion FullBuildNumber="$(FullBuildNumber)">
-            <Output PropertyName="BuildMajor" TaskParameter="BuildMajor" />
-            <Output PropertyName="BuildMinor" TaskParameter="BuildMinor" />
-            <Output PropertyName="BuildNumber" TaskParameter="BuildNumber" />
-            <Output PropertyName="BuildRevision" TaskParameter="BuildRevision" />
-            <Output PropertyName="BuildSuffix" TaskParameter="BuildSuffix"/>
-        </ParseBuildVersion>
-    </Target>
-
-    <!-- This task, rather its dependencies, ensure that FullBuildNumber is set as well as
-         ensuring that BuildMajor, BuildMinor, BuildNumber, BuildRevision, and, optionally,
-         BuildSuffix are set.
-         This task itself does nothing more than print the result to the log(s), the
-         EnsureBuildNumbersDependsOn is set from the Choose element above based on whether
-         FullBuildNumber is already set or not.
-    -->
-    <Target Name="EnsureBuildNumbers" DependsOnTargets="$(EnsureBuildNumbersDependsOn)">
-        <Message Importance="high" Text="FullBuildNumber=$(FullBuildNumber)"/>
-    </Target>
-
-    <!-- Internal target to build a single configuration project list from a multi-configuration project list -->
-    <Target Name="_CreateMultiConfigProjectList">
-        <CreateMultiConfigProjectList Projects="@(BuildProject)">
-            <Output ItemName="_MultiConfigBuildProjects" TaskParameter="Result"/>
-        </CreateMultiConfigProjectList>
-    </Target>
+    <Target Name="PrepareForBuild" DependsOnTargets="PrepareForBuildDependsOn" />
 
     <!-- Builds all of the various configuration options for the BuildProject items -->
-    <Target Name="BuildContentBinaries"
-            DependsOnTargets="EnsureBuildNumbers;_CreateMultiConfigProjectList"
-            >
-        <!-- Build the child projects -->
-        <MSBuild Projects="@(_MultiConfigBuildProjects)"
+    <Target Name="BuildContentBinaries">
+        <!--
+        This is  bit crude but functional, a more generlaized solution would
+        retrieve all the project  references to form a DAG and ensure that any
+        depenencies are uilt (with all platform/configs) before doing a pack.
+        This would include performing the pack for any referenced projects that
+        are packable BEFORE building anything that depends on the pack.
+        -->
+        <ItemGroup>
+            <_NativeProject Include="@(BuildProject->WithMetadataValue('Native','true'))" />
+            <_ManagedProjects Include="@(BuildProject->WithMetadataValue('Native','false'))" />
+        </ItemGroup>
+
+        <!-- Build the native projects before all else so that they can be packed and the resulting package consumed by later projects -->
+        <CreateMultiConfigProjectList Projects="@(_NativeProject)">
+            <Output ItemName="_NativeProjectWithConfiguration" TaskParameter="Result"/>
+        </CreateMultiConfigProjectList>
+
+        <MSBuild Projects="@(_NativeProjectWithConfiguration)"
                  Targets="Build"
                  Properties="BuildMajor=$(BuildMajor);BuildMinor=$(BuildMinor);BuildNumber=$(BuildNumber);BuildRevision=$(BuildRevision)"
                  BuildInParallel="true"
                  >
         </MSBuild>
+
+        <MSBuild Projects="@(_NativeProject->WithMetadataValue('Pack','true'))"
+                 Targets="Pack"
+                 Properties="BuildMajor=$(BuildMajor);BuildMinor=$(BuildMinor);BuildNumber=$(BuildNumber);BuildRevision=$(BuildRevision)"
+                 BuildInParallel="true"
+                 >
+        </MSBuild>
+
+        <!-- Build the Managed projects before all else so that they can be packed and the resulting package consumed by later projects -->
+        <CreateMultiConfigProjectList Projects="@(_ManagedProject)">
+            <Output ItemName="_ManagedProjectWithConfiguration" TaskParameter="Result"/>
+        </CreateMultiConfigProjectList>
+
+        <MSBuild Projects="@(_ManagedProjectWithConfiguration)"
+                 Targets="Build"
+                 Properties="BuildMajor=$(BuildMajor);BuildMinor=$(BuildMinor);BuildNumber=$(BuildNumber);BuildRevision=$(BuildRevision)"
+                 BuildInParallel="true"
+                 >
+        </MSBuild>
+
+        <MSBuild Projects="@(_ManagedProject->WithMetadataValue('Pack','true'))"
+                 Targets="Pack"
+                 Properties="BuildMajor=$(BuildMajor);BuildMinor=$(BuildMinor);BuildNumber=$(BuildNumber);BuildRevision=$(BuildRevision)"
+                 BuildInParallel="true"
+                 >
+        </MSBuild>
+
     </Target>
 
     <!-- Internal build target to Filter the BuildProject item list to a new list containing only release configurations -->
@@ -86,18 +80,18 @@
 
     <!--
     This target performs signing of binaries supporting signatures (Authenticode, StrongName, etc...)
-    For the moment, there is no official signing key so this just copies the files to the signed location
-    However, when signing is available, only this target needs to change as everything is already set up
-    to handle the signed binaries in a distinct location.
+    For the moment, there is no official signing key so this just generates SHA256 signatures and copies
+    the files to the signed location. However, when signing is available, only this target needs to change
+    as everything is already set up to handle the signed binaries in a distinct location.
     -->
-    <Target Name="SignContent" DependsOnTargets="_CreateReleaseProjectItems">
+    <Target Name="SignContent" DependsOnTargets="_CreateReleaseProjectItems" Condition="'%(ReleaseProjects.SignOutput)'!=''">
         <Message Importance="high" Text="Copying Files to signed location... (Actual signing not yet supported)" />
         <!-- For now just copy the release binaries to "fake" signing until fully signed builds enabled -->
         <Copy DestinationFolder="$(BaseSignedOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\"
-              SourceFiles="$(BaseOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\%(ReleaseProjects.TargetOutput)"
+              SourceFiles="$(BaseOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\%(ReleaseProjects.SignOutput)"
               />
         <!-- generate Sha256 hash so that builds can at least be verified -->
-        <GenerateSha256File Files="$(BaseSignedOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\%(ReleaseProjects.TargetOutput)"/>
+        <GenerateSha256File Files="$(BaseSignedOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\%(ReleaseProjects.SignOutput)"/>
     </Target>
 
     <!--
@@ -127,7 +121,7 @@
     <!-- Download the nuget.exe if it isn't found-->
     <Target Name="_DownloadNugetExe" >
         <DownloadFile Condition="!EXISTS('$(NugetExePath)')"
-                      SourceUrl="https://dist.nuget.org/win-x86-commandline/v3.3.0/nuget.exe"
+                      SourceUrl="https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
                       DestinationPath="$(NugetExePath)"
                       />
     </Target>
@@ -136,13 +130,16 @@
     <Target Name="PackageContent" DependsOnTargets="EnsureBuildNumbers;_DownloadNugetExe" >
         <MakeDir Directories="$(BaseSignedOutputPath)Nuget\" Condition="!EXISTS('$(BaseSignedOutputPath)Nuget\')" />
         <Message Importance="high" Text="++Building Nuget Package..."/>
-        <Exec Command='"$(NugetExePath)" pack %(NugetPackage.FullPath) -OutputDirectory $(BaseSignedOutputPath)Nuget\ -Properties configuration=Release;buildbinoutput=$(BaseSignedOutputPath);buildcontentoutput=$(BaseOutputPath);buildversion=$(FullBuildNumber) -NoPackageAnalysis' />
+        <Exec Command='"$(NugetExePath)" pack %(NugetPackage.FullPath) -OutputDirectory $(PackageOutputPath) -Properties buildversion=$(FullBuildNumber);%(NugetPackage.NuSpecProperties) -NoPackageAnalysis' />
+        <ItemGroup>
+            <PackagesToSign Include="$(BaseSignedOutputPath)Nuget\%(NugetPackage.FileName).$(FullBuildNumber).nupkg"/>
+        </ItemGroup>
     </Target>
 
     <!-- Restores nuget packages for projects listed in the NugetRestorePackage item list -->
     <Target Name="NugetRestore" DependsOnTargets="_DownloadNugetExe" >
         <Exec Condition="EXISTS('%(NugetRestorePackage.FullPath)')"
-              Command='"$(NugetExePath)" restore %(NugetRestorePackage.FullPath) -NonInteractive -PackagesDirectory %(NugetRestorePackage.PackagesDirectory) -SolutionDirectory %(NugetRestorePackage.SolutionDirectory) -MSBuildVersion %(NugetRestorePackage.MSBuildVersion)' />
+              Command='"$(NugetExePath)" restore %(NugetRestorePackage.FullPath) -NonInteractive -PackagesDirectory %(NugetRestorePackage.PackagesDirectory) -MSBuildVersion %(NugetRestorePackage.MSBuildVersion)' />
     </Target>
 
     <!--
@@ -151,8 +148,8 @@
     package formats that support signing.
     -->
     <Target Name="SignPackage">
-        <!-- generate Sha256 hash so that builds can at least be verified -->
-        <GenerateSha256File Files="$(BaseSignedOutputPath)Nuget\%(NugetPackage.FileName).$(FullBuildNumber).nupkg"/>
+        <!-- generate Sha256 hash so that builds can at least be verified as coming from the official build -->
+        <GenerateSha256File Files="@(PackagesToSign)"/>
     </Target>
 
     <Target Name="Build" DependsOnTargets="$(BuildDependsOn)"/>

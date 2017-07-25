@@ -25,11 +25,11 @@
             <PropertyGroup Label="UserMacros">
                 <LLVM_TARGETS_LIB_DIR>$(LlvmTargetsPkgRoot)lib\native\lib\</LLVM_TARGETS_LIB_DIR>
             </PropertyGroup>
+            <ItemGroup>
+                <AllLlvmLibs Include="$(LLVM_TARGETS_LIB_DIR)*.lib" />
+            </ItemGroup>
         </When>
     </Choose>
-    <ItemGroup Condition="'Llvm.Libs.targets.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
-        <AllLlvmLibs Include="$(LLVM_TARGETS_LIB_DIR)*.lib" />
-    </ItemGroup>
     <ItemDefinitionGroup Condition="'Llvm.Libs.targets.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
         <Link>
             <AdditionalLibraryDirectories>$(LLVM_TARGETS_LIB_DIR);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

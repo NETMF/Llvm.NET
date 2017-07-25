@@ -210,3 +210,4 @@ FakesAssemblies/
 /src/Llvm.NETTests/TestDebugInfo/test*.o
 /src/Llvm.NETTests/TestDebugInfo/test*.ll
 /src/Llvm.NETTests/TestDebugInfo/test*.bc
+*.exe

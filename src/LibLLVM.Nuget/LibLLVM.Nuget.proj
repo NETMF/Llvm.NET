@@ -1,0 +1,13 @@
+﻿<Project>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.props))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.props)))" />
+    <PropertyGroup>
+        <PackageId>LibLLVM.NET</PackageId>
+        <TargetFramework>native</TargetFramework>
+        <NuspecFile>$([MSBuild]::NormalizePath("$(MSBuildProjectDirectory)", "LibLLVM.NET.nuspec"))</NuspecFile>
+        <NuSpecProperties>configuration=$(Configuration);buildbinoutput=$(BaseSignedOutputPath);buildcontentoutput=$(BaseOutputPath);llvmversion=$(LlvmVersion);srcroot=$(MSBuildProjectDirectory)</NuSpecProperties>
+        <NuspecBasePath>$(MSBuildProjectDirectory)</NuspecBasePath>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <PackProjectInputFile>$(MSBuildProjectFullPath)</PackProjectInputFile>
+    </PropertyGroup>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.targets)))" />
+</Project>

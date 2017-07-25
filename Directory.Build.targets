@@ -1,0 +1,106 @@
+<Project>
+    <!--<Import Condition="'$(MSBuildProjectExtension)'=='.vcxproj' OR '$(MSBuildProjectExtension)'=='.proj'" Project="$(MSBuildSDKsPath)\NuGet.Build.Tasks.Pack\build\NuGet.Build.Tasks.Pack.targets" />-->
+    <Import Project="$(MsBuildThisFileDirectory)\BuildExtensions\InlineBuildTasks.targets" />
+
+    <!-- Generates include header for native code Win32 Resource (.RC) -->
+    <Target Name="GenerateVesionInfoHeader"
+            Condition="'$(MSBuildProjectExtension)'=='.vcxproj'"
+            DependsOnTargets="CreateBuildNumbers"
+            BeforeTargets="ResourceCompile"
+            >
+        <ItemGroup>
+            <VersionInfoGeneratedLine Include='#define FILE_VERSION_MAJOR $(BuildMajor)'/>
+            <VersionInfoGeneratedLine Include='#define FILE_VERSION_MINOR $(BuildMinor)'/>
+            <VersionInfoGeneratedLine Include='#define FILE_VERSION_BUILD $(BuildNumber)'/>
+            <VersionInfoGeneratedLine Include='#define FILE_VERSION_REVISION $(BuildRevision)'/>
+            <VersionInfoGeneratedLine Include='#define FILE_VERSION_STRING "$(BuildMajor).$(BuildMinor).$(BuildNumber).$(BuildRevision)"'/>
+            <VersionInfoGeneratedLine Include=' '/>
+            <VersionInfoGeneratedLine Include='#define PRODUCT_VERSION_MAJOR $(BuildMajor)'/>
+            <VersionInfoGeneratedLine Include='#define PRODUCT_VERSION_MINOR $(BuildMinor)'/>
+            <VersionInfoGeneratedLine Include='#define PRODUCT_VERSION_BUILD $(BuildNumber)'/>
+            <VersionInfoGeneratedLine Include='#define PRODUCT_VERSION_REVISION $(BuildRevision)'/>
+            <VersionInfoGeneratedLine Include='#define PRODUCT_VERSION_STRING "$(BuildMajor).$(BuildMinor).$(BuildNumber).$(BuildRevision)"'/>
+        </ItemGroup>
+        <Message Importance="high" Text="Generating $(GeneratedVersionInfoHeader)" />
+        <WriteLinesToFile File="$(IntermediateOutputPath)$(GeneratedVersionInfoHeader)" Overwrite="true" Lines="@(VersionInfoGeneratedLine)" />
+    </Target>
+
+    <!-- Generate a C# source file with Assembly and file version attributes and include it in the compilation -->
+    <!-- For legacy projects only, this functionality is built into the new CPS based CSproj files -->
+    <Target Name="GenerateAssemblyVersionInfoCS"
+            Condition="'$(MSBuildProjectExtension)'=='.csproj' AND '$(GenerateAssemblyInfo)'==''"
+            DependsOnTargets="CreateBuildNumbers"
+            BeforeTargets="CoreCompile"
+            >
+        <ItemGroup>
+            <AssemblyVersionInfoGeneratedLine Include="using System.Reflection%3B"/>
+            <AssemblyVersionInfoGeneratedLine Include='[assembly: AssemblyVersion("$(BuildMajor).$(BuildMinor).$(BuildNumber).$(BuildRevision)")]'/>
+            <AssemblyVersionInfoGeneratedLine Include='[assembly: AssemblyFileVersion("$(BuildMajor).$(BuildMinor).$(BuildNumber).$(BuildRevision)")]'/>
+        </ItemGroup>
+        <Message Importance="high" Text="Generating: $(IntermediateOutputPath)AssemblyVersionInfo.cs" />
+        <WriteLinesToFile File="$(IntermediateOutputPath)AssemblyVersionInfo.cs" Overwrite="true" Lines="@(AssemblyVersionInfoGeneratedLine)" />
+        <ItemGroup>
+            <Compile Include="$(IntermediateOutputPath)AssemblyVersionInfo.cs"/>
+        </ItemGroup>
+    </Target>
+
+    <!-- Generate Build version numbers. This target will generate the "private"
+         build properties _GeneratedBuildNumber and _GeneratedBuildRevision then
+         set the BuildNumber and BuildRevision properties based on them.
+         If either BuildNumber or BuildRevision is already set it is not updated.
+         If BuildNumber is not yet set, then both BuildNumber AND Build Revision
+         are set from the generated values. (e.g. If the project explicitly set
+         BuildRevision but not BuildNumber both are set to their generated values
+         and the explicit value set for BuildRevision in the project is lost )
+    -->
+    <Target Name="CreateBuildNumbers"
+            Condition="'$(_GeneratedBuildNumber)'=='' AND '$(BuildNumber)'=='' AND '$(BuildRevision)'==''"
+        >
+        <GenerateBuildNumbers>
+            <Output PropertyName="_GeneratedBuildNumber" TaskParameter="BuildNumber" />
+            <Output PropertyName="_GeneratedBuildRevision" TaskParameter="BuildRevision" />
+        </GenerateBuildNumbers>
+
+        <!-- If Build Number is undefined set both build and revision numbers-->
+        <PropertyGroup Condition="'$(BuildNumber)'==''">
+            <BuildNumber>$(_GeneratedBuildNumber)</BuildNumber>
+            <BuildRevision >$(_GeneratedBuildRevision)</BuildRevision>
+        </PropertyGroup>
+        <!-- If the build revision isn't specified, use the generated one -->
+        <PropertyGroup Condition="'$(BuildRevision)'==''">
+            <BuildRevision>$(_GeneratedBuildRevision)</BuildRevision>
+        </PropertyGroup>
+        <PropertyGroup>
+            <FullBuildNumber Condition="'$(FullBuildNumber)'==''">$(BuildMajor).$(BuildMinor).$(BuildNumber).$(BuildRevision)$(BuildSuffix)</FullBuildNumber>
+        </PropertyGroup>
+        <Message Importance="high" Text="GeneratedVersion=$(BuildNumber).$(BuildRevision)"/>
+    </Target>
+
+    <!-- This target parses the FullBuidNumber property to extract the component elements-->
+    <Target Name="_ParseFullBuildNumber">
+        <ParseBuildVersion FullBuildNumber="$(FullBuildNumber)">
+            <Output PropertyName="BuildMajor" TaskParameter="BuildMajor" />
+            <Output PropertyName="BuildMinor" TaskParameter="BuildMinor" />
+            <Output PropertyName="BuildNumber" TaskParameter="BuildNumber" />
+            <Output PropertyName="BuildRevision" TaskParameter="BuildRevision" />
+            <Output PropertyName="BuildSuffix" TaskParameter="BuildSuffix"/>
+        </ParseBuildVersion>
+    </Target>
+
+    <!-- This task, rather its dependencies, ensure that FullBuildNumber is set as well as
+         ensuring that BuildMajor, BuildMinor, BuildNumber, BuildRevision, and, optionally,
+         BuildSuffix are set.
+    -->
+    <Target Name="EnsureBuildNumbers" DependsOnTargets="$(EnsureBuildNumbersDependsOn)" BeforeTargets="Build;GenerateNuspec">
+        <Message Importance="high" Text="FullBuildNumber=$(FullBuildNumber)"/>
+        <PropertyGroup>
+            <PackageVersion>$(FullBuildNumber)</PackageVersion>
+            <NuspecProperties Condition="'$(NuspecFile)'!='' AND '$(NuspecProperties)'!=''">$(NuspecProperties);version=$(FullBuildNumber)</NuspecProperties>
+            <NuspecProperties Condition="'$(NuspecFile)'!='' AND '$(NuspecProperties)'==''">version=$(FullBuildNumber)</NuspecProperties>
+        </PropertyGroup>
+    </Target>
+
+    <Target Name="SignBuiltBinaries" AfterTargets="Build">
+        <GenerateSha256File Files="$(TargetPath)"/>
+    </Target>
+</Project>

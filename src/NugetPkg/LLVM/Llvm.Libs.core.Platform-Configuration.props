@@ -25,12 +25,12 @@
             <PropertyGroup Label="UserMacros">
                 <LLVM_CORE_DIR>$(LlvmCoreLibsPkgRoot)lib\native\</LLVM_CORE_DIR>
                 <LLVM_CORE_INCLUDE>$(LLVM_CORE_DIR)Include\</LLVM_CORE_INCLUDE>
-                <LLVM_CORE_LIB_DIR>$(LLVM_CORE_DIR)lib\</LLVM_CORE_LIB_DIR>
+                <LLVM_CORE_LIB_DIR>$(LLVM_CORE_DIR)lib</LLVM_CORE_LIB_DIR>
             </PropertyGroup>
         </When>
     </Choose>
     <ItemGroup Condition="'Llvm.Libs.core.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
-        <AllLlvmLibs Include="$(LLVM_CORE_LIB_DIR)*.lib" />
+        <AllLlvmLibs Include="$(LLVM_CORE_LIB_DIR)\*.lib" />
     </ItemGroup>
     <ItemDefinitionGroup Condition="'Llvm.Libs.core.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
         <ClCompile>

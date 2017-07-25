@@ -8,15 +8,17 @@ skip_commits:
   files:
     - appveyor.yml
 image: Visual Studio 2017
-configuration:
-  - Debug
-  - Release
-platform:
-  - x86
-  - x64
+cache: BuildOutput\packages
+
 nuget:
   disable_publish_on_pr: true
+  account_feed: true
+  project_feed: true
+
 build:
   project: buildall.slnproj
   parallel: true
   verbosity: minimal
+
+before_build:
+  - ps: .\Update-AppveyorVersion.ps1

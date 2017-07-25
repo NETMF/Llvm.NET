@@ -1,6 +1,10 @@
 ﻿<Project>
   <ImportGroup Label="PropertySheets">
   </ImportGroup>
+  <!--
+  These depend on the Directory.Build.Props import so they are done as a propertysheet since the projects global properties are set
+  before the directory based props file is imported.
+  -->
   <PropertyGroup>
     <GeneratedVersionInfoHeader Condition="'$(GeneratedVersionInfoHeader)'==''">generatedversioninfo.h</GeneratedVersionInfoHeader>
     <ProductVersionMajor Condition="'$(ProductVersionMajor)'==''">$(LlvmVersionMajor)</ProductVersionMajor>
@@ -13,5 +17,10 @@
 
     <FileVersionMajor Condition="'$(FileVersionMajor)'==''">$(ProductVersionMajor)</FileVersionMajor>
     <FileVersionMinor Condition="'$(FileVersionMinor)'==''">$(ProductVersionMinor)</FileVersionMinor>
+    <PackageId>LibLLVM.NET</PackageId>
+    <TargetFramework>native</TargetFramework>
+    <NuspecFile>$([MSBuild]::NormalizePath("$(MSBuildProjectDirectory)", "LibLLVM.NET.nuspec"))</NuspecFile>
+    <NuSpecProperties>configuration=$(Configuration);buildbinoutput=$(BaseSignedOutputPath);buildcontentoutput=$(BaseOutputPath);llvmversion=$(LlvmVersion);srcroot=$(MSBuildProjectDirectory)</NuSpecProperties>
+    <NuspecBasePath>$(MSBuildProjectDirectory)</NuspecBasePath>
   </PropertyGroup>
 </Project>
