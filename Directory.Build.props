@@ -79,5 +79,6 @@
         <!-- Fix Major and minor build numbers to match LLVM so it's easier to relate to the LLVM version -->
         <BuildMajor Condition="'$(BuildMajor)'=='' AND '$(FullBuildNumber)'==''">$(LlvmVersionMajor)</BuildMajor>
         <BuildMinor Condition="'$(BuildMinor)'=='' AND '$(FullBuildNumber)'==''">$(LlvmVersionMinor)</BuildMinor>
+        <BuildOutputPackagesDir>$(BaseBuildOutputPath)\packages\</BuildOutputPackagesDir>
     </PropertyGroup>
 </Project>

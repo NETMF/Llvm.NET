@@ -64,28 +64,6 @@
         </Task>
     </UsingTask>
 
-    <!-- Custom task to filter a single configuration project item list to include only the release configurations -->
-    <UsingTask TaskName="FilterReleaseProjects"
-               TaskFactory="CodeTaskFactory"
-               AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll"
-               >
-        <ParameterGroup>
-            <Projects ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
-            <ReleaseProjects ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
-        </ParameterGroup>
-        <Task>
-            <Using Namespace="System.Net"/>
-            <Code Type="Fragment" Language="cs">
-              <![CDATA[
-              ReleaseProjects = ( from item in Projects
-                                  where item.GetMetadata("Configuration") == "Release"
-                                  select item
-                                ).ToArray();
-              ]]>
-            </Code>
-        </Task>
-    </UsingTask>
-
     <!--
     Custom task to create single configuration projects from a simpler multi-configuration project list.
     MultiConfiguration projects contain a "Platforms" and "Configurations" Item Metadata that are a semicolon

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <!--
     This targets file is imported by a .slnproj to implement standard solution project build
     behavior. The standard slnproj functionality goes well beyond what a normal Visual Studio
@@ -14,14 +14,14 @@
     -->
     <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.targets)))" />
 
-    <Target Name="PrepareForBuild" DependsOnTargets="PrepareForBuildDependsOn" />
+    <Target Name="PrepareForBuild" DependsOnTargets="$(PrepareForBuildDependsOn)" />
 
     <!-- Builds all of the various configuration options for the BuildProject items -->
     <Target Name="BuildContentBinaries">
         <!--
-        This is  bit crude but functional, a more generlaized solution would
+        This is a bit crude but functional, a more generlaized solution would
         retrieve all the project  references to form a DAG and ensure that any
-        depenencies are uilt (with all platform/configs) before doing a pack.
+        depenencies are built (with all platform/configs) before doing a pack.
         This would include performing the pack for any referenced projects that
         are packable BEFORE building anything that depends on the pack.
         -->
@@ -67,31 +67,6 @@
                  BuildInParallel="true"
                  >
         </MSBuild>
-
-    </Target>
-
-    <!-- Internal build target to Filter the BuildProject item list to a new list containing only release configurations -->
-    <Target Name="_CreateReleaseProjectItems" DependsOnTargets="_CreateMultiConfigProjectList">
-        <!-- Filter the project list to find the ones where Configuration==Release -->
-        <FilterReleaseProjects Projects="@(_MultiConfigBuildProjects)">
-            <Output ItemName="ReleaseProjects" TaskParameter="ReleaseProjects"/>
-        </FilterReleaseProjects>
-    </Target>
-
-    <!--
-    This target performs signing of binaries supporting signatures (Authenticode, StrongName, etc...)
-    For the moment, there is no official signing key so this just generates SHA256 signatures and copies
-    the files to the signed location. However, when signing is available, only this target needs to change
-    as everything is already set up to handle the signed binaries in a distinct location.
-    -->
-    <Target Name="SignContent" DependsOnTargets="_CreateReleaseProjectItems" Condition="'%(ReleaseProjects.SignOutput)'!=''">
-        <Message Importance="high" Text="Copying Files to signed location... (Actual signing not yet supported)" />
-        <!-- For now just copy the release binaries to "fake" signing until fully signed builds enabled -->
-        <Copy DestinationFolder="$(BaseSignedOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\"
-              SourceFiles="$(BaseOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\%(ReleaseProjects.SignOutput)"
-              />
-        <!-- generate Sha256 hash so that builds can at least be verified -->
-        <GenerateSha256File Files="$(BaseSignedOutputPath)%(ReleaseProjects.Platform)\%(ReleaseProjects.Configuration)\%(ReleaseProjects.SignOutput)"/>
     </Target>
 
     <!--
@@ -129,17 +104,18 @@
     <!-- Create nuget packages for all NuSpec Items -->
     <Target Name="PackageContent" DependsOnTargets="EnsureBuildNumbers;_DownloadNugetExe" >
         <MakeDir Directories="$(BaseSignedOutputPath)Nuget\" Condition="!EXISTS('$(BaseSignedOutputPath)Nuget\')" />
-        <Message Importance="high" Text="++Building Nuget Package..."/>
-        <Exec Command='"$(NugetExePath)" pack %(NugetPackage.FullPath) -OutputDirectory $(PackageOutputPath) -Properties buildversion=$(FullBuildNumber);%(NugetPackage.NuSpecProperties) -NoPackageAnalysis' />
+        <Exec
+            Condition="exists('%(NugetPackage.FullPath)')"
+            Command='"$(NugetExePath)" pack %(NugetPackage.FullPath) -OutputDirectory $(PackageOutputPath) -Properties buildversion=$(FullBuildNumber);%(NugetPackage.NuSpecProperties) -NoPackageAnalysis' />
         <ItemGroup>
-            <PackagesToSign Include="$(BaseSignedOutputPath)Nuget\%(NugetPackage.FileName).$(FullBuildNumber).nupkg"/>
+            <PackagesToSign Include="$(BaseSignedOutputPath)Nuget\%(NugetPackage.FileName).$(FullBuildNumber).nupkg" Condition="exists('$(BaseSignedOutputPath)Nuget\%(NugetPackage.FileName).$(FullBuildNumber).nupkg')"/>
         </ItemGroup>
     </Target>
 
     <!-- Restores nuget packages for projects listed in the NugetRestorePackage item list -->
     <Target Name="NugetRestore" DependsOnTargets="_DownloadNugetExe" >
-        <Exec Condition="EXISTS('%(NugetRestorePackage.FullPath)')"
-              Command='"$(NugetExePath)" restore %(NugetRestorePackage.FullPath) -NonInteractive -PackagesDirectory %(NugetRestorePackage.PackagesDirectory) -MSBuildVersion %(NugetRestorePackage.MSBuildVersion)' />
+        <Exec Condition="exists('%(NugetRestorePackage.FullPath)')"
+              Command='"$(NugetExePath)" restore %(NugetRestorePackage.FullPath) -NonInteractive -PackagesDirectory %(NugetRestorePackage.PackagesDirectory)' />
     </Target>
 
     <!--

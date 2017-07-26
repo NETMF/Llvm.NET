@@ -30,18 +30,17 @@
         SignPackage          - Signs the package so it is ready for publication
     -->
     <PropertyGroup>
-        <PrepareForBuildDepensOn>
+        <PrepareForBuildDependsOn>
             EnsureBuildNumbers;
             CleanOutputFolders;
             CreateOutputFolders;
             NugetRestore
-        </PrepareForBuildDepensOn>
+        </PrepareForBuildDependsOn>
 
         <!-- Default list of targets to run in sequence for a build -->
         <BuildDependsOn>
             PrepareForBuild;
             BuildContentBinaries;
-            SignContent;
             PackageContent;
             SignPackage
         </BuildDependsOn>
