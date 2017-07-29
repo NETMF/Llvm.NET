@@ -8,7 +8,6 @@ skip_commits:
   files:
     - appveyor.yml
 image: Visual Studio 2017
-cache: BuildOutput\packages
 
 nuget:
   disable_publish_on_pr: true
@@ -19,6 +18,9 @@ build:
   project: buildall.slnproj
   parallel: true
   verbosity: minimal
+
+build_script:
+  - ps: .\BuildAll.ps1
 
 before_build:
   - ps: .\Update-AppveyorVersion.ps1

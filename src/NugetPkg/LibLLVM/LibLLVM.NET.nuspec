@@ -5,7 +5,7 @@
         <version>$version$</version>
         <authors>LLVM.NET</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Extended LLVM-C API DLLs for LLVM $llvmversion$</description>
+        <description>Extended LLVM-C API DLLs for LLVM v$llvmversion$</description>
         <developmentDependency>true</developmentDependency>
         <projectUrl>http://github.com/netmf/LLVM.NET</projectUrl>
         <licenseUrl>http://releases.llvm.org/$llvmversion$/LICENSE.TXT</licenseUrl>
@@ -13,14 +13,13 @@
     </metadata>
     <files>
         <file src="build\LibLLVM.NET.props" target="build\native\LibLLVM.NET.props" />
-        <file src="build\LibLLVM.NET.targets" target="build\native\LibLLVM.NET.targets" />
         <file src="$srcroot$\*.h" target="lib\native\include" exclude="resource.h;targetver.h;stdafx.h" />
-        <file src="$buildcontentoutput$x86\Release\LibLLVM.lib" target="lib\native\lib\x86" />
-        <file src="$buildcontentoutput$x86\Release\LibLLVM.pdb" target="lib\native\lib\x86" />
-        <file src="$buildcontentoutput$x64\Release\LibLLVM.lib" target="lib\native\lib\x64" />
-        <file src="$buildcontentoutput$x64\Release\LibLLVM.pdb" target="lib\native\lib\x64" />
+        <file src="$buildcontentoutput$x86\$configuration$\LibLLVM.lib" target="build\LibLLVM\x86" />
+        <file src="$buildcontentoutput$x86\$configuration$\LibLLVM.pdb" target="build\LibLLVM\x86" />
+        <file src="$buildcontentoutput$x64\$configuration$\LibLLVM.lib" target="build\LibLLVM\x64" />
+        <file src="$buildcontentoutput$x64\$configuration$\LibLLVM.pdb" target="build\LibLLVM\x64" />
 
-        <file src="$buildbinoutput$x86\Release\LibLLVM.dll" target="runtimes\win-x86\native" />
-        <file src="$buildbinoutput$x64\Release\LibLLVM.dll" target="runtimes\win-x64\native" />
+        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.dll" target="build\LibLLVM\x86" />
+        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.dll" target="build\LibLLVM\x64" />
     </files>
 </package>

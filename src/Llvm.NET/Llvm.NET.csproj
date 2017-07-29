@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEnv.props))\BuildEnv.props" Condition=" '$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEnv.props))' != '' " />
     <PropertyGroup>
         <!--
         This project is intended to be netstandard 2.0 compatible and is validated
@@ -7,47 +6,20 @@
         does not actually work in VS 15.2 Release. So it is disabled for now
         -->
         <TargetFrameworks>net47</TargetFrameworks>
+        <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
+        <DebugType>full</DebugType>
+        <DebugSymbols>True</DebugSymbols>
         <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-        <Description>.NET bindings for LLVM-C API libraries in LibLLVM dll</Description>
-        <Company>Microsoft .NET Foundation</Company>
-        <Copyright>Copyright © 2015-2017</Copyright>
-        <Product>Llvm.NET</Product>
-        <CodeAnalysisRuleSet>Llvm.NET.ruleset</CodeAnalysisRuleSet>
-        <RuntimeIdentifiers>win10-x64;win10-x86</RuntimeIdentifiers>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|x86'">
-      <WarningsAsErrors />
-      <NoWarn />
-      <PlatformTarget>x86</PlatformTarget>
-      <DebugType>full</DebugType>
-      <DebugSymbols>True</DebugSymbols>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|x64'">
-      <WarningsAsErrors />
-      <NoWarn />
-      <PlatformTarget>x86</PlatformTarget>
-      <DebugType>full</DebugType>
-      <DebugSymbols>True</DebugSymbols>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|x86'">
-      <DebugType>full</DebugType>
-      <DebugSymbols>True</DebugSymbols>
+        <DocumentationFile>Llvm.NET.xml</DocumentationFile>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
-      <DebugType>full</DebugType>
-      <DebugSymbols>True</DebugSymbols>
+      <NoWarn>1701;1702;1705;1591</NoWarn>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
-      <DebugType>full</DebugType>
-      <DebugSymbols>True</DebugSymbols>
+      <NoWarn>1701;1702;1705;1591</NoWarn>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|x64'">
-      <DebugType>full</DebugType>
-      <DebugSymbols>True</DebugSymbols>
-    </PropertyGroup>
-
     <ItemGroup>
-    <!--
+        <!--
       When using EnableDefaultCompileItems=false this is needed to prevent the IDE from
       showing all files via the default "none glob". See: https://github.com/dotnet/sdk/issues/1157
       Why anyone would want a project system that pulled in all files implicitly instead
@@ -55,225 +27,222 @@
      -->
         <None Remove="**" />
     </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ArgValidationExtensions.cs" />
-    <Compile Include="Comdat.cs" />
-    <Compile Include="ComdatCollection.cs" />
-    <Compile Include="ContextValidator.cs" />
-    <Compile Include="DebugInfo\DebugArrayType.cs" />
-    <Compile Include="DebugInfo\DebugMemberInfo.cs" />
-    <Compile Include="DebugInfo\DebugMemberLayout.cs" />
-    <Compile Include="DebugInfo\DebugPointerType.cs" />
-    <Compile Include="DebugInfo\DebugStructType.cs" />
-    <Compile Include="DebugInfo\DebugUnionType.cs" />
-    <Compile Include="DebugInfo\DIGlobalVariableExpression.cs" />
-    <Compile Include="DebugInfo\DINodeArray.cs" />
-    <Compile Include="DebugInfo\DIBasicType.cs" />
-    <Compile Include="DebugInfo\DICompileUnit.cs" />
-    <Compile Include="DebugInfo\DICompositeType.cs" />
-    <Compile Include="DebugInfo\DIDerivedType.cs" />
-    <Compile Include="DebugInfo\DIEnumerator.cs" />
-    <Compile Include="DebugInfo\DIExpression.cs" />
-    <Compile Include="DebugInfo\DIFile.cs" />
-    <Compile Include="DebugInfo\DIGlobalVariable.cs" />
-    <Compile Include="DebugInfo\DIImportedEntity.cs" />
-    <Compile Include="DebugInfo\DILexicalBlock.cs" />
-    <Compile Include="DebugInfo\DILexicalBlockBase.cs" />
-    <Compile Include="DebugInfo\DILexicalBlockFile.cs" />
-    <Compile Include="DebugInfo\DILocalScope.cs" />
-    <Compile Include="DebugInfo\DILocalVariable.cs" />
-    <Compile Include="DebugInfo\DILocation.cs" />
-    <Compile Include="DebugInfo\DIModule.cs" />
-    <Compile Include="DebugInfo\DINamespace.cs" />
-    <Compile Include="DebugInfo\DINode.cs" />
-    <Compile Include="DebugInfo\DIObjCProperty.cs" />
-    <Compile Include="DebugInfo\DIScope.cs" />
-    <Compile Include="DebugInfo\DISubProgram.cs" />
-    <Compile Include="DebugInfo\DISubRange.cs" />
-    <Compile Include="DebugInfo\DISubroutineType.cs" />
-    <Compile Include="DebugInfo\DITemplateParameter.cs" />
-    <Compile Include="DebugInfo\DITemplateTypeParameter.cs" />
-    <Compile Include="DebugInfo\DITemplateValueParameter.cs" />
-    <Compile Include="DebugInfo\DIType.cs" />
-    <Compile Include="DebugInfo\DITypeArray.cs" />
-    <Compile Include="DebugInfo\DIVariable.cs" />
-    <Compile Include="DebugInfo\GenericDINode.cs" />
-    <Compile Include="DebugInfo\DebugType.cs" />
-    <Compile Include="DebugInfo\TupleTypedArrayWrapper.cs" />
-    <Compile Include="ExtensiblePropertyContainer.cs" />
-    <Compile Include="ExtensiblePropertyDescriptor.cs" />
-    <Compile Include="Instructions\InstructionExtensions.cs" />
-    <Compile Include="Metadata\MDNodeOperandList.cs" />
-    <Compile Include="EnumerableExtensions.cs" />
-    <Compile Include="Instructions\AddressSpaceCast.cs" />
-    <Compile Include="Instructions\AtomicCmpXchg.cs" />
-    <Compile Include="Instructions\AtomicRMW.cs" />
-    <Compile Include="Instructions\CatchPad.cs" />
-    <Compile Include="Instructions\CatchReturn.cs" />
-    <Compile Include="Instructions\CatchSwitch.cs" />
-    <Compile Include="Instructions\CleanupPad.cs" />
-    <Compile Include="Instructions\CleanupReturn.cs" />
-    <Compile Include="Instructions\Fence.cs" />
-    <Compile Include="Instructions\FPExt.cs" />
-    <Compile Include="Instructions\FPToSI.cs" />
-    <Compile Include="Instructions\FPToUI.cs" />
-    <Compile Include="Instructions\FPTrunc.cs" />
-    <Compile Include="Instructions\FuncletPad.cs" />
-    <Compile Include="Instructions\IndirectBranch.cs" />
-    <Compile Include="Instructions\InsertElement.cs" />
-    <Compile Include="Instructions\Invoke.cs" />
-    <Compile Include="Instructions\LandingPad.cs" />
-    <Compile Include="Instructions\Resume.cs" />
-    <Compile Include="Instructions\Select.cs" />
-    <Compile Include="Instructions\ShuffleVector.cs" />
-    <Compile Include="Instructions\SIToFP.cs" />
-    <Compile Include="Instructions\UIToFP.cs" />
-    <Compile Include="Instructions\Unreachable.cs" />
-    <Compile Include="Instructions\UserOp1.cs" />
-    <Compile Include="Instructions\UserOp2.cs" />
-    <Compile Include="Instructions\VaArg.cs" />
-    <Compile Include="Native\IntPtrExtensions.cs" />
-    <Compile Include="Native\LLVMBuilderRef.cs" />
-    <Compile Include="Native\LLVMMetadataRef.cs" />
-    <Compile Include="Native\LLVMPassRegistryRef.cs" />
-    <Compile Include="Native\LLVMTripleRef.cs" />
-    <Compile Include="Native\LLVMVersionInfo.cs" />
-    <Compile Include="Native\SafeHandleNullIsInvalid.cs" />
-    <Compile Include="Native\StringMarshaler.cs" />
-    <Compile Include="Native\GeneratedCodeExtensions.cs" />
-    <Compile Include="Native\ValueKind.cs" />
-    <Compile Include="Native\WrappedNativeCallback.cs" />
-    <Compile Include="Metadata\ConstantAsMetadata.cs" />
-    <Compile Include="Metadata\LocalAsMetadata.cs" />
-    <Compile Include="Metadata\MDNode.cs" />
-    <Compile Include="Metadata\MDOperand.cs" />
-    <Compile Include="Metadata\MDString.cs" />
-    <Compile Include="Metadata\MDTuple.cs" />
-    <Compile Include="Metadata\Metadata.cs" />
-    <Compile Include="Metadata\MetadataAsValue.cs" />
-    <Compile Include="Metadata\ValueAsMetadata.cs" />
-    <Compile Include="Metadata\NamedMDNode.cs" />
-    <Compile Include="DebugInfo\DebugBasicType.cs" />
-    <Compile Include="DebugInfo\DebugFunctionType.cs" />
-    <Compile Include="Triple.cs" />
-    <Compile Include="Types\ITypeRef.cs" />
-    <Compile Include="Values\Argument.cs" />
-    <Compile Include="Types\ArrayType.cs" />
-    <Compile Include="Values\AttributeKind.cs" />
-    <Compile Include="Values\AttributeContainerMixins.cs" />
-    <Compile Include="Values\AttributeValue.cs" />
-    <Compile Include="Values\BasicBlock.cs" />
-    <Compile Include="Values\BlockAddress.cs" />
-    <Compile Include="Values\Constant.cs" />
-    <Compile Include="Values\ConstantAggregateZero.cs" />
-    <Compile Include="Values\ConstantArray.cs" />
-    <Compile Include="Values\ConstantDataArray.cs" />
-    <Compile Include="Values\ConstantDataSequential.cs" />
-    <Compile Include="Values\ConstantDataVector.cs" />
-    <Compile Include="Values\ConstantExpression.cs" />
-    <Compile Include="Values\ConstantFP.cs" />
-    <Compile Include="Values\ConstantInt.cs" />
-    <Compile Include="Values\ConstantStruct.cs" />
-    <Compile Include="Values\ConstantTokenNone.cs" />
-    <Compile Include="Values\ConstantVector.cs" />
-    <Compile Include="Values\ConstPointerNull.cs" />
-    <Compile Include="Context.cs" />
-    <Compile Include="DebugInfo\DebugInfoBuilder.cs" />
-    <Compile Include="DebugInfo\DwarfEnumerations.cs" />
-    <Compile Include="Enumerations.cs" />
-    <Compile Include="Values\Function.cs" />
-    <Compile Include="Types\FunctionType.cs" />
-    <Compile Include="Values\GlobalAlias.cs" />
-    <Compile Include="Values\GlobalObject.cs" />
-    <Compile Include="PassRegistry.cs" />
-    <Compile Include="Values\GlobalObjectExtensions.cs" />
-    <Compile Include="Values\GlobalValue.cs" />
-    <Compile Include="Values\GlobalValueExtensions.cs" />
-    <Compile Include="Values\GlobalVariable.cs" />
-    <Compile Include="IExtensiblePropertyContainer.cs" />
-    <Compile Include="Instructions\InstructionBuilder.cs" />
-    <Compile Include="Instructions\InsertValue.cs" />
-    <Compile Include="Instructions\Switch.cs" />
-    <Compile Include="InternalCodeGeneratorException.cs" />
-    <Compile Include="Instructions\Alloca.cs" />
-    <Compile Include="Instructions\BinaryOperator.cs" />
-    <Compile Include="Instructions\BitCast.cs" />
-    <Compile Include="Instructions\Branch.cs" />
-    <Compile Include="Instructions\Call.cs" />
-    <Compile Include="Instructions\Cast.cs" />
-    <Compile Include="Instructions\Cmp.cs" />
-    <Compile Include="Instructions\DebugDeclare.cs" />
-    <Compile Include="Instructions\DebugInfoIntrinsic.cs" />
-    <Compile Include="Instructions\ExtractValue.cs" />
-    <Compile Include="Instructions\GetElementPtr.cs" />
-    <Compile Include="Instructions\Instruction.cs" />
-    <Compile Include="Instructions\Intrinsic.cs" />
-    <Compile Include="Instructions\FCmp.cs" />
-    <Compile Include="Instructions\IntCmp.cs" />
-    <Compile Include="Instructions\ExtractElement.cs" />
-    <Compile Include="Instructions\IntToPointer.cs" />
-    <Compile Include="Instructions\Load.cs" />
-    <Compile Include="Instructions\MemCpy.cs" />
-    <Compile Include="Instructions\MemIntrinsic.cs" />
-    <Compile Include="Instructions\MemMove.cs" />
-    <Compile Include="Instructions\MemSet.cs" />
-    <Compile Include="Instructions\PhiNode.cs" />
-    <Compile Include="Instructions\PointerToInt.cs" />
-    <Compile Include="Instructions\Return.cs" />
-    <Compile Include="Instructions\SignExtend.cs" />
-    <Compile Include="Instructions\Store.cs" />
-    <Compile Include="Instructions\Terminator.cs" />
-    <Compile Include="Instructions\Trunc.cs" />
-    <Compile Include="Instructions\UnaryInstruction.cs" />
-    <Compile Include="Instructions\ZeroExtend.cs" />
-    <Compile Include="Native\Generated.cs" />
-    <Compile Include="Native\CustomGenerated.cs" />
-    <Compile Include="MemoryBuffer.cs" />
-    <Compile Include="Module.cs" />
-    <Compile Include="Values\FunctionParameterList.cs" />
-    <Compile Include="PassManagerBuilder.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\SequenceType.cs" />
-    <Compile Include="StaticState.cs" />
-    <Compile Include="Types\StructType.cs" />
-    <Compile Include="Target.cs" />
-    <Compile Include="TargetMachine.cs" />
-    <Compile Include="DataLayout.cs" />
-    <Compile Include="Types\TypeRef.cs" />
-    <Compile Include="Values\IAttributeDictionary.cs" />
-    <Compile Include="Values\InlineAsm.cs" />
-    <Compile Include="Values\IAttributeAccessor.cs" />
-    <Compile Include="Values\UndefValue.cs" />
-    <Compile Include="Values\Use.cs" />
-    <Compile Include="Values\User.cs" />
-    <Compile Include="Values\UserOperandList.cs" />
-    <Compile Include="Values\ValuAttributeCollection.cs" />
-    <Compile Include="Values\Value.cs" />
-    <Compile Include="Types\PointerType.cs" />
-    <Compile Include="Types\VectorType.cs" />
-    <Compile Include="Values\ValueAttributeDictionary.cs" />
-    <Compile Include="Values\ValueExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Llvm.NET.ruleset" />
-  </ItemGroup>
-  <ItemGroup>
-    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
-      <Link>CustomDictionary.xml</Link>
-    </CodeAnalysisDictionary>
-  </ItemGroup>
-  <ItemGroup>
-      <PackageReference Include="Microsoft.AnalyzerPowerPack" Version="1.1.0" />
-      <PackageReference Include="PdbGit" Version="3.0.41" />
-      <PackageReference Include="RefactoringEssentials" Version="5.2.0" />
-      <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibLLVM\LibLLVM.vcxproj">
-      <Project>{6c77a7de-d464-430f-96a9-a64768763b5f}</Project>
-      <Name>LibLLVM</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <Private>True</Private>
-    </ProjectReference>
-  </ItemGroup>
+    <ItemGroup>
+        <Compile Include="ArgValidationExtensions.cs" />
+        <Compile Include="Comdat.cs" />
+        <Compile Include="ComdatCollection.cs" />
+        <Compile Include="ContextValidator.cs" />
+        <Compile Include="DebugInfo\DebugArrayType.cs" />
+        <Compile Include="DebugInfo\DebugMemberInfo.cs" />
+        <Compile Include="DebugInfo\DebugMemberLayout.cs" />
+        <Compile Include="DebugInfo\DebugPointerType.cs" />
+        <Compile Include="DebugInfo\DebugStructType.cs" />
+        <Compile Include="DebugInfo\DebugUnionType.cs" />
+        <Compile Include="DebugInfo\DIGlobalVariableExpression.cs" />
+        <Compile Include="DebugInfo\DINodeArray.cs" />
+        <Compile Include="DebugInfo\DIBasicType.cs" />
+        <Compile Include="DebugInfo\DICompileUnit.cs" />
+        <Compile Include="DebugInfo\DICompositeType.cs" />
+        <Compile Include="DebugInfo\DIDerivedType.cs" />
+        <Compile Include="DebugInfo\DIEnumerator.cs" />
+        <Compile Include="DebugInfo\DIExpression.cs" />
+        <Compile Include="DebugInfo\DIFile.cs" />
+        <Compile Include="DebugInfo\DIGlobalVariable.cs" />
+        <Compile Include="DebugInfo\DIImportedEntity.cs" />
+        <Compile Include="DebugInfo\DILexicalBlock.cs" />
+        <Compile Include="DebugInfo\DILexicalBlockBase.cs" />
+        <Compile Include="DebugInfo\DILexicalBlockFile.cs" />
+        <Compile Include="DebugInfo\DILocalScope.cs" />
+        <Compile Include="DebugInfo\DILocalVariable.cs" />
+        <Compile Include="DebugInfo\DILocation.cs" />
+        <Compile Include="DebugInfo\DIModule.cs" />
+        <Compile Include="DebugInfo\DINamespace.cs" />
+        <Compile Include="DebugInfo\DINode.cs" />
+        <Compile Include="DebugInfo\DIObjCProperty.cs" />
+        <Compile Include="DebugInfo\DIScope.cs" />
+        <Compile Include="DebugInfo\DISubProgram.cs" />
+        <Compile Include="DebugInfo\DISubRange.cs" />
+        <Compile Include="DebugInfo\DISubroutineType.cs" />
+        <Compile Include="DebugInfo\DITemplateParameter.cs" />
+        <Compile Include="DebugInfo\DITemplateTypeParameter.cs" />
+        <Compile Include="DebugInfo\DITemplateValueParameter.cs" />
+        <Compile Include="DebugInfo\DIType.cs" />
+        <Compile Include="DebugInfo\DITypeArray.cs" />
+        <Compile Include="DebugInfo\DIVariable.cs" />
+        <Compile Include="DebugInfo\GenericDINode.cs" />
+        <Compile Include="DebugInfo\DebugType.cs" />
+        <Compile Include="DebugInfo\TupleTypedArrayWrapper.cs" />
+        <Compile Include="ExtensiblePropertyContainer.cs" />
+        <Compile Include="ExtensiblePropertyDescriptor.cs" />
+        <Compile Include="Instructions\InstructionExtensions.cs" />
+        <Compile Include="Metadata\MDNodeOperandList.cs" />
+        <Compile Include="EnumerableExtensions.cs" />
+        <Compile Include="Instructions\AddressSpaceCast.cs" />
+        <Compile Include="Instructions\AtomicCmpXchg.cs" />
+        <Compile Include="Instructions\AtomicRMW.cs" />
+        <Compile Include="Instructions\CatchPad.cs" />
+        <Compile Include="Instructions\CatchReturn.cs" />
+        <Compile Include="Instructions\CatchSwitch.cs" />
+        <Compile Include="Instructions\CleanupPad.cs" />
+        <Compile Include="Instructions\CleanupReturn.cs" />
+        <Compile Include="Instructions\Fence.cs" />
+        <Compile Include="Instructions\FPExt.cs" />
+        <Compile Include="Instructions\FPToSI.cs" />
+        <Compile Include="Instructions\FPToUI.cs" />
+        <Compile Include="Instructions\FPTrunc.cs" />
+        <Compile Include="Instructions\FuncletPad.cs" />
+        <Compile Include="Instructions\IndirectBranch.cs" />
+        <Compile Include="Instructions\InsertElement.cs" />
+        <Compile Include="Instructions\Invoke.cs" />
+        <Compile Include="Instructions\LandingPad.cs" />
+        <Compile Include="Instructions\Resume.cs" />
+        <Compile Include="Instructions\Select.cs" />
+        <Compile Include="Instructions\ShuffleVector.cs" />
+        <Compile Include="Instructions\SIToFP.cs" />
+        <Compile Include="Instructions\UIToFP.cs" />
+        <Compile Include="Instructions\Unreachable.cs" />
+        <Compile Include="Instructions\UserOp1.cs" />
+        <Compile Include="Instructions\UserOp2.cs" />
+        <Compile Include="Instructions\VaArg.cs" />
+        <Compile Include="Native\IntPtrExtensions.cs" />
+        <Compile Include="Native\LLVMBuilderRef.cs" />
+        <Compile Include="Native\LLVMMetadataRef.cs" />
+        <Compile Include="Native\LLVMPassRegistryRef.cs" />
+        <Compile Include="Native\LLVMTripleRef.cs" />
+        <Compile Include="Native\LLVMVersionInfo.cs" />
+        <Compile Include="Native\SafeHandleNullIsInvalid.cs" />
+        <Compile Include="Native\StringMarshaler.cs" />
+        <Compile Include="Native\GeneratedCodeExtensions.cs" />
+        <Compile Include="Native\ValueKind.cs" />
+        <Compile Include="Native\WrappedNativeCallback.cs" />
+        <Compile Include="Metadata\ConstantAsMetadata.cs" />
+        <Compile Include="Metadata\LocalAsMetadata.cs" />
+        <Compile Include="Metadata\MDNode.cs" />
+        <Compile Include="Metadata\MDOperand.cs" />
+        <Compile Include="Metadata\MDString.cs" />
+        <Compile Include="Metadata\MDTuple.cs" />
+        <Compile Include="Metadata\Metadata.cs" />
+        <Compile Include="Metadata\MetadataAsValue.cs" />
+        <Compile Include="Metadata\ValueAsMetadata.cs" />
+        <Compile Include="Metadata\NamedMDNode.cs" />
+        <Compile Include="DebugInfo\DebugBasicType.cs" />
+        <Compile Include="DebugInfo\DebugFunctionType.cs" />
+        <Compile Include="Triple.cs" />
+        <Compile Include="Types\ITypeRef.cs" />
+        <Compile Include="Values\Argument.cs" />
+        <Compile Include="Types\ArrayType.cs" />
+        <Compile Include="Values\AttributeKind.cs" />
+        <Compile Include="Values\AttributeContainerMixins.cs" />
+        <Compile Include="Values\AttributeValue.cs" />
+        <Compile Include="Values\BasicBlock.cs" />
+        <Compile Include="Values\BlockAddress.cs" />
+        <Compile Include="Values\Constant.cs" />
+        <Compile Include="Values\ConstantAggregateZero.cs" />
+        <Compile Include="Values\ConstantArray.cs" />
+        <Compile Include="Values\ConstantDataArray.cs" />
+        <Compile Include="Values\ConstantDataSequential.cs" />
+        <Compile Include="Values\ConstantDataVector.cs" />
+        <Compile Include="Values\ConstantExpression.cs" />
+        <Compile Include="Values\ConstantFP.cs" />
+        <Compile Include="Values\ConstantInt.cs" />
+        <Compile Include="Values\ConstantStruct.cs" />
+        <Compile Include="Values\ConstantTokenNone.cs" />
+        <Compile Include="Values\ConstantVector.cs" />
+        <Compile Include="Values\ConstPointerNull.cs" />
+        <Compile Include="Context.cs" />
+        <Compile Include="DebugInfo\DebugInfoBuilder.cs" />
+        <Compile Include="DebugInfo\DwarfEnumerations.cs" />
+        <Compile Include="Enumerations.cs" />
+        <Compile Include="Values\Function.cs" />
+        <Compile Include="Types\FunctionType.cs" />
+        <Compile Include="Values\GlobalAlias.cs" />
+        <Compile Include="Values\GlobalObject.cs" />
+        <Compile Include="PassRegistry.cs" />
+        <Compile Include="Values\GlobalObjectExtensions.cs" />
+        <Compile Include="Values\GlobalValue.cs" />
+        <Compile Include="Values\GlobalValueExtensions.cs" />
+        <Compile Include="Values\GlobalVariable.cs" />
+        <Compile Include="IExtensiblePropertyContainer.cs" />
+        <Compile Include="Instructions\InstructionBuilder.cs" />
+        <Compile Include="Instructions\InsertValue.cs" />
+        <Compile Include="Instructions\Switch.cs" />
+        <Compile Include="InternalCodeGeneratorException.cs" />
+        <Compile Include="Instructions\Alloca.cs" />
+        <Compile Include="Instructions\BinaryOperator.cs" />
+        <Compile Include="Instructions\BitCast.cs" />
+        <Compile Include="Instructions\Branch.cs" />
+        <Compile Include="Instructions\Call.cs" />
+        <Compile Include="Instructions\Cast.cs" />
+        <Compile Include="Instructions\Cmp.cs" />
+        <Compile Include="Instructions\DebugDeclare.cs" />
+        <Compile Include="Instructions\DebugInfoIntrinsic.cs" />
+        <Compile Include="Instructions\ExtractValue.cs" />
+        <Compile Include="Instructions\GetElementPtr.cs" />
+        <Compile Include="Instructions\Instruction.cs" />
+        <Compile Include="Instructions\Intrinsic.cs" />
+        <Compile Include="Instructions\FCmp.cs" />
+        <Compile Include="Instructions\IntCmp.cs" />
+        <Compile Include="Instructions\ExtractElement.cs" />
+        <Compile Include="Instructions\IntToPointer.cs" />
+        <Compile Include="Instructions\Load.cs" />
+        <Compile Include="Instructions\MemCpy.cs" />
+        <Compile Include="Instructions\MemIntrinsic.cs" />
+        <Compile Include="Instructions\MemMove.cs" />
+        <Compile Include="Instructions\MemSet.cs" />
+        <Compile Include="Instructions\PhiNode.cs" />
+        <Compile Include="Instructions\PointerToInt.cs" />
+        <Compile Include="Instructions\Return.cs" />
+        <Compile Include="Instructions\SignExtend.cs" />
+        <Compile Include="Instructions\Store.cs" />
+        <Compile Include="Instructions\Terminator.cs" />
+        <Compile Include="Instructions\Trunc.cs" />
+        <Compile Include="Instructions\UnaryInstruction.cs" />
+        <Compile Include="Instructions\ZeroExtend.cs" />
+        <Compile Include="Native\Generated.cs" />
+        <Compile Include="Native\CustomGenerated.cs" />
+        <Compile Include="MemoryBuffer.cs" />
+        <Compile Include="Module.cs" />
+        <Compile Include="Values\FunctionParameterList.cs" />
+        <Compile Include="PassManagerBuilder.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Types\SequenceType.cs" />
+        <Compile Include="StaticState.cs" />
+        <Compile Include="Types\StructType.cs" />
+        <Compile Include="Target.cs" />
+        <Compile Include="TargetMachine.cs" />
+        <Compile Include="DataLayout.cs" />
+        <Compile Include="Types\TypeRef.cs" />
+        <Compile Include="Values\IAttributeDictionary.cs" />
+        <Compile Include="Values\InlineAsm.cs" />
+        <Compile Include="Values\IAttributeAccessor.cs" />
+        <Compile Include="Values\UndefValue.cs" />
+        <Compile Include="Values\Use.cs" />
+        <Compile Include="Values\User.cs" />
+        <Compile Include="Values\UserOperandList.cs" />
+        <Compile Include="Values\ValuAttributeCollection.cs" />
+        <Compile Include="Values\Value.cs" />
+        <Compile Include="Types\PointerType.cs" />
+        <Compile Include="Types\VectorType.cs" />
+        <Compile Include="Values\ValueAttributeDictionary.cs" />
+        <Compile Include="Values\ValueExtensions.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
+            <Link>CustomDictionary.xml</Link>
+        </CodeAnalysisDictionary>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AnalyzerPowerPack" Version="1.1.0" PrivateAssets="All" />
+        <PackageReference Include="PdbGit" Version="3.0.41" PrivateAssets="All" />
+        <PackageReference Include="RefactoringEssentials" Version="5.2.0" PrivateAssets="All" />
+        <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
+    </ItemGroup>
+    <!--
+    Must import this with conditional on IsCrossTargeting, to ensure that PackageVersion is set based on the generated build number.
+    The cross targeting build will only import this when building for a single Platform+configuration combination but the nuget pack
+    target is only executed in the outer project case so this ensures the import occurs correctly. An alternative would be to use
+    another NUGET package as it's package "props" and "targets" files are imported in both contexts. This effectively works around
+    issue https://github.com/NuGet/Home/issues/4790 Though it is really more of an issue with the cross targetting support that NUGET
+    -->
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))) AND '$(IsCrossTargetingBuild)'=='true'" />
 </Project>

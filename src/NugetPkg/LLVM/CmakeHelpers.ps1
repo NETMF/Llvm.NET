@@ -55,7 +55,7 @@
     }
     This is likely due to deserializing to a strong type, though there are ways
     to do that and keep the simpler form. This method deals with that by doing
-    a conversion to a custom object with the veriables nested such that conversion
+    a conversion to a custom object with the variables nested such that conversion
     into json with ConvertTo-Json works correctly.
     #>
     hidden [PSCustomObject] ToCMakeSettingsJsonifiable()

@@ -1,30 +1,23 @@
-﻿using Llvm.NET;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using Llvm.NET;
 using Llvm.NET.DebugInfo;
 using Llvm.NET.Instructions;
 using Llvm.NET.Types;
 using Llvm.NET.Values;
-using System;
-using System.IO;
-using System.Collections.Generic;
 
 namespace TestDebugInfo
 {
     /// <summary>Program to test/demonstrate Aspects of debug information generation with Llvm.NET</summary>
-    class Program
+    public static class Program
     {
-        static ITargetDependentDetails TargetDetails;
-
-        static IEnumerable<AttributeValue> TargetDependentAttributes { get; set; }
-
-        // obviously this is not clang but using an identical name helps in diff with actual clang output
-        const string VersionIdentString = "clang version 4.0.1 (tags/RELEASE_401/final)";
-
         /// <summary>Creates a test LLVM module with debug information</summary>
         /// <param name="args">ignored</param>
         /// <remarks>
         /// <code language="c" title="Example code generated" source="test.c" />
         /// </remarks>
-        static void Main( string[ ] args )
+        public static void Main( string[ ] args )
         {
             TargetDetails = new CortexM3Details();
             string srcPath = args[ 0 ];
@@ -33,6 +26,7 @@ namespace TestDebugInfo
                 Console.Error.WriteLine( "Src file not found: '{0}'", srcPath );
                 return;
             }
+
             srcPath = Path.GetFullPath( srcPath );
 
             string moduleName = $"test_{TargetDetails.ShortName}.bc";
@@ -55,7 +49,7 @@ namespace TestDebugInfo
                                                            , Path.GetDirectoryName( srcPath )
                                                            , VersionIdentString
                                                            , false
-                                                           , ""
+                                                           , string.Empty
                                                            , 0
                                                            );
                 var diFile = module.DIBuilder.CreateFile( srcPath );
@@ -67,11 +61,13 @@ namespace TestDebugInfo
                 var i32Array_0_32 = i32.CreateArrayType( module, 0, 32 );
 
                 // create the LLVM structure type and body with full debug information
+#pragma warning disable SA1500 // "Warning SA1500  Braces for multi - line statements must not share line" (simple table format)
                 var fooBody = new[ ]
                     { new DebugMemberInfo { File = diFile, Line = 3, Name = "a", DebugType = i32, Index = 0 }
                     , new DebugMemberInfo { File = diFile, Line = 4, Name = "b", DebugType = f32, Index = 1 }
                     , new DebugMemberInfo { File = diFile, Line = 5, Name = "c", DebugType = i32Array_0_32, Index = 2 }
                     };
+#pragma warning restore
                 var fooType = new DebugStructType( module, "struct.foo", cu, "foo", diFile, 1, DebugInfoFlags.None, fooBody );
 
                 // add global variables and constants
@@ -122,7 +118,7 @@ namespace TestDebugInfo
                 }
                 else
                 {
-                    //test optimization works, but don't save it as that makes it harder to do a diff with official clang builds
+                    // test optimization works, but don't save it as that makes it harder to do a diff with official clang builds
                     {// force a GC to verify callback delegate for diagnostics is still valid, this is for test only and wouldn't
                      // normally be done in production code.
                         GC.Collect( GC.MaxGeneration );
@@ -251,6 +247,7 @@ namespace TestDebugInfo
                                        , blk
                                        );
             }
+
             instBuilder.Store( copyFunc.Parameters[ 1 ], dstAddr )
                        .Alignment( ptrAlign );
 
@@ -340,8 +337,16 @@ namespace TestDebugInfo
                            .SetDebugLocation( 25, 5, doCopyFunc.DISubProgram )
                            .AddAttributes( FunctionAttributeIndex.Parameter0, copyFunc.Parameters[0].Attributes );
             }
+
             instBuilder.Return( )
                        .SetDebugLocation( 26, 1, doCopyFunc.DISubProgram );
         }
+
+        // obviously this is not clang but using an identical name helps in diff with actual clang output
+        private const string VersionIdentString = "clang version 4.0.1 (tags/RELEASE_401/final)";
+
+        private static ITargetDependentDetails TargetDetails;
+
+        private static IEnumerable<AttributeValue> TargetDependentAttributes { get; set; }
     }
 }

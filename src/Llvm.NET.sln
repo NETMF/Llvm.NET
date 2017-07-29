@@ -9,35 +9,38 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Llvm.NET", "Llvm.NET\Llvm.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Llvm.NETTests", "Llvm.NETTests\LLVM.NETTests\Llvm.NETTests.csproj", "{826ADB1C-4BDC-4A89-836B-87088E511D6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDebugInfo", "Llvm.NETTests\TestDebugInfo\TestDebugInfo.csproj", "{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDebugInfo", "Llvm.NETTests\TestDebugInfo\TestDebugInfo.csproj", "{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{07FDA2D2-771E-44F4-8862-2E6FCB0E722E}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
 		..\appveyor.yml = ..\appveyor.yml
-		..\BuildAll.slnproj = ..\BuildAll.slnproj
-		..\BuildEnv.props = ..\BuildEnv.props
+		..\BuildAll.ps1 = ..\BuildAll.ps1
 		CustomDictionary.xml = CustomDictionary.xml
 		Design.md = Design.md
+		..\Directory.Build.props = ..\Directory.Build.props
+		..\Directory.Build.targets = ..\Directory.Build.targets
 		..\LICENSE = ..\LICENSE
+		nuget.config = nuget.config
 		..\README.md = ..\README.md
-		..\VsoUpdateVersion.ps1 = ..\VsoUpdateVersion.ps1
+		..\Update-AppVeyorVersion.ps1 = ..\Update-AppVeyorVersion.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildExtensions", "BuildExtensions", "{7B7EC2B9-EA80-4F8D-9654-E63C91158B28}"
 	ProjectSection(SolutionItems) = preProject
-		..\BuildExtensions\EnlistmentBuildVersion.targets = ..\BuildExtensions\EnlistmentBuildVersion.targets
 		..\BuildExtensions\InlineBuildTasks.targets = ..\BuildExtensions\InlineBuildTasks.targets
-		..\BuildExtensions\SolutionProj.Common.props = ..\BuildExtensions\SolutionProj.Common.props
-		..\BuildExtensions\SolutionProj.Common.targets = ..\BuildExtensions\SolutionProj.Common.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NugetPkg", "NugetPkg", "{0972DD07-7608-4FC8-BB14-1F8D4B950BD7}"
+	ProjectSection(SolutionItems) = preProject
+		NugetPkg\LibLLVM.NET.nuspec = NugetPkg\LibLLVM.NET.nuspec
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LLVM", "LLVM", "{60E65808-BF17-4AC0-BD03-A54792170BD0}"
 	ProjectSection(SolutionItems) = preProject
 		NugetPkg\LLVM\Build-Llvm.md = NugetPkg\LLVM\Build-Llvm.md
 		NugetPkg\LLVM\Build-Llvm.ps1 = NugetPkg\LLVM\Build-Llvm.ps1
+		NugetPkg\LLVM\CmakeHelpers.ps1 = NugetPkg\LLVM\CmakeHelpers.ps1
 		NugetPkg\LLVM\Get-HelpAsMarkdown.ps1 = NugetPkg\LLVM\Get-HelpAsMarkdown.ps1
 		NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.nuspec = NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.nuspec
 		NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.props = NugetPkg\LLVM\Llvm.Libs.core.pdbs.Platform-Configuration.props
@@ -52,46 +55,80 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LLVM", "LLVM", "{60E65808-B
 		NugetPkg\LLVM\ReadMe.md = NugetPkg\LLVM\ReadMe.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LibLLVM", "LibLLVM", "{7750E55F-20C4-4FD3-8E8B-B843B1C1F406}"
+	ProjectSection(SolutionItems) = preProject
+		NugetPkg\LibLLVM\LibLLVM.NET.nuspec = NugetPkg\LibLLVM\LibLLVM.NET.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{833AF317-FB18-4396-9FF6-69B5D40887CB}"
+	ProjectSection(SolutionItems) = preProject
+		NugetPkg\LibLLVM\build\LibLlvm.NET.props = NugetPkg\LibLLVM\build\LibLlvm.NET.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Llvm.NET", "Llvm.NET", "{AB91B3BA-1D18-495E-80BA-244A20687D5A}"
+	ProjectSection(SolutionItems) = preProject
+		NugetPkg\Llvm.NET\Llvm.NET.nuspec = NugetPkg\Llvm.NET\Llvm.NET.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{02FA007A-B9B8-40B8-AA49-583B8EA40865}"
+	ProjectSection(SolutionItems) = preProject
+		NugetPkg\Llvm.NET\build\Llvm.NET.props = NugetPkg\Llvm.NET\build\Llvm.NET.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x64.ActiveCfg = Debug|x64
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x64.Build.0 = Debug|x64
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x86.ActiveCfg = Debug|Win32
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Debug|x86.Build.0 = Debug|Win32
+		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|Any CPU.ActiveCfg = Release|Win32
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x64.ActiveCfg = Release|x64
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x64.Build.0 = Release|x64
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x86.ActiveCfg = Release|Win32
 		{6C77A7DE-D464-430F-96A9-A64768763B5F}.Release|x86.Build.0 = Release|Win32
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x64.ActiveCfg = Debug|x64
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x64.Build.0 = Debug|x64
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x86.ActiveCfg = Debug|x86
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x86.Build.0 = Debug|x86
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x64.ActiveCfg = Release|x64
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x64.Build.0 = Release|x64
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x86.ActiveCfg = Release|x86
-		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x86.Build.0 = Release|x86
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x64.Build.0 = Debug|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Debug|x86.Build.0 = Debug|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x64.ActiveCfg = Release|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x64.Build.0 = Release|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x86.ActiveCfg = Release|Any CPU
+		{0162C8CE-6641-4922-8664-F8A44356FBF7}.Release|x86.Build.0 = Release|Any CPU
+		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x64.ActiveCfg = Debug|x64
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x64.Build.0 = Debug|x64
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x86.ActiveCfg = Debug|x86
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Debug|x86.Build.0 = Debug|x86
+		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|Any CPU.ActiveCfg = Release|x86
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x64.ActiveCfg = Release|x64
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x64.Build.0 = Release|x64
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x86.ActiveCfg = Release|x86
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x86.Build.0 = Release|x86
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.ActiveCfg = Debug|x64
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.Build.0 = Debug|x64
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.ActiveCfg = Debug|x86
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.Build.0 = Debug|x86
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.ActiveCfg = Release|x64
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.Build.0 = Release|x64
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.ActiveCfg = Release|x86
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.Build.0 = Release|x86
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.Build.0 = Debug|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.Build.0 = Debug|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.ActiveCfg = Release|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.Build.0 = Release|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +137,10 @@ Global
 		{7B7EC2B9-EA80-4F8D-9654-E63C91158B28} = {07FDA2D2-771E-44F4-8862-2E6FCB0E722E}
 		{0972DD07-7608-4FC8-BB14-1F8D4B950BD7} = {07FDA2D2-771E-44F4-8862-2E6FCB0E722E}
 		{60E65808-BF17-4AC0-BD03-A54792170BD0} = {0972DD07-7608-4FC8-BB14-1F8D4B950BD7}
+		{7750E55F-20C4-4FD3-8E8B-B843B1C1F406} = {0972DD07-7608-4FC8-BB14-1F8D4B950BD7}
+		{833AF317-FB18-4396-9FF6-69B5D40887CB} = {7750E55F-20C4-4FD3-8E8B-B843B1C1F406}
+		{AB91B3BA-1D18-495E-80BA-244A20687D5A} = {0972DD07-7608-4FC8-BB14-1F8D4B950BD7}
+		{02FA007A-B9B8-40B8-AA49-583B8EA40865} = {AB91B3BA-1D18-495E-80BA-244A20687D5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF28D186-279B-4E91-9BE8-644B6E018432}

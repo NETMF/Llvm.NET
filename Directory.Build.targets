@@ -1,5 +1,4 @@
 <Project>
-    <!--<Import Condition="'$(MSBuildProjectExtension)'=='.vcxproj' OR '$(MSBuildProjectExtension)'=='.proj'" Project="$(MSBuildSDKsPath)\NuGet.Build.Tasks.Pack\build\NuGet.Build.Tasks.Pack.targets" />-->
     <Import Project="$(MsBuildThisFileDirectory)\BuildExtensions\InlineBuildTasks.targets" />
 
     <!-- Generates include header for native code Win32 Resource (.RC) -->
@@ -91,16 +90,14 @@
          ensuring that BuildMajor, BuildMinor, BuildNumber, BuildRevision, and, optionally,
          BuildSuffix are set.
     -->
-    <Target Name="EnsureBuildNumbers" DependsOnTargets="$(EnsureBuildNumbersDependsOn)" BeforeTargets="Build;GenerateNuspec">
+    <Target Name="EnsureBuildNumbers" DependsOnTargets="$(EnsureBuildNumbersDependsOn)" BeforeTargets="PrepareForBuild">
         <Message Importance="high" Text="FullBuildNumber=$(FullBuildNumber)"/>
-        <PropertyGroup>
-            <PackageVersion>$(FullBuildNumber)</PackageVersion>
-            <NuspecProperties Condition="'$(NuspecFile)'!='' AND '$(NuspecProperties)'!=''">$(NuspecProperties);version=$(FullBuildNumber)</NuspecProperties>
-            <NuspecProperties Condition="'$(NuspecFile)'!='' AND '$(NuspecProperties)'==''">version=$(FullBuildNumber)</NuspecProperties>
-        </PropertyGroup>
     </Target>
 
     <Target Name="SignBuiltBinaries" AfterTargets="Build">
         <GenerateSha256File Files="$(TargetPath)"/>
+    </Target>
+    <Target Name="ShowBuildParams" AfterTargets="PrepareForBuild">
+        <Message Importance="high" Text="$(Platform)-$(TargetFramework)-$(TargetRuntime)-$(Configuration)" />
     </Target>
 </Project>

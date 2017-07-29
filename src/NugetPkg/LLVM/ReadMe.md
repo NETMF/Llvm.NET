@@ -27,7 +27,7 @@ bundle them into the nugetPackage.
 
 ### Building the nuget packages only
 When working on a new version of LLVM it may be necessary to iterate on the props/targets
-provided inthe nuget pacakges without rebuilding the LLVM libraries too. This is easily
+provided in the nuget pacakges without rebuilding the LLVM libraries too. This is easily
 accomplished with the following PowerShell command.
 
 ```PowerShell

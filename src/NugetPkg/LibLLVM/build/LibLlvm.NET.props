@@ -22,5 +22,13 @@
                 </Link>
             </ItemDefinitionGroup>
         </When>
+        <Otherwise>
+            <ItemGroup>
+                <None Include="$(LibLlvmPkgRoot)build\native\**">
+                    <Link>LibLLVM</Link>
+                    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+                </None>
+            </ItemGroup>
+        </Otherwise>
     </Choose>
 </Project>

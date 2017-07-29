@@ -6,12 +6,15 @@ using Llvm.NET.Values;
 
 namespace TestDebugInfo
 {
-    class CortexM3Details
+    internal class CortexM3Details
         : ITargetDependentDetails
     {
         public string Cpu => "cortex-m3";
+
         public string Features => "+hwdiv,+strict-align";
+
         public string ShortName => "M3";
+
         public string Triple => "thumbv7m-none--eabi";
 
         public void AddABIAttributesForByValueStructure( Function function, int paramIndex )
@@ -25,10 +28,11 @@ namespace TestDebugInfo
             // it, for Cortex-Mx it seems to use it only for larger structs, otherwise it uses an [ n x i32]. (Max
             // value of n is not known) and performs casts. Thus, on cortex-m the function parameters are handled
             // quite differently by clang, which seems odd to put such target dependent differences into the front-end.
-
             var argType = function.Parameters[ paramIndex ].NativeType as IPointerType;
             if( argType == null || !argType.ElementType.IsStruct )
+            {
                 throw new ArgumentException( "Signature for specified parameter must be a pointer to a structure" );
+            }
 
             var layout = function.ParentModule.Layout;
             function.AddAttributes( FunctionAttributeIndex.Parameter0 + paramIndex

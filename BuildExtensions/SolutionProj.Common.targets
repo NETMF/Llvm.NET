@@ -49,7 +49,6 @@
                  >
         </MSBuild>
 
-        <!-- Build the Managed projects before all else so that they can be packed and the resulting package consumed by later projects -->
         <CreateMultiConfigProjectList Projects="@(_ManagedProject)">
             <Output ItemName="_ManagedProjectWithConfiguration" TaskParameter="Result"/>
         </CreateMultiConfigProjectList>

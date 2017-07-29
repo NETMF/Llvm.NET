@@ -45,7 +45,7 @@ has other needs that require a specific platform target, then LlVM.NET can still
 * Download LLVM [4.0.1](http://releases.llvm.org/4.0.1/llvm-4.0.1.src.tar.xz)
   * You will need a tool to extract files from that archive format. On Windows the recommended tool is [7zip](http://7-zip.org/)
 * Build of LLVM libraries  
-To Build the LLVM libraries you can use the [Build-LlvmWithVS](https://github.com/NETMF/Llvm.NET/blob/dev/src/LibLLVM/Build-LlvmWithVS.ps1) PowerShell script provided.
+To Build the LLVM libraries you can use the [Build-LlvmWithVS](https://github.com/NETMF/Llvm.NET/tree/LLVM_4_0_1/src/NugetPkg/LLVM) PowerShell script provided.
 For more information on using the script open a PowerShell command prompt in the Llvm.NET source directory and run `PS> Get-Help .\Build-LlvmWithVs.ps1`. 
 
 _NOTE: On a typical developer machines the LLVM library build takes approximately 1.5 hours so letting it run overnight or when you are otherwise away from your computer
