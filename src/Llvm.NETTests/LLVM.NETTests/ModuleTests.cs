@@ -1,10 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using Llvm.NET.Instructions;
 using Llvm.NET.Values;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Llvm.NETTests;
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Llvm.NET.Tests
 {
@@ -168,6 +168,7 @@ namespace Llvm.NET.Tests
             using( var module = new NativeModule( TestModuleName ) )
             {
                 Function testFunc = CreateSimpleVoidNopTestFunction( module, "foo" );
+
                 // verify basics
                 Assert.IsNotNull( testFunc );
                 bool isValid = module.Verify( out string msg );
@@ -182,14 +183,16 @@ namespace Llvm.NET.Tests
             using( var module = new NativeModule( TestModuleName ) )
             {
                 Function testFunc = CreateInvalidFunction( module, "badfunc" );
+
                 // verify basics
                 Assert.IsNotNull( testFunc );
                 bool isValid = module.Verify( out string msg );
                 Assert.IsFalse( isValid );
                 Assert.IsNotNull( msg );
-                // while verifying the contents of the message might be a normal test
-                // it comes from the underlying wrapped LLVM and is subject to change
-                // by the LLVM team and is therefore outside the control of LLVM.NET
+                /* while verifying the contents of the message might be a normal test
+                   it comes from the underlying wrapped LLVM and is subject to change
+                   by the LLVM team and is therefore outside the control of LLVM.NET
+                */
             }
         }
 
@@ -199,6 +202,7 @@ namespace Llvm.NET.Tests
             using( var module = new NativeModule( TestModuleName ) )
             {
                 Function testFunc = CreateSimpleVoidNopTestFunction( module, "foo" );
+
                 // verify basics
                 Assert.IsNotNull( testFunc );
                 Assert.AreSame( module, testFunc.ParentModule );
@@ -227,12 +231,14 @@ namespace Llvm.NET.Tests
                 using( var module2 = NativeModule.LoadFrom( path, ctx ) )
                 {
                     Function testFunc = module2.GetFunction( "foo" );
+
                     // verify basics
                     Assert.IsNotNull( testFunc );
                     string txt = module2.WriteToString( );
                     Assert.IsFalse( string.IsNullOrWhiteSpace( txt ) );
-                    //var expectedText = File.ReadAllText( "TestModuleAsString.ll" );
-                    //Assert.AreEqual( expectedText, txt );
+                    string expectedText = File.ReadAllText( "TestModuleAsString.ll" )
+                                              .Replace( "; ModuleID = 'test'", $"; ModuleID = '{path}'" );
+                    Assert.AreEqual( expectedText, txt );
                 }
             }
             finally
@@ -248,6 +254,7 @@ namespace Llvm.NET.Tests
             using( var module = new NativeModule( TestModuleName ) )
             {
                 Function testFunc = CreateSimpleVoidNopTestFunction( module, "foo" );
+
                 // verify basics
                 Assert.IsNotNull( testFunc );
                 string txt = module.WriteToString( );
@@ -310,7 +317,7 @@ namespace Llvm.NET.Tests
                 Assert.IsTrue( globalVar.IsConstant );
                 Assert.IsInstanceOfType( globalVar.Initializer, typeof( ConstantInt ) );
                 var constInt = ( ConstantInt )globalVar.Initializer;
-                Assert.AreEqual( ( long )0x12345678, constInt.SignExtendedValue );
+                Assert.AreEqual( 0x12345678, constInt.SignExtendedValue );
             }
         }
 
@@ -328,7 +335,7 @@ namespace Llvm.NET.Tests
                 Assert.IsTrue( globalVar.IsConstant );
                 Assert.IsInstanceOfType( globalVar.Initializer, typeof( ConstantInt ) );
                 var constInt = ( ConstantInt )globalVar.Initializer;
-                Assert.AreEqual( ( long )0x12345678, constInt.SignExtendedValue );
+                Assert.AreEqual( 0x12345678, constInt.SignExtendedValue );
             }
         }
 
@@ -358,6 +365,7 @@ namespace Llvm.NET.Tests
                 module.AddModuleFlag( ModuleFlagBehavior.Error, "wchar_size", 4 );
                 module.AddModuleFlag( ModuleFlagBehavior.Error, "min_enum_size", 4 );
                 module.AddVersionIdentMetadata( "unit-tests 1.0" );
+
                 // currently no exposed means to get module level flags...
                 // so at this point as long as adding the flags doesn't throw an exception
                 // assume things are OK.
@@ -476,6 +484,7 @@ namespace Llvm.NET.Tests
 
             var testFunc = module.AddFunction( name, ctx.GetFunctionType( ctx.VoidType ) );
             testFunc.AppendBasicBlock( "entry" );
+
             // UNTERMINATED BLOCK INTENTIONAL
             return testFunc;
         }

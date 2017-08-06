@@ -1,16 +1,16 @@
 #Primary settings apply to all files unless overridden below
 root = true
 
-[*]
-indent_style = space
-indent_size = 4
-insert_final_newline = true
-
 # match VS generated formatting for MSBuild project files
-[*.*proj,*.props]
+[*.*proj,*.props,*.targets]
 indent_size = 2
 
 [*.c,*.h,*.cpp]
+insert_final_newline = true
+
+[*]
+indent_style = space
+indent_size = 4
 insert_final_newline = true
 
 [*.cs]

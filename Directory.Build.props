@@ -14,43 +14,27 @@
         other projects that might want to set the build outputs etc... into a different place.
     -->
 
-    <!--
-    Use Choose to set the dependencies of the EnsureBuildNumbers target to the correct dependency.
-    The EnsureBuildNumbers target does nothing and instead the work is done in one of the two
-    targets selected here. The actual target used depends on whether FullBuildNumber is already set
-    or not. In an automated build the build server will set the FullBuildNumber (Usually as a global
-    property to the msbuild command line that started this project)
-    -->
     <Choose>
-        <When Condition="'$(FullBuildNumber)'==''">
+        <!-- Apply standard analyzers and rule sets for all C# projects -->
+        <When Condition="'$(MSBuildProjectExtension)'=='.csproj'">
             <PropertyGroup>
-                <EnsureBuildNumbersDependsOn>CreateBuildNumbers</EnsureBuildNumbersDependsOn>
+                <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Llvm.NET.ruleset</CodeAnalysisRuleSet>
             </PropertyGroup>
+            <ItemGroup>
+                <PackageReference Include="Microsoft.AnalyzerPowerPack" Version="1.1.0" PrivateAssets="All" />
+                <PackageReference Include="RefactoringEssentials" Version="5.2.0" PrivateAssets="All" />
+                <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
+            </ItemGroup>
+            <ItemGroup>
+                <None Include="$(MSBuildThisFileDirectory)Llvm.NET.ruleset" Link="Llvm.NET.ruleset" />
+            </ItemGroup>
         </When>
-        <Otherwise>
-            <PropertyGroup>
-                <EnsureBuildNumbersDependsOn>_ParseFullBuildNumber</EnsureBuildNumbersDependsOn>
-            </PropertyGroup>
-        </Otherwise>
     </Choose>
-    <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.csproj'">
-        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Llvm.NET.ruleset</CodeAnalysisRuleSet>
-    </PropertyGroup>
     <PropertyGroup>
-        <!--
-        Native code and interop are very specific to a given LLVM version so this is hard coded at the branch level.
-        All references in projects and other common imports should use the derived $(LlvmVersion) property to allow updating
-        the version from a single central place.
-        -->
-        <LlvmVersionMajor>4</LlvmVersionMajor>
-        <LlvmVersionMinor>0</LlvmVersionMinor>
-        <LlvmVersionPatch>1</LlvmVersionPatch>
-
-        <LlvmVersion>$(LlvmVersionMajor).$(LlvmVersionMinor).$(LlvmVersionPatch)</LlvmVersion>
-
         <!-- Default to x86/Win32 | Debug build if not otherwise specified -->
         <Platform Condition="'$(Platform)'=='' AND '$(MSBuildProjectExtension)'!='.vcxproj'">x86</Platform>
         <Platform Condition="'$(Platform)'=='' AND '$(MSBuildProjectExtension)'=='.vcxproj'">Win32</Platform>
+        <Platform Condition="$(Platform)=='x86' AND '$(MSBuildProjectExtension)'=='.vcxproj'">Win32</Platform>
         <UnifiedPlatformPathName Condition="'$(UnifiedPlatformPathName)'==''">$(Platform)</UnifiedPlatformPathName>
         <UnifiedPlatformPathName Condition="'$(UnifiedPlatformPathName)'=='Win32'">x86</UnifiedPlatformPathName>
 
@@ -67,19 +51,19 @@
         <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'==''" >$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)", "Intermediate", "$(MSBuildProjectName)"))</BaseIntermediateOutputPath>
         <IntDir Condition="'$(IntDir)'==''">$([MSBuild]::NormalizeDirectory("$(BaseIntermediateOutputPath)", "$(UnifiedPlatformPathName)", "$(Configuration)"))</IntDir>
 
-        <BaseOutputPath Condition="'$(BaseOutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)","Unsigned"))</BaseOutputPath>
+        <BaseOutputPath Condition="'$(BaseOutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)","bin"))</BaseOutputPath>
         <OutputPath Condition="'$(OutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseOutputPath)", "$(UnifiedPlatformPathName)","$(Configuration)"))</OutputPath>
         <OutputPath>$([MSBuild]::EnsureTrailingSlash("$(OutputPath)"))</OutputPath>
 
         <OutDir Condition="'$(OutDir)'==''">$(OutputPath)</OutDir>
 
-        <BaseSignedOutputPath Condition="'$(SignedOutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)","Signed"))</BaseSignedOutputPath>
-        <SignedOutputPath Condition="'$(SignedOutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseSignedOutputPath)","$(UnifiedPlatformPathName)", "$(Configuration)"))</SignedOutputPath>
-        <SignedOutputPath>$([MSBuild]::EnsureTrailingSlash("$(SignedOutputPath)"))</SignedOutputPath>
-
-        <!-- Fix Major and minor build numbers to match LLVM so it's easier to relate to the LLVM version -->
-        <BuildMajor Condition="'$(BuildMajor)'=='' AND '$(FullBuildNumber)'==''">$(LlvmVersionMajor)</BuildMajor>
-        <BuildMinor Condition="'$(BuildMinor)'=='' AND '$(FullBuildNumber)'==''">$(LlvmVersionMinor)</BuildMinor>
         <BuildOutputPackagesDir>$(BaseBuildOutputPath)\packages\</BuildOutputPackagesDir>
+
+        <BuildVersionXmlFile Condition="'$(BuildVersionXmlFile)'==''">$(MSBuildThisFileDirectory)BuildVersion.xml</BuildVersionXmlFile>
+        <IsAutomatedBuild Condition="'$(IsAutomatedBuild)'=='' AND '$(APPVEYOR)'!=''">true</IsAutomatedBuild>
+        <IsAutomatedBuild Condition="'$(IsAutomatedBuild)'==''">false</IsAutomatedBuild>
+
+        <IsPullRequestBuild Condition="'$(IsPullRequestBuild)'=='' AND '$(APPVEYOR_PULL_REQUEST_NUMBER)'!=''">true</IsPullRequestBuild>
+        <IsPullRequestBuild Condition="'$(IsPullRequestBuild)'==''">false</IsPullRequestBuild>
     </PropertyGroup>
 </Project>

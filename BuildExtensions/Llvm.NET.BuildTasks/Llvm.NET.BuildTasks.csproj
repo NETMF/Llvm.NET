@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net47</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <BaseOutputPath>$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)","Tasks"))</BaseOutputPath>
+    <OutputPath>$(BaseOutputPath)</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="lib\**" />
+    <None Remove="**" />
+  </ItemGroup>
+
+    <ItemGroup>
+    <Compile Include="BuildVersionData.cs" />
+    <Compile Include="GenerateSha256File.cs" />
+    <Compile Include="GetRepositoryVersionInfo.cs" />
+    <Compile Include="RepositoryExtensions.cs" />
+    <Compile Include="Validators.cs" />
+    <Compile Include="Versioning\CIPreReleaseVersion.cs" />
+    <Compile Include="Versioning\CSemVer.cs" />
+    <Compile Include="Versioning\CSemVerCI.cs" />
+    <Compile Include="Versioning\IPrereleaseVersion.cs" />
+    <Compile Include="Versioning\OfficialPreRelease.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="11.0.0" />
+      <PackageReference Include="LibGit2Sharp" Version="0.24.0" />
+      <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.1.1012" />
+  </ItemGroup>
+</Project>

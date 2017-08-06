@@ -20,6 +20,7 @@ namespace Llvm.NETTests
         }
 
         public string WrongExceptionMessage { get; set; }
+
         public string ExpectedExceptionMessage { get; set; }
 
         protected override void Verify( Exception exception )

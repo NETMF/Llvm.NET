@@ -11,6 +11,7 @@
         <DebugSymbols>True</DebugSymbols>
         <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
         <DocumentationFile>Llvm.NET.xml</DocumentationFile>
+        <SignAssembly>False</SignAssembly>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
       <NoWarn>1701;1702;1705;1591</NoWarn>
@@ -19,12 +20,12 @@
       <NoWarn>1701;1702;1705;1591</NoWarn>
     </PropertyGroup>
     <ItemGroup>
-        <!--
+    <!--
       When using EnableDefaultCompileItems=false this is needed to prevent the IDE from
       showing all files via the default "none glob". See: https://github.com/dotnet/sdk/issues/1157
       Why anyone would want a project system that pulled in all files implicitly instead
       of an explicit model is beyond me.
-     -->
+    -->
         <None Remove="**" />
     </ItemGroup>
     <ItemGroup>
@@ -232,17 +233,14 @@
         </CodeAnalysisDictionary>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.AnalyzerPowerPack" Version="1.1.0" PrivateAssets="All" />
         <PackageReference Include="PdbGit" Version="3.0.41" PrivateAssets="All" />
-        <PackageReference Include="RefactoringEssentials" Version="5.2.0" PrivateAssets="All" />
-        <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
     </ItemGroup>
     <!--
     Must import this with conditional on IsCrossTargeting, to ensure that PackageVersion is set based on the generated build number.
     The cross targeting build will only import this when building for a single Platform+configuration combination but the nuget pack
     target is only executed in the outer project case so this ensures the import occurs correctly. An alternative would be to use
     another NUGET package as it's package "props" and "targets" files are imported in both contexts. This effectively works around
-    issue https://github.com/NuGet/Home/issues/4790 Though it is really more of an issue with the cross targetting support that NUGET
+    issue https://github.com/NuGet/Home/issues/4790 Though it is really more of an issue with the cross targetting support than NUGET
     -->
     <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))) AND '$(IsCrossTargetingBuild)'=='true'" />
 </Project>

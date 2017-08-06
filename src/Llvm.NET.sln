@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Llvm.NET", "Llvm.NET\Llvm.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Llvm.NETTests", "Llvm.NETTests\LLVM.NETTests\Llvm.NETTests.csproj", "{826ADB1C-4BDC-4A89-836B-87088E511D6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDebugInfo", "Llvm.NETTests\TestDebugInfo\TestDebugInfo.csproj", "{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{07FDA2D2-771E-44F4-8862-2E6FCB0E722E}"
 	ProjectSection(SolutionItems) = preProject
 		..\.editorconfig = ..\.editorconfig
@@ -21,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\Directory.Build.props = ..\Directory.Build.props
 		..\Directory.Build.targets = ..\Directory.Build.targets
 		..\LICENSE = ..\LICENSE
+		..\Llvm.NET.ruleset = ..\Llvm.NET.ruleset
 		nuget.config = nuget.config
 		..\README.md = ..\README.md
 		..\Update-AppVeyorVersion.ps1 = ..\Update-AppVeyorVersion.ps1
@@ -117,18 +116,6 @@ Global
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x64.Build.0 = Release|x64
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x86.ActiveCfg = Release|x86
 		{826ADB1C-4BDC-4A89-836B-87088E511D6A}.Release|x86.Build.0 = Release|x86
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x64.Build.0 = Debug|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Debug|x86.Build.0 = Debug|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.ActiveCfg = Release|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x64.Build.0 = Release|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.ActiveCfg = Release|Any CPU
-		{F9914A60-2E4B-472F-B1F3-BD08FD23CA92}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

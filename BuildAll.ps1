@@ -1,98 +1,97 @@
-$nativePlatforms="x64","Win32"
-$configurations="Debug","Release"
 
-function Invoke-Nuget
-{
-    #update system search path to include the directory of this script for nuget.exe
-    $oldPath = $env:Path
-    $env:Path = "$PSScriptRoot;$env:Path"
+[CmdletBinding(SupportsShouldProcess)]
+Param(
+    [Parameter()]
+    [ValidateSet('minimal', 'normal', 'detailed', 'diagnostic')]
+    [string]$MsBuildVerbosity = 'minimal'
+)
+
+"outer root: $PSScriptRoot"
+
+# Run entire builds script as a separate job so that the build task
+# DLL is unloaded after it completes. This, prevents "in use" errors
+# when building the DLL in VS for debugging/testing purposes.
+
+Start-Job -ArgumentList @($PSScriptRoot, $MsBuildVerbosity) -ScriptBlock {
+
+    param([string]$ScriptRoot, [string]$MsBuildVerbosity)
+
+    # pull in the utilities script
+    . ([IO.Path]::Combine($ScriptRoot, 'BuildExtensions', 'BuildUtils.ps1'))
+
+    # Top level try/catch to force script execution to stop on an error
+    # Otherwise it might keep going depending on the ErrorPreferences setting
+    # which could cause more problems, safer to just stop
     try
     {
-        $nugetPaths = where.exe nuget.exe 2>$null
-        if( !$nugetPaths )
+        $BuildInfo =  @{}
+        $BuildInfo.MsBuildArgs = [System.Collections.Generic.List[string]]::new()
+        $BuildInfo.MsBuildArgs.Add("/clp:Verbosity=Minimal")
+        $BuildInfo.NativePlatforms="x64","Win32"
+
+        $BuildInfo.BuildOutputPath = Normalize-Path (Join-Path $ScriptRoot 'BuildOutput')
+        $BuildInfo.NugetRepositoryPath = Normalize-Path (Join-Path $BuildInfo.BuildOutputPath 'packages')
+        $BuildInfo.NugetOutputPath = Normalize-Path (Join-Path $BuildInfo.BuildOutputPath 'Nuget')
+        $BuildInfo.SrcRoot = Normalize-Path (Join-Path $ScriptRoot 'src')
+        $BuildInfo.LibLLVMSrcRoot = Normalize-Path (Join-Path $BuildInfo.SrcRoot 'LibLLVM')
+
+        if (Test-Path "C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll")
         {
-            # Download it from official nuget release location
-            Invoke-WebRequest -UseBasicParsing -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "$PSScriptRoot\nuget.exe"
+            $BuildInfo.MsBuildArgs.Add(" /logger:`"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll`"")
         }
 
-        nuget $args
+        $buildTaskProjRoot = ([IO.Path]::Combine( $ScriptRoot, 'BuildExtensions', 'Llvm.NET.BuildTasks') )
+        $buildTaskProj = ([IO.Path]::Combine( $buildTaskProjRoot, 'Llvm.NET.BuildTasks.csproj') )
+        $buildTaskBin = ([IO.Path]::Combine( $ScriptRoot, 'BuildOutput', 'Tasks', 'Llvm.NET.BuildTasks.dll') )
+        if( !( Test-Path -PathType Leaf $buildTaskBin ) )
+        {
+            # generate the build task used for this build
+            invoke-msbuild /t:Restore $buildTaskProj $BuildInfo.MsBuildArgs
+            invoke-msbuild /t:Build /p:Configuration=Release $buildTaskProj $BuildInfo.MsBuildArgs
+        }
+
+        Add-Type -Path $buildTaskBin
+        $buildVersionData = [Llvm.NET.BuildTasks.BuildVersionData]::Load( (Join-Path $ScriptRoot BuildVersion.xml ) )
+        $semver = $buildVersionData.CreateSemVer($true,$true)
+        $semver.ToString()
+        $semver.ToString($true)
+        $buildVersionData
+        return
+
+        if($env:APPVEYOR)
+        {
+            Update-AppVeyorBuild -Version $BuildInfo.FullBuildNum
+        }
+
+        $BuildInfo.DefaultPackProperties = "llvmversion=$($BuildInfo.LlvmVersion);version=$($BuildInfo.FullBuildNumber);buildbinoutput=$($BuildInfo.BuildOutputPath);buildcontentoutput=$($BuildInfo.BuildOutputPath);configuration=Release"
+
+        Write-Information "Build Parameters:"
+        Write-Information ($BuildInfo | Format-Table | Out-String)
+    
+        Invoke-Nuget restore src\LibLLVM\LibLLVM.vcxproj -PackagesDirectory $BuildInfo.NugetRepositoryPath
+
+        # native code doesn't have built-in multi-platform project builds like the new CPS based .NET projects do
+        foreach($platform in $BuildInfo.NativePlatforms)
+        {
+            Write-Information "Building LibLLVM"
+            invoke-msbuild /p:Platform=$platform src\LibLLVM\LibLLVM.vcxproj $BuildInfo.MsBuildArgs
+        }
+
+        #Write-Information "Generating LibLLVM.NET.nupkg"
+        #Invoke-NuGet pack src\NugetPkg\LibLLVM\LibLLVM.NET.nuspec -Properties "$($BuildInfo.DefaultPackProperties);srcroot=$($BuildInfo.FibLLVMSrcRoot)" -OutputDirectory $BuildInfo.NugetOutputPath
+
+        invoke-msbuild /t:Restore src\Llvm.NET\Llvm.NET.csproj $BuildInfo.MsBuildArgs
+
+        # multi-platform builds are built-in so no loop
+        Write-Information "Building Llvm.NET"
+        invoke-msbuild src\Llvm.NET\Llvm.NET.csproj $BuildInfo.MsBuildArgs
+
+        Write-Information "Generating LLVM.NET.nupkg"
+        Invoke-Nuget pack src\NugetPkg\LLVM.NET\LLVM.NET.nuspec -Properties $BuildInfo.DefaultPackProperties -OutputDirectory $BuildInfo.NugetOutputPath
     }
-    finally
+    catch [Exception]
     {
-        $env:Path = $oldPath
+        Write-Error $_
+        return
     }
-}
-
-function Normalize-Path([string]$path)
-{
-    $path = [System.IO.Path]::GetFullPath($path)
-    if( !$path.EndsWith([System.IO.Path]::DirectorySeparatorChar) )
-    {
-        $path += [System.IO.Path]::DirectorySeparatorChar
-    }
-    return $path
-}
-
-# Set the buildNumber to a Nuget/NuSPec compatible Semantic version
-#
-# For details on the general algorithm used for computing the numbers here see:
-# https://msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute.assemblyversionattribute(v=vs.110).aspx 
-# The only difference from the AssemblyVersionAttribute algorithm is that this
-# uses UTC for the reference times, thus ensuring that all builds are consistent
-# no matter what locale the build agent or developer machine is set up for.
-#
-$now = [DateTime]::Now
-$midnightToday = New-Object DateTime( $now.Year,$now.Month,$now.Day,0,0,0,[DateTimeKind]::Utc)
-$basedate = New-Object DateTime(2000,1,1,0,0,0,[DateTimeKind]::Utc)
-$buildNum = [int]($now  - $basedate).Days
-$buildRevision = [int]((($now - $midnightToday).TotalSeconds) / 2)
-$env:FullBuildNumber = "4.0.$buildNum.$buildRevision-pre"
-
-$buildOutputPath = Normalize-Path (Join-Path $PSScriptRoot "BuildOutput")
-$nugetRepositoryPath = Normalize-Path (Join-Path $buildOutputPath "packages")
-$nugetOutputPath = Normalize-Path (Join-Path $buildOutputPath "Nuget")
-#$signedOutput = Normalize-Path (Join-Path $buildOutputPath "Signed")
-$signedOutput = Normalize-Path (Join-Path $buildOutputPath "Unsigned")
-$unsignedOutput = Normalize-Path (Join-Path $buildOutputPath "Unsigned")
-$srcRoot = Normalize-Path (Join-Path $PSScriptRoot "src")
-$libLLVMSrcRoot = Normalize-Path (Join-Path $srcRoot "LibLLVM")
-
-$defaultPackProperties = "llvmversion=4.0.1;version=$env:FullBuildNumber;buildbinoutput=$signedOutput;buildcontentoutput=$unsignedOutput;configuration=Release"
-
-if($env:APPVEYOR)
-{
-    Update-AppVeyorBuild -Version $env:FullBuildNumber
-}
-
-$loggerParams ="/clp:Verbosity=Minimal"
-if( $env:APPVEYOR )
-{
-    $loggerParams='/logger:`"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll`"'
-}
-
-Invoke-Nuget restore src\LibLLVM\LibLLVM.vcxproj -PackagesDirectory $nugetRepositoryPath
-
-# native code doesn't have built-in multi-platform project builds like the new CPS based .NET projects do
-foreach($platform in $nativePlatforms)
-{
-    foreach($config in $configurations)
-    {
-        Write-Information "Building LibLLVM $platform|$config"
-        msbuild /p:Platform=$platform /p:Configuration=$config src\LibLLVM\LibLLVM.vcxproj $loggerParams
-    }
-}
-
-Write-Information "Generating LibLLVM.NET.nupkg"
-Invoke-Nuget pack src\NugetPkg\LibLLVM\LibLLVM.NET.nuspec -Properties "$defaultPackProperties;srcroot=$libLLVMSrcRoot" -OutputDirectory $nugetOutputPath
-
-msbuild /t:Restore src\Llvm.NET\Llvm.NET.csproj $loggerParams
-
-# multi-platform builds are built-in so only loop over config
-foreach($config in $configurations )
-{
-    Write-Information "Building Llvm.NET $config"
-    msbuild /p:Configuration=$config src\Llvm.NET\Llvm.NET.csproj $loggerParams
-}
-
-Write-Information "Generating LLVM.NET.nupkg"
-Invoke-Nuget pack src\NugetPkg\LLVM.NET\LLVM.NET.nuspec -Properties $defaultPackProperties -OutputDirectory $nugetOutputPath
+} | Receive-Job -Wait -AutoRemoveJob

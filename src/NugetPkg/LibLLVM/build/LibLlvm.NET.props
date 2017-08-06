@@ -5,30 +5,10 @@
         <RunTimePlatform Condition="'$(LLVM_PLATFORM)'=='Win32'">x86</RunTimePlatform>
     </PropertyGroup>
 
-    <Choose>
-        <When Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
-            <PropertyGroup Label="UserMacros">
-                <LibLLvmRuntimeBinDir>$(LibLlvmPkgRoot)runtimes\win-$(RuntimePlatform)\native\</LibLLvmRuntimeBinDir>
-                <LibLlvmIncludeDir>$(LibLlvmPkgRoot)lib\native\include\</LibLlvmIncludeDir>
-                <LibLlvmLibDir>$(LibLlvmPkgRoot)lib\native\win-$(RuntimePlatform)\lib\</LibLlvmLibDir>
-            </PropertyGroup>
-            <ItemDefinitionGroup>
-                <ClCompile>
-                    <AdditionalIncludeDirectories>$(LibLlvmIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-                </ClCompile>
-                <Link>
-                    <AdditionalLibraryDirectories>$(LibLlvmLibDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-                    <AdditionalDependencies>LibLLVM.lib;%(AdditionalDependencies)</AdditionalDependencies>
-                </Link>
-            </ItemDefinitionGroup>
-        </When>
-        <Otherwise>
-            <ItemGroup>
-                <None Include="$(LibLlvmPkgRoot)build\native\**">
-                    <Link>LibLLVM</Link>
-                    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-                </None>
-            </ItemGroup>
-        </Otherwise>
-    </Choose>
+    <ItemGroup>
+        <None Include="$(LibLlvmPkgRoot)runtimes\native\**">
+            <Link>lib\native</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 </Project>

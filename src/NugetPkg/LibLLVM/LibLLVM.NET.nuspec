@@ -13,13 +13,12 @@
     </metadata>
     <files>
         <file src="build\LibLLVM.NET.props" target="build\native\LibLLVM.NET.props" />
-        <file src="$srcroot$\*.h" target="lib\native\include" exclude="resource.h;targetver.h;stdafx.h" />
-        <file src="$buildcontentoutput$x86\$configuration$\LibLLVM.lib" target="build\LibLLVM\x86" />
-        <file src="$buildcontentoutput$x86\$configuration$\LibLLVM.pdb" target="build\LibLLVM\x86" />
-        <file src="$buildcontentoutput$x64\$configuration$\LibLLVM.lib" target="build\LibLLVM\x64" />
-        <file src="$buildcontentoutput$x64\$configuration$\LibLLVM.pdb" target="build\LibLLVM\x64" />
+        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.lib" target="runtimes\win-x86\native" />
+        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.pdb" target="runtimes\win-x86\native" />
+        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.dll" target="runtimes\win-x86\native" />
 
-        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.dll" target="build\LibLLVM\x86" />
-        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.dll" target="build\LibLLVM\x64" />
+        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.lib" target="runtimes\win-x64\native" />
+        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.pdb" target="runtimes\win-x64\native" />
+        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.dll" target="runtimes\win-x64\native" />
     </files>
 </package>

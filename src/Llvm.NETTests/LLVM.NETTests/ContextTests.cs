@@ -5,6 +5,7 @@ using Llvm.NET.Types;
 using Llvm.NET.Values;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+#pragma warning disable SA1500
 namespace Llvm.NET.Tests
 {
     [TestClass]
@@ -20,6 +21,7 @@ namespace Llvm.NET.Tests
                 Assert.IsNotNull( context );
                 Assert.IsFalse( context.IsDisposed );
             }
+
             Assert.IsTrue( context.IsDisposed );
         }
 
@@ -100,7 +102,7 @@ namespace Llvm.NET.Tests
 
                 var int128Type = context.GetIntType( 128 );
                 Assert.AreSame( context, int128Type.Context );
-                Assert.AreEqual( 128U, int128Type.IntegerBitWidth ); 
+                Assert.AreEqual( 128U, int128Type.IntegerBitWidth );
             }
         }
 
@@ -117,7 +119,7 @@ namespace Llvm.NET.Tests
                 Assert.AreEqual( TypeKind.Function, funcSig.Kind );
                 Assert.AreSame( context.Int16Type, funcSig.ReturnType );
                 Assert.AreEqual( 2, funcSig.ParameterTypes.Count );
-                
+
                 // verify additional properties created properly
                 Assert.AreEqual( 0U, funcSig.IntegerBitWidth );
                 Assert.IsFalse( funcSig.IsDouble );
@@ -177,7 +179,7 @@ namespace Llvm.NET.Tests
                 Assert.IsNotNull( subroutineType );
                 Assert.AreSame( context, subroutineType.Context );
                 Assert.AreEqual( DebugInfoFlags.None, subroutineType.DebugInfoFlags );
-                
+
                 // signatures, have no scope or file
                 Assert.IsNull( subroutineType.Scope );
                 Assert.IsNull( subroutineType.File );
@@ -239,7 +241,7 @@ namespace Llvm.NET.Tests
                 Assert.AreEqual( TypeKind.Function, funcSig.Kind );
                 Assert.AreSame( context.Int16Type, funcSig.ReturnType );
                 Assert.AreEqual( 2, funcSig.ParameterTypes.Count );
-                
+
                 // verify additional properties created properly
                 Assert.AreEqual( 0U, funcSig.IntegerBitWidth );
                 Assert.IsFalse( funcSig.IsDouble );
@@ -271,7 +273,7 @@ namespace Llvm.NET.Tests
                 Assert.AreSame( context.Int16Type, funcSig.ReturnType );
                 Assert.AreEqual( 2, funcSig.ParameterTypes.Count );
                 Assert.IsTrue( funcSig.IsVarArg );
-                
+
                 // verify additional properties created properly
                 Assert.AreEqual( 0U, funcSig.IntegerBitWidth );
                 Assert.IsFalse( funcSig.IsDouble );
@@ -293,7 +295,7 @@ namespace Llvm.NET.Tests
         {
             using( var context = new Context() )
             {
-                var typeName = "struct.test";
+                string typeName = "struct.test";
                 var type = context.CreateStructType( typeName );
                 Assert.IsNotNull( type );
                 Assert.AreSame( context, type.Context );
@@ -303,7 +305,7 @@ namespace Llvm.NET.Tests
                 Assert.IsTrue( type.IsStruct );
                 Assert.AreEqual( typeName , type.Name );
                 Assert.AreEqual( 0, type.Members.Count );
-                
+
                 // with no elements the type should not be considered sized
                 Assert.IsFalse( type.IsSized );
                 Assert.IsTrue( type.IsOpaque );
@@ -338,7 +340,7 @@ namespace Llvm.NET.Tests
                 Assert.AreEqual( 1, type.Members.Count );
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.IsFalse( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -373,7 +375,7 @@ namespace Llvm.NET.Tests
                 Assert.AreEqual( 1, type.Members.Count );
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.IsTrue( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -409,7 +411,7 @@ namespace Llvm.NET.Tests
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.AreSame( context.Int32Type, type.Members[ 1 ] );
                 Assert.IsFalse( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -445,7 +447,7 @@ namespace Llvm.NET.Tests
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.AreSame( context.Int32Type, type.Members[ 1 ] );
                 Assert.IsTrue( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -469,7 +471,7 @@ namespace Llvm.NET.Tests
         {
             using( var context = new Context() )
             {
-                var typeName = "struct.test";
+                string typeName = "struct.test";
                 var type = context.CreateStructType( typeName, false, context.Int16Type );
                 Assert.IsNotNull( type );
                 Assert.AreSame( context, type.Context );
@@ -481,7 +483,7 @@ namespace Llvm.NET.Tests
                 Assert.AreEqual( 1, type.Members.Count );
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.IsFalse( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -505,7 +507,7 @@ namespace Llvm.NET.Tests
         {
             using( var context = new Context() )
             {
-                var typeName = "struct.test";
+                string typeName = "struct.test";
                 var type = context.CreateStructType( typeName, true, context.Int16Type );
                 Assert.IsNotNull( type );
                 Assert.AreSame( context, type.Context );
@@ -517,7 +519,7 @@ namespace Llvm.NET.Tests
                 Assert.AreEqual( 1, type.Members.Count );
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.IsTrue( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -541,7 +543,7 @@ namespace Llvm.NET.Tests
         {
             using( var context = new Context() )
             {
-                var typeName = "struct.test";
+                string typeName = "struct.test";
                 var type = context.CreateStructType( typeName, false, context.Int16Type, context.Int32Type );
                 Assert.IsNotNull( type );
                 Assert.AreSame( context, type.Context );
@@ -554,7 +556,7 @@ namespace Llvm.NET.Tests
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.AreSame( context.Int32Type, type.Members[ 1 ] );
                 Assert.IsFalse( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -578,7 +580,7 @@ namespace Llvm.NET.Tests
         {
             using( var context = new Context() )
             {
-                var typeName = "struct.test";
+                string typeName = "struct.test";
                 var type = context.CreateStructType( typeName, true, context.Int16Type, context.Int32Type );
                 Assert.IsNotNull( type );
                 Assert.AreSame( context, type.Context );
@@ -591,7 +593,7 @@ namespace Llvm.NET.Tests
                 Assert.AreSame( context.Int16Type, type.Members[ 0 ] );
                 Assert.AreSame( context.Int32Type, type.Members[ 1 ] );
                 Assert.IsTrue( type.IsPacked );
-                
+
                 // with at least one element the type should be considered sized
                 Assert.IsTrue( type.IsSized );
                 Assert.IsFalse( type.IsOpaque );
@@ -794,7 +796,7 @@ namespace Llvm.NET.Tests
 
         [TestMethod]
         public void CreateNamedConstantPackedStructTestUsingEnumerable( )
-        {                                                          
+        {
             using( var context = new Context() )
             {
                 var structType = context.CreateStructType( "struct.test", true, context.Int8Type, context.FloatType, context.Int16Type );
@@ -827,7 +829,7 @@ namespace Llvm.NET.Tests
 
         [TestMethod]
         public void CreateNamedConstantUnpackedStructTestUsingEnumerable( )
-        {                                                          
+        {
             using( var context = new Context() )
             {
                 var structType = context.CreateStructType( "struct.test"
@@ -865,7 +867,7 @@ namespace Llvm.NET.Tests
 
         [TestMethod]
         public void CreateNamedConstantPackedStructTestUsingParams( )
-        {                                                          
+        {
             using( var context = new Context() )
             {
                 var structType = context.CreateStructType( "struct.test"
@@ -903,7 +905,7 @@ namespace Llvm.NET.Tests
 
         [TestMethod]
         public void CreateNamedConstantUnpackedStructTestUsingParams( )
-        {                                                          
+        {
             using( var context = new Context() )
             {
                 var structType = context.CreateStructType( "struct.test"
@@ -944,7 +946,7 @@ namespace Llvm.NET.Tests
         {
             using( var context = new Context() )
             {
-                var content = "Test MDString";
+                string content = "Test MDString";
                 var mdstring = context.CreateMetadataString( content );
                 Assert.IsNotNull( mdstring );
                 Assert.AreEqual( content, mdstring.ToString( ) );
@@ -978,7 +980,7 @@ namespace Llvm.NET.Tests
         {
             using( var context = new Context() )
             {
-                var str = "hello world";
+                string str = "hello world";
                 ConstantDataArray value = context.CreateConstantString( str );
                 Assert.IsNotNull( value );
                 Assert.IsTrue( value.IsString );
@@ -992,7 +994,7 @@ namespace Llvm.NET.Tests
                 Assert.AreSame( context, arrayType.Context );
                 Assert.AreSame( context.Int8Type, arrayType.ElementType );
                 Assert.AreEqual( ( uint )str.Length, arrayType.Length );
-                var valueStr = value.ExtractAsString( );
+                string valueStr = value.ExtractAsString( );
                 Assert.IsFalse( string.IsNullOrWhiteSpace( valueStr ) );
                 Assert.AreEqual( str, valueStr );
             }

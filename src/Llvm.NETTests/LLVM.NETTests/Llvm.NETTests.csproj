@@ -82,7 +82,7 @@
     <Compile Include="Values\AttributeValueTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="D:\GitHub\NETMF\Llvm.NET\BuildOutput\Unsigned\x86\Debug\LibLLVM.dll">
+    <Content Include="D:\GitHub\NETMF\Llvm.NET\BuildOutput\bin\$(Platform)\$(Configuration)\LibLLVM.dll">
       <Link>LibLLVM.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

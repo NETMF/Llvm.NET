@@ -4,6 +4,11 @@ pull_requests:
 branches:
   only:
   - LLVM_4_0_1
+
+environment:
+  snk_key:
+    secure: vTWX87NSYgXef6+iD3fddA==
+
 skip_commits:
   files:
     - appveyor.yml

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+#pragma warning disable SA1500
 namespace Llvm.NET.DebugInfo.Tests
 {
     // TODO: Standard arg checks and error handling in general
@@ -20,12 +21,11 @@ namespace Llvm.NET.DebugInfo.Tests
                 var union = new DebugUnionType( module, nativeUnionName, null, unionSymbolName, module.DIBuilder.CreateFile("test") );
                 Assert.IsNotNull( union );
 
-                string errMsg;
-                Assert.IsTrue( module.Verify( out errMsg ), errMsg );
+                Assert.IsTrue( module.Verify( out string errMsg ), errMsg );
 
                 Assert.IsNotNull( union.DIType );
                 Assert.IsNotNull( union.NativeType );
-                
+
                 Assert.AreEqual( Tag.UnionType, union.DIType.Tag );
                 Assert.AreEqual( nativeUnionName, union.Name );
                 Assert.AreEqual( nativeUnionName, union.NativeType.Name );
