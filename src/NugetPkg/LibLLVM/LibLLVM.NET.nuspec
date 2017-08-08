@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <metadata minClientVersion="2.8">
+    <metadata minClientVersion="4.0">
         <id>LibLLVM.NET</id>
         <version>$version$</version>
         <authors>LLVM.NET</authors>
@@ -12,12 +12,11 @@
         <tags>LLVM,compiler,native</tags>
     </metadata>
     <files>
-        <file src="build\LibLLVM.NET.props" target="build\native\LibLLVM.NET.props" />
-        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.lib" target="runtimes\win-x86\native" />
+        <file src="build\LibLLVM.NET.props" target="build\LibLLVM.NET.props" />
+
         <file src="$buildbinoutput$x86\$configuration$\LibLLVM.pdb" target="runtimes\win-x86\native" />
         <file src="$buildbinoutput$x86\$configuration$\LibLLVM.dll" target="runtimes\win-x86\native" />
 
-        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.lib" target="runtimes\win-x64\native" />
         <file src="$buildbinoutput$x64\$configuration$\LibLLVM.pdb" target="runtimes\win-x64\native" />
         <file src="$buildbinoutput$x64\$configuration$\LibLLVM.dll" target="runtimes\win-x64\native" />
     </files>

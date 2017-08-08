@@ -235,12 +235,27 @@
     <ItemGroup>
         <PackageReference Include="PdbGit" Version="3.0.41" PrivateAssets="All" />
     </ItemGroup>
+    <Choose>
+        <When Condition="'$(BuildingInsideVisualStudio)'=='true'">
+            <ItemGroup>
+                <ProjectReference Include="..\LibLLVM\LibLLVM.vcxproj">
+                    <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+                    <Private>True</Private>
+                </ProjectReference>
+            </ItemGroup>
+        </When>
+        <Otherwise>
+            <ItemGroup>
+                <PackageReference Include="LibLLVM.NET" Version="[$(PackageVersion)]"/>
+            </ItemGroup>
+        </Otherwise>
+    </Choose>
     <!--
     Must import this with conditional on IsCrossTargeting, to ensure that PackageVersion is set based on the generated build number.
-    The cross targeting build will only import this when building for a single Platform+configuration combination but the nuget pack
+    The cross targeting build will only import this when building for a single Platform+configuration combination but the NuGet pack
     target is only executed in the outer project case so this ensures the import occurs correctly. An alternative would be to use
     another NUGET package as it's package "props" and "targets" files are imported in both contexts. This effectively works around
-    issue https://github.com/NuGet/Home/issues/4790 Though it is really more of an issue with the cross targetting support than NUGET
+    issue https://github.com/NuGet/Home/issues/4790 Though it is really more of an issue with the cross targeting support than NUGET
     -->
     <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))) AND '$(IsCrossTargetingBuild)'=='true'" />
 </Project>

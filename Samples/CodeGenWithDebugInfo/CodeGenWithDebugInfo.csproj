@@ -28,14 +28,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Content Include="Support Files\ClangCompile.cmd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Support Files\test.c">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Support Files\ClangCompile.cmd">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Include="Support Files\test.c">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Llvm.NET" Version="4.0.6419.393-pre" />
+    <PackageReference Include="Llvm.NET" Version="[4.0.0-*,5)" />
   </ItemGroup>
 </Project>

@@ -1,63 +1,63 @@
 <Project>
     <UsingTask TaskName="GetRepositoryVersionInfo" AssemblyFile="$(MSBuildThisFileDirectory)BuildOutput\Tasks\Llvm.NET.BuildTasks.dll" Condition="'$(MSBuildProjectName)'!='Llvm.NET.BuildTasks'" />
     <UsingTask TaskName="GenerateSha256File" AssemblyFile="$(MSBuildThisFileDirectory)BuildOutput\Tasks\Llvm.NET.BuildTasks.dll" Condition="'$(MSBuildProjectName)'!='Llvm.NET.BuildTasks'" />
+    <PropertyGroup>
+        <PrepareVersioningForBuildDependsOn>
+            GetRepositoryInfo;
+            VerifyProvidedBuildVersion;
+        </PrepareVersioningForBuildDependsOn>
+    </PropertyGroup>
 
-        <!--
-        Automated builds need the version info to build NuGet packages for native code.
-        Using this condition FullBuildNumber allows the automated script to provide the
-        info and avoid the cost of computing it as each project is built. The Condition
-        for the build task project prevents trying to load the task assembly when trying
-        to build the assembly (It isn't released as it is only used in the build)
-        -->
-        <Target Name="GetRepositoryInfo"
-                BeforeTargets="PrepareForBuild"
-                Condition="'$(MSBuildProjectName)'!='Llvm.NET.BuildTasks' AND '$(FullBuildNumber)'==''"
-                >
-            <GetRepositoryVersionInfo BuildVersionXmlFile="$(BuildVersionXmlFile)"
-                                        IsAutomatedBuild="$(IsAutomatedBuild)"
-                                        IsPullRequestBuild="$(IsPullRequestBuild)"
-                                        >
-                <Output TaskParameter="SemVer" PropertyName="FullBuildNumber" />
-                <Output TaskParameter="NuGetVersion" PropertyName="NuGetBuildVersion" />
-                <Output TaskParameter="FileVersionMajor" PropertyName="FileVersionMajor" />
-                <Output TaskParameter="FileVersionMinor" PropertyName="FileVersionMinor" />
-                <Output TaskParameter="FileVersionBuild" PropertyName="FileVersionBuild" />
-                <Output TaskParameter="FileVersionRevision" PropertyName="FileVersionRevision" />
-                <Output TaskParameter="LlvmVersion" PropertyName="LlvmVersion"/>
-            </GetRepositoryVersionInfo>
-            <PropertyGroup>
-                <FileVersion>$(FileVersionMajor).$(FileVersionMinor).$(FileVersionBuild).$(FileVersionRevision)</FileVersion>
-                <AssemblyVersion>$(FileVersion)</AssemblyVersion>
-                <AssemblyVersion>$(FileVersion)</AssemblyVersion>
-                <InformationalVersion>$(FullBuildNumber)</InformationalVersion>
-            </PropertyGroup>
+    <Target Name="PrepareVersioningForBuild"
+            BeforeTargets="PrepareForBuild;Restore"
+            DependsOnTargets="$(PrepareVersioningForBuildDependsOn)"
+            />
 
-            <Message Importance="High" Text="  FullBuildNumber: $(FullBuildNumber)"/>
-            <Message Importance="High" Text="NuGetBuildVersion: $(NuGetBuildVersion)"/>
-            <Message Importance="High" Text="      FileVersion: $(FileVersionMajor).$(FileVersionMinor).$(FileVersionBuild).$(FileVersionRevision)"/>
-            <Message Importance="High" Text="      LlvmVersion: $(LlvmVersion)"/>
-        </Target>
-        <Target Name="VerifyProvidedBuildVersion"
-                BeforeTargets="PrepareForBuild"
-                Condition="'$(MSBuildProjectName)'!='Llvm.NET.BuildTasks' AND '$(FullBuildNumber)'!=''"
-                >
-            <Error Condition="'$(FileVersionMajor)'" Text="FileVersionMajor property not found"/>
-            <Error Condition="'$(FileVersionMinor)'" Text="FileVersionMinor property not found"/>
-            <Error Condition="'$(FileVersionRevision)'" Text="FileVersionRevision property not found"/>
-            <Error Condition="'$(NuGetBuildVersion)'" Text="NuGetBuildVersion property not found"/>
-            <Error Condition="'$(LlvmVersion)'" Text="LlvmVersion property not found"/>
+    <!--
+    Automated builds need the version info to build NuGet packages for native code.
+    Using this condition FullBuildNumber allows the automated script to provide the
+    info and avoid the cost of computing it as each project is built. The Condition
+    for the build task project prevents trying to load the task assembly when trying
+    to build the assembly (It isn't released as it is only used in the build)
+    -->
+    <Target Name="GetRepositoryInfo"
+            Condition="'$(MSBuildProjectName)'!='Llvm.NET.BuildTasks' AND '$(FullBuildNumber)'==''"
+            >
+        <GetRepositoryVersionInfo BuildVersionXmlFile="$(BuildVersionXmlFile)"
+                                    IsAutomatedBuild="$(IsAutomatedBuild)"
+                                    IsPullRequestBuild="$(IsPullRequestBuild)"
+                                    >
+            <Output TaskParameter="SemVer" PropertyName="FullBuildNumber" />
+            <Output TaskParameter="NuGetVersion" PropertyName="PackageVersion" />
+            <Output TaskParameter="FileVersionMajor" PropertyName="FileVersionMajor" />
+            <Output TaskParameter="FileVersionMinor" PropertyName="FileVersionMinor" />
+            <Output TaskParameter="FileVersionBuild" PropertyName="FileVersionBuild" />
+            <Output TaskParameter="FileVersionRevision" PropertyName="FileVersionRevision" />
+            <Output TaskParameter="LlvmVersion" PropertyName="LlvmVersion"/>
+        </GetRepositoryVersionInfo>
+        <PropertyGroup>
+            <FileVersion>$(FileVersionMajor).$(FileVersionMinor).$(FileVersionBuild).$(FileVersionRevision)</FileVersion>
+            <AssemblyVersion>$(FileVersion)</AssemblyVersion>
+            <InformationalVersion>$(FullBuildNumber)</InformationalVersion>
+        </PropertyGroup>
+    </Target>
 
-            <PropertyGroup>
-                <FileVersion>$(FileVersionMajor).$(FileVersionMinor).$(FileVersionBuild).$(FileVersionRevision)</FileVersion>
-                <AssemblyVersion>$(FileVersion)</AssemblyVersion>
-                <AssemblyVersion>$(FileVersion)</AssemblyVersion>
-                <InformationalVersion>$(FullBuildNumber)</InformationalVersion>
-            </PropertyGroup>
-            <Message Importance="High" Text="  FullBuildNumber: $(FullBuildNumber)"/>
-            <Message Importance="High" Text="NuGetBuildVersion: $(NuGetBuildVersion)"/>
-            <Message Importance="High" Text="      FileVersion: $(FileVersionMajor).$(FileVersionMinor).$(FileVersionBuild).$(FileVersionRevision)"/>
-            <Message Importance="High" Text="      LlvmVersion: $(LlvmVersion)"/>
-        </Target>
+    <Target Name="VerifyProvidedBuildVersion"
+            Condition="'$(MSBuildProjectName)'!='Llvm.NET.BuildTasks' AND '$(FullBuildNumber)'!=''"
+            >
+        <Error Condition="'$(FileVersionMajor)'==''" Text="FileVersionMajor property not found"/>
+        <Error Condition="'$(FileVersionMinor)'==''" Text="FileVersionMinor property not found"/>
+        <Error Condition="'$(FileVersionRevision)'==''" Text="FileVersionRevision property not found"/>
+        <Error Condition="'$(PackageVersion)'==''" Text="PackageVersion property not found"/>
+        <Error Condition="'$(LlvmVersion)'==''" Text="LlvmVersion property not found"/>
+
+        <PropertyGroup>
+            <FileVersion>$(FileVersionMajor).$(FileVersionMinor).$(FileVersionBuild).$(FileVersionRevision)</FileVersion>
+            <AssemblyVersion>$(FileVersion)</AssemblyVersion>
+            <AssemblyVersion>$(FileVersion)</AssemblyVersion>
+            <InformationalVersion>$(FullBuildNumber)</InformationalVersion>
+        </PropertyGroup>
+    </Target>
 
     <!-- Generates include header for native code Win32 Resource (.RC) -->
     <Target Name="GenerateVesionInfoHeader"
@@ -106,13 +106,15 @@
         <GenerateSha256File Files="$(TargetPath)"/>
     </Target>
 
-    <Target Name="ShowBuildParams" AfterTargets="PrepareForBuild">
-        <Message Importance="high" Text="LlvmVersion: $(LlvmVersion)" />
-        <Message Importance="high" Text="BuildRootDir: $(BuildRootDir)" />
-        <Message Importance="high" Text="BaseBuildOutputPath: $(BaseBuildOutputPath)" />
+    <Target Name="ShowBuildParams" BeforeTargets="Build;Pack">
+        <Message Importance="high" Text="              BuildRootDir: $(BuildRootDir)" />
+        <Message Importance="high" Text="       BaseBuildOutputPath: $(BaseBuildOutputPath)" />
         <Message Importance="high" Text="BaseIntermediateOutputPath: $(BaseIntermediateOutputPath)" />
-        <Message Importance="high" Text="IntDir: $(IntDir)" />
-        <Message Importance="high" Text="BaseOutputPath: $(BaseOutputPath)" />
-        <Message Importance="high" Text="LLVM_PLATFORM_CONFIG: $(LLVM_PLATFORM_CONFIG)" />
+        <Message Importance="high" Text="                    IntDir: $(IntDir)" />
+        <Message Importance="high" Text="            BaseOutputPath: $(BaseOutputPath)" />
+        <Message Importance="High" Text="           FullBuildNumber: $(FullBuildNumber)"/>
+        <Message Importance="High" Text="            PackageVersion: $(PackageVersion)"/>
+        <Message Importance="High" Text="               FileVersion: $(FileVersion)"/>
+        <Message Importance="High" Text="               LlvmVersion: $(LlvmVersion)"/>
     </Target>
 </Project>
