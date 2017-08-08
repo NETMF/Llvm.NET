@@ -9,9 +9,6 @@ environment:
   snk_key:
     secure: vTWX87NSYgXef6+iD3fddA==
 
-skip_commits:
-  files:
-    - appveyor.yml
 image: Visual Studio 2017
 
 nuget:
