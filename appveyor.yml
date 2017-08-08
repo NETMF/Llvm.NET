@@ -26,6 +26,3 @@ build:
 
 build_script:
   - ps: .\BuildAll.ps1
-
-before_build:
-  - ps: .\Update-AppveyorVersion.ps1
