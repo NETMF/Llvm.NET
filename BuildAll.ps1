@@ -1,4 +1,3 @@
-
 [CmdletBinding(SupportsShouldProcess)]
 Param(
     [switch]$PackOnly,
@@ -6,12 +5,9 @@ Param(
     [string]$MsBuildVerbosity = 'minimal'
 )
 
-# Run entire build script as a separate job so that the build task
-# DLL is unloaded after it completes. This, prevents "in use" errors
-# when building the DLL in VS for debugging/testing purposes.
 
-Start-Job -ScriptBlock {
-
+function RunTheBuild
+{
     $PackOnly = $args[0].IsPresent
     $ScriptRoot = $args[1]
     $MsBuildVerbosity = $args[2]
@@ -89,4 +85,17 @@ Start-Job -ScriptBlock {
     {
         popd
     }
-} -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
+}
+
+if(!$env:APPVEYOR)
+{
+    # Run entire build script as a separate job so that the build task
+    # DLL is unloaded after it completes. This, prevents "in use" errors
+    # when building the DLL in VS for debugging/testing purposes.
+    Start-Job -ScriptBlock { RunTheBuild $args } -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
+}
+else
+{
+    dir $env:APPVEYOR*
+    RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
+}
