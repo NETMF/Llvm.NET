@@ -51,6 +51,7 @@ function RunTheBuild()
     
         if(!$PackOnly)
         {
+            Write-Information "Restoring Nuget Packages for LibLLVM.vcxproj"
             Invoke-NuGet restore src\LibLLVM\LibLLVM.vcxproj -PackagesDirectory $BuildInfo.NuGetRepositoryPath
 
             # native code doesn't have built-in multi-platform project builds like the new CPS based .NET projects do
@@ -100,6 +101,6 @@ else
     $InformationPreference = "Continue"
     Write-Information "info: test"
     Write-Host "host: test"
-    dir $env:APPVEYOR*
+    dir env:APPVEYOR*
     RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
 }
