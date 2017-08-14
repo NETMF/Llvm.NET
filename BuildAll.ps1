@@ -96,7 +96,8 @@ if(!$env:APPVEYOR)
     Start-Job -ScriptBlock $sriptBlock -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
 }
 else
-{
+{   
+    $InformationPreference = "Continue"
     Write-Information "info: test"
     Write-Host "host: test"
     dir $env:APPVEYOR*
