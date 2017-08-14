@@ -97,6 +97,8 @@ if(!$env:APPVEYOR)
 }
 else
 {
+    Write-Information "info: test"
+    Write-Host "host: test"
     dir $env:APPVEYOR*
     RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
 }
