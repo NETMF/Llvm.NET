@@ -99,8 +99,6 @@ if(!$env:APPVEYOR)
 else
 {   
     $InformationPreference = "Continue"
-    Write-Information "info: test"
-    Write-Host "host: test"
     dir env:APPVEYOR*
     RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
 }
