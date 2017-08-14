@@ -6,7 +6,7 @@ Param(
 )
 
 
-function RunTheBuild
+function RunTheBuild()
 {
     $PackOnly = $args[0].IsPresent
     $ScriptRoot = $args[1]
@@ -30,12 +30,11 @@ function RunTheBuild
             }
         }
                                 
-        $packProperties = @{
-            version=$($BuildInfo.PackageVersion);
-            llvmversion=$($BuildInfo.LlvmVersion);
-            buildbinoutput=(normalize-path (Join-path $($BuildInfo.BuildOutputPath) 'bin'));
-            configuration='Release'
-        }
+        $packProperties = @{ version=$($BuildInfo.PackageVersion);
+                             llvmversion=$($BuildInfo.LlvmVersion);
+                             buildbinoutput=(normalize-path (Join-path $($BuildInfo.BuildOutputPath) 'bin'));
+                             configuration='Release'
+                           }
 
         $msBuildProperties = @{ Configuration = 'Release';
                                 FullBuildNumber = $BuildInfo.FullBuildNumber;
@@ -45,7 +44,7 @@ function RunTheBuild
                                 FileVersionBuild = $BuildInfo.FileVersionBuild;
                                 FileVersionRevision = $BuildInfo.FileVersionRevision;
                                 LlvmVersion = $BuildInfo.LlvmVersion;
-                                }
+                              }
 
         Write-Information "Build Parameters:"
         Write-Information ($BuildInfo | Format-Table | Out-String)
@@ -92,7 +91,9 @@ if(!$env:APPVEYOR)
     # Run entire build script as a separate job so that the build task
     # DLL is unloaded after it completes. This, prevents "in use" errors
     # when building the DLL in VS for debugging/testing purposes.
-    Start-Job -ScriptBlock { RunTheBuild $args } -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
+    
+    $sriptBlock =  [ScriptBlock]::Create("$((Get-Command RunTheBuild).Definition)")
+    Start-Job -ScriptBlock $sriptBlock -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
 }
 else
 {

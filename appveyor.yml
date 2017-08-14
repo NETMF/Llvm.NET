@@ -5,10 +5,6 @@ branches:
   only:
   - LLVM_4_0_1
 
-environment:
-  snk_key:
-    secure: vTWX87NSYgXef6+iD3fddA==
-
 image: Visual Studio 2017
 
 nuget:
