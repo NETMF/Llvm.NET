@@ -53,22 +53,18 @@ is usually a good idea. Fortunately this only needs to be done once for a given 
 
 If you have
 Visual Studio 2017 RC (or RTM when available) with the [Visual C++ Tools for CMake](https://blogs.msdn.microsoft.com/vcblog/2016/10/05/cmake-support-in-visual-studio/),
-you can build the LLVM libs in VS. However, the default behavior is to build everything, which can take upwards of 6 hours on most typical machines. Instead of doing a
-full build you can use the [Build-LlvmWithVS](https://github.com/NETMF/Llvm.NET/blob/dev/src/LibLLVM/Build-LlvmWithVS.ps1) PowerShell script with the `-CreateSettingsJson`
-to create the [CMakeSettings.json](https://blogs.msdn.microsoft.com/vcblog/2016/10/05/cmake-support-in-visual-studio/#configure-cmake) file that VS will use to configure
-VS to reduce what is built to just the libraries needed for Llvm.NET.
+you can build the LLVM libs in VS. However, the default behavior is to build everything, which can take upwards of 6 hours on most typical machines. Instead of doing a full build you can use the [Build-LlvmWithVS](https://github.com/NETMF/Llvm.NET/tree/LLVM_4_0_1/src/NugetPkg/LLVM) to generate the NuGet packages for the LLVM libraries.
 
 #### Using Visual Studio
 The repository contains a Visual Studio solution file that allows building Llvm.NET and LibLLVM for a single platform configuration, as well as running the available
-unit tests. This is the primary mode of working with the Llvm.NET source code duing development. 
+unit tests. This is the primary mode of working with the Llvm.NET source code during development. 
 
 #### Replicating the automated build
-The Automated build support for Llvm.NET uses BuildAll.slnproj to build all the binaries, sign them [signing not yet supported], and generate a nuget package. To build 
-the full package simply run `msbuild BuildAll.slnproj`
+The Automated build support for Llvm.NET uses powershell to automate the build process in a manner that is supported on local machines as well as the AppVeyor build server. To run the build open a Visual Studio Developer prompt and run the [BuildAll.ps1](https://github.com/NETMF/Llvm.NET/blob/LLVM_4_0_1/BuildAll.ps1) script
 
 #### Sample Application
-The [TestDebugInfo](https://github.com/NETMF/Llvm.NET/tree/dev/src/Llvm.NETTests/TestDebugInfo) sample application provides an example of using Llvm.NET to generate
-LLVM Bit code equivalent to what the Clang compiler generates for a [simple C language file](https://github.com/NETMF/Llvm.NET/blob/dev/src/Llvm.NETTests/TestDebugInfo/test.c).
+The [CodeGenWithDebugInfo](https://github.com/NETMF/Llvm.NET/tree/LLVM_4_0_1/Samples/CodeGenWithDebugInfo) sample application provides an example of using Llvm.NET to generate
+LLVM Bit code equivalent to what the Clang compiler generates for a [simple C language file](https://github.com/NETMF/Llvm.NET/tree/LLVM_4_0_1/Samples/CodeGenWithDebugInfo/Support%20Files/test.c).
 TestDebugInfo doesn't actually parse the source, instead it is a manually constructed and documented example of how to use Llvm.NET to accomplish the bit-code generation. 
 
 #### Code of Conduct
