@@ -30,4 +30,4 @@ build_script:
   - ps: .\BuildAll.ps1
 
 artifacts:
-  - .\BuildOutput\Nuget\*.nupkg
+  - path: .\BuildOutput\Nuget\*.nupkg
