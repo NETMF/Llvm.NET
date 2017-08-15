@@ -28,3 +28,6 @@ build:
 
 build_script:
   - ps: .\BuildAll.ps1
+
+artifacts:
+  - .\BuildOutput\Nuget\*.nupkg
