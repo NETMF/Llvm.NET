@@ -104,5 +104,6 @@ else
     $InformationPreference = "Continue"
     dir env:APPVEYOR*
     Invoke-Nuget sources
+    git status
     RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
 }
