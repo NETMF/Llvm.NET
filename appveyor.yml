@@ -9,7 +9,7 @@ image: Visual Studio 2017
 
 environment:
   BuildNugetUser:
-    secure: f6wD21gZoNIxzurB9sZmRIG7am6l15frDAdL5FSYIvM=
+    secure: f6wD21gZoNIxzurB9sZmRKGWa9Dpj4BjUdPqOmj7WqM=
   BuildNugetPassword:
     secure: C4Z+91Dp0oltWIm1cjf5Lw==
 
@@ -19,7 +19,7 @@ nuget:
   project_feed: true
 
 install:
-  - nuget source update -Name AppveyorAccountFeed -UserName %BuildNugetUser% -Password %BuildNugetPassword%
+  - nuget source update -Name AppVeyorAccountFeed -UserName %BuildNugetUser% -Password %BuildNugetPassword%
 build:
   project: buildall.slnproj
   parallel: true
