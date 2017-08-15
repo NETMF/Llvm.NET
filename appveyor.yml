@@ -7,6 +7,10 @@ branches:
 
 image: Visual Studio 2017
 
+skip_commits:
+  files:
+    - '**\*.md'
+
 environment:
   BuildNugetUser:
     secure: f6wD21gZoNIxzurB9sZmRKGWa9Dpj4BjUdPqOmj7WqM=

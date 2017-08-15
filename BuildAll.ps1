@@ -83,7 +83,6 @@ function RunTheBuild()
         # multi-platform builds are built-in so no loop
         Write-Information "Building Llvm.NET Tests"
         invoke-msbuild /t:Rebuild src\Llvm.NETTests\LLVM.NETTests\LLVM.NETTests.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
-
     }
     catch [Exception]
     {

@@ -5,8 +5,8 @@ Build Status:
 Branch | Status
 -------|-------
 dev | [![Build status](https://ci.appveyor.com/api/projects/status/0xh262rwvbardsrm/branch/dev?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net/branch/dev)
-LLVM_4_0_1 | [![Build status](https://ci.appveyor.com/api/projects/status/0xh262rwvbardsrm/branch/dev?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net/branch/LLVM_4_0_1)
-LLVM_5_0_0 | [![Build status](https://ci.appveyor.com/api/projects/status/0xh262rwvbardsrm/branch/dev?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net/branch/LLVM_5_0_0)
+LLVM_4_0_1 | [![Build status](https://ci.appveyor.com/api/projects/status/0xh262rwvbardsrm/branch/LLVM_4_0_1?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net/branch/LLVM_4_0_1)
+LLVM_5_0_0 | [![Build status](https://ci.appveyor.com/api/projects/status/0xh262rwvbardsrm/branch/LLVM_5_0_0?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net/branch/LLVM_5_0_0)
 
 ### Welcome to Llvm.NET!
 Llvm.NET provides LLVM language and runtime bindings for .NET based applications. Llvm.NET's goal is to provide as robust Class library that
