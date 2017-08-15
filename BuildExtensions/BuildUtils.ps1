@@ -75,7 +75,7 @@ function Get-BuildInformation
         {
             if( !(Test-Path -PathType Container $BuildInfo.NugetOutputPath))
             {
-                md $BuildInfo.NugetOutputPath
+                md $BuildInfo.NugetOutputPath | Out-Null
             }
              
             # generate the build task used for this build

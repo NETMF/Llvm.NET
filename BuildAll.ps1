@@ -64,7 +64,7 @@ function RunTheBuild()
 
         Write-Information "Generating LibLLVM.NET.nupkg"
         Invoke-NuGet pack src\NuGetPkg\LibLLVM\LibLLVM.NET.nuspec -NoPackageAnalysis -Properties (ConvertTo-PropertyList $packProperties) -OutputDirectory $BuildInfo.NuGetOutputPath
-
+        
         if(!$PackOnly)
         {
             invoke-msbuild /t:Restore src\Llvm.NET\Llvm.NET.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
@@ -73,8 +73,17 @@ function RunTheBuild()
             Write-Information "Building Llvm.NET"
             invoke-msbuild /t:Rebuild src\Llvm.NET\Llvm.NET.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
         }
+
         Write-Information "Generating LLVM.NET.nupkg"
         Invoke-NuGet pack src\NuGetPkg\LLVM.NET\LLVM.NET.nuspec -NoPackageAnalysis -Properties (ConvertTo-PropertyList $packProperties) -OutputDirectory $BuildInfo.NuGetOutputPath
+
+        Write-Information "Running Nuget Restore for Llvm.NET Tests"
+        invoke-msbuild /t:Restore src\Llvm.NETTests\**\*.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
+
+        # multi-platform builds are built-in so no loop
+        Write-Information "Building Llvm.NET Tests"
+        invoke-msbuild /t:Rebuild src\Llvm.NETTests\**\*.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
+
     }
     catch [Exception]
     {
