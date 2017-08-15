@@ -102,8 +102,5 @@ else
     . ([IO.Path]::Combine($ScriptRoot, 'BuildExtensions', 'BuildUtils.ps1'))
 
     $InformationPreference = "Continue"
-    dir env:APPVEYOR*
-    Invoke-Nuget sources
-    git status
     RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
 }

@@ -74,10 +74,14 @@ function Get-BuildInformation
         if( !( Test-Path -PathType Leaf $buildTaskBin ) )
         {
             # generate the build task used for this build
+            Write-Information "Restoring NUGET for internal build task"
             invoke-msbuild /t:Restore $buildTaskProj $BuildInfo.MsBuildArgs
+            
+            Write-Information "Building internal build task"
             invoke-msbuild /t:Build /p:Configuration=Release $buildTaskProj $BuildInfo.MsBuildArgs
         }
 
+        Write-Information "Computing Build information"
         Add-Type -Path $buildTaskBin
         $buildVersionData = [Llvm.NET.BuildTasks.BuildVersionData]::Load( (Join-Path $repoRoot BuildVersion.xml ) )
         $semver = $buildVersionData.CreateSemVer(!!$env:APPVEYOR, !!$env:APPVEYOR_PULL_REQUEST_NUMBER)
