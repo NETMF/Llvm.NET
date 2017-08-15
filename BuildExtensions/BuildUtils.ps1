@@ -73,6 +73,11 @@ function Get-BuildInformation
         $buildTaskBin = ([IO.Path]::Combine( $repoRoot, 'BuildOutput', 'Tasks', 'Llvm.NET.BuildTasks.dll') )
         if( !( Test-Path -PathType Leaf $buildTaskBin ) )
         {
+            if( !(Test-Path -PathType Container $BuildInfo.NugetOutputPath))
+            {
+                md $BuildInfo.NugetOutputPath
+            }
+             
             # generate the build task used for this build
             Write-Information "Restoring NUGET for internal build task"
             invoke-msbuild /t:Restore $buildTaskProj $BuildInfo.MsBuildArgs

@@ -87,20 +87,28 @@ function RunTheBuild()
     }
 }
 
-if(!$env:APPVEYOR)
+try
 {
-    # Run entire build script as a separate job so that the build task
-    # DLL is unloaded after it completes. This, prevents "in use" errors
-    # when building the DLL in VS for debugging/testing purposes.
+    if(!$env:APPVEYOR)
+    {
+        # Run entire build script as a separate job so that the build task
+        # DLL is unloaded after it completes. This, prevents "in use" errors
+        # when building the DLL in VS for debugging/testing purposes.
     
-    $sriptBlock =  [ScriptBlock]::Create("$((Get-Command RunTheBuild).Definition)")
-    Start-Job -ScriptBlock $sriptBlock -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
-}
-else
-{   
-    # pull in the utilities script
-    . ([IO.Path]::Combine($ScriptRoot, 'BuildExtensions', 'BuildUtils.ps1'))
+        $sriptBlock =  [ScriptBlock]::Create("$((Get-Command RunTheBuild).Definition)")
+        Start-Job -ScriptBlock $sriptBlock -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
+    }
+    else
+    {   
+        # pull in the utilities script
+        . ([IO.Path]::Combine($ScriptRoot, 'BuildExtensions', 'BuildUtils.ps1'))
 
-    $InformationPreference = "Continue"
-    RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
+        $InformationPreference = "Continue"
+        RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
+    }
+}
+catch [Exception]
+{
+    Write-Error $_
+    return
 }
