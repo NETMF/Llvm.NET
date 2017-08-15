@@ -18,8 +18,9 @@ nuget:
   account_feed: true
   project_feed: true
 
-install:
+init:
   - nuget source update -Name AppVeyorAccountFeed -UserName %BuildNugetUser% -Password %BuildNugetPassword%
+
 build:
   project: buildall.slnproj
   parallel: true
