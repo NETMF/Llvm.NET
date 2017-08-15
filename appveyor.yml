@@ -10,7 +10,7 @@ image: Visual Studio 2017
 nuget:
   disable_publish_on_pr: true
   account_feed: false
-  project_feed: false
+  project_feed: true
 
 build:
   project: buildall.slnproj
