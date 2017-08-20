@@ -14,10 +14,10 @@
     <files>
         <file src="build\LibLLVM.NET.props" target="build\LibLLVM.NET.props" />
 
-        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.pdb" target="runtimes\win-x86\native" />
-        <file src="$buildbinoutput$x86\$configuration$\LibLLVM.dll" target="runtimes\win-x86\native" />
+        <file src="$buildbinoutput$$configuration$\native\x86\LibLLVM.pdb" target="runtimes\win-x86\native" />
+        <file src="$buildbinoutput$$configuration$\native\x86\LibLLVM.dll" target="runtimes\win-x86\native" />
 
-        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.pdb" target="runtimes\win-x64\native" />
-        <file src="$buildbinoutput$x64\$configuration$\LibLLVM.dll" target="runtimes\win-x64\native" />
+        <file src="$buildbinoutput$$configuration$\native\x64\LibLLVM.pdb" target="runtimes\win-x64\native" />
+        <file src="$buildbinoutput$$configuration$\native\x64\LibLLVM.dll" target="runtimes\win-x64\native" />
     </files>
 </package>

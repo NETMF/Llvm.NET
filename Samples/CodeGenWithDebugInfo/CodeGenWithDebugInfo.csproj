@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <TargetFrameworks>net47</TargetFrameworks>
+    <TargetFrameworks>net47;netstandard2.0</TargetFrameworks>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <OutputType>exe</OutputType>
     <OutputTypeEx>exe</OutputTypeEx>

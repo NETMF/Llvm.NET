@@ -1,33 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <!--
-        This project is intended to be netstandard 2.0 compatible and is validated
-        against the latest pre-release SDKs and VS 15.3 Preview 4. However, netstandard2.0
-        does not actually work in VS 15.2 Release. So it is disabled for now
-        -->
-        <TargetFrameworks>net47</TargetFrameworks>
+        <TargetFrameworks>net47;netstandard2.0</TargetFrameworks>
         <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
         <DebugType>full</DebugType>
         <DebugSymbols>True</DebugSymbols>
-        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
         <DocumentationFile>Llvm.NET.xml</DocumentationFile>
         <SignAssembly>False</SignAssembly>
+        <NoWarn>1701;1702;1705;1591</NoWarn>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <NuspecFile>NugetPkg\Llvm.NET.nuspec</NuspecFile>
+        <NuspecProperties>configuration=$(Configuration);buildbinoutput=$(BaseOutputPath)</NuspecProperties>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
-      <NoWarn>1701;1702;1705;1591</NoWarn>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
-      <NoWarn>1701;1702;1705;1591</NoWarn>
-    </PropertyGroup>
-    <ItemGroup>
-    <!--
-      When using EnableDefaultCompileItems=false this is needed to prevent the IDE from
-      showing all files via the default "none glob". See: https://github.com/dotnet/sdk/issues/1157
-      Why anyone would want a project system that pulled in all files implicitly instead
-      of an explicit model is beyond me.
-    -->
-        <None Remove="**" />
-    </ItemGroup>
     <ItemGroup>
         <Compile Include="ArgValidationExtensions.cs" />
         <Compile Include="Comdat.cs" />
@@ -233,29 +217,32 @@
         </CodeAnalysisDictionary>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="PdbGit" Version="3.0.41" PrivateAssets="All" />
+      <PackageReference Include="Llvm.NET.BuildTasks" Version="1.0.0" />
     </ItemGroup>
     <Choose>
+        <!--
+        For VS developer builds allow range, including pre-release builds to simplify development
+        Local dev builds are generated with a version that has a higher precedence then other builds
+        -->
         <When Condition="'$(BuildingInsideVisualStudio)'=='true'">
             <ItemGroup>
-                <ProjectReference Include="..\LibLLVM\LibLLVM.vcxproj">
-                    <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-                    <Private>True</Private>
-                </ProjectReference>
+                <PackageReference Include="LibLLVM.NET" Version="[4.0.0-*,5)" />
             </ItemGroup>
         </When>
         <Otherwise>
             <ItemGroup>
-                <PackageReference Include="LibLLVM.NET" Version="[$(PackageVersion)]"/>
+                <PackageReference Include="PdbGit" Version="3.0.41" PrivateAssets="All" />
+                <PackageReference Include="LibLLVM.NET" Version="[$(PackageVersion)]" />
             </ItemGroup>
         </Otherwise>
     </Choose>
     <!--
-    Must import this with conditional on IsCrossTargeting, to ensure that PackageVersion is set based on the generated build number.
-    The cross targeting build will only import this when building for a single Platform+configuration combination but the NuGet pack
-    target is only executed in the outer project case so this ensures the import occurs correctly. An alternative would be to use
-    another NUGET package as it's package "props" and "targets" files are imported in both contexts. This effectively works around
-    issue https://github.com/NuGet/Home/issues/4790 Though it is really more of an issue with the cross targeting support than NUGET
+    Version numbers are computed at build time after any declarative properties are evaluated
+    so this is needed to update the NuSpec properties with the dynamically generated values
     -->
-    <Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))" Condition="exists($([MSBuild]::GetPathOfFileAbove(Directory.Build.targets))) AND '$(IsCrossTargetingBuild)'=='true'" />
+    <Target Name="_SetNuSpecPropertiesWithBuildInfo" BeforeTargets="GenerateNuspec">
+        <PropertyGroup>
+            <NuspecProperties>version=$(PackageVersion);llvmversion=$(LlvmVersion);$(NuspecProperties)</NuspecProperties>
+        </PropertyGroup>
+    </Target>
 </Project>

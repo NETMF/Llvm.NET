@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{826ADB1C-4BDC-4A89-836B-87088E511D6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,10 +19,10 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <OutputPath>$(BaseOutputPath)$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,7 +30,6 @@
     <CodeAnalysisRuleSet>$(BuildRootDir)\Llvm.NET.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -66,7 +65,7 @@
     <Compile Include="Values\AttributeValueTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(BaseOutputPath)\x86\Release\LibLLVM.dll">
+    <Content Include="D:\GitHub\smaillet\Llvm.NET\BuildOutput\bin\\Release\native\x86\LibLLVM.dll">
       <Link>LibLLVM.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -79,13 +78,29 @@
       <Project>{0162c8ce-6641-4922-8664-f8a44356fbf7}</Project>
       <Name>Llvm.NET</Name>
       <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="$(BuildRootDir)src\LibLLVM\LibLLVM.vcxproj">
-      <Project>{6c77a7de-d464-430f-96a9-a64768763b5f}</Project>
-      <Name>LibLLVM</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <!--
+        For VS developer builds allow range, including pre-release builds to simplify development.
+        Local dev builds are generated with a version that has a higher precedence then other builds
+        -->
+    <When Condition="'$(BuildingInsideVisualStudio)'=='true'">
+      <ItemGroup>
+        <PackageReference Include="LLVM.NET" Version="4.0.0--zz-DEV.192E8DCB" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="LLVM.NET" Version="[$(PackageVersion)]" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <PackageReference Include="Llvm.NET.BuildTasks">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

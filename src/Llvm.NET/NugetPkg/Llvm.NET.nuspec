@@ -13,8 +13,8 @@
     </metadata>
     <files>
         <file src="build\Llvm.NET.props" target="build\Llvm.NET.props" />
-        <file src="$buildbinoutput$AnyCPU\$configuration$\Llvm.NET.dll" target="lib\net47\Llvm.NET.dll" />
-        <file src="$buildbinoutput$AnyCPU\$configuration$\Llvm.NET.pdb" target="lib\net47\Llvm.NET.pdb" />
-        <file src="$buildbinoutput$AnyCPU\$configuration$\Llvm.NET.xml" target="lib\net47\Llvm.NET.xml" />
+        <file src="$buildbinoutput$$configuration$\net47\Llvm.NET.dll" target="lib\net47\Llvm.NET.dll" />
+        <file src="$buildbinoutput$$configuration$\net47\Llvm.NET.pdb" target="lib\net47\Llvm.NET.pdb" />
+        <file src="$buildbinoutput$$configuration$\net47\Llvm.NET.xml" target="lib\net47\Llvm.NET.xml" />
     </files>
 </package>

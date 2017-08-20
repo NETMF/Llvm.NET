@@ -1,4 +1,7 @@
-﻿using Microsoft.Build.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
 namespace Llvm.NET.BuildTasks
@@ -13,6 +16,8 @@ namespace Llvm.NET.BuildTasks
         public bool IsAutomatedBuild { get; set; }
 
         public bool IsPullRequestBuild { get; set; }
+
+        public DateTime BuildTimeStamp { get; set; } = DateTime.UtcNow;
 
         [Output]
         public string SemVer { get; set; }
@@ -33,12 +38,12 @@ namespace Llvm.NET.BuildTasks
         public ushort FileVersionRevision { get; set; }
 
         [Output]
-        public string LlvmVersion { get; set; }
+        public ITaskItem[] ExtraProperties { get; set; }
 
         public override bool Execute( )
         {
             var baseBuildVersionData = BuildVersionData.Load( BuildVersionXmlFile );
-            CSemVer fullVersion = baseBuildVersionData.CreateSemVer( IsAutomatedBuild, IsPullRequestBuild );
+            CSemVer fullVersion = baseBuildVersionData.CreateSemVer( IsAutomatedBuild, IsPullRequestBuild, BuildTimeStamp );
 
             SemVer = fullVersion.ToString( true );
             NuGetVersion = fullVersion.ToString( false );
@@ -47,7 +52,10 @@ namespace Llvm.NET.BuildTasks
             FileVersionBuild = ( ushort )fullVersion.FileVersion.Build;
             FileVersionRevision = ( ushort )fullVersion.FileVersion.Revision;
 
-            LlvmVersion = baseBuildVersionData.LlvmVersion;
+            ExtraProperties = ( from kvp in baseBuildVersionData.AdditionalProperties
+                                select new TaskItem( "ExtraProperties", new Dictionary<string, string> { { "Name", kvp.Key }, { "Value", kvp.Value } } )
+                              ).ToArray( );
+
             return true;
         }
     }
