@@ -125,6 +125,8 @@ function RunTheBuild
         rd -Recurse -Force -Path $buildPaths.BuildOutputPath    
     }
 
+    md BuildOutput\NuGet\
+
     Write-Information "Restoring NUGET for internal build task"
     invoke-msbuild -Targets Restore -Project $buildPaths.BuildTaskProj -LoggerArgs $msbuildLoggerArgs
 
