@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata minClientVersion="2.8">
+        <id>Llvm.Libs.targets.$platform$-$configuration$</id>
+        <version>$version$</version>
+        <authors>smaillet</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Target specific Libraries for LLVM $version$ ($platform$-$configuration$)</description>
+        <summary>Do not add this package directly, use the Llvm.Libs metapackage instead</summary>
+        <developmentDependency>true</developmentDependency>
+        <projectUrl>http://www.llvm.org</projectUrl>
+        <licenseUrl>http://releases.llvm.org/$version$/LICENSE.TXT</licenseUrl>
+        <tags>LLVM,compiler,native</tags>
+    </metadata>
+    <files>
+        <file src="$nugetsrcdir$Llvm.Libs.targets.Platform-Configuration.props" target="build\native\Llvm.Libs.targets.$platform$-$configuration$.props" />
+    </files>
+</package>

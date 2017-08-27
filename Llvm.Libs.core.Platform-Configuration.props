@@ -1,0 +1,43 @@
+﻿<Project>
+    <PropertyGroup>
+        <!--
+        NOTE: VS doesn't like it when conditions and other expressions appear in the UserMacros labeled PropertyGroup.
+              Therefore, these are all done in an unlabeled group that precedes the UserMacros group visible in the IDE
+        -->
+        <LlvmVersionMajor Condition="'$(LlvmVersionMajor)'==''">4</LlvmVersionMajor>
+        <llvmVersionMinor Condition="'$(llvmVersionMinor)'==''">0</llvmVersionMinor>
+        <LlvmVersionBuild Condition="'$(LlvmVersionBuild)'==''">1</LlvmVersionBuild>
+
+        <!--
+        Classic VS installations don't have an "x86" platform - the official name of the platform is Win32,
+        However, the default VS 2017 CMake support uses x86 as a platform name. So this adapts and adjusts
+        to allow for compatibility across VS tool versions.
+         -->
+        <LLVM_PLATFORM>$(Platform)</LLVM_PLATFORM>
+        <LLVM_PLATFORM Condition="'$(LLVM_PLATFORM)'=='Win32'">x86</LLVM_PLATFORM>
+        <LLVM_PLATFORM_CONFIG>$(LLVM_PLATFORM)-$(Configuration)</LLVM_PLATFORM_CONFIG>
+    </PropertyGroup>
+    <Choose>
+        <When Condition="'Llvm.Libs.core.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
+            <PropertyGroup>
+                <LlvmCoreLibsPkgRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)..\..'))</LlvmCoreLibsPkgRoot>
+            </PropertyGroup>
+            <PropertyGroup Label="UserMacros">
+                <LLVM_CORE_DIR>$(LlvmCoreLibsPkgRoot)lib\native\</LLVM_CORE_DIR>
+                <LLVM_CORE_INCLUDE>$(LLVM_CORE_DIR)Include\</LLVM_CORE_INCLUDE>
+                <LLVM_CORE_LIB_DIR>$(LLVM_CORE_DIR)lib</LLVM_CORE_LIB_DIR>
+            </PropertyGroup>
+        </When>
+    </Choose>
+    <ItemGroup Condition="'Llvm.Libs.core.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
+        <AllLlvmLibs Include="$(LLVM_CORE_LIB_DIR)\*.lib" />
+    </ItemGroup>
+    <ItemDefinitionGroup Condition="'Llvm.Libs.core.$(LLVM_PLATFORM_CONFIG)'=='$(MSBuildThisFileName)'">
+        <ClCompile>
+            <AdditionalIncludeDirectories>$(LLVM_CORE_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+        </ClCompile>
+        <Link>
+            <AdditionalLibraryDirectories>$(LLVM_CORE_LIB_DIR);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+        </Link>
+    </ItemDefinitionGroup>
+</Project>
