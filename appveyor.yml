@@ -13,19 +13,10 @@ skip_commits:
   files:
     - '**\*.md'
 
-environment:
-  BuildNugetUser:
-    secure: f6wD21gZoNIxzurB9sZmRKGWa9Dpj4BjUdPqOmj7WqM=
-  BuildNugetPassword:
-    secure: C4Z+91Dp0oltWIm1cjf5Lw==
-
 nuget:
   disable_publish_on_pr: true
   account_feed: true
   project_feed: true
-
-init:
-  - nuget source update -Name AppVeyorAccountFeed -UserName %BuildNugetUser% -Password %BuildNugetPassword%
 
 build:
   parallel: true
