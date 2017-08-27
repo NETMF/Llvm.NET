@@ -112,7 +112,7 @@ function RunTheBuild
 
     if (Test-Path "C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll")
     {
-        msbuildLoggerArgs.Add(" /logger:`"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll`"")
+        $msbuildLoggerArgs = $msbuildLoggerArgs + @("/logger:`"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll`"")
     }
 
     $buildPaths = Get-BuildPaths $ScriptRoot
