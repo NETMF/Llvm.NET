@@ -15,10 +15,6 @@
     <Compile Include="Values\AttributeValueTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="D:\GitHub\smaillet\Llvm.NET\BuildOutput\bin\\Release\native\x86\LibLLVM.dll">
-      <Link>LibLLVM.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="TestModuleAsString.ll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
