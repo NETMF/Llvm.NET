@@ -203,16 +203,10 @@ FakesAssemblies/
 
 # VS2015 support file
 *.opendb
-/src/.tools
 /src/LibLLVM/generatedversioninfo.h
 *.db
-/src/Llvm.NETTests/TestDebugInfo/test*.s
-/src/Llvm.NETTests/TestDebugInfo/test*.o
-/src/Llvm.NETTests/TestDebugInfo/test*.ll
-/src/Llvm.NETTests/TestDebugInfo/test*.bc
 *.exe
 **/launchSettings.json
 *.bc
-*.ll
 *.o
 *.s
