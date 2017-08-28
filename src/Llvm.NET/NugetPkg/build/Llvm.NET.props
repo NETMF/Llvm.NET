@@ -2,10 +2,4 @@
     <PropertyGroup>
         <LlvmNetPackageRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)', '..')</LlvmNetPackageRoot>
     </PropertyGroup>
-    <!--<ItemGroup>
-        <None Include="LibLLVM">
-            <HintPath>$(LlvmNetPackageRoot)runtimes\win-$(Platform)\native\LibLLVM.dll</HintPath>
-            <Private>false</Private>
-        </None>
-    </ItemGroup>-->
 </Project>

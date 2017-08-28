@@ -109,7 +109,7 @@ namespace Llvm.NET.Native
             if( moduleHandle == IntPtr.Zero )
             {
                 int lasterror = Marshal.GetLastWin32Error( );
-                throw new Win32Exception( lasterror );
+                throw new Win32Exception( lasterror, $"System error occurred trying to load DLL {libPath} from module '{Path.GetDirectoryName( Assembly.GetExecutingAssembly( ).Location )}' " );
             }
 
             return moduleHandle;

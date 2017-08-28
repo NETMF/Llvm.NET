@@ -6,21 +6,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="$(LibLlvmPkgRoot)runtimes\win-x64\native\LibLLVM.dll">
+        <Content Include="$(LibLlvmPkgRoot)runtimes\win-x64\native\LibLLVM.dll">
             <Link>LibLLVM\x64\LibLLVM.dll</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Include="$(LibLlvmPkgRoot)runtimes\win-x64\native\LibLLVM.pdb">
+        </Content>
+        <Content Include="$(LibLlvmPkgRoot)runtimes\win-x64\native\LibLLVM.pdb">
             <Link>LibLLVM\x64\LibLLVM.pdb</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Include="$(LibLlvmPkgRoot)runtimes\win-x86\native\LibLLVM.dll">
+        </Content>
+        <Content Include="$(LibLlvmPkgRoot)runtimes\win-x86\native\LibLLVM.dll">
             <Link>LibLLVM\x86\LibLLVM.dll</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Include="$(LibLlvmPkgRoot)runtimes\win-x86\native\LibLLVM.pdb">
+        </Content>
+        <Content Include="$(LibLlvmPkgRoot)runtimes\win-x86\native\LibLLVM.pdb">
             <Link>LibLLVM\x86\LibLLVM.pdb</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        </Content>
     </ItemGroup>
 </Project>

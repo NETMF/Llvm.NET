@@ -5,11 +5,11 @@ using Llvm.NET.Types;
 using Llvm.NET.Values;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+// warning SA1500: Braces for multi-line statements must not share line
 #pragma warning disable SA1500
 namespace Llvm.NET.Tests
 {
     [TestClass]
-    [DeploymentItem("LibLLVM.dll")]
     public class ContextTests
     {
         [TestMethod]

@@ -9,7 +9,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Llvm.NET.Tests
 {
     [TestClass]
-    [DeploymentItem( "LibLLVM.dll" )]
     public class ModuleTests
     {
         private const string StructTestName = "struct.Test";
@@ -215,7 +214,6 @@ namespace Llvm.NET.Tests
         }
 
         [TestMethod]
-        [DeploymentItem( "TestModuleAsString.ll" )]
         public void WriteToFileTest( )
         {
             string path = Path.GetTempFileName( );
@@ -248,7 +246,6 @@ namespace Llvm.NET.Tests
         }
 
         [TestMethod]
-        [DeploymentItem( "TestModuleAsString.ll" )]
         public void AsStringTest( )
         {
             using( var module = new NativeModule( TestModuleName ) )
