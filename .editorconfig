@@ -1,16 +1,17 @@
 #Primary settings apply to all files unless overridden below
 root = true
 
+[*]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+
 # match VS generated formatting for MSBuild project files
 [*.*proj,*.props,*.targets]
 indent_size = 2
 
+# match ISO standard requirement for C/C++
 [*.c,*.h,*.cpp]
-insert_final_newline = true
-
-[*]
-indent_style = space
-indent_size = 4
 insert_final_newline = true
 
 [*.cs]
@@ -54,11 +55,4 @@ csharp_space_between_method_call_name_and_opening_parenthesis = false
 csharp_space_between_method_declaration_name_and_open_parenthesis = false
 csharp_space_around_declaration_statements = ignore
 csharp_space_between_method_call_parameter_list_parentheses = true
-
 csharp_space_between_square_brackets = true
-
-
-
-
-
-

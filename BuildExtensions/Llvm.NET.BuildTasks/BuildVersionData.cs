@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using LibGit2Sharp;
 
@@ -28,19 +29,13 @@ namespace Llvm.NET.BuildTasks
 
         public byte PreReleaseFix { get; private set; }
 
-        public UInt16 LlvmVersionMajor { get; private set; }
-
-        public UInt16 LlvmVersionMinor { get; private set; }
-
-        public UInt16 LlvmVersionPatch { get; private set; }
-
         public string ReleaseBranch { get; private set; }
 
-        public string LlvmVersion => $"{LlvmVersionMajor}.{LlvmVersionMinor}.{LlvmVersionPatch}";
+        public IReadOnlyDictionary<string, string> AdditionalProperties => ExtraPropertyMap;
 
         public string BuildVersionXmlFile { get; private set; }
 
-        public CSemVer CreateSemVer( bool isAutomatedBuild, bool isPullRequestBuild )
+        public CSemVer CreateSemVer( bool isAutomatedBuild, bool isPullRequestBuild, DateTime timeStamp )
         {
             using( var repo = new LibGit2Sharp.Repository( Path.GetDirectoryName( BuildVersionXmlFile ) ) )
             {
@@ -52,7 +47,7 @@ namespace Llvm.NET.BuildTasks
                 {
                 case BuildMode.LocalDev:
                     // local dev builds are always newer than any other builds
-                    preReleaseInfo = new CIPreReleaseVersion( "DEV", GetBuildIndexFromUtc( DateTime.Now ), "zz" );
+                    preReleaseInfo = new CIPreReleaseVersion( "DEV", GetBuildIndexFromUtc( timeStamp.ToUniversalTime() ), "zz" );
                     break;
 
                 case BuildMode.PullRequest:
@@ -63,7 +58,7 @@ namespace Llvm.NET.BuildTasks
                     break;
 
                 case BuildMode.ContinuousIntegration:
-                    preReleaseInfo = new CIPreReleaseVersion( "BLD", GetBuildIndexFromUtc( DateTime.Now ) );
+                    preReleaseInfo = new CIPreReleaseVersion( "BLD", GetBuildIndexFromUtc(timeStamp.ToUniversalTime() ) );
                     break;
 
                 case BuildMode.OfficialRelease:
@@ -91,30 +86,55 @@ namespace Llvm.NET.BuildTasks
                 var data = xdoc.Element( "BuildVersionData" );
 
                 retVal.BuildVersionXmlFile = path;
-                retVal.BuildMajor = Convert.ToUInt16( data.Attribute( "BuildMajor" ).Value );
-                retVal.BuildMinor = Convert.ToUInt16( data.Attribute( "BuildMinor" ).Value );
-                retVal.BuildPatch = Convert.ToUInt16( data.Attribute( "BuildPatch" ).Value );
 
-                retVal.LlvmVersionMajor = Convert.ToUInt16( data.Attribute( "LlvmVersionMajor" ).Value );
-                retVal.LlvmVersionMinor = Convert.ToUInt16( data.Attribute( "LlvmVersionMinor" ).Value );
-                retVal.LlvmVersionPatch = Convert.ToUInt16( data.Attribute( "LlvmVersionPatch" ).Value );
-
-                retVal.ReleaseBranch = data.Attribute( "ReleaseBranch" ).Value;
-
-                var preRelName = data.Attribute( "PreReleaseName" );
-                if( preRelName != null )
+                foreach( var attrib in data.Attributes() )
                 {
-                    retVal.PreReleaseName = preRelName.Value;
-                    var preRelNumber = data.Attribute( "PreReleaseNumber" );
-                    if( preRelNumber != null )
+                    switch( attrib.Name.LocalName )
                     {
-                        retVal.PreReleaseNumber = Convert.ToByte( preRelNumber.Value );
-                        var preRelFix = data.Attribute( "PreReleaseFix" );
-                        if( preRelFix != null )
-                        {
-                            retVal.PreReleaseFix = Convert.ToByte( preRelFix.Value );
-                        }
+                    case "BuildMajor":
+                        retVal.BuildMajor = Convert.ToUInt16( attrib.Value );
+                        break;
+
+                    case "BuildMinor":
+                        retVal.BuildMinor = Convert.ToUInt16( attrib.Value );
+                        break;
+
+                    case "BuildPatch":
+                        retVal.BuildPatch = Convert.ToUInt16( attrib.Value );
+                        break;
+
+                    case "ReleaseBranch":
+                        retVal.ReleaseBranch = attrib.Value;
+                        break;
+
+                    case "PreReleaseName":
+                        retVal.PreReleaseName = attrib.Value;
+                        break;
+
+                    case "PreReleaseNumber":
+                        retVal.PreReleaseNumber = Convert.ToByte( attrib.Value );
+                        break;
+
+                    case "PreReleaseFix":
+                        retVal.PreReleaseFix = Convert.ToByte( attrib.Value );
+                        break;
+
+                    default:
+                        retVal.ExtraPropertyMap.Add( attrib.Name.LocalName, attrib.Value );
+                        break;
                     }
+                }
+
+                // correct malformed values
+                if( string.IsNullOrWhiteSpace( retVal.PreReleaseName ) )
+                {
+                    retVal.PreReleaseNumber = 0;
+                    retVal.PreReleaseFix = 0;
+                }
+
+                if( retVal.PreReleaseNumber == 0 )
+                {
+                    retVal.PreReleaseFix = 0;
                 }
             }
 
@@ -123,14 +143,16 @@ namespace Llvm.NET.BuildTasks
 
         // For details on the general algorithm used for computing the numbers here see:
         // https://msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute.assemblyversionattribute(v=vs.140).aspx
-        // Only difference is this uses UTC as the basis to ensure the numbers consistently increase.
-        private static string GetBuildIndexFromUtc( DateTime now )
+        // Only difference is this uses UTC as the basis to ensure the numbers consistently increase independent of locale.
+        private static string GetBuildIndexFromUtc( DateTime timeStamp )
         {
-            var midnightTodayUtc = new DateTime( now.Year, now.Month, now.Day, 0, 0, 0, DateTimeKind.Utc );
+            var midnightTodayUtc = new DateTime( timeStamp.Year, timeStamp.Month, timeStamp.Day, 0, 0, 0, DateTimeKind.Utc );
             var baseDate = new DateTime( 2000, 1, 1, 0, 0, 0, DateTimeKind.Utc );
-            uint buildNumber = ( ( uint )( now - baseDate ).Days ) << 16;
-            buildNumber += ( ushort )( ( now - midnightTodayUtc ).TotalSeconds / 2 );
+            uint buildNumber = ( ( uint )( timeStamp - baseDate ).Days ) << 16;
+            buildNumber += ( ushort )( ( timeStamp - midnightTodayUtc ).TotalSeconds / 2 );
             return buildNumber.ToString( "X08" );
         }
+
+        private Dictionary<string,string> ExtraPropertyMap = new Dictionary<string, string>();
     }
 }

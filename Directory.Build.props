@@ -13,30 +13,14 @@
         a parent. Conditional properties makes this project a well behaved sub module for
         other projects that might want to set the build outputs etc... into a different place.
     -->
-
-    <Choose>
-        <!-- Apply standard analyzers and rule sets for all C# projects -->
-        <When Condition="'$(MSBuildProjectExtension)'=='.csproj'">
-            <PropertyGroup>
-                <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Llvm.NET.ruleset</CodeAnalysisRuleSet>
-            </PropertyGroup>
-            <ItemGroup>
-                <PackageReference Include="Microsoft.AnalyzerPowerPack" Version="1.1.0" PrivateAssets="All" />
-                <PackageReference Include="RefactoringEssentials" Version="5.2.0" PrivateAssets="All" />
-                <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
-            </ItemGroup>
-            <ItemGroup>
-                <None Include="$(MSBuildThisFileDirectory)Llvm.NET.ruleset" Link="Llvm.NET.ruleset" />
-            </ItemGroup>
-        </When>
-    </Choose>
     <PropertyGroup>
         <!-- Default to x86/Win32 | Debug build if not otherwise specified -->
-        <Platform Condition="'$(Platform)'=='' AND '$(MSBuildProjectExtension)'!='.vcxproj'">x86</Platform>
+        <Platform Condition="'$(Platform)'=='' AND '$(MSBuildProjectExtension)'!='.vcxproj'">AnyCPU</Platform>
         <Platform Condition="'$(Platform)'=='' AND '$(MSBuildProjectExtension)'=='.vcxproj'">Win32</Platform>
         <Platform Condition="$(Platform)=='x86' AND '$(MSBuildProjectExtension)'=='.vcxproj'">Win32</Platform>
         <UnifiedPlatformPathName Condition="'$(UnifiedPlatformPathName)'==''">$(Platform)</UnifiedPlatformPathName>
         <UnifiedPlatformPathName Condition="'$(UnifiedPlatformPathName)'=='Win32'">x86</UnifiedPlatformPathName>
+        <UnifiedPlatformPathName Condition="'$(UnifiedPlatformPathName)'=='AnyCPU'">x86</UnifiedPlatformPathName>
 
         <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
 
@@ -50,14 +34,10 @@
 
         <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'==''" >$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)", "Intermediate", "$(MSBuildProjectName)"))</BaseIntermediateOutputPath>
         <IntDir Condition="'$(IntDir)'==''">$([MSBuild]::NormalizeDirectory("$(BaseIntermediateOutputPath)", "$(UnifiedPlatformPathName)", "$(Configuration)"))</IntDir>
-
         <BaseOutputPath Condition="'$(BaseOutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)","bin"))</BaseOutputPath>
-        <OutputPath Condition="'$(OutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseOutputPath)", "$(UnifiedPlatformPathName)","$(Configuration)"))</OutputPath>
-        <OutputPath>$([MSBuild]::EnsureTrailingSlash("$(OutputPath)"))</OutputPath>
+        <PackageOutputPath Condition="'$(PackageOutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseBuildOutputPath)","NuGet"))</PackageOutputPath>
 
-        <OutDir Condition="'$(OutDir)'==''">$(OutputPath)</OutDir>
-
-        <BuildOutputPackagesDir>$(BaseBuildOutputPath)\packages\</BuildOutputPackagesDir>
+        <BuildOutputPackagesDir Condition="'$(BuildOutputPackagesDir)'==''">$(BaseBuildOutputPath)packages\</BuildOutputPackagesDir>
 
         <BuildVersionXmlFile Condition="'$(BuildVersionXmlFile)'==''">$(MSBuildThisFileDirectory)BuildVersion.xml</BuildVersionXmlFile>
         <IsAutomatedBuild Condition="'$(IsAutomatedBuild)'=='' AND '$(APPVEYOR)'!=''">true</IsAutomatedBuild>
@@ -66,4 +46,39 @@
         <IsPullRequestBuild Condition="'$(IsPullRequestBuild)'=='' AND '$(APPVEYOR_PULL_REQUEST_NUMBER)'!=''">true</IsPullRequestBuild>
         <IsPullRequestBuild Condition="'$(IsPullRequestBuild)'==''">false</IsPullRequestBuild>
     </PropertyGroup>
+    <Choose>
+        <!-- Apply standard analyzers and rule sets for all C# projects -->
+        <When Condition="'$(MSBuildProjectExtension)'=='.csproj'">
+            <PropertyGroup>
+                <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Llvm.NET.ruleset</CodeAnalysisRuleSet>
+                <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+                <Determenistic>true</Determenistic>
+            </PropertyGroup>
+            <ItemGroup>
+                <PackageReference Include="Microsoft.AnalyzerPowerPack" Version="1.1.0" PrivateAssets="All" />
+                <PackageReference Include="RefactoringEssentials" Version="5.2.0" PrivateAssets="All" />
+                <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
+            </ItemGroup>
+            <ItemGroup>
+                <None Include="$(MSBuildThisFileDirectory)Llvm.NET.ruleset" Link="Llvm.NET.ruleset" />
+            </ItemGroup>
+            <ItemGroup>
+                <!--
+                  When using EnableDefaultCompileItems=false this is needed to prevent the IDE from
+                  showing all files via the default "none glob". See: https://github.com/dotnet/sdk/issues/1157
+                  Why anyone would want a project system that pulled in all files implicitly instead
+                  of an explicit model is beyond me.
+                -->
+                <None Remove="**" />
+            </ItemGroup>
+        </When>
+        <When Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
+            <!-- vcxproj uses a different pattern for output paths -->
+            <PropertyGroup>
+                <OutputPath Condition="'$(OutputPath)'==''">$([MSBuild]::NormalizeDirectory("$(BaseOutputPath)", "$(Configuration)", "native", "$(UnifiedPlatformPathName)"))</OutputPath>
+                <OutputPath>$([MSBuild]::EnsureTrailingSlash("$(OutputPath)"))</OutputPath>
+                <OutDir Condition="'$(OutDir)'==''">$(OutputPath)</OutDir>
+            </PropertyGroup>
+        </When>
+    </Choose>
 </Project>

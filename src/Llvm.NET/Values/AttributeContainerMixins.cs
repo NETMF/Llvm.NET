@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Llvm.NET.Values
 {
-    // Provides a layer of simplicity and backwards compatibility for manipulationg attributes on Values
+    // Provides a layer of simplicity and backwards compatibility for manipulating attributes on Values
     public static class AttributesMixins
     {
         public static bool Contains( this IAttributeCollection self, AttributeKind kind )

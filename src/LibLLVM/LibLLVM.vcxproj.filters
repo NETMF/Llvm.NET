@@ -22,7 +22,6 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="LlvmApplication.props" />
-    <None Include="nuget.config" />
     <None Include="build\LibLlvm.NET.props">
       <Filter>Build</Filter>
     </None>

@@ -1,122 +1,181 @@
-[CmdletBinding(SupportsShouldProcess)]
-Param(
-    [switch]$PackOnly,
-    [ValidateSet('minimal', 'normal', 'detailed', 'diagnostic')]
-    [string]$MsBuildVerbosity = 'minimal'
-)
-
-
-function RunTheBuild()
+# invokes nuget.exe, handles downloading it to the script root if it isn't already on the path
+function Invoke-Nuget
 {
-    $PackOnly = $args[0].IsPresent
-    $ScriptRoot = $args[1]
-    $MsBuildVerbosity = $args[2]
-
-    # pull in the utilities script
-    . ([IO.Path]::Combine($ScriptRoot, 'BuildExtensions', 'BuildUtils.ps1'))
-
-    # Top level try/catch to force script execution to stop on an error
-    # Otherwise it might keep going depending on the ErrorPreferences setting
-    # which could cause more problems, safer to just stop
-    pushd $ScriptRoot
+    #update system search path to include the directory of this script for nuget.exe
+    $oldPath = $env:Path
+    $env:Path = "$PSScriptRoot;$env:Path"
     try
     {
-        $BuildInfo = Get-BuildInformation
-        if(!$PackOnly)
+        $nugetPaths = where.exe nuget.exe 2>$null
+        if( !$nugetPaths )
         {
-            if($env:APPVEYOR)
-            {
-                Update-AppVeyorBuild -Version $BuildInfo.FullBuildNumber
-            }
+            # Download it from official nuget release location
+            Invoke-WebRequest -UseBasicParsing -Uri https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "$PSScriptRoot\nuget.exe"
         }
-                                
-        $packProperties = @{ version=$($BuildInfo.PackageVersion);
-                             llvmversion=$($BuildInfo.LlvmVersion);
-                             buildbinoutput=(normalize-path (Join-path $($BuildInfo.BuildOutputPath) 'bin'));
-                             configuration='Release'
-                           }
-
-        $msBuildProperties = @{ Configuration = 'Release';
-                                FullBuildNumber = $BuildInfo.FullBuildNumber;
-                                PackageVersion = $BuildInfo.PackageVersion;
-                                FileVersionMajor = $BuildInfo.FileVersionMajor;
-                                FileVersionMinor = $BuildInfo.FileVersionMinor;
-                                FileVersionBuild = $BuildInfo.FileVersionBuild;
-                                FileVersionRevision = $BuildInfo.FileVersionRevision;
-                                LlvmVersion = $BuildInfo.LlvmVersion;
-                              }
-
-        Write-Information "Build Parameters:"
-        Write-Information ($BuildInfo | Format-Table | Out-String)
-    
-        if(!$PackOnly)
+        Write-Information "nuget $args"
+        nuget $args
+        $err = $LASTEXITCODE
+        if($err -ne 0)
         {
-            Write-Information "Restoring Nuget Packages for LibLLVM.vcxproj"
-            Invoke-NuGet restore src\LibLLVM\LibLLVM.vcxproj -PackagesDirectory $BuildInfo.NuGetRepositoryPath
-
-            # native code doesn't have built-in multi-platform project builds like the new CPS based .NET projects do
-            foreach($platform in $BuildInfo.NativePlatforms)
-            {
-                Write-Information "Building LibLLVM"
-                invoke-msbuild /t:Rebuild /p:Platform=$platform  "/p:$(ConvertTo-PropertyList $msBuildProperties)" src\LibLLVM\LibLLVM.vcxproj $BuildInfo.MsBuildArgs
-            }
+            throw "Error running nuget: $err"
         }
-
-        Write-Information "Generating LibLLVM.NET.nupkg"
-        Invoke-NuGet pack src\NuGetPkg\LibLLVM\LibLLVM.NET.nuspec -NoPackageAnalysis -Properties (ConvertTo-PropertyList $packProperties) -OutputDirectory $BuildInfo.NuGetOutputPath
-        
-        if(!$PackOnly)
-        {
-            invoke-msbuild /t:Restore src\Llvm.NET\Llvm.NET.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
-
-            # multi-platform builds are built-in so no loop
-            Write-Information "Building Llvm.NET"
-            invoke-msbuild /t:Rebuild src\Llvm.NET\Llvm.NET.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
-        }
-
-        Write-Information "Generating LLVM.NET.nupkg"
-        Invoke-NuGet pack src\NuGetPkg\LLVM.NET\LLVM.NET.nuspec -NoPackageAnalysis -Properties (ConvertTo-PropertyList $packProperties) -OutputDirectory $BuildInfo.NuGetOutputPath
-
-        Write-Information "Running Nuget Restore for Llvm.NET Tests"
-        invoke-msbuild /t:Restore src\Llvm.NETTests\LLVM.NETTests\LLVM.NETTests.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
-
-        # multi-platform builds are built-in so no loop
-        Write-Information "Building Llvm.NET Tests"
-        invoke-msbuild /t:Rebuild src\Llvm.NETTests\LLVM.NETTests\LLVM.NETTests.csproj "/p:$(ConvertTo-PropertyList $msBuildProperties)" $BuildInfo.MsBuildArgs
-    }
-    catch [Exception]
-    {
-        Write-Error $_
-        return
     }
     finally
     {
-        popd
+        $env:Path = $oldPath
     }
 }
 
+function Invoke-msbuild([string]$project, [hashtable]$properties, [string[]]$targets, [string[]]$loggerArgs=@(),  [string[]]$additionalArgs=@())
+{ 
+    $msbuildArgs = @($project) + $loggerArgs + $additionalArgs + @("/t:$($targets -join ';')")
+    if( $properties )
+    {
+        $msbuildArgs += @( "/p:$(ConvertTo-PropertyList $properties)" ) 
+    }
+    Write-Information "msbuild $($msbuildArgs -join ' ')"
+    msbuild $msbuildArgs
+    if($LASTEXITCODE -ne 0)
+    {
+        throw "Error running msbuild: $LASTEXITCODE"
+    }
+}
+
+function Normalize-Path([string]$path)
+{
+    $path = [System.IO.Path]::GetFullPath($path)
+    if( !$path.EndsWith([System.IO.Path]::DirectorySeparatorChar) )
+    {
+        $path += [System.IO.Path]::DirectorySeparatorChar
+    }
+    return $path
+}
+
+function Get-BuildPaths( [string]$repoRoot)
+{
+    $buildPaths =  @{}
+    $buildPaths.RepoRoot = $repoRoot
+    $buildPaths.BuildOutputPath = Normalize-Path (Join-Path $repoRoot 'BuildOutput')
+    $buildPaths.NugetRepositoryPath = Normalize-Path (Join-Path $buildPaths.BuildOutputPath 'packages')
+    $buildPaths.NugetOutputPath = Normalize-Path (Join-Path $buildPaths.BuildOutputPath 'Nuget')
+    $buildPaths.SrcRoot = Normalize-Path (Join-Path $repoRoot 'src')
+    $buildPaths.LibLLVMSrcRoot = Normalize-Path (Join-Path $buildPaths.SrcRoot 'LibLLVM')
+    $buildPaths.BuildTaskProjRoot = ([IO.Path]::Combine( $repoRoot, 'BuildExtensions', 'Llvm.NET.BuildTasks') )
+    $buildPaths.BuildTaskProj = ([IO.Path]::Combine( $buildPaths.BuildTaskProjRoot, 'Llvm.NET.BuildTasks.csproj') )
+    $buildPaths.BuildTaskBin = ([IO.Path]::Combine( $repoRoot, 'BuildOutput', 'bin', 'Release', 'net47', 'Llvm.NET.BuildTasks.dll') )
+    return $buildPaths
+}
+
+function Get-BuildInformation($buildPaths) 
+{
+    Write-Information "Computing Build information"
+    # Run as distinct job to control 32 bit context and to unload the DLL on completion
+    # this prevents it from remaining loaded in the current session, which would prevent
+    # rebuild or deletes.
+    Start-Job -RunAs32 -ScriptBlock {
+        Write-Information "Computing Build information"
+        $buildPaths = $args[0]
+
+        Add-Type -Path $buildPaths.BuildTaskBin
+        $buildVersionData = [Llvm.NET.BuildTasks.BuildVersionData]::Load( (Join-Path $buildPaths.RepoRoot BuildVersion.xml ) )
+        $semver = $buildVersionData.CreateSemVer(!!$env:APPVEYOR, !!$env:APPVEYOR_PULL_REQUEST_NUMBER, [DateTime]::UtcNow)
+        
+        return @{
+            FullBuildNumber = $semVer.ToString($true)
+            PackageVersion = $semVer.ToString($false)
+            FileVersionMajor = $semVer.FileVersion.Major
+            FileVersionMinor = $semVer.FileVersion.Minor
+            FileVersionBuild = $semVer.FileVersion.Build
+            FileVersionRevision = $semver.FileVersion.Revision
+            FileVersion= "$($semVer.FileVersion.Major).$($semVer.FileVersion.Minor).$($semVer.FileVersion.Build).$($semVer.FileVersion.Revision)"
+            LlvmVersion = "$($buildVersionData.AdditionalProperties['LlvmVersionMajor']).$($buildVersionData.AdditionalProperties['LlvmVersionMinor']).$($buildVersionData.AdditionalProperties['LlvmVersionPatch'])"
+        }
+    } -ArgumentList @($buildPaths) | Receive-Job -Wait -AutoRemoveJob
+}
+
+function ConvertTo-PropertyList([hashtable]$table)
+{
+    (($table.GetEnumerator() | %{ "$($_.Key)=$($_.Value)" }) -join ';')
+}
+
+# Main Script entry point -----------
+
+pushd $PSScriptRoot
 try
 {
-    if(!$env:APPVEYOR)
-    {
-        # Run entire build script as a separate job so that the build task
-        # DLL is unloaded after it completes. This, prevents "in use" errors
-        # when building the DLL in VS for debugging/testing purposes.
-    
-        $sriptBlock =  [ScriptBlock]::Create("$((Get-Command RunTheBuild).Definition)")
-        Start-Job -ScriptBlock $sriptBlock -ArgumentList $PackOnly, $PSScriptRoot, $MsBuildVerbosity | Receive-Job -Wait -AutoRemoveJob
-    }
-    else
-    {   
-        # pull in the utilities script
-        . ([IO.Path]::Combine($ScriptRoot, 'BuildExtensions', 'BuildUtils.ps1'))
+    # setup standard MSBuild logging for this build
+    $msbuildLoggerArgs = @('/clp:Verbosity=Minimal')
 
-        $InformationPreference = "Continue"
-        RunTheBuild $PackOnly $PSScriptRoot $MsBuildVerbosity
+    if (Test-Path "C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll")
+    {
+        $msbuildLoggerArgs = $msbuildLoggerArgs + @("/logger:`"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll`"")
     }
+
+    $buildPaths = Get-BuildPaths $PSScriptRoot
+
+    Write-Information "Build Paths:"
+    Write-Information ($buildPaths | Format-Table | Out-String)
+
+    if( Test-Path -PathType Container $buildPaths.BuildOutputPath )
+    { 
+        Write-Information "Cleaning output folder from previous builds"
+        rd -Recurse -Force -Path $buildPaths.BuildOutputPath    
+    }
+
+    md BuildOutput\NuGet\ | Out-Null
+
+    Write-Information "Restoring NUGET for internal build task"
+    invoke-msbuild -Targets Restore -Project $buildPaths.BuildTaskProj -LoggerArgs $msbuildLoggerArgs
+
+    Write-Information "Building internal build task and NuGetPackage"
+    Invoke-MSBuild -Targets Build -Properties @{Configuration='Release';} -Project $buildPaths.BuildTaskProj -LoggerArgs $msbuildLoggerArgs
+
+    $BuildInfo = Get-BuildInformation $buildPaths
+    if($env:APPVEYOR)
+    {
+        Update-AppVeyorBuild -Version $BuildInfo.FullBuildNumber
+    }
+                                
+    $packProperties = @{ version=$($BuildInfo.PackageVersion);
+                            llvmversion=$($BuildInfo.LlvmVersion);
+                            buildbinoutput=(normalize-path (Join-path $($buildPaths.BuildOutputPath) 'bin'));
+                            configuration='Release'
+                        }
+
+    $msBuildProperties = @{ Configuration = 'Release';
+                            FullBuildNumber = $BuildInfo.FullBuildNumber;
+                            PackageVersion = $BuildInfo.PackageVersion;
+                            FileVersionMajor = $BuildInfo.FileVersionMajor;
+                            FileVersionMinor = $BuildInfo.FileVersionMinor;
+                            FileVersionBuild = $BuildInfo.FileVersionBuild;
+                            FileVersionRevision = $BuildInfo.FileVersionRevision;
+                            FileVersion = $BuildInfo.FileVersion;
+                            LlvmVersion = $BuildInfo.LlvmVersion;
+                            }
+
+    Write-Information "Build Parameters:"
+    Write-Information ($BuildInfo | Format-Table | Out-String)
+
+    # Need to invoke NuGet directly for restore of vcxproj as there is no /t:Restore target support
+    Write-Information "Restoring Nuget Packages for LibLLVM.vcxproj"
+    Invoke-NuGet restore src\LibLLVM\LibLLVM.vcxproj -PackagesDirectory $buildPaths.NuGetRepositoryPath
+
+    Write-Information "Building LibLLVM"
+    Invoke-MSBuild -Targets Build -Project src\LibLLVM\MultiPlatformBuild.vcxproj -Properties $msBuildProperties -LoggerArgs $msbuildLoggerArgs
+
+    Write-Information "Restoring Nuget Packages for Llvm.NET"
+    Invoke-MSBuild -Targets Restore -Project src\Llvm.NET\Llvm.NET.csproj -Properties $msBuildProperties -LoggerArgs $msbuildLoggerArgs
+
+    Write-Information "Building Llvm.NET"
+    Invoke-MSBuild -Targets Build -Project src\Llvm.NET\Llvm.NET.csproj -Properties $msBuildProperties -LoggerArgs $msbuildLoggerArgs
+
+    Write-Information "Running Nuget Restore for Llvm.NET Tests"
+    Invoke-MSBuild -Targets Restore -Project src\Llvm.NETTests\LLVM.NETTests.csproj -Properties $msBuildProperties -LoggerArgs $msbuildLoggerArgs
+
+    Write-Information "Building Llvm.NET Tests"
+    Invoke-MSBuild -Targets Build -Project src\Llvm.NETTests\LLVM.NETTests.csproj -Properties $msBuildProperties -LoggerArgs $msbuildLoggerArgs
 }
-catch [Exception]
+finally
 {
-    Write-Error $_
-    return
+    popd
 }
