@@ -70,12 +70,12 @@
         </GetRepositoryVersionInfo>
         <!-- If FullBuildNumber not provided then use all of the generated version numbers/parts -->
         <PropertyGroup Condition="'$(FullBuildNumber)'==''">
-            <FullBuildNumber>_FullBuildNumber</FullBuildNumber>
-            <PackageVersion>_PackageVersion"</PackageVersion>
-            <FileVersionMajor>_FileVersionMajor</FileVersionMajor>
-            <FileVersionMinor>_FileVersionMinor</FileVersionMinor>
-            <FileVersionBuild>_FileVersionBuild</FileVersionBuild>
-            <FileVersionRevision>_FileVersionRevision</FileVersionRevision>
+            <FullBuildNumber>$(_FullBuildNumber)</FullBuildNumber>
+            <PackageVersion>$(_PackageVersion)</PackageVersion>
+            <FileVersionMajor>$(_FileVersionMajor)</FileVersionMajor>
+            <FileVersionMinor>$(_FileVersionMinor)</FileVersionMinor>
+            <FileVersionBuild>$(_FileVersionBuild)</FileVersionBuild>
+            <FileVersionRevision>$(_FileVersionRevision)</FileVersionRevision>
         </PropertyGroup>
         <!--
         Generate MSBuild properties for the extra properties read from BuildVersionXmlFile

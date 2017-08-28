@@ -15,12 +15,8 @@ skip_commits:
 
 nuget:
   disable_publish_on_pr: true
-  account_feed: true
+  account_feed: false
   project_feed: true
-
-build:
-  parallel: true
-  verbosity: minimal
 
 build_script:
   - ps: .\BuildAll.ps1

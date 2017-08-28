@@ -1,5 +1,3 @@
-param( $startJob = $true )
-
 # invokes nuget.exe, handles downloading it to the script root if it isn't already on the path
 function Invoke-Nuget
 {
@@ -70,29 +68,29 @@ function Get-BuildPaths( [string]$repoRoot)
 
 function Get-BuildInformation($buildPaths) 
 {
-    pushd $buildPaths.RepoRoot
-    try
-    {
+    Write-Information "Computing Build information"
+    # Run as distinct job to control 32 bit context and to unload the DLL on completion
+    # this prevents it from remaining loaded in the current session, which would prevent
+    # rebuild or deletes.
+    Start-Job -RunAs32 -ScriptBlock {
         Write-Information "Computing Build information"
+        $buildPaths = $args[0]
+
         Add-Type -Path $buildPaths.BuildTaskBin
         $buildVersionData = [Llvm.NET.BuildTasks.BuildVersionData]::Load( (Join-Path $buildPaths.RepoRoot BuildVersion.xml ) )
         $semver = $buildVersionData.CreateSemVer(!!$env:APPVEYOR, !!$env:APPVEYOR_PULL_REQUEST_NUMBER, [DateTime]::UtcNow)
         
         return @{
-           FullBuildNumber = $semVer.ToString($true)
-           PackageVersion = $semVer.ToString($false)
-           FileVersionMajor = $semVer.FileVersion.Major
-           FileVersionMinor = $semVer.FileVersion.Minor
-           FileVersionBuild = $semVer.FileVersion.Build
-           FileVersionRevision = $semver.FileVersion.Revision
-           FileVersion= "$($semVer.FileVersion.Major).$($semVer.FileVersion.Minor).$($semVer.FileVersion.Build).$($semVer.FileVersion.Revision)"
-           LlvmVersion = "$($buildVersionData.AdditionalProperties['LlvmVersionMajor']).$($buildVersionData.AdditionalProperties['LlvmVersionMinor']).$($buildVersionData.AdditionalProperties['LlvmVersionPatch'])"
+            FullBuildNumber = $semVer.ToString($true)
+            PackageVersion = $semVer.ToString($false)
+            FileVersionMajor = $semVer.FileVersion.Major
+            FileVersionMinor = $semVer.FileVersion.Minor
+            FileVersionBuild = $semVer.FileVersion.Build
+            FileVersionRevision = $semver.FileVersion.Revision
+            FileVersion= "$($semVer.FileVersion.Major).$($semVer.FileVersion.Minor).$($semVer.FileVersion.Build).$($semVer.FileVersion.Revision)"
+            LlvmVersion = "$($buildVersionData.AdditionalProperties['LlvmVersionMajor']).$($buildVersionData.AdditionalProperties['LlvmVersionMinor']).$($buildVersionData.AdditionalProperties['LlvmVersionPatch'])"
         }
-    }
-    finally
-    {
-        popd
-    }
+    } -ArgumentList @($buildPaths) | Receive-Job -Wait -AutoRemoveJob
 }
 
 function ConvertTo-PropertyList([hashtable]$table)
@@ -100,13 +98,11 @@ function ConvertTo-PropertyList([hashtable]$table)
     (($table.GetEnumerator() | %{ "$($_.Key)=$($_.Value)" }) -join ';')
 }
 
-function RunTheBuild
-{
-    $ScriptRoot = $args[0]
-    cd $ScriptRoot
-    $InformationPreference = 'Continue'
-    $ErrorActionPreference = 'Stop'
+# Main Script entry point -----------
 
+pushd $PSScriptRoot
+try
+{
     # setup standard MSBuild logging for this build
     $msbuildLoggerArgs = @('/clp:Verbosity=Minimal')
 
@@ -115,17 +111,18 @@ function RunTheBuild
         $msbuildLoggerArgs = $msbuildLoggerArgs + @("/logger:`"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll`"")
     }
 
-    $buildPaths = Get-BuildPaths $ScriptRoot
+    $buildPaths = Get-BuildPaths $PSScriptRoot
 
     Write-Information "Build Paths:"
     Write-Information ($buildPaths | Format-Table | Out-String)
 
     if( Test-Path -PathType Container $buildPaths.BuildOutputPath )
-    {
+    { 
+        Write-Information "Cleaning output folder from previous builds"
         rd -Recurse -Force -Path $buildPaths.BuildOutputPath    
     }
 
-    md BuildOutput\NuGet\
+    md BuildOutput\NuGet\ | Out-Null
 
     Write-Information "Restoring NUGET for internal build task"
     invoke-msbuild -Targets Restore -Project $buildPaths.BuildTaskProj -LoggerArgs $msbuildLoggerArgs
@@ -140,10 +137,10 @@ function RunTheBuild
     }
                                 
     $packProperties = @{ version=$($BuildInfo.PackageVersion);
-                         llvmversion=$($BuildInfo.LlvmVersion);
-                         buildbinoutput=(normalize-path (Join-path $($buildPaths.BuildOutputPath) 'bin'));
-                         configuration='Release'
-                       }
+                            llvmversion=$($BuildInfo.LlvmVersion);
+                            buildbinoutput=(normalize-path (Join-path $($buildPaths.BuildOutputPath) 'bin'));
+                            configuration='Release'
+                        }
 
     $msBuildProperties = @{ Configuration = 'Release';
                             FullBuildNumber = $BuildInfo.FullBuildNumber;
@@ -154,7 +151,7 @@ function RunTheBuild
                             FileVersionRevision = $BuildInfo.FileVersionRevision;
                             FileVersion = $BuildInfo.FileVersion;
                             LlvmVersion = $BuildInfo.LlvmVersion;
-                          }
+                            }
 
     Write-Information "Build Parameters:"
     Write-Information ($BuildInfo | Format-Table | Out-String)
@@ -178,25 +175,7 @@ function RunTheBuild
     Write-Information "Building Llvm.NET Tests"
     Invoke-MSBuild -Targets Build -Project src\Llvm.NETTests\LLVM.NETTests.csproj -Properties $msBuildProperties -LoggerArgs $msbuildLoggerArgs
 }
-
-if( $startJob )
+finally
 {
-    # Run entire build script as a separate 32bit job so that the build task DLL is loadable
-    # and is unloaded after it completes. This, prevents "in use" errors when building the DLL
-    # in VS for debugging/testing purposes. This uses a scriptblock to invoke the script with
-    # $startJob param set to $false (blocking infinite recursion) 
-    Start-Job -RunAs32 -ScriptBlock {
-        try
-        {
-            invoke-expression "$($args[0]) `$false"
-        }
-        catch
-        {
-            Write-Error "ERROR: $( $error -join [Environment]::NewLine )"
-        }
-    } $sriptBlock -ArgumentList @($PSCommandPath) | Receive-Job -Wait -AutoRemoveJob
-}
-else
-{
-    RunTheBuild $PSScriptRoot
+    popd
 }
