@@ -8,6 +8,7 @@
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
     <PackageId>LlvmNetBuildTasks</PackageId>
+    <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
     <ItemGroup>
         <None Remove="**" />

@@ -12,9 +12,9 @@ namespace Llvm.NET.Native
     internal static partial class NativeMethods
     {
         // version info for verification of matched LibLLVM
-        private const int VersionMajor = 4;
+        private const int VersionMajor = 5;
         private const int VersionMinor = 0;
-        private const int VersionPatch = 1;
+        private const int VersionPatch = 0;
 
         private static void FatalErrorHandler( string Reason )
         {
@@ -55,7 +55,7 @@ namespace Llvm.NET.Native
              || versionInfo.Patch < VersionPatch
               )
             {
-                throw new BadImageFormatException( "Mismatched LibLLVM version" );
+                throw new InvalidOperationException( $"Mismatched LibLLVM version - Expected: {VersionMajor}.{VersionMinor}.{VersionPatch} Actual: {versionInfo.Major}.{versionInfo.Minor}.{versionInfo.Patch}" );
             }
 
             // initialize the static fields

@@ -216,6 +216,7 @@ namespace Llvm.NET.Native
         mips64,         // MIPS64: mips64
         mips64el,       // MIPS64EL: mips64el
         msp430,         // MSP430: msp430
+        nios2,          // NIOSII: nios2
         ppc,            // PPC: powerpc
         ppc64,          // PPC64: powerpc64, ppu
         ppc64le,        // PPC64LE: powerpc64le
@@ -268,6 +269,7 @@ namespace Llvm.NET.Native
         ARMSubArch_v7m,
         ARMSubArch_v7s,
         ARMSubArch_v7k,
+        ARMSubArch_v7ve,
         ARMSubArch_v6,
         ARMSubArch_v6m,
         ARMSubArch_v6k,
@@ -304,6 +306,7 @@ namespace Llvm.NET.Native
     {
         UnknownOS,
 
+        Ananas,
         CloudABI,
         Darwin,
         DragonFly,
@@ -367,6 +370,7 @@ namespace Llvm.NET.Native
         COFF,
         ELF,
         MachO,
+        Wasm
     }
 
     internal enum LLVMComdatSelectionKind
@@ -477,15 +481,6 @@ namespace Llvm.NET.Native
 
         [DllImport( libraryPath, EntryPoint = "LLVMMetadataReplaceAllUsesWith", CallingConvention = CallingConvention.Cdecl, BestFitMapping = false, ThrowOnUnmappableChar = true )]
         internal static extern void MetadataReplaceAllUsesWith( LLVMMetadataRef @MD, LLVMMetadataRef @New );
-
-        // Added to LLVM-C API in LLVM 5.0.0
-        [DllImport( libraryPath, EntryPoint = "LLVMMetadataAsValue", CallingConvention = CallingConvention.Cdecl )]
-        internal static extern LLVMValueRef MetadataAsValue( LLVMContextRef context, LLVMMetadataRef metadataRef );
-
-        /* Added to LLVM-C API in LLVM 5.0.0
-        // [DllImport( libraryPath, EntryPoint = "LLVMValueAsMetadata", CallingConvention = CallingConvention.Cdecl )]
-        // internal static extern LLVMMetadataRef LLVMValueAsMetadata( LLVMValueRef Val );
-        */
 
         [DllImport( libraryPath, EntryPoint = "LLVMSetCurrentDebugLocation2", CallingConvention = CallingConvention.Cdecl, BestFitMapping = false, ThrowOnUnmappableChar = true )]
         internal static extern void SetCurrentDebugLocation2( LLVMBuilderRef @Bref, UInt32 @Line, UInt32 @Col, LLVMMetadataRef @Scope, LLVMMetadataRef @InlinedAt );
