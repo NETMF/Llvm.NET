@@ -21,6 +21,7 @@
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMAnalysis.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMAsmParser.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMAsmPrinter.pdb" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMBinaryFormat.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMBitReader.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMBitWriter.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMCodeGen.pdb" target="lib\native\lib"/>
@@ -32,6 +33,7 @@
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMDebugInfoMSF.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMDebugInfoPDB.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMDemangle.pdb" target="lib\native\lib"/>
+        <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMDlltoolDriver.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMExecutionEngine.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMGlobalISel.pdb" target="lib\native\lib"/>
         <file src="$llvmbuildroot$$platform$-$configuration$\$configuration$\lib\LLVMInstCombine.pdb" target="lib\native\lib"/>

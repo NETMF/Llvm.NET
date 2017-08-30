@@ -99,7 +99,7 @@ function Generate-CMake( [CMakeConfig]$config )
     # Verify Cmake version info
     $CmakeInfo = Get-CmakeInfo 3 7 1
 
-    $activity = "Generating solution for {0}" -f($config.Name)
+    $activity = "Generating solution for $($config.Name)" 
     Write-Information $activity
     if(!(Test-Path -PathType Container $config.BuildRoot ))
     {
@@ -108,10 +108,15 @@ function Generate-CMake( [CMakeConfig]$config )
 
     # Construct full set of args from fixed options and configuration variables
     $cmakeArgs = New-Object System.Collections.ArrayList
-    $cmakeArgs.Add("-G`"{0}`"" -f($config.Generator)) | Out-Null
+    $cmakeArgs.Add("-G`"$($config.Generator)`"" ) | Out-Null
+    foreach( $param in $config.CMakeCommandArgs )
+    {
+        $cmakeArgs.Add( $param ) | Out-Null
+    } 
+
     foreach( $var in $config.CMakeBuildVariables.GetEnumerator() )
     {
-        $cmakeArgs.Add( "-D{0}={1}" -f($var.Key,$var.Value) ) | Out-Null
+        $cmakeArgs.Add( "-D$($var.Key)=$($var.Value)" ) | Out-Null
     }
 
     $cmakeArgs.Add( $config.SrcRoot ) | Out-Null
@@ -125,14 +130,14 @@ function Generate-CMake( [CMakeConfig]$config )
 
         if($LASTEXITCODE -ne 0 )
         {
-            throw ("Cmake generation exited with non-zero exit code: {0}" -f($LASTEXITCODE))
+            throw "Cmake generation exited with non-zero exit code: $LASTEXITCODE"
         }
     }
     finally
     {
         $timer.Stop()
         Write-Progress -Activity $activity -Completed
-        Write-Verbose ("Generation Time: {0}" -f($timer.Elapsed.ToString()))
+        Write-Verbose "Generation Time: $($timer.Elapsed.ToString())"
         popd
     }
 }

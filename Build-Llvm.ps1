@@ -271,7 +271,7 @@ param(
     $cmakeListPath = Join-Path $LlvmRoot CMakeLists.txt
     if( !( Test-Path -PathType Leaf $cmakeListPath ) )
     {
-        throw "'$cmakeListPath' is missing, the current directory does not appear to be a valid source directory"
+        throw "'CMakeLists.txt' is missing, '$LlvmRoot' does not appear to be a valid source directory"
     }
 
     $timer = [System.Diagnostics.Stopwatch]::StartNew()
