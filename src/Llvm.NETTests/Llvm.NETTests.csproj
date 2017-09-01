@@ -26,7 +26,7 @@
         -->
     <When Condition="'$(BuildingInsideVisualStudio)'=='true'">
       <ItemGroup>
-        <PackageReference Include="LLVM.NET" Version="[4.0.0-*,5)" />
+        <PackageReference Include="LLVM.NET" Version="[5.0.0-*,6)" />
       </ItemGroup>
       <ItemGroup>
           <ProjectReference Include="$(BuildRootDir)src\Llvm.NET\Llvm.NET.csproj">
@@ -43,7 +43,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <PackageReference Include="LlvmNetBuildTasks" Version="1.0.0" />
+    <PackageReference Include="LlvmNetBuildTasks" Version="[1.0.1]" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />

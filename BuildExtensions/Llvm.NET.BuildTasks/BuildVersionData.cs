@@ -47,18 +47,18 @@ namespace Llvm.NET.BuildTasks
                 {
                 case BuildMode.LocalDev:
                     // local dev builds are always newer than any other builds
-                    preReleaseInfo = new CIPreReleaseVersion( "DEV", GetBuildIndexFromUtc( timeStamp.ToUniversalTime() ), "zz" );
+                    preReleaseInfo = new CIPreReleaseVersion( "DEV", GetBuildIndexFromUtc( timeStamp.ToUniversalTime() ) );
                     break;
 
                 case BuildMode.PullRequest:
                     // PR builds should have a higher precedence than CI or release so that the
                     // builds pull in the components built in previous stages of the current build
                     // instead of the official CI or released builds.
-                    preReleaseInfo = new CIPreReleaseVersion( "PRQ", GetBuildIndexFromUtc( head.Author.When.UtcDateTime ), "pr" );
+                    preReleaseInfo = new CIPreReleaseVersion( "PRQ", GetBuildIndexFromUtc( head.Author.When.UtcDateTime ) );
                     break;
 
                 case BuildMode.ContinuousIntegration:
-                    preReleaseInfo = new CIPreReleaseVersion( "BLD", GetBuildIndexFromUtc(timeStamp.ToUniversalTime() ) );
+                    preReleaseInfo = new CIPreReleaseVersion( "REL", GetBuildIndexFromUtc(timeStamp.ToUniversalTime() ) );
                     break;
 
                 case BuildMode.OfficialRelease:

@@ -51,7 +51,8 @@
         <When Condition="'$(MSBuildProjectExtension)'=='.csproj'">
             <PropertyGroup>
                 <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)Llvm.NET.ruleset</CodeAnalysisRuleSet>
-                <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+                <EnableDefaultItems>false</EnableDefaultItems>
+                <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
                 <Determenistic>true</Determenistic>
             </PropertyGroup>
             <ItemGroup>

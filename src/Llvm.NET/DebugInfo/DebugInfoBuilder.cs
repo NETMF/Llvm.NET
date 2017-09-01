@@ -331,7 +331,7 @@ namespace Llvm.NET.DebugInfo
             return MDNode.FromHandle<DISubProgram>( handle );
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop call" )]
+        [SuppressMessage( "Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Justification = "Specific type required by interop call" )]
         public DILocalVariable CreateLocalVariable( DIScope scope
                                                   , string name
                                                   , DIFile file

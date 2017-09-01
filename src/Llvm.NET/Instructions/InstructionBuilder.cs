@@ -1601,6 +1601,8 @@ namespace Llvm.NET.Instructions
             return llvmArgs;
         }
 
+        internal LLVMBuilderRef BuilderHandle { get; }
+
         // LLVM will automatically perform constant folding, thus the result of applying
         // a unary operator instruction may actually be a constant value and not an instruction
         // this deals with that to produce a correct managed wrapper type
@@ -1700,8 +1702,6 @@ namespace Llvm.NET.Instructions
 
             return NativeMethods.BuildCall( BuilderHandle, func.ValueHandle, out llvmArgs[ 0 ], ( uint )argCount, string.Empty );
         }
-
-        internal LLVMBuilderRef BuilderHandle { get; }
 
         private const string IncompatibleTypeMsgFmt = "Incompatible types: destination pointer must be of the same type as the value stored.\n"
                                             + "Types are:\n"

@@ -26,18 +26,62 @@ function Invoke-Nuget
     }
 }
 
+function Find-VSInstance
+{
+    Install-Module VSSetup -Scope CurrentUser | Out-Null
+    return Get-VSSetupInstance -All | select -First 1
+}
+
+function Find-MSBuild
+{
+    $foundOnPath = $true
+    $msBuildPath = where.exe msbuild.exe 2>$null
+    if( !$msBuildPath )
+    {
+        Write-Verbose "MSBuild not found attempting to locate VS installation"
+        $vsInstall = Find-VSInstance
+        if( !$vsInstall )
+        {
+            throw "MSBuild not found on PATH and No instances of VS found to use"
+        }
+        Write-Verbose "VS installation found: $vsInstall"            
+        $msBuildPath = [System.IO.Path]::Combine( $vsInstall.InstallationPath, 'MSBuild', '15.0', 'bin', 'MSBuild.exe')
+        $foundOnPath = $false
+    }
+    
+    if( !(Test-Path -PathType Leaf $msBuildPath ) )
+    {
+        Write-Verbose 'MSBuild not found'
+        return $null
+    }
+
+    Write-Verbose "MSBuild Found at: $msBuildPath"
+    return @{ FullPath=$msBuildPath
+              BinPath=[System.IO.Path]::GetDirectoryName( $msBuildPath )
+              FoundOnPath=$foundOnPath
+            }
+}
+
 function Invoke-msbuild([string]$project, [hashtable]$properties, [string[]]$targets, [string[]]$loggerArgs=@(),  [string[]]$additionalArgs=@())
 { 
-    $msbuildArgs = @($project) + $loggerArgs + $additionalArgs + @("/t:$($targets -join ';')")
-    if( $properties )
+    $oldPath = $env:Path
+    try
     {
-        $msbuildArgs += @( "/p:$(ConvertTo-PropertyList $properties)" ) 
+        $msbuildArgs = @($project) + $loggerArgs + $additionalArgs + @("/t:$($targets -join ';')")
+        if( $properties )
+        {
+            $msbuildArgs += @( "/p:$(ConvertTo-PropertyList $properties)" ) 
+        }
+        Write-Information "msbuild $($msbuildArgs -join ' ')"
+        msbuild $msbuildArgs
+        if($LASTEXITCODE -ne 0)
+        {
+            throw "Error running msbuild: $LASTEXITCODE"
+        }
     }
-    Write-Information "msbuild $($msbuildArgs -join ' ')"
-    msbuild $msbuildArgs
-    if($LASTEXITCODE -ne 0)
+    finally
     {
-        throw "Error running msbuild: $LASTEXITCODE"
+        $env:Path = $oldPath
     }
 }
 
@@ -101,8 +145,20 @@ function ConvertTo-PropertyList([hashtable]$table)
 # Main Script entry point -----------
 
 pushd $PSScriptRoot
+$oldPath = $env:Path
 try
 {
+    $msbuild = Find-MSBuild
+    if( !$msbuild )
+    {
+        throw "MSBuild not found"
+    }
+
+    if( !$msbuild.FoundOnPath )
+    {
+        $env:Path = "$env:Path;$($msbuild.BinPath)"
+    }
+
     # setup standard MSBuild logging for this build
     $msbuildLoggerArgs = @('/clp:Verbosity=Minimal')
 
@@ -178,4 +234,5 @@ try
 finally
 {
     popd
+    $env:Path = $oldPath
 }

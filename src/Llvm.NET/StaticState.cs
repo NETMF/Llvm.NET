@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Threading;
 using Llvm.NET.Native;
 
 namespace Llvm.NET
@@ -38,6 +42,83 @@ namespace Llvm.NET
     /// <summary>Provides support for various LLVM static state initialization and manipulation</summary>
     public static class StaticState
     {
+        public static IDisposable InitializeLLVM()
+        {
+            return LazyInitializer.EnsureInitialized( ref LlvmInitializationState
+                                                    , ref LlvmStateInitialized
+                                                    , ref InitializationSyncObj
+                                                    , InternalInitializeLLVM
+                                                    );
+        }
+
+        // version info for verification of matched LibLLVM
+        private const int VersionMajor = 5;
+        private const int VersionMinor = 0;
+        private const int VersionPatch = 0;
+
+        private static IDisposable LlvmInitializationState;
+        private static object InitializationSyncObj;
+        private static bool LlvmStateInitialized;
+
+        private static void FatalErrorHandler( string reason )
+        {
+            // NOTE: LLVM will call exit() upon return from this function and there's no way to stop it
+            Trace.TraceError( "LLVM Fatal Error: '{0}'; Application exiting.", reason );
+        }
+
+        /* TODO: Remove static constructor in favor of a static state init utility that returns IDisposable
+           so that all the analyzer issue here go away and proper LLVMShutdown can be performed.
+        */
+
+        /// <summary>Static constructor for NativeMethods</summary>
+        private static IDisposable InternalInitializeLLVM()
+        {
+            // force loading the appropriate architecture specific
+            // DLL before any use of the wrapped inter-op APIs to
+            // allow building this library as ANYCPU
+            string path = Path.GetDirectoryName( Assembly.GetExecutingAssembly( ).Location );
+            if( Directory.Exists( Path.Combine( path, "LibLLVM" ) ) )
+            {
+                NativeMethods.LoadWin32Library( NativeMethods.LibraryPath, "LibLLVM" );
+            }
+            else
+            {
+                // fall-back to standard library search paths to allow building
+                // CPU specific variants with only one native DLL without needing
+                // conditional compilation on this library, which is useful for
+                // unit testing or whenever the Nuget packaging isn't desired.
+                NativeMethods.LoadWin32Library( NativeMethods.LibraryPath, null );
+            }
+
+            // Verify the version of LLVM in LibLLVM
+            NativeMethods.GetVersionInfo( out LLVMVersionInfo versionInfo );
+            if( versionInfo.Major != VersionMajor
+             || versionInfo.Minor != VersionMinor
+             || versionInfo.Patch < VersionPatch
+              )
+            {
+                throw new InvalidOperationException( $"Mismatched LibLLVM version - Expected: {VersionMajor}.{VersionMinor}.{VersionPatch} Actual: {versionInfo.Major}.{versionInfo.Minor}.{versionInfo.Patch}" );
+            }
+
+            // initialize the static fields
+            FatalErrorHandlerDelegate = new Lazy<LLVMFatalErrorHandler>( ( ) => FatalErrorHandler, LazyThreadSafetyMode.PublicationOnly );
+            NativeMethods.InstallFatalErrorHandler( FatalErrorHandlerDelegate.Value );
+            return new DisposableAction( InternalShutdownLLVM );
+        }
+
+        private static void InternalShutdownLLVM( )
+        {
+            lock( InitializationSyncObj )
+            {
+                LlvmInitializationState = null;
+                LlvmStateInitialized = false;
+                NativeMethods.Shutdown( );
+            }
+        }
+
+        // lazy initialized singleton unmanaged delegate so it is never collected
+        private static Lazy<LLVMFatalErrorHandler> FatalErrorHandlerDelegate;
+
         public static void ParseCommandLineOptions( string[ ] args, string overview )
         {
             if( args == null )

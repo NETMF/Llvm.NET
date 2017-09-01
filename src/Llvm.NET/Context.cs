@@ -764,7 +764,7 @@ namespace Llvm.NET
         // This helps reduce the number of wrapper instances created and also allows reference equality to work
         // as expected for managed types.
         // TODO: Refactor the interning to class dedicated to managing the mappings, this can allow looking up the
-        // context from handles where ther isn't any APIs to retrieve the Context.
+        // context from handles where there isn't any APIs to retrieve the Context.
         #region LLVM handle Interning
 
         internal static Context GetContextFor( LLVMContextRef contextRef )

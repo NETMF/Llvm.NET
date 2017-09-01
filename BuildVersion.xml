@@ -29,20 +29,20 @@ build field in the version.
 
 There are multiple general patterns that are used to produce a valid build number. The
 following is a list of the version formats in descending order of precedence:
-          Local build  - {BuildMajor}.{BuildMinor}.{BuildPatch}{double dash}zz-DEV-{UTCTIME of build in hex}
-          Pull Request - {BuildMajor}.{BuildMinor}.{BuildPatch}{double dash}pr-PRQ-{UTCTIME of PR Commit}+{COMMIT ID}
-    Official CI builds - {BuildMajor}.{BuildMinor}.{BuildPatch}{double dash}ci-BLD-{UTCTIME of HEAD Commit}+{COMMIT ID}
+          Local build  - {BuildMajor}.{BuildMinor}.{BuildPatch}{double dash}ci-DEV-{UTCTIME of build in hex}
+          Pull Request - {BuildMajor}.{BuildMinor}.{BuildPatch}{double dash}ci-PRQ-{UTCTIME of PR Commit}+{COMMIT ID}
+    Official CI builds - {BuildMajor}.{BuildMinor}.{BuildPatch}{double dash}ci-REL-{UTCTIME of HEAD Commit}+{COMMIT ID}
    Official PreRelease - {BuildMajor}.{BuildMinor}.{BuildPatch}{single dash}{PreReleaseName}[.PreReleaseNumber][.PreReleaseFix]+{COMMIT ID}
       Official Release - {BuildMajor}.{BuildMinor}.{BuildPatch}+{COMMIT ID}
 -->
 <BuildVersionData
     ReleaseBranch="master"
-    BuildMajor = "4"
+    BuildMajor = "5"
     BuildMinor = "0"
     BuildPatch = "0"
     PreReleaseName = "alpha"
 
-    LlvmVersionMajor ="4"
+    LlvmVersionMajor ="5"
     LlvmVersionMinor ="0"
-    LlvmVersionPatch ="1"
+    LlvmVersionPatch ="0"
 />
