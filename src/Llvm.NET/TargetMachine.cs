@@ -13,7 +13,7 @@ namespace Llvm.NET
             DisposeTargetMachine( false );
         }
 
-        // This code added to correctly implement the disposable pattern.
+        /// <inheritdoc/>
         public void Dispose( )
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing)
@@ -81,6 +81,14 @@ namespace Llvm.NET
             }
         }
 
+        /// <summary>Emmits the module for the target machine to a <see cref="MemoryBuffer"/></summary>
+        /// <param name="module">Module to emit to the buffer</param>
+        /// <param name="fileType">Type of file to generate into the buffer</param>
+        /// <returns><see cref="MemoryBuffer"/> containing the generated code</returns>
+        /// <remarks>
+        /// The <see cref="NativeModule.TargetTriple"/> must match the <see cref="Triple"/> for this
+        /// target.
+        /// </remarks>
         public MemoryBuffer EmitToBuffer( NativeModule module, CodeGenFileType fileType )
         {
             if( module == null )

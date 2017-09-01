@@ -57,6 +57,7 @@
         <Compile Include="DebugInfo\GenericDINode.cs" />
         <Compile Include="DebugInfo\DebugType.cs" />
         <Compile Include="DebugInfo\TupleTypedArrayWrapper.cs" />
+        <Compile Include="DisposableAction.cs" />
         <Compile Include="ExtensiblePropertyContainer.cs" />
         <Compile Include="ExtensiblePropertyDescriptor.cs" />
         <Compile Include="Instructions\InstructionExtensions.cs" />
@@ -89,6 +90,7 @@
         <Compile Include="Instructions\UserOp1.cs" />
         <Compile Include="Instructions\UserOp2.cs" />
         <Compile Include="Instructions\VaArg.cs" />
+        <Compile Include="Native\GeneratedCodeExtensions.cs" />
         <Compile Include="Native\IntPtrExtensions.cs" />
         <Compile Include="Native\LLVMBuilderRef.cs" />
         <Compile Include="Native\LLVMMetadataRef.cs" />
@@ -97,7 +99,6 @@
         <Compile Include="Native\LLVMVersionInfo.cs" />
         <Compile Include="Native\SafeHandleNullIsInvalid.cs" />
         <Compile Include="Native\StringMarshaler.cs" />
-        <Compile Include="Native\GeneratedCodeExtensions.cs" />
         <Compile Include="Native\ValueKind.cs" />
         <Compile Include="Native\WrappedNativeCallback.cs" />
         <Compile Include="Metadata\ConstantAsMetadata.cs" />
@@ -226,7 +227,7 @@
         -->
         <When Condition="'$(BuildingInsideVisualStudio)'=='true'">
             <ItemGroup>
-                <PackageReference Include="LibLLVM.NET" Version="[4.0.0-*,5)" />
+                <PackageReference Include="LibLLVM.NET" Version="[5.0.0-*,6)" />
             </ItemGroup>
         </When>
         <Otherwise>
