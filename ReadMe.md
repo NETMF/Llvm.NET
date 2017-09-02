@@ -2,6 +2,9 @@
 Detached branch of Llvm.NET for building and publishing the LLVM libraries and
 header files.
 
+## Build Status
+[![Build status](https://ci.appveyor.com/api/projects/status/2oqp15olqxna55jj/branch/Llvm.Libs?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net-3dmy2/branch/Llvm.Libs)
+
 ## About
 LLVM is a large collection of libraries for building compiler back-ends that
 supports a great deal of customization and extensibility. Using LLVM either
