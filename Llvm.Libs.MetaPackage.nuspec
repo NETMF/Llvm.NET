@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-    <metadata minClientVersion="2.8">
+    <metadata minClientVersion="4.0">
         <id>Llvm.Libs</id>
         <version>$version$</version>
         <authors>smaillet</authors>
@@ -27,6 +27,7 @@
     </metadata>
     <files>
         <file src="Llvm.Libs.MetaPackage.props" target="build\native\Llvm.Libs.props" />
+        <file src="Llvm.Libs.MetaPackage.targets" target="build\native\Llvm.Libs.targets" />
         <file src="$llvmsrcroot$include\**" target="lib\native\include" exclude="**\CMakeLists.txt" />
     </files>
 </package>

@@ -26,10 +26,6 @@
        - Llvm.Libs.targets.x86-Debug.<Version>.nupkg
        - Llvm.Libs.targets.x86-Release.<Version>.nupkg
 
-.PARAMETER LlvmVersion
-    Specifies the LLVM Version, which is used in registering the location of the lib and headers in the registry. The default value is the currently
-    supported version of LLVM. However, when working to support a new release of LLVM it is useful to force a different version number.
-
 .PARAMETER LlvmRoot
     This specifies the root of the LLVM source tree to build.
 
@@ -77,12 +73,6 @@ param( [Parameter(Mandatory=$true, ParameterSetName="build")]
        [switch]
        $CreateSettingsJson=$true,
 
-       [Parameter(ParameterSetName="build")]
-       [Parameter(ParameterSetName="pack")]
-       [ValidateNotNullOrEmpty()]
-       [string]
-       $LlvmVersion="4.0.1",
-
        [Parameter(Mandatory=$true,ParameterSetName="build")]
        [Parameter(Mandatory=$true,ParameterSetName="pack")]
        [ValidateNotNullOrEmpty()]
@@ -109,6 +99,15 @@ param( [Parameter(Mandatory=$true, ParameterSetName="build")]
 Set-StrictMode -Version Latest
 
 . .\CmakeHelpers.ps1
+
+function Get-LlvmVersion( [string] $cmakeListPath )
+{
+    $props = @{}
+    $matches = Select-String -Path $cmakeListPath -Pattern "set\(LLVM_VERSION_(MAJOR|MINOR|PATCH) ([0-9])+\)" |
+        %{ $_.Matches } |
+        %{ $props.Add( $_.Groups[1].Value, [Convert]::ToInt32($_.Groups[2].Value) ) }
+    "$($props.Major).$($props.Minor).$($props.Patch)"
+}
 
 function Normalize-Path([string]$path )
 {
@@ -256,7 +255,6 @@ param(
     [switch] $Generate,
     [switch] $Build,
     [switch] $CreateSettingsJson,
-    [string] $LlvmVersion,
     [string] $LlvmRoot,
     [string] $BaseVsGenerator
 )
@@ -267,12 +265,6 @@ param(
                          (New-LlvmCmakeConfig x64 "Release" $BaseVsGenerator $BuildOutputPath $LlvmRoot),
                          (New-LlvmCmakeConfig x64 "Debug" $BaseVsGenerator $BuildOutputPath $LlvmRoot)
                        )
-
-    $cmakeListPath = Join-Path $LlvmRoot CMakeLists.txt
-    if( !( Test-Path -PathType Leaf $cmakeListPath ) )
-    {
-        throw "'CMakeLists.txt' is missing, '$LlvmRoot' does not appear to be a valid source directory"
-    }
 
     $timer = [System.Diagnostics.Stopwatch]::StartNew()
 
@@ -325,12 +317,18 @@ $BuildOutputPath = Normalize-Path $BuildOutputPath
 
 Write-Information "LLVM Source Root: $LlvmRoot"
 
+$cmakeListPath = Join-Path $LlvmRoot CMakeLists.txt
+if( !( Test-Path -PathType Leaf $cmakeListPath ) )
+{
+    throw "'CMakeLists.txt' is missing, '$LlvmRoot' does not appear to be a valid source directory"
+}
+
 if( $PsCmdlet.ParameterSetName -eq "build" )
 {
-    BuildLibraries -BuildOutputPath $BuildOutputPath -Generate:$Generate -Build:$Build -CreateSettingsJson:$CreateSettingsJson -LlvmVersion $LlvmVersion -LlvmRoot $LlvmRoot -BaseVsGenerator $BaseVsGenerator
+    BuildLibraries -BuildOutputPath $BuildOutputPath -Generate:$Generate -Build:$Build -CreateSettingsJson:$CreateSettingsJson -LlvmRoot $LlvmRoot -BaseVsGenerator $BaseVsGenerator
 }
 
 if( $PsCmdlet.ParameterSetName -eq "pack" )
 {
-    GenerateMultiPack $LlvmVersion $LlvmRoot $BuildOutputPath $PackOutputPath $NuspecOutputPath
+    GenerateMultiPack (Get-LlvmVersion $cmakeListPath) $LlvmRoot $BuildOutputPath $PackOutputPath $NuspecOutputPath
 }
