@@ -5,7 +5,7 @@
         However, the default VS 2017 CMake support uses x86 as a platform name. So this adapts and adjusts
         to allow for compatibility across VS tool versions.
         -->
-        <LLVM_PLATFORM Condition="'$(LLVM_PLATFORM)'==''">$(Platform)"</LLVM_PLATFORM>
+        <LLVM_PLATFORM Condition="'$(LLVM_PLATFORM)'==''">$(Platform)</LLVM_PLATFORM>
         <LLVM_PLATFORM Condition="'$(LLVM_PLATFORM)'=='Win32'">x86</LLVM_PLATFORM>
         <LLVM_PLATFORM_CONFIG Condition="'$(LLVM_PLATFORM_CONFIG)'==''">$(LLVM_PLATFORM)-$(Configuration)</LLVM_PLATFORM_CONFIG>
     </PropertyGroup>

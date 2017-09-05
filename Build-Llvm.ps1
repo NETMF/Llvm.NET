@@ -69,12 +69,13 @@ param( [Parameter(Mandatory=$true, ParameterSetName="build")]
        [switch]
        $Build,
 
-       [Parameter(ParameterSetName="build")]
+       [Parameter(ParameterSetName="CreateSettingsJson")]
        [switch]
        $CreateSettingsJson=$true,
 
        [Parameter(Mandatory=$true,ParameterSetName="build")]
        [Parameter(Mandatory=$true,ParameterSetName="pack")]
+       [Parameter(Mandatory=$true,ParameterSetName="CreateSettingsJson")]
        [ValidateNotNullOrEmpty()]
        [string]$LlvmRoot,
 
@@ -169,7 +170,7 @@ function New-LlvmCmakeConfig([string]$platform, [string]$config, [string]$BaseGe
     }
     $errLogFile = Join-Path $PSScriptRoot "msbuild.$($cmakeConfig.Name).err.log"
     $fullLogFile = Join-Path $PSScriptRoot "msbuild.$($cmakeConfig.Name).log"
-    $cmakeConfig.MsBuildCommandArgs = $cmakeConfig.MsBuildCommandArgs + @("/flp:verbosity=normal;LogFile=$fullLogFile", "/flp1:errorsonly;LogFile=$errLogFile")
+    $cmakeConfig.MsBuildCommandArgs = $cmakeConfig.MsBuildCommandArgs + @("/clp:verbosity=minimal", "/flp:verbosity=minima;LogFile=$fullLogFile", "/flp1:errorsonly;LogFile=$errLogFile")
 
     return $cmakeConfig
 }
@@ -256,22 +257,11 @@ param(
     [switch] $Build,
     [switch] $CreateSettingsJson,
     [string] $LlvmRoot,
-    [string] $BaseVsGenerator
+    [string] $BaseVsGenerator,
+    [CMakeConfig[]] $configurations
 )
 
-    # Construct array of configurations to deal with
-    $configurations = @( (New-LlvmCmakeConfig x86 "Release" $BaseVsGenerator $BuildOutputPath $LlvmRoot),
-                         (New-LlvmCmakeConfig x86 "Debug" $BaseVsGenerator $BuildOutputPath $LlvmRoot),
-                         (New-LlvmCmakeConfig x64 "Release" $BaseVsGenerator $BuildOutputPath $LlvmRoot),
-                         (New-LlvmCmakeConfig x64 "Debug" $BaseVsGenerator $BuildOutputPath $LlvmRoot)
-                       )
-
     $timer = [System.Diagnostics.Stopwatch]::StartNew()
-
-    if( $CreateSettingsJson )
-    {
-        New-CmakeSettings $configurations | Out-File (join-path $LlvmRoot CMakeSettings.json)
-    }
 
     if( $Generate )
     {
@@ -323,12 +313,25 @@ if( !( Test-Path -PathType Leaf $cmakeListPath ) )
     throw "'CMakeLists.txt' is missing, '$LlvmRoot' does not appear to be a valid source directory"
 }
 
-if( $PsCmdlet.ParameterSetName -eq "build" )
+# Construct array of configurations to deal with
+$configurations = @( (New-LlvmCmakeConfig x86 "Release" $BaseVsGenerator $BuildOutputPath $LlvmRoot),
+                     (New-LlvmCmakeConfig x86 "Debug" $BaseVsGenerator $BuildOutputPath $LlvmRoot),
+                     (New-LlvmCmakeConfig x64 "Release" $BaseVsGenerator $BuildOutputPath $LlvmRoot),
+                     (New-LlvmCmakeConfig x64 "Debug" $BaseVsGenerator $BuildOutputPath $LlvmRoot)
+                   )
+
+
+switch( $PsCmdlet.ParameterSetName )
 {
-    BuildLibraries -BuildOutputPath $BuildOutputPath -Generate:$Generate -Build:$Build -CreateSettingsJson:$CreateSettingsJson -LlvmRoot $LlvmRoot -BaseVsGenerator $BaseVsGenerator
+    "build" { 
+        BuildLibraries -BuildOutputPath $BuildOutputPath -Generate:$Generate -Build:$Build -Configurations $configurations -LlvmRoot $LlvmRoot -BaseVsGenerator $BaseVsGenerator
+    }
+    "pack" {
+        GenerateMultiPack (Get-LlvmVersion $cmakeListPath) $LlvmRoot $BuildOutputPath $PackOutputPath $NuspecOutputPath
+    }
+    "CreateSettingsJson" {
+        New-CmakeSettings $configurations | Out-File (join-path $LlvmRoot CMakeSettings.json)
+    }
 }
 
-if( $PsCmdlet.ParameterSetName -eq "pack" )
-{
-    GenerateMultiPack (Get-LlvmVersion $cmakeListPath) $LlvmRoot $BuildOutputPath $PackOutputPath $NuspecOutputPath
-}
+
