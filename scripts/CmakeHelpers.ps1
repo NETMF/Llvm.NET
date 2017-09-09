@@ -1,29 +1,30 @@
 ﻿class CMakeConfig
 {
     [string]$Name;
-    [string]$Generator;
-    [string]$ConfigurationType;
+    [string]$Platform; #x86,x64
+    [string]$ConfigurationType; #Debug,Release
     [string]$BuildRoot;
     [string]$SrcRoot;
+    [string]$Generator;
     [string[]]$CMakeCommandArgs;
     [string[]]$MsBuildCommandArgs;
     [hashtable]$CMakeBuildVariables;
 
-    CMakeConfig([string]$platform, [string]$config, [string]$BaseGenerator, [string]$baseBuild, [string]$srcRoot)
+    CMakeConfig([string]$plat, [string]$config, [string]$BaseGenerator, [string]$baseBuild, [string]$srcRoot)
     {
         $this.Generator = $BaseGenerator
         # normalize platform name and create final generator name
-        $Platform = $Platform.ToLowerInvariant()
-        switch($Platform)
+        $this.Platform = $Plat.ToLowerInvariant()
+        switch($this.Platform)
         {
             "x86" {}
             "x64" {$this.Generator="$BaseGenerator Win64"}
             default { }
         }
 
-        $this.Name="$platform-$config"
+        $this.Name="$($this.Platform)-$config"
         $this.ConfigurationType = $config
-        $this.BuildRoot = (Join-Path $baseBuild "$platform-$config")
+        $this.BuildRoot = (Join-Path $baseBuild $this.Name)
         $this.SrcRoot = $srcRoot
         $this.CMakeCommandArgs = @()
         $this.MsBuildCommandArgs = @('/m')
