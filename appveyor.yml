@@ -23,11 +23,11 @@ platform:
   - x86
   - x64
   - AnyCPU
-  
+
 configuration:
   - Debug
   - Release
-  
+
 # Disable debug variant of AnyCPU as it has no meaning
 # AnyCPU is used to build the Meta-Package that contains the headers along with the common props and targets files
 matrix:
@@ -42,9 +42,9 @@ nuget:
 
 install:
   - ps: .\scripts\update.ps1
-  
+
 build_script:
-  - ps: .\scripts\build-llvm.ps1 -Build -Platform $env:PLATFORM -Configuration $env:Configuration 
+  - ps: .\scripts\build-llvm.ps1 -Build -Platform $env:PLATFORM -Configuration $env:Configuration
 
 artifacts:
   - path: pkginstall\**\Llvm.Libs.*.nupkg
