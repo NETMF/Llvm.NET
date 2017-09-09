@@ -1,5 +1,11 @@
 . (Join-Path $PSScriptRoot 'common.ps1')
 
+if( $env:APPVEYOR )
+{
+    $global:InformationPreference="Continue"
+    $global:ErrorActionPreference="Continue"
+}
+
 # ensure the output locations exist
 $ToolsPath = Get-ToolsPath
 $NuspecOutputPath = Get-NuspecPath

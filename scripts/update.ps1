@@ -1,2 +1,4 @@
 ﻿& (Join-Path $PSScriptRoot 'bootstrap.ps1')
-git submodule update --remote
+
+Write-Information "Updating submodules"
+git submodule update --init --recursive
