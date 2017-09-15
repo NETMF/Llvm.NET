@@ -45,13 +45,13 @@ Export-ModuleMember -Function Get-LlvmVersion
 function BuildPlatformConfigPackage([CmakeConfig]$config, $version, $packOutputPath, $nuspecOutputPath)
 {
     Write-Information "Generating Llvm.Libs.$($config.Name).nupkg"
-    $properties = MakePropList @{ llvmsrcroot=$srcRoot
-                                  llvmbuildroot=$config.BuildRoot
-                                  version=$version
-                                  platform=$config.Platform
-                                  configuration=$config.ConfigurationType
-                                  nugetsrcdir=(ConvertTo-NormalizedPath (Get-Location))
-                                }
+    $properties = ConvertTo-PropList @{ llvmsrcroot=$RepoInfo.LlvmRoot
+                                        llvmbuildroot=$config.BuildRoot
+                                        version=$version
+                                        platform=$config.Platform
+                                        configuration=$config.Configuration
+                                        nugetsrcdir=(ConvertTo-NormalizedPath (Get-Location))
+                                      }
 
     Invoke-Nuget pack Llvm.Libs.core.Platform-Configuration.nuspec -properties $properties -OutputDirectory $packOutputPath
     if( $config -ieq "Debug")
@@ -67,11 +67,11 @@ function BuildPlatformConfigPackage([CmakeConfig]$config, $version, $packOutputP
     $files = $nuspec | Select-Xml "//nuspec:files" -Namespace $ns
     foreach( $arch in $architectures)
     {
-        foreach( $item in (Get-ChildItem -Path (join-path $config.BuildRoot "$($config.Name)\$($config.ConfigurationType)\lib") -Filter "Llvm$arch*"))
+        foreach( $item in (Get-ChildItem -Path (join-path $config.BuildRoot 'lib') -Filter "Llvm$arch*"))
         {
             $fileElement = $nuspec.CreateElement("file",$nuspecNamespace);
             $srcAttrib = $nuspec.CreateAttribute("src")
-            $srcAttrib.InnerText = "`$llvmbuildroot`$`$platform`$-`$configuration`$\`$configuration`$\lib\$($item.Name)"
+            $srcAttrib.InnerText = "`$llvmbuildroot`$\lib\$($item.Name)"
             $targetAttrib = $nuspec.CreateAttribute("target")
             $targetAttrib.InnerText = 'lib\native\lib'
             $fileElement.Attributes.Append( $srcAttrib )  | Out-Null
@@ -112,7 +112,7 @@ function LlvmBuildConfig([CMakeConfig]$configuration)
 {
     Invoke-CMakeGenerate $configuration
     Invoke-CmakeBuild $configuration
-    BuildPlatformConfigPackage $configuration $version $PackOutputPath $NuspecOutputPath
+    BuildPlatformConfigPackage $configuration $version $RepoInfo.PackOutputPath $RepoInfo.NuspecPath
 }
 
 function Invoke-CMakeGenerator
@@ -282,7 +282,7 @@ function Invoke-Build
         }
     }
 
-    if( $Error.Count > 0 )
+    if( $Error.Count -gt 0 )
     {
         $Error.GetEnumerator() | %{ $_ }
     }
