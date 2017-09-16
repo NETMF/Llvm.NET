@@ -25,8 +25,7 @@ function New-LlvmCmakeConfig([string]$platform,
         LLVM_BUILD_RUNTIME = "OFF"
         LLVM_OPTIMIZED_TABLEGEN = "ON"
         LLVM_REVERSE_ITERATION = "ON"
-        LLVM_TARGETS_TO_BUILD  = "ARM"
-        LLVM_TARGET_ARCH = "ARM"
+        LLVM_TARGETS_TO_BUILD  = "all"
         LLVM_DEFAULT_TARGET_TRIPLE="thumbv7m-none--eabi"
         CMAKE_MAKE_PROGRAM=Join-Path $RepoInfo.VSInstance.InstallationPath 'COMMON7\IDE\COMMONEXTENSIONS\MICROSOFT\CMAKE\Ninja\ninja.exe'
     }
