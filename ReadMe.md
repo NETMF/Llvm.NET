@@ -29,7 +29,7 @@ The simplest usage is to use the public NuGet feed and add the "Llvm.Libs" packa
 to your project. The package includes all the headers and libraries from LLVM.
 
 ## Building the package localy
-The [Build-Llvm.ps1](Build-Llvm.md) script is used to build the LLVM libraries and
+The [Build-Llvm.ps1](scripts\Build-Llvm.md) script is used to build the LLVM libraries and
 bundle them into the nugetPackage.
 
 ### Building the nuget packages only
@@ -38,7 +38,7 @@ provided in the NuGet packages without rebuilding the LLVM libraries too. This i
 accomplished with the following PowerShell command.
 
 ```PowerShell
-.\Build-Llvm.ps1 -Pack -LlvmVersion 4.0.1 -BuildOutputPath D:\CMakeBuild\LLVM\4.0.1 -LlvmRoot D:\LLVM\4.0.1 
+.\scripts\Build-Llvm.ps1 -Pack
 ```
  (Of course you should substitute the paths in the example command to match your own system.)
 
