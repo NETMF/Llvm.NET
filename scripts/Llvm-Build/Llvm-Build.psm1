@@ -89,10 +89,10 @@ function BuildPlatformConfigPackage([CmakeConfig]$config, $version, $packOutputP
 function GenerateMultiPack($version, $srcRoot, $buildOutput, $packOutputPath)
 {
     Write-Information "Generating meta-package"
-    $properties = MakePropList @{ llvmsrcroot=$srcRoot
-                                  llvmbuildroot=$buildOutput;
-                                  version=$version
-                                }
+    $properties = ConvertTo-PropList @{ llvmsrcroot=$srcRoot
+                                        llvmbuildroot=$buildOutput;
+                                        version=$version
+                                      }
 
     Invoke-Nuget pack .\Llvm.Libs.MetaPackage.nuspec -Properties $properties -OutputDirectory $packOutputPath
 }
@@ -144,7 +144,7 @@ function Invoke-Build
 {
 <#
 .SYNOPSIS
-    Wraps CMake Visual Studio solution generation and build for LLVM as used by the LLVM.NET project
+    Wraps CMake Visual Studio (Ninja) generation and build for LLVM as used by the LLVM.NET project
 
 .DESCRIPTION
     This script is used to build LLVM libraries for Windows and bundle the results into a NuGet package.
@@ -261,12 +261,12 @@ function Invoke-Build
                 {
                     LlvmBuildConfig $cmakeConfig
                 }
-                GenerateMultiPack $version $RepoInfo.LlvmRoot $RepoInfo.BuildOutputPath $RepoInfo.PackOutputPath $RepoInfo.NuspecOutputPath
+                GenerateMultiPack $version $RepoInfo.LlvmRoot $RepoInfo.BuildOutputPath $RepoInfo.PackOutputPath $RepoInfo.NuspecPath
             }
             finally
             {
                 $timer.Stop()
-                Write-Information "Finished: $activity - Time: $($timer.Elapsed.ToString())"
+                Write-Information "Finished: Time: $($timer.Elapsed.ToString())"
             }
 
         }
@@ -358,7 +358,6 @@ function Install-PreRequisites
     #    Microsoft.VisualStudio.Component.VC.Tools.x86.x64
     #    Component.CPython2.x64 or Component.CPython2.x86
     #
-
 
     $NuGetExePath = Find-OnPath NuGet.exe -ErrorAction Continue
     if( !$NuGetExePath )

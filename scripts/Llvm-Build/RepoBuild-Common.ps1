@@ -94,7 +94,6 @@ function Get-CmdEnvironment ($cmd, $Arguments)
     $retVal = @{}
     Write-Verbose "Running [`"$cmd`" $Arguments >nul & set] to get environment variables"
     $envOut =  cmd /c "`"$cmd`" $Arguments >nul & set"
-    $envout | Out-File 'envout.txt'
     foreach( $line in $envOut )
     {
         $name, $value = $line.split('=');
