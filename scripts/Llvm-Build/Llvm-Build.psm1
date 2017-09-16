@@ -25,7 +25,9 @@ function New-LlvmCmakeConfig([string]$platform,
         LLVM_BUILD_RUNTIME = "OFF"
         LLVM_OPTIMIZED_TABLEGEN = "ON"
         LLVM_REVERSE_ITERATION = "ON"
-        LLVM_TARGETS_TO_BUILD  = "all"
+        LLVM_TARGETS_TO_BUILD  = "ARM"
+        LLVM_TARGET_ARCH = "ARM"
+        LLVM_DEFAULT_TARGET_TRIPLE="thumbv7m-none--eabi"
         CMAKE_MAKE_PROGRAM=Join-Path $RepoInfo.VSInstance.InstallationPath 'COMMON7\IDE\COMMONEXTENSIONS\MICROSOFT\CMAKE\Ninja\ninja.exe'
     }
     return $cmakeConfig
@@ -168,12 +170,6 @@ function Invoke-Build
        - Llvm.Libs.targets.x86-Debug.<Version>.nupkg
        - Llvm.Libs.targets.x86-Release.<Version>.nupkg
 
-.PARAMETER BuildOutputPath
-    The path to where the projects are generated and the binaries they build will be located.
-
-.PARAMETER Generate
-    Switch to run CMAKE configuration and project/solution generation
-
 .PARAMETER BuildAll
     Switch to enable building all the platform configurations in a single run.
     > **NOTE:**
@@ -191,31 +187,12 @@ function Invoke-Build
 .PARAMETER Configuration
     Defines the configuration to build
 
-.PARAMETER LlvmRoot
-    This specifies the root of the LLVM source tree to build.
-
 .PARAMETER Pack
     Set this flag to generate the NuGet packages for the libraries and headers
-
-.PARAMETER PackOutputPath
-    Defines the output location for package generation. The default location is .\packages.
-
-.PARAMETER NuspecOutputPath
-   Defines the path for generated Nuspec files when packing
 #>
 
     [CmdletBinding(DefaultParameterSetName="buildall")]
     param(
-       [Parameter(ParameterSetName="build")]
-       [Parameter(ParameterSetName="buildall")]
-       [Parameter(ParameterSetName="pack")]
-       [string]
-       $BuildPaths = $RepoInfo,
-
-       [Parameter(ParameterSetName="Generate")]
-       [switch]
-       $Generate=$true,
-
        [Parameter(ParameterSetName="buildall")]
        [switch]
        $BuildAll,
@@ -323,7 +300,7 @@ function Initialize-BuildEnvironment
     This is generally an inefficient number of cores available (Ideally 6-8 are needed for a timely build)
     On an automated build service this may cause the build to exceed the time limit allocated for a build
     job. (As an example AppVeyor has a 1hr per job limit with VMs containing only 2 cores, which is
-    unfortunately just not capable of completing the build in time.)
+    unfortunately just not capable of completing the build for a single platform+config in time.)
     #>
 
     if( ([int]$env:NUMBER_OF_PROCESSORS) -lt 6 )
@@ -345,70 +322,12 @@ function Initialize-BuildEnvironment
 }
 Export-ModuleMember -Function Initialize-BuildEnvironment
 
-function Install-PreRequisites
-{
-    #all prerequisites could be obtained from VS community install
-    # https://www.visualstudio.com/downloads/
-    # unfortunately it isn't a direct download link to allow automated downloads
-    # need minimum:
-    #    Microsoft.Component.MSBuild
-    #    Microsoft.VisualStudio.Component.CoreBuildTools
-    #    Microsoft.VisualStudio.Component.VC.CoreBuildTools
-    #    Microsoft.VisualStudio.Component.VC.CMake.Project
-    #    Microsoft.VisualStudio.Component.VC.Tools.x86.x64
-    #    Component.CPython2.x64 or Component.CPython2.x86
-    #
-
-    $NuGetExePath = Find-OnPath NuGet.exe -ErrorAction Continue
-    if( !$NuGetExePath )
-    {
-        # Download it from official NuGet release location
-        $nugetToolsPath = (Join-Path $RepoInfo.ToolsPath 'NuGet.exe')
-        Write-Verbose "Downloading $nugetToolsPath"
-        Invoke-WebRequest -UseBasicParsing -Uri https://dist.NuGet.org/win-x86-commandline/latest/NuGet.exe -OutFile $nugetToolsPath
-    }
-
-    # Find/Install Python
-    $python = Find-Python
-    if(!$python)
-    {
-        $pythonPath = Install-Python
-        $env:Path="$env:Path;$pythonPath"
-    }
-
-    if( !$python.FoundOnPath )
-    {
-        $env:Path="$env:Path;$($python.BinPath)"
-    }
-
-    # Find/Install CMake - https://cmake.org/files/v3.9/cmake-3.9.2-win64-x64.msi OR https://cmake.org/files/v3.9/cmake-3.9.2-win32-x86.msi
-    $cmake = Find-OnPath 'cmake.exe'
-    if(!$cmake)
-    {
-        # TODO: try registry?
-        Install-CMakeTools
-    }
-
-    # TODO: (maybe) if VSinstance not found with C++ and CMake support - download and install those...
-    # (anyone using these libs should already have those. Furthermore, it can be a big install so best
-    # left to user to install them.)
-
-    $msBuildInfo = Find-MsBuild
-    if( !$msBuildInfo )
-    {
-        throw "MSBuild was not found"
-    }
-
-    if( !$msBuildInfo.FoundOnPath )
-    {
-        $env:Path="$($msBuildInfo.BinPath);$env:Path"
-    }
-}
-Export-ModuleMember -Function Install-PreRequisites
-
 # --- Module init script
 $RepoInfo = Get-RepoInfo
-Export-ModuleMember -Variable $RepoInfo
+Export-ModuleMember -Variable RepoInfo
 
-"Build Paths:"
-$RepoInfo
+New-Alias -Name build -Value Invoke-Build
+Export-ModuleMember -Alias build -Variable RepoInfo
+
+Write-Information "Build Info:`n $($RepoInfo | Out-String )"
+
