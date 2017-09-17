@@ -1,5 +1,5 @@
 # This branch is no longer actively maintained here
-For the latest actively developed code, see [Ubiquity.NET](https://github.com/UbiquityDotNET)
+For the latest actively developed Llvm.Libs code, see [Ubiquity.NET](https://github.com/UbiquityDotNET)
 The move is to better isolate the code into a disticnt repo and maintain it alongside future
 projects using LibLLVM and Llvm.NET so they are not confused with the legacy .NET Micro Framework
 interpreter engine.
