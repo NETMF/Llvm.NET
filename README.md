@@ -1,15 +1,13 @@
+# **Active Development of Llvm.NET has moved**
+Active development of Llvm.NET has moved to [Ubiquity.NET](https://github.com/UbiquityDotNET/Llvm.Net)
+This is to better support future projects leveraging LLVM.NET under a single GitHub orginization isolated from
+the legacy .NET Micro Framework interpreter engine contained in the NETMF organization to help prevent confusion between the projects.
+
 ## Llvm.NET
-
-Build Status:  
-
-| Build | Status |
-|-------------|--------------|
-| Master | [![Build status](https://ci.appveyor.com/api/projects/status/0xh262rwvbardsrm/branch/master?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net/branch/master) |
-| Llvm.Libs | [![Build status](https://ci.appveyor.com/api/projects/status/2oqp15olqxna55jj/branch/Llvm.Libs?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net-3dmy2/branch/Llvm.Libs) |
 
 ### Welcome to Llvm.NET!
 Llvm.NET provides LLVM language and runtime bindings for .NET based applications. Llvm.NET's goal is to provide
-as robust Class library thataccurately reflects the underlying LLVM C++ model. This is done through an extend
+as robust Class library that accurately reflects the underlying LLVM C++ model. This is done through an extend
 LLVM-C API bundled as a native windows DLL (LibLLVM.DLL). Llvm.NET uses the support of LibLLVM to gain access
 to the LLVM class library and project it into a .NET managed library that reflects the original class library
 design.  
