@@ -1,9 +1,12 @@
+# This branch is no longer actively maintained here
+For the latest actively developed code, see [Ubiquity.NET](https://github.com/UbiquityDotNET)
+The move is to better isolate the code into a disticnt repo and maintain it alongside future
+projects using LibLLVM and Llvm.NET so they are not confused with the legacy .NET Micro Framework
+interpreter engine.
+
 # Llvm.Libs Nuget Support
 Detached branch of Llvm.NET for building and publishing the LLVM libraries and
 header files.
-
-## Build Status
-[![Build status](https://ci.appveyor.com/api/projects/status/2oqp15olqxna55jj/branch/Llvm.Libs?svg=true)](https://ci.appveyor.com/project/StevenMaillet/llvm-net-3dmy2/branch/Llvm.Libs)
 
 ## About
 LLVM is a large collection of libraries for building compiler back-ends that
