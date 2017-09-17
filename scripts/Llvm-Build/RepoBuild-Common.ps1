@@ -63,7 +63,7 @@ function Invoke-TimedBlock([string]$activity, [ScriptBlock]$block )
 Export-ModuleMember -Function Invoke-TimedBlock
 
 <#
-This is a workaround for https://github.com/PowerShell/PowerShell/issues/2736 
+This is a workaround for https://github.com/PowerShell/PowerShell/issues/2736
 #>
 function Format-Json([Parameter(Mandatory, ValueFromPipeline)][String] $json)
 {
