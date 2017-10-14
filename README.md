@@ -1,6 +1,6 @@
 # **Active Development of Llvm.NET has moved**
 Active development of Llvm.NET has moved to [Ubiquity.NET](https://github.com/UbiquityDotNET/Llvm.Net)
-This is to better support future projects leveraging LLVM.NET under a single GitHub orginization isolated from
+This is to better support future projects leveraging LLVM.NET under a single GitHub organization isolated from
 the legacy .NET Micro Framework interpreter engine contained in the NETMF organization to help prevent confusion between the projects.
 
 ## Llvm.NET
